@@ -36,136 +36,93 @@ public class Vertrag {
 		System.out.println("Werte erfolgreich gespeichert");
 		connection.close();
 	}
-	private int get_vertrag_id(int kd_id) throws ClassNotFoundException, SQLException{
+	private String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
+		String zwischenerg ="";
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT vertrags_id FROM vertrag WHERE kd_id = '"+kd_id+"'");
-		rs.next();
-		int id = rs.getInt(1);
+		//System.out.println(anweisung);//Kontrollausgabe
+		ResultSet rs = statement.executeQuery(anweisung);
+		while(rs.next()) {
+			zwischenerg = rs.getString(1) + ",";
+			//System.out.println(zwischenerg);//Kontrollausgabe
+		}
 		connection.close();
-		return id;
+		String[] values = zwischenerg.split(",");
+		return values;
+	}
+	private void change_db_value_for_contract(String anweisung)throws ClassNotFoundException, SQLException{
+		Connection connection = null;//setze Connection auf null
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		//Speicher die Kundendaten in der Tabelle
+		statement.executeUpdate(anweisung);
+		System.out.println("Änderungen erfolgreich gespeichert");
+		connection.close();
+	}
+	private int get_vertrag_id(int kd_id) throws ClassNotFoundException, SQLException{
+		String wert = get_values("SELECT vertrags_id FROM vertrag WHERE kd_id = '"+kd_id+"'")[0];
+		return Integer.parseInt(wert);
 	}
 	private int get_vertrag_kd_id(int id)throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT kd_id FROM vertrag WHERE vertrags_id = '"+id+"'");
-		rs.next();
-		int kd_id = rs.getInt(1);
-		connection.close();
-		return kd_id;
+		String wert = get_values("SELECT kd_id FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
+		return Integer.parseInt(wert);
 	}
 	private int get_vertrag_whg_id(int id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT whg_id FROM vertrag WHERE vertrags_id = '"+id+"'");
-		rs.next();
-		int whg_id = rs.getInt(1);
-		connection.close();
-		return whg_id;
+		String wert = get_values("SELECT whg_id FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
+		return Integer.parseInt(wert);
 	}
 
 	private String get_vertrag_zeitraum(int id)throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT zeitraum FROM vertrag WHERE vertrags_id = '"+id+"'");
-		rs.next();
-		String mieter_seit = rs.getString(1);
-		connection.close();
-		return mieter_seit;
+		return get_values("SELECT zeitraum FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
 	}
 	private double get_vertrag_schulden(int id)throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT schulden FROM vertrag WHERE vertrags_id = '"+id+"'");
-		rs.next();
-		double schulden = rs.getDouble(1);
-		connection.close();
-		return schulden;
+		String wert = get_values("SELECT schulden FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
+		return Double.parseDouble(wert);
 	}
 	private boolean get_vertrag_aktiv(int id)throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT aktiv FROM vertrag WHERE vertrags_id = '"+id+"'");
-		rs.next();
-		boolean mieter_bis = rs.getBoolean(1);
-		connection.close();
-		return mieter_bis;
+		String wert = get_values("SELECT aktiv FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
+		boolean aktiv;
+		int zaehlwert1 = Integer.parseInt(wert);
+		if (zaehlwert1 == 1){
+			aktiv =  Boolean.valueOf("true");
+			return aktiv;
+		}else {
+			aktiv =  Boolean.valueOf("false");
+				return aktiv;
+			}
 	}
 	private void get_vertrag_all() throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT * FROM vertrag");
-		while (rs.next()) {
-			System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getInt(3)+" "+rs.getDouble(4)+" "+rs.getString(5)+" "+rs.getBoolean(6));
-		}
-		connection.close();
+		String[] werte = get_values("SELECT vertrags_id FROM vertrag");
+		for(int i =0; i<werte.length;i++) {
+			int id = Integer.parseInt(werte[i]);
+			System.out.println(id +" "+get_vertrag_kd_id(id)+" "+get_vertrag_whg_id(id) + " "+get_vertrag_zeitraum(id) + " "+get_vertrag_schulden(id) + " " + get_vertrag_aktiv(id));
+			}
 	}
 	private String get_vertrag_all_whg_by_kd_id(int kd_id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT vertrags_id FROM vertrag WHERE kd_id = '"+kd_id+"'");
+		String[] werte = get_values("SELECT vertrags_id FROM vertrag WHERE kd_id = '"+kd_id+"'");
 		String a = "";
-		while (rs.next()) {
-			a = a + rs.getInt(1) + ",";
+		for(int i = 0; i<werte.length;i++) {
+			a = a + werte[i] + ",";
 		}
-		connection.close();
 		return a;
 	}
 	private void change_vertrag_kd_id(int id, int kd_id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_contract("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE kd_id = '"+id+"'");
 	}
 	private void change_vertrag_whg_id(int id, int whg_id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE vertrag SET whg_id = '"+whg_id+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_contract("UPDATE vertrag SET whg_id = '"+whg_id+"' WHERE kd_id = '"+id+"'");
 	}
 	private void change_vertrag_zeitraum(int id, String zeitraum) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE vertrag SET zeitraum = '"+zeitraum+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_contract("UPDATE vertrag SET zeitraum = '"+zeitraum+"' WHERE kd_id = '"+id+"'");
 	}
 	private void change_vertrag_schulden(int id, double schulden) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE vertrag SET schulden = '"+schulden+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_contract("UPDATE vertrag SET schulden = '"+schulden+"' WHERE kd_id = '"+id+"'");
 	}
 	private void change_vertrag_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
 	private int get_last_id()throws ClassNotFoundException, SQLException{
 		/*
