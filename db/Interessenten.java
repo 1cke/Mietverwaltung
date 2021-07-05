@@ -164,7 +164,7 @@ public class Interessenten {
 	 * Diese Methode gibt die Interessentennummer zurück.
 	 * @param vorname Den Vornamen des Interessenten als String.
 	 * @param nachname Den Nachnamen des Interessenten als String.
-	 * @param geburtsdatum Das Geburtsdatum des Interessenten als String
+	 * @param geburtsdatum Das Geburtsdatum des Interessenten als String.
 	 * @return Die Interessentennummer als Integer.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
