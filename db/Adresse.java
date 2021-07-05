@@ -61,6 +61,16 @@ public class Adresse {
 		System.out.println("Änderungen erfolgreich gespeichert");
 		connection.close();
 	}
+	private void delete_db_value(int id) throws ClassNotFoundException, SQLException{
+		Connection connection = null;//setze Connection auf null
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		//Speicher die Kundendaten in der Tabelle
+		statement.executeUpdate("DELETE FROM adresse WHERE adress_id = '"+ id+"'");
+		System.out.println("Adresse erfolgreich gelöscht");
+		connection.close();
+	}
 	private int get_address_adress_id(String plz, String ort, String strasse, String hn) throws ClassNotFoundException, SQLException{
 		String wert = get_values("SELECT adress_id FROM adresse WHERE plz = '"+plz+"' AND ort = '"+ort+"' AND strasse = '"+strasse+"' AND hn = '" + hn+"'")[0];
 		return Integer.parseInt(wert);
@@ -128,5 +138,8 @@ public class Adresse {
 	}
 	public void change_hn(int adress_id, String hn)throws ClassNotFoundException, SQLException{
 		change_address_hn(adress_id,hn);
+	}
+	public void delete_addresse(int id) throws ClassNotFoundException, SQLException{
+		delete_db_value(id);
 	}
 }
