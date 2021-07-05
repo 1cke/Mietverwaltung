@@ -149,7 +149,8 @@ public class Interessenten {
 	 * @param vorname Den Vornamen als String.
 	 * @param nachname Den Nachnamen als String.
 	 * @param geburtsdatum Das Geburtsdatum als String.
-	 * @param whg_nr Die Wohnungsnummer als Integer.
+	 * @param telefon Die Telefonnummer als String, falls unbekannt leeren String. Ländervorwahl beachten!
+	 * @param email Die Email-Adresse, als String, falls unbekannt leeren String
 	 * @return Die Interessentennummer als Integer
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
