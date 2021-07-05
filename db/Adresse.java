@@ -45,7 +45,7 @@ public class Adresse {
 		ResultSet rs = statement.executeQuery(anweisung);
 		while(rs.next()) {
 			zwischenerg = rs.getString(1) + ",";
-			System.out.println(zwischenerg);//Kontrollausgabe
+			//System.out.println(zwischenerg);//Kontrollausgabe
 		}
 		connection.close();
 		String[] values = zwischenerg.split(",");
