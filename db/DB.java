@@ -61,7 +61,7 @@ public class DB {
 		}catch(Exception e) {
 			
 		}
-		//vertrag.change_wohnungsnummer(kd_nr, 2);
+		vertrag.change_wohnungsnummer(kd_nr, 2);
 		
 		
 		
