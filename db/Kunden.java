@@ -28,11 +28,11 @@ public class Kunden {
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
 		//erstelle eine Tabelle Kunden wenn diese nicht bereits existiert
-		statement.executeUpdate("CREATE TABLE IF NOT EXISTS kunden(kd_id INTEGER PRIMARY KEY, vorname TEXT NOT NULL, nachname TEXT NOT NULL,geburtstag TEXT NOT NULL, telefon TEXT)");
+		statement.executeUpdate("CREATE TABLE IF NOT EXISTS kunden(kd_id INTEGER PRIMARY KEY, vorname TEXT NOT NULL, nachname TEXT NOT NULL,geburtstag TEXT NOT NULL, telefon TEXT,email TEXT)");
 		connection.close();
 	}
 	
-	private void set_db_value_for_kd(String vorname, String nachname, String geburtstag, String telefon )throws ClassNotFoundException, SQLException{
+	private void set_db_value_for_kd(String vorname, String nachname, String geburtstag, String telefon, String email )throws ClassNotFoundException, SQLException{
 		/*
 		 * speicher den Vornamen, Nachnamen und Geburtstag in die Tabelle Kunden
 		 * alle Werte als String übergeben
@@ -42,152 +42,87 @@ public class Kunden {
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
 		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("INSERT INTO kunden (vorname,nachname, geburtstag,telefon) VALUES ('"+vorname+"','"+nachname+"','"+geburtstag+"','"+telefon+"')");
+		statement.executeUpdate("INSERT INTO kunden (vorname,nachname, geburtstag,telefon,email) VALUES ('"+vorname+"','"+nachname+"','"+geburtstag+"','"+telefon+"','"+email+"')");
 		System.out.println("Werte erfolgreich gespeichert");
 		connection.close();
 	}
-	private int get_kd_id(String vorname, String nachname, String geburtstag, String telefon)throws ClassNotFoundException, SQLException {
-		/*
-		 * gebe die ID des Kunden aus
-		 */
+	private String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
+		String zwischenerg ="";
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT kd_id FROM kunden WHERE vorname = '"+vorname+"' AND nachname = '"+nachname+"' AND geburtstag = '"+geburtstag+"' AND telefon = '"+telefon+"'");
-		rs.next();
-		int id = rs.getInt(1);
+		//System.out.println(anweisung);//Kontrollausgabe
+		ResultSet rs = statement.executeQuery(anweisung);
+		while(rs.next()) {
+			zwischenerg = rs.getString(1) + ",";
+			//System.out.println(zwischenerg);//Kontrollausgabe
+		}
 		connection.close();
-		return id;
+		String[] values = zwischenerg.split(",");
+		return values;
+	}
+	private void change_db_value_for_costumer(String anweisung)throws ClassNotFoundException, SQLException{
+		Connection connection = null;//setze Connection auf null
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		//Speicher die Kundendaten in der Tabelle
+		statement.executeUpdate(anweisung);
+		System.out.println("Änderungen erfolgreich gespeichert");
+		connection.close();
+	}
+	private int get_kd_id(String vorname, String nachname, String geburtstag, String telefon)throws ClassNotFoundException, SQLException {
+		String id = get_values("SELECT kd_id FROM kunden WHERE vorname = '"+vorname+"' AND nachname = '"+nachname+"' AND geburtstag = '"+geburtstag+"' AND telefon = '"+telefon+"'")[0];
+		return Integer.parseInt(id);
 	}
 	private String get_kd_vorname(int id) throws ClassNotFoundException, SQLException{
-		/*
-		 * gebe den Vornamen des Kunden mit der ID zurück
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT vorname FROM kunden WHERE kd_id = '"+id+"'");
-		String vorname = rs.getString(1);
-		connection.close();
-		return vorname;
+		return get_values("SELECT vorname FROM kunden WHERE kd_id = '"+id+"'")[0];
 	}
 	private String get_kd_nachname(int id) throws ClassNotFoundException, SQLException{
-		/*
-		 * gebe den Nachnamen des Kunden mit der ID zurück
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT nachname FROM kunden WHERE kd_id = '"+id+"'");
-		String nachname = rs.getString(1);
-		connection.close();
-		return nachname;
+		return get_values("SELECT nachname FROM kunden WHERE kd_id = '"+id+"'")[0];
 	}
 	
 	private String get_kd_geburtstag(int id) throws ClassNotFoundException, SQLException{
-		/*
-		 * gebe den Geburtstag des Kunden mit der ID zurück
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT geburtstag FROM kunden WHERE kd_id = '"+id+"'");
-		String geburtstag = rs.getString(1);
-		connection.close();
-		return geburtstag;
+		return get_values("SELECT geburtstag FROM kunden WHERE kd_id = '"+id+"'")[0];
 	}
 	private String get_kd_telefon(int id) throws ClassNotFoundException, SQLException{
-		/*
-		 * gebe die Telefonnummer des Kunden mit der ID zurück
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT telefon FROM kunden WHERE kd_id = '"+id+"'");
-		String telefon = rs.getString(1);
-		connection.close();
-		return telefon;
+		return get_values("SELECT telefon FROM kunden WHERE kd_id = '"+id+"'")[0];
+	}
+	private String get_kd_email(int id) throws ClassNotFoundException, SQLException{
+		return get_values("SELECT email FROM kunden WHERE kd_id = '"+id+"'")[0];
 	}
 	private void change_kd_vorname(int id,String vorname) throws ClassNotFoundException, SQLException{
-		/*
-		 * Ändere den Vornamen des Kunden mit der ID
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE kunden SET vorname = '"+vorname+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_costumer("UPDATE kunden SET vorname = '"+vorname+"' WHERE kd_id = '"+id+"'");
+		
 	}
 	private void change_kd_nachname(int id,String nachname) throws ClassNotFoundException, SQLException{
-		/*
-		 * Ändere den Nachnamen des Kunden mit der ID
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE kunden SET nachname = '"+nachname+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_costumer("UPDATE kunden SET nachname = '"+nachname+"' WHERE kd_id = '"+id+"'");
 	}
 	private void change_kd_geburtstag(int id,String geburtstag)throws ClassNotFoundException, SQLException{
-		/*
-		 * Ändere den Geburtstag des Kunden mit der ID
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE kunden SET geburtstag = '"+geburtstag+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_costumer("UPDATE kunden SET geburtstag = '"+geburtstag+"' WHERE kd_id = '"+id+"'");
 	}
 	private void change_kd_telefon(int id,String telefon)throws ClassNotFoundException, SQLException{
-		/*
-		 * Ändere die Telefonnummer des Kunden mit der ID
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		statement.executeUpdate("UPDATE kunden SET telefon = '"+telefon+"' WHERE kd_id = '"+id+"'");
-		connection.close();
+		change_db_value_for_costumer("UPDATE kunden SET telefon = '"+telefon+"' WHERE kd_id = '"+id+"'");
+	}
+	private void change_kd_email(int id,String email)throws ClassNotFoundException, SQLException{
+		change_db_value_for_costumer("UPDATE kunden SET email = '"+email+"' WHERE kd_id = '"+id+"'");
 	}
 	private void get_kd_all() throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT * FROM kunden");
-		while (rs.next()) {
-			System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5));
+		String[] werte = get_values("SELECT kd_id FROM kunden");
+		for(int i = 0; i<werte.length; i++) {
+			int id = Integer.parseInt(werte[i]);
+			System.out.println(id+" "+get_kd_vorname(id)+" "+get_kd_nachname(id)+" "+get_kd_geburtstag(id)+" "+get_kd_telefon(id)+" "+get_kd_email(id));
 		}
-		connection.close();
 	}
 	private int get_last_id()throws ClassNotFoundException, SQLException{
-		/*
-		 * gebe die Letzte anglegete Zeile zurück
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT rowid FROM kunden ORDER BY rowid DESC limit 1");
-		int id =  rs.getInt(1);
-		connection.close();
-		return id;
+		return Integer.parseInt(get_values("SELECT rowid FROM kunden ORDER BY rowid DESC limit 1")[0]);
 	}
 	
-	public int set_db_value(String vorname, String nachname, String geburtstag, String telefon)throws ClassNotFoundException, SQLException {
-		//lege einen Kunden an
-		set_db_value_for_kd(vorname,nachname,geburtstag,telefon);
-		//gebe die letzte ID aus
-		int kd_nr = get_last_id();
-		return kd_nr;
+	public int set_db_value(String vorname, String nachname, String geburtstag, String telefon,String email)throws ClassNotFoundException, SQLException {
+		set_db_value_for_kd(vorname,nachname,geburtstag,telefon,email);
+		int id = get_last_id();
+		return id;
 	}
 	public int get_id(String vorname, String nachname, String geburtstag, String telefon)throws ClassNotFoundException, SQLException {
 		return get_kd_id(vorname,nachname, geburtstag, telefon);
@@ -204,6 +139,9 @@ public class Kunden {
 	public String get_telefon(int id) throws ClassNotFoundException, SQLException{
 		return get_kd_telefon(id);
 	}
+	public String get_email(int id)throws ClassNotFoundException, SQLException{
+		return get_kd_email(id);
+	}
 	public void change_vorname(int id, String vorname) throws ClassNotFoundException, SQLException{
 		change_kd_vorname(id,vorname);
 	}
@@ -215,6 +153,9 @@ public class Kunden {
 	}
 	public void change_telefon(int id, String telefon) throws ClassNotFoundException, SQLException{
 		change_kd_telefon(id,telefon);
+	}
+	public void change_email(int id, String email) throws ClassNotFoundException, SQLException{
+		change_kd_email(id,email);
 	}
 	public void get_all() throws ClassNotFoundException, SQLException{
 		get_kd_all();
