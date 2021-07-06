@@ -16,7 +16,7 @@ public class Wohnung {
 		statement.executeUpdate("CREATE TABLE IF NOT EXISTS wohnung(wohnungs_id INTEGER PRIMARY KEY, adress_id INTEGER NOT NULL, miete DOUBLE,zimmer DOUBLE NOT NULL,baeder DOUBLE NOT NULL,ebk BOOLEAN,vermietet BOOLEAN)");
 		connection.close();
 	}
-	private void set_db_value(int adress_id,double miete,double zimmer,double baeder, boolean ebk,boolean vermietet)throws ClassNotFoundException, SQLException{
+	private void set_db_value(int adress_id,double miete,double zimmer,double baeder, int ebk,int vermietet)throws ClassNotFoundException, SQLException{
 		Connection connection = null;//setze Connection auf null
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
 		Statement statement = connection.createStatement();
@@ -53,19 +53,19 @@ public class Wohnung {
 		connection.close();
 	}
 	private int get_whg_id(int adress_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT wohnungs_id WHERE adress_id = '"+adress_id+"'")[0]);
+		return Integer.parseInt(get_values("SELECT wohnungs_id FROM wohnung WHERE adress_id = '"+adress_id+"'")[0]);
 	}
 	private int get_whg_adress_id(int whg_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT adress_id WHERE wohnungs_id = '"+whg_id+"'")[0]);
+		return Integer.parseInt(get_values("SELECT adress_id FROM wohnung WHERE wohnungs_id = '"+whg_id+"'")[0]);
 	}
 	private double get_whg_miete(int whg_id)throws ClassNotFoundException, SQLException{
-		return Double.parseDouble(get_values("SELECT miete WHERE wohnungs_id = '"+whg_id+"'")[0]);
+		return Double.parseDouble(get_values("SELECT miete FROM wohnung WHERE wohnungs_id = '"+whg_id+"'")[0]);
 	}
 	private double get_whg_zimmer(int whg_id)throws ClassNotFoundException, SQLException{
-		return Double.parseDouble(get_values("SELECT zimmer WHERE wohnungs_id = '"+whg_id+"'")[0]);
+		return Double.parseDouble(get_values("SELECT zimmer FROM wohnung WHERE wohnungs_id = '"+whg_id+"'")[0]);
 	}
 	private double get_whg_baeder(int whg_id)throws ClassNotFoundException, SQLException{
-		return Double.parseDouble(get_values("SELECT baeder WHERE wohnungs_id = '"+whg_id+"'")[0]);
+		return Double.parseDouble(get_values("SELECT baeder FROM wohnung WHERE wohnungs_id = '"+whg_id+"'")[0]);
 	}
 	private boolean get_whg_ebk(int whg_id)throws ClassNotFoundException, SQLException{
 		String[] s = get_values("SELECT ebk FROM wohnung WHERE wohnungs_id = '"+whg_id+"'");
@@ -113,7 +113,7 @@ public class Wohnung {
 			System.out.println(id +" "+get_whg_adress_id(id)+" "+get_whg_miete(id) + " "+get_whg_zimmer(id) + " "+get_whg_baeder(id)+" "+get_whg_ebk(id)+" "+get_whg_vermietet(id));
 			}
 	}
-	public void set_wohnungen(int adress_id,double miete,double zimmer,double baeder,boolean ebk,boolean vermietet)throws ClassNotFoundException, SQLException{
+	public void set_wohnungen(int adress_id,double miete,double zimmer,double baeder,int ebk,int vermietet)throws ClassNotFoundException, SQLException{
 		set_db_value(adress_id,miete,zimmer,baeder,ebk,vermietet);
 	}
 	public int get_whg_nr(int adress_id)throws ClassNotFoundException, SQLException{

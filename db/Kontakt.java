@@ -105,7 +105,7 @@ public class Kontakt {
 		}
 	}
 	public void set_kontakt_value(int vertrags_id,String wann,String grund, String beschreibung)throws ClassNotFoundException, SQLException{
-		set_db_value_for_contact("INSERT INTO kunden(vertrags_id,wann,grund,beschreibung) VALUES('"+vertrags_id+"','"+wann+"','"+grund+"','"+beschreibung+"')");
+		set_db_value_for_contact("INSERT INTO kontakt(vertrags_id,wann,grund,beschreibung) VALUES('"+vertrags_id+"','"+wann+"','"+grund+"','"+beschreibung+"')");
 		
 	}
 	public int[] get_kontakt_id(int vertrags_nummer)throws ClassNotFoundException, SQLException{

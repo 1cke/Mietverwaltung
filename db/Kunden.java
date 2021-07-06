@@ -72,8 +72,8 @@ public class Kunden {
 		System.out.println("Änderungen erfolgreich gespeichert");
 		connection.close();
 	}
-	private int get_kd_id(String vorname, String nachname, String geburtstag, String telefon)throws ClassNotFoundException, SQLException {
-		String id = get_values("SELECT kd_id FROM kunden WHERE vorname = '"+vorname+"' AND nachname = '"+nachname+"' AND geburtstag = '"+geburtstag+"' AND telefon = '"+telefon+"'")[0];
+	private int get_kd_id(String vorname, String nachname, String geburtstag)throws ClassNotFoundException, SQLException {
+		String id = get_values("SELECT kd_id FROM kunden WHERE vorname = '"+vorname+"' AND nachname = '"+nachname+"' AND geburtstag = '"+geburtstag+"'")[0];
 		return Integer.parseInt(id);
 	}
 	private String get_kd_vorname(int id) throws ClassNotFoundException, SQLException{
@@ -124,8 +124,8 @@ public class Kunden {
 		int id = get_last_id();
 		return id;
 	}
-	public int get_id(String vorname, String nachname, String geburtstag, String telefon)throws ClassNotFoundException, SQLException {
-		return get_kd_id(vorname,nachname, geburtstag, telefon);
+	public int get_id(String vorname, String nachname, String geburtstag)throws ClassNotFoundException, SQLException {
+		return get_kd_id(vorname,nachname, geburtstag);
 	}
 	public String get_vorname(int id) throws ClassNotFoundException, SQLException{
 		return get_kd_vorname(id);
