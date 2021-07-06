@@ -8,7 +8,6 @@ public class DB {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Adresse adresse= new Adresse();
 		Wohnung whg = new Wohnung();
-		Interessenten interessent = new Interessenten();
 		Vertrag vertrag = new Vertrag();
 		Kunden kunde = new Kunden();
 		Kontakt kontakt = new Kontakt();
@@ -21,7 +20,7 @@ public class DB {
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 189.52, 1, 1, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 1052.00, 5, 3.5, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 802.41, 4, 2,1, 1);
-		//kunde.set_db_value("Max", "Mustermann", "01.01.2001", "+4930/2345619", " ");
+		//kunde.set_db_value("Max", "Mustermann", "01.01.2001", "+4930/2345619", " ",1);
 		//kunde.set_db_value("Hannelore", "Müller", "23.04.1982", " ", "hannelore_mueller@test.de");
 		//kunde.set_db_value("Peter", "Lustig", "01.01.1972", "+49157/32568792", "peter.lustig@test.de");
 		//adresse.display_adresse();
