@@ -125,17 +125,8 @@ public class Vertrag {
 		change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
 	private int get_last_id()throws ClassNotFoundException, SQLException{
-		/*
-		 * gebe die Letzte anglegete Zeile zurück
-		 */
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT rowid FROM vertrag ORDER BY rowid DESC limit 1");
-		int id =  rs.getInt(1);
-		connection.close();
-		return id;
+		String id = get_values("SELECT rowid FROM vertrag ORDER BY rowid DESC limit 1")[0];
+		return Integer.parseInt(id);
 	}
 	
 	public int set_db_value(int kd_id,int whg_id,double schulden, String zeitraum,int aktiv)throws ClassNotFoundException, SQLException{
