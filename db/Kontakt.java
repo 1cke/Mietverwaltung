@@ -88,9 +88,6 @@ public class Kontakt {
 				return behoben;
 			}
 	}
-	private String[] get_contact_all_by_contract_id(int vertrags_id) throws ClassNotFoundException, SQLException{
-		return get_values("SELECT kontakts_id FROM kontakt WHERE vertrags_id = '"+vertrags_id+"'");
-	}
 	private void change_contact_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE kontakt SET beschreibung = '"+beschreibung+"' WHERE kontakts_id = '"+kontakt_id+"'");
 	}
@@ -104,10 +101,30 @@ public class Kontakt {
 			System.out.println(id+" "+get_contact_vertrags_id(id)+" "+get_contact_wann(id)+" "+get_contact_grund(id)+" "+get_contact_beschreibung(id) + " " +get_contact_behoben(id));
 		}
 	}
+	/**
+	 * Diese Methode erstellt einen Kontakt.
+	 * @param vertrags_id Die Vertrags-ID als Integer.
+	 * @param wann Der Zeitpunkt des Auftretens als String.
+	 * @param grund Der Grund als String.
+	 * @param beschreibung Die Beschreibung als String. Wenn nicht vorhanden dann leeren String " ".
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void set_kontakt_value(int vertrags_id,String wann,String grund, String beschreibung)throws ClassNotFoundException, SQLException{
 		set_db_value_for_contact("INSERT INTO kontakt(vertrags_id,wann,grund,beschreibung) VALUES('"+vertrags_id+"','"+wann+"','"+grund+"','"+beschreibung+"')");
 		
 	}
+	/**
+	 * Diese Methode gibt alle Kontakt-IDs eines Vertrages zurück.
+	 * @param vertrags_nummer Die Vertragsnummer als Integer.
+	 * @return Ein Integerarray mit allen IDs.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public int[] get_kontakt_id(int vertrags_nummer)throws ClassNotFoundException, SQLException{
 		String[] werte = get_contact_kontakts_id(vertrags_nummer);
 		int[] wert = new int[werte.length];
@@ -116,35 +133,97 @@ public class Kontakt {
 		}
 		return wert;
 	}
+	/**
+	 * Diese Methode gibt die Vertrags-ID zurück.
+	 * @param kontakt_id Die Kontakt-ID als Integer.
+	 * @return Die Vertrags-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public int get_vertrags_id(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return get_contact_vertrags_id(kontakt_id);
 	}
+	/**
+	 * Diese Methode gibt den Zeitpunkt des Auftretens zurück.
+	 * @param kontakt_id Die Kontakt-ID als Integer.
+	 * @return Den Zeitpunkt als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public String get_wann(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return get_contact_wann(kontakt_id);
 	}
+	/**
+	 * Diese Methode gibt den Grund des Kontaktes zurück.
+	 * @param kontakt_id Die Kontakt-ID als Integer.
+	 * @return Den Grund als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public String get_grund(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return get_contact_grund(kontakt_id);
 	}
+	/**
+	 * Diese Methode gibt die Beschreibung des Kontaktes zurück.
+	 * @param kontakt_id Die Kontakt-ID als Integer.
+	 * @return Die Beschreibung als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public String get_beschreibung(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return get_contact_beschreibung(kontakt_id);
 	}
+	/**
+	 * Diese Methode gibt den Behobenstatus des Kontatks zurück.
+	 * @param kontakt_id Die Kontakt-ID.
+	 * @return Den Status als Boolean.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public boolean get_behoben(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return get_contact_behoben(kontakt_id);
 	}
-	public int[] get_all_contacts(int vertrags_id)throws ClassNotFoundException, SQLException{
-		String[] werte = get_contact_all_by_contract_id(vertrags_id);
-		int[]wert = new int[werte.length];
-		for(int i = 0; i < wert.length;i++) {
-			wert[i] = Integer.parseInt(werte[i]);
-		}
-		return wert;
-	}
+	
+	/**
+	 * Diese Methode ändert die Beschreibung.
+	 * @param kontakt_id Die Kontakt-ID als Integer.
+	 * @param beschreibung Die Beschreibung als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
 		change_contact_beschreibung(kontakt_id,beschreibung);
 	}
+	/**
+	 * Diese Methode ändert den Behobenstatus.
+	 * @param kontakt_id Die Kontakt-ID als Integer.
+	 * @param behoben Den Statuts als Integer. 0 = False, 1 = True.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_behoben(int kontakt_id, int behoben)throws ClassNotFoundException, SQLException{
 		change_contact_behoben(kontakt_id,behoben);
 	}
+	/**
+	 * Diese Methode gibt alle Kontakte zurück. Kunden unspeziefisch.
+	 * <p> Es erfolgt keine Rückgabe</p>
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void display_kontakt()throws ClassNotFoundException, SQLException{
 		get_display_contact();
 	}
