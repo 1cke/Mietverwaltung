@@ -113,45 +113,173 @@ public class Wohnung {
 			System.out.println(id +" "+get_whg_adress_id(id)+" "+get_whg_miete(id) + " "+get_whg_zimmer(id) + " "+get_whg_baeder(id)+" "+get_whg_ebk(id)+" "+get_whg_vermietet(id));
 			}
 	}
+	/**
+	 * Diese Methode erstellt eine Wohnung.
+	 * @param adress_id Die Adress-ID als Integer.
+	 * @param miete Die Miete als Double.
+	 * @param zimmer Die Anzahl der Zimmer als Double.
+	 * @param baeder Die Anzahl der Bäder als Double.
+	 * @param ebk Einbauküche vorhanden? Als Integer 0 = False, 1 = True.
+	 * @param vermietet Vermietet? Als Integre 0 = False, 1 = True.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void set_wohnungen(int adress_id,double miete,double zimmer,double baeder,int ebk,int vermietet)throws ClassNotFoundException, SQLException{
 		set_db_value(adress_id,miete,zimmer,baeder,ebk,vermietet);
 	}
+	/**
+	 * Diese Methode gibt die Wohnungs-ID aus.
+	 * <p> Return wird noch bearbeitet</p>
+	 * @param adress_id Die Adress-ID als Intger.
+	 * @returnn Die Wohnungs-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public int get_whg_nr(int adress_id)throws ClassNotFoundException, SQLException{
 		return get_whg_id(adress_id);
 	}
+	/**
+	 * Diese Methode gibt die Adress-ID zurück.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @return Die Adress-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public int get_adress_id(int whg_id)throws ClassNotFoundException, SQLException{
 		return get_whg_adress_id(whg_id);
 	}
+	/**
+	 * Diese Methode gibt die Höhe der Miete zurück.
+	 * @param whg_id Diw Wohnungs-ID als Integer.
+	 * @return Die Miete als Double.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public double get_miete(int whg_id)throws ClassNotFoundException, SQLException{
 		return get_whg_miete(whg_id);
 	}
+	/**
+	 * Diese Methode gibt die Anzahl der Zimmer zurück.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @return Die Anzahl der Zimmer als Double.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public double get_zimmer(int whg_id)throws ClassNotFoundException, SQLException{
 		return get_whg_zimmer(whg_id);
 	}
+	/**
+	 * Diese Methode gibt die Anzahl der Bäder aus.
+	 * @param whg_id Die Wohnnungs-ID als Integer.
+	 * @return Die Anzahl als Double.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public double get_baeder(int whg_id)throws ClassNotFoundException, SQLException{
 		return get_whg_baeder(whg_id);
 	}
+	/**
+	 * Diese Methode gibt das Vorhanden sein einer Einbauküche zurück.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @return Den Status der Einbauküche als Boolean.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public boolean get_ebk(int whg_id)throws ClassNotFoundException, SQLException{
 		return get_whg_ebk(whg_id);
 	}
+	/**
+	 * Diese Methode gibt den Vermietetstatus der Wohnung zurück.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @return Den Status als Boolean.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public boolean get_vermietet(int whg_id)throws ClassNotFoundException, SQLException{
 		return get_whg_vermietet(whg_id);
 	}
+	/**
+	 * Diese Methode ändert die Höhe der Miete.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @param miete Die Höhe der Miete als Double.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_miete(int whg_id,double miete)throws ClassNotFoundException, SQLException{
 		change_whg_miete(whg_id,miete);
 	}
+	/**
+	 * Diese Methode ändert die Anzahl der Zimmer.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @param zimmer Die Anzahl der Zimmer als Double.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_zimmer(int whg_id,double zimmer)throws ClassNotFoundException, SQLException{
 		change_whg_zimmer(whg_id,zimmer);
 	}
+	/**
+	 * Diese Methode ändert die Anzahl der Bäder.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @param baeder Die Anzahl der Bäder als Double.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_baeder(int whg_id,double baeder)throws ClassNotFoundException, SQLException{
 		change_whg_baeder(whg_id,baeder);
 	}
+	/**
+	 * Diese Methode ändert den Status, ob eine Einbauküche vorhanden ist.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @param ebk Den Status als Integer. 0 = False, 1 = True.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_ebk(int whg_id,int ebk)throws ClassNotFoundException, SQLException{
 		change_whg_ebk(whg_id,ebk);
 	}
+	/**
+	 * Diese Methode ändert den Vermietetstatus der Wohnung.
+	 * @param whg_id Die Wohnungs-ID als Integer.
+	 * @param vermietet	Den Status als Integer. 0 = False, 1 = True.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
 		change_whg_vermietet(whg_id,vermietet);
 	}
+	/**
+	 * Diese Methode zeigt alle Wohnungen an.
+	 * <p> Es erfolgt keine Rückgabe</p>
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void display()throws ClassNotFoundException, SQLException{
 		display_all_whg();
 	}
