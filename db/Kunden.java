@@ -196,9 +196,25 @@ public class Kunden {
 	public void change_interessent(int id, int interessent) throws ClassNotFoundException, SQLException{
 		change_kd_interessent(id,interessent);
 	}
+	/**
+	 * Diese Methode ändert den Status des Kunden, ob dieser noch Kunde ist oder nicht.
+	 * @param id Die Kunden-ID als Integer.
+	 * @param aktiv Den Status als Integer. 0 = False, 1 = True.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
 		change_kd_aktiv(id,aktiv);
 	}
+	/**
+	 * Diese Methode gibt alle Kunden aus.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void get_all() throws ClassNotFoundException, SQLException{
 		get_kd_all();
 	}
