@@ -160,6 +160,7 @@ public class Vertrag {
 	}
 	/**
 	 * Diese Methode gibt die zugeordnete Kunden-ID zurück.
+	 * <p> Return wird noch bearbeitet</p>
 	 * @param vertrags_id Die Vertrags-ID als Integer.
 	 * @return Die Kunden-ID als Integer.
 	 * @throws ClassNotFoundException
