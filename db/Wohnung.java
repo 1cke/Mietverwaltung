@@ -35,7 +35,7 @@ public class Wohnung {
 		//System.out.println(anweisung);//Kontrollausgabe
 		ResultSet rs = statement.executeQuery(anweisung);
 		while(rs.next()) {
-			zwischenerg = rs.getString(1) + ",";
+			zwischenerg = zwischenerg+rs.getString(1) + ",";
 			//System.out.println(zwischenerg);//Kontrollausgabe
 		}
 		connection.close();
