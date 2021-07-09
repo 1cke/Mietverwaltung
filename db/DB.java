@@ -19,7 +19,6 @@ public class DB {
 		
 		//adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
 		//adresse.set_address_value("20457", "Hamburg", "Platz der Deutschen Einheit", "4");
-		//adresse.set_address_value("80939", "München", "Werner-Heisenberg-Allee", "25");
 		//whg.set_wohnungen(adresse.get_adress_id("80939", "München", "Werner-Heisenberg-Allee", "25"), 638.72, 4, 2, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 189.52, 1, 1, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 1052.00, 5, 3.5, 1, 1);
