@@ -23,9 +23,11 @@ public class DB {
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 189.52, 1, 1, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 1052.00, 5, 3.5, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 802.41, 4, 2,1, 1);
+		//whg.display();
 		//kunde.set_db_value("Max", "Mustermann", "01.01.2001", "+4930/2345619", " ",1);
-		//kunde.set_db_value("Hannelore", "Müller", "23.04.1982", " ", "hannelore_mueller@test.de");
-		//kunde.set_db_value("Peter", "Lustig", "01.01.1972", "+49157/32568792", "peter.lustig@test.de");
+		//kunde.set_db_value("Hannelore", "Müller", "23.04.1982", " ", "hannelore_mueller@test.de",1);
+		//kunde.set_db_value("Peter", "Lustig", "01.01.1972", "+49157/32568792", "peter.lustig@test.de",0);
+		//kunde.get_all();
 		//adresse.display_adresse();
 		//vertrag.set_db_value(kunde.get_id("Hannelore", "Müller", "23.04.1982"), whg.get_whg_nr(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2")), 0.0,"01.07.2021", 1);
 		//vertrag.set_db_value(kunde.get_id("Max", "Mustermann", "01.01.2001"), whg.get_whg_nr(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2")), 20.0,"01.01.2011", 1);
@@ -33,7 +35,7 @@ public class DB {
 		//kontakt.set_kontakt_value(vertrag.get_vertrags_id(kunde.get_id("Max", "Mustermann", "01.01.2001")), "06.07.2021", "Wasserschaden", "Es tropft aus der Decke");
 		System.out.println("Test ausgabe");
 		
-		int kd_nr = kunde.get_id("Peter", "Lustig", "01.01.1972");
+		int kd_nr = kunde.get_id("Hannelore", "Müller", "23.04.1982");
 		String vorname = kunde.get_vorname(kd_nr);
 		String nachname = kunde.get_nachname(kd_nr);
 		String geburtsdatum = kunde.get_geburtstag(kd_nr);
@@ -47,7 +49,7 @@ public class DB {
 		String straße = adresse.get_strasse(adress_id);
 		String hn = adresse.get_hn(adress_id);
 		System.out.println("Wohnhaft in: " + plz+" "+ort+" "+straße+ " "+hn);
-		int whg_nr = vertrag.get_whg_id(vertrag.get_vertrags_id(adress_id));
+		int whg_nr = vertrag.get_whg_id(vertrag.get_vertrags_id(kd_nr));
 		double miete = whg.get_miete(whg_nr);
 		double zimmer = whg.get_zimmer(whg_nr);
 		double baeder = whg.get_baeder(whg_nr);
