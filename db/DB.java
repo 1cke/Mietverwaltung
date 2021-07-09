@@ -14,6 +14,7 @@ public class DB {
 		Vertrag vertrag = new Vertrag();
 		Kunden kunde = new Kunden();
 		Kontakt kontakt = new Kontakt();
+		Bewerbung bewerbungs = new Bewerbung();
 		System.out.println("Test");
 		
 		//adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
