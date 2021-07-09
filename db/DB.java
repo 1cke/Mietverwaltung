@@ -23,7 +23,6 @@ public class DB {
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 189.52, 1, 1, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 1052.00, 5, 3.5, 1, 1);
 		//whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2"), 802.41, 4, 2,1, 1);
-		//whg.display();
 		//kunde.set_db_value("Max", "Mustermann", "01.01.2001", "+4930/2345619", " ",1);
 		//kunde.set_db_value("Hannelore", "Müller", "23.04.1982", " ", "hannelore_mueller@test.de",1);
 		//kunde.set_db_value("Franzl", "Wolf", "13.05.1968", " ", "franzl.wolf@test.de",0);
