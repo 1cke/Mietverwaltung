@@ -91,33 +91,125 @@ public class Bewerbung {
 	private void change_apply_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE bewerbung SET status = '"+status+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
+	/**
+	 * Diese Methode erstellt eine neue Bewerbung
+	 * @param wohnungs_id Die Wohnungs-ID als Integer.
+	 * @param kunden_id	Die Kunden-ID als Integer.
+	 * @param datum Das Datum als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void set_bewerbung(int wohnungs_id,int kunden_id,String datum)throws ClassNotFoundException, SQLException{
 		set_db_value(wohnungs_id,kunden_id,datum);
 	}
+	/**
+	 * Diese Methode gibt die Bewerbungs-ID zurück.
+	 * @param wohnungs_id Die Wohnungs-ID als Integer.
+	 * @param bewerber_id Die Kunden-ID als Integer.
+	 * @return Die Bewerbungs-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public int get_bewerbungs_id(int wohnungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
 		return get_apply_bewerbungs_id(wohnungs_id,bewerber_id);
 	}
+	/**
+	 * Diese Methode gibt die Kunden-ID zurück.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @return Die Kunden-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public int get_kunden_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		return get_apply_bewerber_id(bewerbungs_id);
 	}
+	/**
+	 * Diese Methode gibt die Wohnungs-ID zurück.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @return Die Wohnungs-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public int get_wohnungs_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		return get_apply_wohnungs_id(bewerbungs_id);
 	}
+	/**
+	 * Diese Methode gibt das Datum der Bewerbung zurück.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @return Das Datum als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public String get_datum(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		return get_apply_datum(bewerbungs_id);
 	}
+	/**
+	 * Diese Methode gibt den Status der Bewerbung zurück.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @return Den Status der Bewerbung als Boolean.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public boolean get_status(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		return get_apply_status(bewerbungs_id);
 	}
+	/**
+	 * Diese Methode ändert die Bewerber-ID.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @param bewerber_id Die neue Kunden-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
 		change_apply_bewerber_id(bewerbungs_id,bewerber_id);
 	}
+	/**
+	 * Diese Methode ändert die Wohnungs-ID.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @param wohnungs_id Die neue Wohnungs-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_wohnungs_id(int bewerbungs_id,int wohnungs_id)throws ClassNotFoundException, SQLException{
 		change_apply_wohnungs_id(bewerbungs_id,wohnungs_id);
 	}
+	/**
+	 * Diese Methode ändert das Datum der Bewerbung.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @param datum Das neue Datum als String.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_datum(int bewerbungs_id,String datum)throws ClassNotFoundException, SQLException{
 		change_apply_datum(bewerbungs_id,datum);
 	}
+	/**
+	 * Diese Methode ändert den Status der Bewerbung
+	 * @param bewerbungs_id Die Bewerbungs_id als Integer.
+	 * @param status Den neuen Status als Integer. 0 = False, 1 = True
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public void change_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
 		change_apply_status(bewerbungs_id,status);
 	}
