@@ -91,6 +91,9 @@ public class Bewerbung {
 	private void change_apply_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE bewerbung SET status = '"+status+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
+	private void delete_value(int bewerbungs_id)throws ClassNotFoundException, SQLException{
+		change_db_value("DELETE FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+	}
 	/**
 	 * Diese Methode erstellt eine neue Bewerbung
 	 * @param wohnungs_id Die Wohnungs-ID als Integer.
@@ -212,5 +215,16 @@ public class Bewerbung {
 	 */
 	public void change_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
 		change_apply_status(bewerbungs_id,status);
+	}
+	/**
+	 * Diese Methode löscht eine Bewerbung.
+	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public void delete_bewerbung(int bewerbungs_id)throws ClassNotFoundException, SQLException{
+		delete_value(bewerbungs_id);
 	}
 }
