@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 
 public class DB {
-	//todo JohannMuenchhagen documentation
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Adresse adresse= new Adresse();
 		Wohnung whg = new Wohnung();
