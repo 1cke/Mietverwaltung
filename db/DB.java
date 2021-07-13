@@ -1,6 +1,6 @@
 /**
  * @author Johann Münchhagen
- * Dies ist ein Klasse um die anderen Klassen zu testen. Hallo 
+ * Dies ist ein Klasse um die anderen Klassen zu testen.
  */
 import java.sql.SQLException;
 
