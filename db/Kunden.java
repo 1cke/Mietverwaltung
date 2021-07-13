@@ -13,7 +13,7 @@ import java.sql.Statement;
  * @author Johann Muenchhagen
  *
  */
-public class Kunden {
+public class Kunden extends Person{
 
 	public Kunden()throws ClassNotFoundException, SQLException {
 		initieren();
