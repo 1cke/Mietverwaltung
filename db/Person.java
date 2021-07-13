@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 /**
  * @author johannmunchhagen
- *.....
+ *
  */
 public class Person {
 	private int id = 0;
