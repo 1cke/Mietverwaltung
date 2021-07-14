@@ -15,8 +15,6 @@ public class DB {
 		Kunden kunde = new Kunden();
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbungs = new Bewerbung();
-		Test test = new Test();
-		test.get_all(2);
 		System.out.println("Test");
 		//adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
 		//adresse.set_address_value("20457", "Hamburg", "Platz der Deutschen Einheit", "4");
@@ -36,6 +34,7 @@ public class DB {
 		//vertrag.set_db_value(kunde.get_id("Peter", "Lustig", "01.01.1972"), whg.get_whg_nr(adresse.get_adress_id("10117", "Berlin", "Pariser Platz", "2")), 20.0,"01.01.2011", 0);
 		//kontakt.set_kontakt_value(vertrag.get_vertrags_id(kunde.get_id("Franzl", "Wolf", "13.05.1968")), "27.09.2011", "Rohrbruch", " ");
 		System.out.println("Test ausgabe");
+		kunde.get_vorname(0);
 		int kd_nr = kunde.get_id("Franzl", "Wolf", "13.05.1968");
 		String vorname = kunde.get_vorname(kd_nr);
 		String nachname = kunde.get_nachname(kd_nr);
