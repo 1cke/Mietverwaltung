@@ -47,7 +47,7 @@ public class Kunden extends Person{
 		System.out.println("Werte erfolgreich gespeichert");
 		connection.close();
 	}
-	private ArrayList<Person> get_values(String anweisung) throws ClassNotFoundException, SQLException{
+	private ArrayList<Person> get_all_values(String anweisung) throws ClassNotFoundException, SQLException{
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
@@ -98,26 +98,45 @@ public class Kunden extends Person{
 		this.setGeburtsdatum(geburtstag);
 		return this.getId();
 	}
-	private String get_kd_vorname(int id) throws ClassNotFoundException, SQLException{
+	private void get_kd_daten(int id)throws ClassNotFoundException, SQLException{
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		//System.out.println(anweisung);//Kontrollausgabe
+		ResultSet rs = statement.executeQuery("SELECT vorname,nachname,geburtstag,telefon,email,interessent,aktiv FROM kunden WHERE kd_id = '" + id+"'");
+		while(rs.next()) {
+			this.setId(id);
+			this.setVorname(rs.getString(1));
+			this.setNachname(rs.getString(2));
+			this.setGeburtsdatum(rs.getString(3));
+			this.setTelefon(rs.getString(4));
+			this.setEmail(rs.getString(5));
+			this.setInteressent(rs.getBoolean(6));
+			this.setAktiv(rs.getBoolean(7));
+		}
+		connection.close();
+	}
+	private String get_kd_vorname() throws ClassNotFoundException, SQLException{
 		return this.getVorname();
 	}
-	private String get_kd_nachname(int id) throws ClassNotFoundException, SQLException{
+	private String get_kd_nachname() throws ClassNotFoundException, SQLException{
 		return this.getNachname();
 	}
 	
-	private String get_kd_geburtstag(int id) throws ClassNotFoundException, SQLException{
+	private String get_kd_geburtstag() throws ClassNotFoundException, SQLException{
 		return this.getGeburtsdatum();
 	}
-	private String get_kd_telefon(int id) throws ClassNotFoundException, SQLException{
+	private String get_kd_telefon() throws ClassNotFoundException, SQLException{
 		return this.getTelefon();
 	}
-	private String get_kd_email(int id) throws ClassNotFoundException, SQLException{
+	private String get_kd_email() throws ClassNotFoundException, SQLException{
 		return this.getEmail();
 	}
-	private boolean get_kd_interessent(int id)throws ClassNotFoundException, SQLException{
+	private boolean get_kd_interessent()throws ClassNotFoundException, SQLException{
 		return this.isInteressent();
 	}
-	private boolean get_kd_aktiv(int id)throws ClassNotFoundException, SQLException{
+	private boolean get_kd_aktiv()throws ClassNotFoundException, SQLException{
 		return this.isAktiv();
 	}
 	private void change_kd_vorname(int id,String vorname) throws ClassNotFoundException, SQLException{
@@ -143,7 +162,19 @@ public class Kunden extends Person{
 		change_db_value_for_costumer("UPDATE kunden SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
 	private void get_kd_all() throws ClassNotFoundException, SQLException{
-		System.out.println(get_values("SELECT * FROM kunden"));
+		System.out.println(get_all_values("SELECT * FROM kunden"));
+	}
+	/**
+	 * Diese Methode lädt alle Kundendaten.
+	 * <p>Immer als erstes nutzen, wenn die Kundennummer bekannt ist</p>
+	 * @param kunden_nummer Die Kundennummer als Integer
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 *  @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public void lade_kunden_daten(int kunden_nummer)throws ClassNotFoundException, SQLException{
+		get_kd_daten(kunden_nummer);
 	}
 	/**
 	 * Diese Methode erstellt einen Kunden.
@@ -181,86 +212,93 @@ public class Kunden extends Person{
 	}
 	/**
 	 * Diese Methode gibt den Vornamen des Kunden zurück.
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Den Vornamen als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_vorname(int id) throws ClassNotFoundException, SQLException{
-		return get_kd_vorname(id);
+	public String get_vorname() throws ClassNotFoundException, SQLException{
+		return get_kd_vorname();
 	}
 	/**
 	 * Diese Methode gibt den Nachnamen des Kunden zurück.
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Den Nachnamen als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_nachname(int id) throws ClassNotFoundException, SQLException{
-		return get_kd_nachname(id);
+	public String get_nachname() throws ClassNotFoundException, SQLException{
+		return get_kd_nachname();
 	}
 	/**
 	 * Diese Methode gibt das Geburtsdatum des Kunden zurück.
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Das Geburtsdatum als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_geburtstag(int id) throws ClassNotFoundException, SQLException{
-		return get_kd_geburtstag(id);
+	public String get_geburtstag() throws ClassNotFoundException, SQLException{
+		return get_kd_geburtstag();
 	}
 	/**
 	 * Diese Methode gibt die Telefonnummer des Kunden zurück.
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Die Telefonnummer als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_telefon(int id) throws ClassNotFoundException, SQLException{
-		return get_kd_telefon(id);
+	public String get_telefon() throws ClassNotFoundException, SQLException{
+		return get_kd_telefon();
 	}
 	/**
 	 * Diese Methode gibt die Email des Kunden zurück.
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Die Email als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_email(int id)throws ClassNotFoundException, SQLException{
-		return get_kd_email(id);
+	public String get_email()throws ClassNotFoundException, SQLException{
+		return get_kd_email();
 	}
 	/**
 	 * Diese Methode gibt zurück ob der Kunde ein Interessent ist.
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Den Interessentenstatus als Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public boolean get_interessent(int id)throws ClassNotFoundException, SQLException{
-		return get_kd_interessent(id);
+	public boolean get_interessent()throws ClassNotFoundException, SQLException{
+		return get_kd_interessent();
 	}
 	/**
 	 * Diese Methode gibt den Status des Kunden zurück.
 	 * <p> Ist dieser noch Kunde oder nicht</p>
-	 * @param id Die Kunden-ID als Integer.
+	 * <p> Zuerst die Methode lade_kunden_daten() ausführen, wenn die ID bekannt ist und die Methode nicht schon mal ausgeführt wurde</p>
+	 * <p> Bei unbekannter ID die Funktion lade_kunden_daten()ignorieren</p>
 	 * @return Den Status als Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public boolean get_aktiv(int id)throws ClassNotFoundException, SQLException{
-		return get_kd_aktiv(id);
+	public boolean get_aktiv()throws ClassNotFoundException, SQLException{
+		return get_kd_aktiv();
 	}
 	/**
 	 * Diese Methode ändert den Vornamen des Kunden.
