@@ -1,3 +1,4 @@
+package Backend;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,6 +20,32 @@ public class Person {
 	private String geburtsdatum = "";
 	private String telefon = "";
 	private String email = "";
+	private boolean interessent = false;
+	private boolean aktiv = true;
+	/**
+	 * @return the interessent
+	 */
+	public boolean isInteressent() {
+		return interessent;
+	}
+	/**
+	 * @param interessent the interessent to set
+	 */
+	public void setInteressent(boolean interessent) {
+		this.interessent = interessent;
+	}
+	/**
+	 * @return the aktiv
+	 */
+	public boolean isAktiv() {
+		return aktiv;
+	}
+	/**
+	 * @param aktiv the aktiv to set
+	 */
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
+	}
 	/**
 	 * @return the id
 	 */
@@ -94,7 +121,8 @@ public class Person {
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", vorname=" + vorname + ", nachname=" + nachname + ", geburtsdatum=" + geburtsdatum
-				+ ", telefon=" + telefon + ", email=" + email + "]";
+				+ ", telefon=" + telefon + ", email=" + email + ", interessent=" + interessent + ", aktiv=" + aktiv
+				+ "]";
 	}
 	
 	
