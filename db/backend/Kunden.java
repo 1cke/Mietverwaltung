@@ -15,11 +15,9 @@ import java.util.ArrayList;
  *
  */
 public class Kunden extends Person{
-
 	public Kunden()throws ClassNotFoundException, SQLException {
 		initieren();
 	}
-	
 	private void initieren()throws ClassNotFoundException, SQLException{
 		/*
 		 * initiere die Tabelle Kunden
@@ -68,7 +66,7 @@ public class Kunden extends Person{
 			daten.add(p);
 		}
 		connection.close();
-		return daten;
+		return daten;	
 	}
 	private void change_db_value_for_costumer(String anweisung)throws ClassNotFoundException, SQLException{
 		Connection connection = null;//setze Connection auf null
@@ -81,7 +79,21 @@ public class Kunden extends Person{
 		connection.close();
 	}
 	private int get_kd_id(String vorname, String nachname, String geburtstag)throws ClassNotFoundException, SQLException {
-		get_values("SELECT kd_id FROM kunden WHERE vorname = '"+vorname+"' AND nachname = '"+nachname+"' AND geburtstag = '"+geburtstag+"'");
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		//System.out.println(anweisung);//Kontrollausgabe
+		ResultSet rs = statement.executeQuery("SELECT kd_id,telefon,email FROM kunden WHERE vorname = '"+vorname+"' AND nachname = '"+nachname+"' AND geburtstag = '"+geburtstag+"'");
+		while(rs.next()) {
+			this.setId(rs.getInt(1));
+			this.setTelefon(rs.getString(2));
+			this.setEmail(rs.getString(3));
+		}
+		connection.close();
+		this.setVorname(vorname);
+		this.setNachname(nachname);
+		this.setGeburtsdatum(geburtstag);
 		return this.getId();
 	}
 	private String get_kd_vorname(int id) throws ClassNotFoundException, SQLException{
@@ -129,7 +141,7 @@ public class Kunden extends Person{
 		change_db_value_for_costumer("UPDATE kunden SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
 	private void get_kd_all() throws ClassNotFoundException, SQLException{
-		System.out.println(get_values("SELECT kd_id FROM kunden"));
+		System.out.println(get_values("SELECT * FROM kunden"));
 	}
 	/**
 	 * Diese Methode erstellt einen Kunden.
