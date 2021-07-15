@@ -16,7 +16,7 @@ public class DB {
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbungs = new Bewerbung();
 		System.out.println("Test");
-		// kunde.get_all();
+		//kunde.get_all();
 		// adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
 		// adresse.set_address_value("20457", "Hamburg", "Platz der Deutschen Einheit",
 		// "4");
@@ -59,6 +59,6 @@ public class DB {
 		String telefon = kunde.get_telefon(kd_nr);
 		String email = kunde.get_email(kd_nr);
 		System.out.println("Kundennummer: " + kd_nr + "\nName: " + vorname + " " + nachname + "\nGeboren am: "
-				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email);
+				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email+"\nInteressent: "+kunde.get_interessent(kd_nr)+" Aktiv: "+kunde.get_aktiv(kd_nr));
 	}
 }
