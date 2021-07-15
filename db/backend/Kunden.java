@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * @author Johann Muenchhagen
- *
+ *.
  */
 public class Kunden extends Person{
 	public Kunden()throws ClassNotFoundException, SQLException {
