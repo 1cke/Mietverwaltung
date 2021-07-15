@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import datentypen.Person;
+
 public class datentyp_test {
 	public static String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
 		String zwischenerg ="";
