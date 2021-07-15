@@ -51,14 +51,16 @@ public class DB {
 		// kontakt.set_kontakt_value(vertrag.get_vertrags_id(kunde.get_id("Franzl",
 		// "Wolf", "13.05.1968")), "27.09.2011", "Rohrbruch", " ");
 		System.out.println("Test ausgabe");
-		kunde.get_vorname(0);
-		int kd_nr = kunde.get_id("Max", "Mustermann", "01.01.2001");
-		String vorname = kunde.get_vorname(kd_nr);
-		String nachname = kunde.get_nachname(kd_nr);
-		String geburtsdatum = kunde.get_geburtstag(kd_nr);
-		String telefon = kunde.get_telefon(kd_nr);
-		String email = kunde.get_email(kd_nr);
+		kunde.get_vorname();
+		//int kd_nr = kunde.get_id("Max", "Mustermann", "01.01.2001");
+		kunde.lade_kunden_daten(1);
+		int kd_nr = kunde.getId();
+		String vorname = kunde.get_vorname();
+		String nachname = kunde.get_nachname();
+		String geburtsdatum = kunde.get_geburtstag();
+		String telefon = kunde.get_telefon();
+		String email = kunde.get_email();
 		System.out.println("Kundennummer: " + kd_nr + "\nName: " + vorname + " " + nachname + "\nGeboren am: "
-				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email+"\nInteressent: "+kunde.get_interessent(kd_nr)+" Aktiv: "+kunde.get_aktiv(kd_nr));
+				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email+"\nInteressent: "+kunde.get_interessent()+" Aktiv: "+kunde.get_aktiv());
 	}
 }
