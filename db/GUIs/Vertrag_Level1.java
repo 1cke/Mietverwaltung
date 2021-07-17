@@ -43,7 +43,7 @@ public class Vertrag_Level1 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -54,13 +54,13 @@ public class Vertrag_Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnZurückV1 = new JButton("Zum Hauptmen\u00FC");
+		JButton btnZurÃ¼ckV1 = new JButton("Zum Hauptmen\u00FC");
 		
-		JButton btnHinzufügenV1 = new JButton("Hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genV1 = new JButton("Hinzuf\u00FCgen");
 		
 		JButton btnBearbeitenV1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenV1 = new JButton("L\u00F6schen");
+		JButton btnLÃ¶schenV1 = new JButton("L\u00F6schen");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -70,14 +70,14 @@ public class Vertrag_Level1 extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(59)
-							.addComponent(btnHinzufügenV1)
+							.addComponent(btnHinzufÃ¼genV1)
 							.addGap(18)
 							.addComponent(btnBearbeitenV1)
 							.addGap(18)
-							.addComponent(btnLöschenV1))
+							.addComponent(btnLÃ¶schenV1))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnZurückV1))
+							.addComponent(btnZurÃ¼ckV1))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)))
@@ -86,14 +86,14 @@ public class Vertrag_Level1 extends JFrame {
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addComponent(btnZurückV1)
+					.addComponent(btnZurÃ¼ckV1)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnHinzufügenV1)
+						.addComponent(btnHinzufÃ¼genV1)
 						.addComponent(btnBearbeitenV1)
-						.addComponent(btnLöschenV1)))
+						.addComponent(btnLÃ¶schenV1)))
 		);
 		
 		JList list = new JList();
@@ -102,7 +102,7 @@ public class Vertrag_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 
 	private void createEvents() {

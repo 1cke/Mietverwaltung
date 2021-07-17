@@ -44,7 +44,7 @@ public class Kontakpunkt_Level1 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -58,11 +58,11 @@ public class Kontakpunkt_Level1 extends JFrame {
 		
 		JButton btnNewButton = new JButton("Zum Hauptmen\u00FC");
 		
-		JButton btnHinzufügenK1 = new JButton("Hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genK1 = new JButton("Hinzuf\u00FCgen");
 		
 		JButton btnBearbeitenK1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenK1 = new JButton("L\u00F6schen");
+		JButton btnLÃ¶schenK1 = new JButton("L\u00F6schen");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -70,11 +70,11 @@ public class Kontakpunkt_Level1 extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(45)
-					.addComponent(btnHinzufügenK1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnHinzufÃ¼genK1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(btnBearbeitenK1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenK1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
+					.addComponent(btnLÃ¶schenK1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
 					.addGap(66))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
@@ -94,8 +94,8 @@ public class Kontakpunkt_Level1 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnBearbeitenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnHinzufügenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(btnLÃ¶schenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnHinzufÃ¼genK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
 		JList lstKontaktpunkteK1 = new JList();
@@ -113,7 +113,7 @@ public class Kontakpunkt_Level1 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {

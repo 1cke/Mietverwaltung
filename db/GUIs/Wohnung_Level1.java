@@ -43,7 +43,7 @@ public class Wohnung_Level1 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -54,13 +54,13 @@ public class Wohnung_Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnHinzufügenW1 = new JButton("Hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genW1 = new JButton("Hinzuf\u00FCgen");
 		
 		JButton btnBearbeitenW1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenW1 = new JButton("L\u00F6schen");
+		JButton btnLÃ¶schenW1 = new JButton("L\u00F6schen");
 		
-		JButton btnZurückW1 = new JButton("Zum Hauptmen\u00FC");
+		JButton btnZurÃ¼ckW1 = new JButton("Zum Hauptmen\u00FC");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -68,15 +68,15 @@ public class Wohnung_Level1 extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(70)
-					.addComponent(btnHinzufügenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnHinzufÃ¼genW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btnBearbeitenW1, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenW1, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+					.addComponent(btnLÃ¶schenW1, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
 					.addGap(77))
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnZurückW1)
+					.addComponent(btnZurÃ¼ckW1)
 					.addContainerGap(305, Short.MAX_VALUE))
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
@@ -86,14 +86,14 @@ public class Wohnung_Level1 extends JFrame {
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnZurückW1)
+					.addComponent(btnZurÃ¼ckW1)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnHinzufügenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnHinzufÃ¼genW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnBearbeitenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(btnLÃ¶schenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
 		JList lstWohnungen = new JList();
@@ -102,7 +102,7 @@ public class Wohnung_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {

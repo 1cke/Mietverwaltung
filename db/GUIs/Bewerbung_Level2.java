@@ -50,7 +50,7 @@ public class Bewerbung_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -61,7 +61,7 @@ public class Bewerbung_Level2 extends JFrame {
 		contentPaneB2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneB2);
 		
-		JButton btnZurückB2 = new JButton("Zum Bewerbungs-Men\u00FC");
+		JButton btnZurÃ¼ckB2 = new JButton("Zum Bewerbungs-Men\u00FC");
 		
 		JLabel lblAuswahlB2 = new JLabel("Ausgew\u00E4hlte Bewerbung:");
 		
@@ -87,7 +87,7 @@ public class Bewerbung_Level2 extends JFrame {
 		
 		JButton btnSaveB2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenB2 = new JButton("Bewerbung l\u00F6schen");
+		JButton btnLÃ¶schenB2 = new JButton("Bewerbung l\u00F6schen");
 		
 		JCheckBox czbStatusB2 = new JCheckBox("abgeschlossen");
 		czbStatusB2.setSelected(true);
@@ -96,7 +96,7 @@ public class Bewerbung_Level2 extends JFrame {
 			gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneB2.createSequentialGroup()
 					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnZurückB2)
+						.addComponent(btnZurÃ¼ckB2)
 						.addGroup(gl_contentPaneB2.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lblAuswahlB2)
@@ -128,13 +128,13 @@ public class Bewerbung_Level2 extends JFrame {
 					.addGap(55)
 					.addComponent(btnSaveB2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenB2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnLÃ¶schenB2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(114))
 		);
 		gl_contentPaneB2.setVerticalGroup(
 			gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneB2.createSequentialGroup()
-					.addComponent(btnZurückB2)
+					.addComponent(btnZurÃ¼ckB2)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAuswahlB2)
@@ -158,14 +158,14 @@ public class Bewerbung_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSaveB2)
-						.addComponent(btnLöschenB2))
+						.addComponent(btnLÃ¶schenB2))
 					.addContainerGap(103, Short.MAX_VALUE))
 		);
 		contentPaneB2.setLayout(gl_contentPaneB2);
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {

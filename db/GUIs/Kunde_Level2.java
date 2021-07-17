@@ -52,7 +52,7 @@ public class Kunde_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -63,7 +63,7 @@ public class Kunde_Level2 extends JFrame {
 		contentPaneK2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneK2);
 		
-		JButton btnZurückK2 = new JButton("Zum Kunden-Men\u00FC");
+		JButton btnZurÃ¼ckK2 = new JButton("Zum Kunden-Men\u00FC");
 		
 		JLabel lblAuswahlK2 = new JLabel("Ausgew\u00E4hlter Kunde:");
 		
@@ -101,7 +101,7 @@ public class Kunde_Level2 extends JFrame {
 		
 		JButton btnSaveK2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenK2 = new JButton("Kunden l\u00F6schen");
+		JButton btnLÃ¶schenK2 = new JButton("Kunden l\u00F6schen");
 		
 		JCheckBox czbAktivK2 = new JCheckBox("aktiver Kunde");
 		czbAktivK2.setSelected(true);
@@ -110,7 +110,7 @@ public class Kunde_Level2 extends JFrame {
 			gl_contentPaneK2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPaneK2.createSequentialGroup()
 					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnZurückK2)
+						.addComponent(btnZurÃ¼ckK2)
 						.addGroup(gl_contentPaneK2.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lblAuswahlK2)
@@ -122,7 +122,7 @@ public class Kunde_Level2 extends JFrame {
 					.addGap(59)
 					.addComponent(btnSaveK2, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenK2, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+					.addComponent(btnLÃ¶schenK2, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
 					.addGap(110))
 				.addGroup(Alignment.LEADING, gl_contentPaneK2.createSequentialGroup()
 					.addContainerGap()
@@ -158,7 +158,7 @@ public class Kunde_Level2 extends JFrame {
 		gl_contentPaneK2.setVerticalGroup(
 			gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneK2.createSequentialGroup()
-					.addComponent(btnZurückK2)
+					.addComponent(btnZurÃ¼ckK2)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAuswahlK2)
@@ -192,13 +192,13 @@ public class Kunde_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
 					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSaveK2)
-						.addComponent(btnLöschenK2)))
+						.addComponent(btnLÃ¶schenK2)))
 		);
 		contentPaneK2.setLayout(gl_contentPaneK2);
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {

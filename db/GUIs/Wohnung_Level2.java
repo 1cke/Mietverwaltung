@@ -53,7 +53,7 @@ public class Wohnung_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -64,7 +64,7 @@ public class Wohnung_Level2 extends JFrame {
 		contentPaneW2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneW2);
 		
-		JButton btnZurückW2 = new JButton("Zum Wohnungs-Men\u00FC");
+		JButton btnZurÃ¼ckW2 = new JButton("Zum Wohnungs-Men\u00FC");
 		
 		JLabel lblAuswahlW2 = new JLabel("Ausgew\u00E4hlte Wohnung:");
 		
@@ -107,7 +107,7 @@ public class Wohnung_Level2 extends JFrame {
 		
 		JButton btnSaveW2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenW2 = new JButton("Wohnung l\u00F6schen");
+		JButton btnLÃ¶schenW2 = new JButton("Wohnung l\u00F6schen");
 		
 		txtFPLZW2 = new JTextField();
 		txtFPLZW2.setColumns(10);
@@ -118,7 +118,7 @@ public class Wohnung_Level2 extends JFrame {
 		gl_contentPaneW2.setHorizontalGroup(
 			gl_contentPaneW2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneW2.createSequentialGroup()
-					.addComponent(btnZurückW2)
+					.addComponent(btnZurÃ¼ckW2)
 					.addContainerGap(289, Short.MAX_VALUE))
 				.addGroup(gl_contentPaneW2.createSequentialGroup()
 					.addContainerGap()
@@ -155,7 +155,7 @@ public class Wohnung_Level2 extends JFrame {
 								.addGroup(gl_contentPaneW2.createSequentialGroup()
 									.addComponent(btnSaveW2)
 									.addGap(18)
-									.addComponent(btnLöschenW2))
+									.addComponent(btnLÃ¶schenW2))
 								.addComponent(czbEbkW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 								.addComponent(czbStatusW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -177,7 +177,7 @@ public class Wohnung_Level2 extends JFrame {
 		gl_contentPaneW2.setVerticalGroup(
 			gl_contentPaneW2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneW2.createSequentialGroup()
-					.addComponent(btnZurückW2)
+					.addComponent(btnZurÃ¼ckW2)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPaneW2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAuswahlW2)
@@ -213,13 +213,13 @@ public class Wohnung_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
 					.addGroup(gl_contentPaneW2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSaveW2)
-						.addComponent(btnLöschenW2)))
+						.addComponent(btnLÃ¶schenW2)))
 		);
 		contentPaneW2.setLayout(gl_contentPaneW2);
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
