@@ -19,7 +19,7 @@ import javax.swing.JCheckBox;
 
 public class Kunde_Level2 extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel contentPaneK2;
 	private JTextField txtFVornameK2;
 	private JTextField txtFNachnameK2;
 	private JTextField txtFGeburtstagK2;
@@ -59,9 +59,9 @@ public class Kunde_Level2 extends JFrame {
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 344);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		contentPaneK2 = new JPanel();
+		contentPaneK2.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneK2);
 		
 		JButton btnZurückK2 = new JButton("Zum Kunden-Men\u00FC");
 		
@@ -105,84 +105,84 @@ public class Kunde_Level2 extends JFrame {
 		
 		JCheckBox czbAktivK2 = new JCheckBox("aktiver Kunde");
 		czbAktivK2.setSelected(true);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		GroupLayout gl_contentPaneK2 = new GroupLayout(contentPaneK2);
+		gl_contentPaneK2.setHorizontalGroup(
+			gl_contentPaneK2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPaneK2.createSequentialGroup()
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnZurückK2)
-						.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPaneK2.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lblAuswahlK2)
 							.addGap(18)
 							.addComponent(txtArAuswahlK2, GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
 						.addComponent(separatorK2, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
 					.addGap(7))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_contentPaneK2.createSequentialGroup()
 					.addGap(59)
 					.addComponent(btnSaveK2, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btnLöschenK2, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
 					.addGap(110))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_contentPaneK2.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblGeburtstagK2)
 						.addComponent(lblNachnameK2)
 						.addComponent(lblVornameK2)
 						.addComponent(lblTelefonK2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblEmailK2))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPaneK2.createSequentialGroup()
 							.addComponent(czbAktivK2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPaneK2.createSequentialGroup()
 								.addComponent(czbInteressentK2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 								.addContainerGap())
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPaneK2.createSequentialGroup()
 									.addComponent(txtFTelefonK2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
 									.addGap(251))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPaneK2.createSequentialGroup()
+									.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 										.addComponent(txtFNachnameK2, 264, 264, Short.MAX_VALUE)
 										.addComponent(txtFVornameK2, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
 										.addComponent(txtFEmailK2, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
 									.addGap(95))
-								.addGroup(gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPaneK2.createSequentialGroup()
 									.addComponent(txtFGeburtstagK2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
 									.addGap(288))))))
 		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+		gl_contentPaneK2.setVerticalGroup(
+			gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPaneK2.createSequentialGroup()
 					.addComponent(btnZurückK2)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAuswahlK2)
 						.addComponent(txtArAuswahlK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(separatorK2, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblVornameK2)
 						.addComponent(txtFVornameK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNachnameK2)
 						.addComponent(txtFNachnameK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblGeburtstagK2)
 						.addComponent(txtFGeburtstagK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtFTelefonK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTelefonK2))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtFEmailK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblEmailK2))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -190,11 +190,11 @@ public class Kunde_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(czbAktivK2)
 					.addPreferredGap(ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSaveK2)
 						.addComponent(btnLöschenK2)))
 		);
-		contentPane.setLayout(gl_contentPane);
+		contentPaneK2.setLayout(gl_contentPaneK2);
 	}
 
 	////////////////////////////////////////////////////////////////////
