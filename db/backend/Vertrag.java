@@ -9,11 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import datentypen.Vertragsdaten;
+
 /**
  * @author Johann Muenchhagen
  *
  */
-public class Vertrag {
+public class Vertrag extends Vertragsdaten{
 	public Vertrag() throws ClassNotFoundException, SQLException {
 		initieren();
 	}
