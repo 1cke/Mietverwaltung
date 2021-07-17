@@ -8,9 +8,7 @@ public class Vertragsdaten {
 	private String zeitraum = "";
 	private double schulden = 0.0;
 	private boolean aktiv = true;
-	/**
-	 * @return the id
-	 */
+	
 	public int getId() {
 		return id;
 	}
