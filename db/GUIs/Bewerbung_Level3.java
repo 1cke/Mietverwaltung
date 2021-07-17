@@ -19,10 +19,10 @@ import javax.swing.JCheckBox;
 
 public class Bewerbung_Level3 extends JFrame {
 
-	private JPanel contentPaneB2;
-	private JTextField txtFVornameK2;
-	private JTextField txtFWohnungsIDB2;
-	private JTextField txtFDatumB2;
+	private JPanel contentPaneB3;
+	private JTextField txtFKundenIDB3;
+	private JTextField txtFWohnungsIDB3;
+	private JTextField txtFDatumB3;
 
 	/**
 	 * Launch the application.
@@ -44,7 +44,7 @@ public class Bewerbung_Level3 extends JFrame {
 	 * Create the frame.
 	 */
 	public Bewerbung_Level3() {
-		setTitle("Bewerbung bearbeiten/l\u00F6schen");
+		setTitle("Bewerbung hinzuf\u00FCgen");
 		initComponents();
 		createEvents();
 	}
@@ -56,110 +56,85 @@ public class Bewerbung_Level3 extends JFrame {
 	
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 257);
-		contentPaneB2 = new JPanel();
-		contentPaneB2.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPaneB2);
+		setBounds(100, 100, 450, 215);
+		contentPaneB3 = new JPanel();
+		contentPaneB3.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneB3);
 		
-		JButton btnZurückB2 = new JButton("Zum Bewerbung-Men\u00FC");
+		JButton btnZurückB3 = new JButton("Zum Bewerbungs-Men\u00FC");
 		
-		JLabel lblAuswahlB2 = new JLabel("Ausgew\u00E4hlte Bewerbung:");
+		JLabel lblKundenIDB3 = new JLabel("Kunden-ID:");
 		
-		JTextArea txtArAuswahlB2 = new JTextArea();
+		txtFKundenIDB3 = new JTextField();
+		txtFKundenIDB3.setColumns(10);
 		
-		JSeparator separatorB2 = new JSeparator();
+		JLabel lblWohnungsIDB3 = new JLabel("Wohnungs-ID");
 		
-		JLabel lblVornameB2 = new JLabel("Kunden-ID:");
+		txtFWohnungsIDB3 = new JTextField();
+		txtFWohnungsIDB3.setColumns(10);
 		
-		txtFVornameK2 = new JTextField();
-		txtFVornameK2.setColumns(10);
+		JLabel lblDatumB3 = new JLabel("Datum:");
 		
-		JLabel lblWohnungsIDB2 = new JLabel("Wohnungs-ID:");
+		txtFDatumB3 = new JTextField();
+		txtFDatumB3.setHorizontalAlignment(SwingConstants.CENTER);
+		txtFDatumB3.setColumns(10);
 		
-		txtFWohnungsIDB2 = new JTextField();
-		txtFWohnungsIDB2.setColumns(10);
+		JButton btnHinzufügenB3 = new JButton("Bewerbung hinzuf\u00FCgen");
 		
-		JLabel lblDatumB2 = new JLabel("Datum:");
-		
-		txtFDatumB2 = new JTextField();
-		txtFDatumB2.setColumns(10);
-		
-		JCheckBox czbStatusB2 = new JCheckBox("abgeschlossen");
-		
-		JButton btnSaveB2 = new JButton("\u00C4nderungen speichern");
-		
-		JButton btnLöschenB2 = new JButton("Bewerbung l\u00F6schen");
-		GroupLayout gl_contentPaneB2 = new GroupLayout(contentPaneB2);
-		gl_contentPaneB2.setHorizontalGroup(
-			gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPaneB2.createSequentialGroup()
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnZurückB2)
-						.addGroup(gl_contentPaneB2.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblAuswahlB2)
-							.addGap(18)
-							.addComponent(txtArAuswahlB2, GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
-						.addComponent(separatorB2, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
-					.addGap(7))
-				.addGroup(gl_contentPaneB2.createSequentialGroup()
+		JCheckBox czbStatusB3 = new JCheckBox("abgeschlossen");
+		GroupLayout gl_contentPaneB3 = new GroupLayout(contentPaneB3);
+		gl_contentPaneB3.setHorizontalGroup(
+			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPaneB3.createSequentialGroup()
+					.addComponent(btnZurückB3)
+					.addContainerGap(308, Short.MAX_VALUE))
+				.addGroup(gl_contentPaneB3.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblDatumB2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblWohnungsIDB2)
-						.addComponent(lblVornameB2))
+					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblDatumB3)
+						.addComponent(lblWohnungsIDB3)
+						.addComponent(lblKundenIDB3))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPaneB2.createSequentialGroup()
-							.addComponent(czbStatusB2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPaneB2.createSequentialGroup()
-								.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-									.addComponent(txtFWohnungsIDB2, 264, 264, Short.MAX_VALUE)
-									.addComponent(txtFVornameK2, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-								.addGap(95))
-							.addGroup(gl_contentPaneB2.createSequentialGroup()
-								.addComponent(txtFDatumB2, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap()))))
-				.addGroup(gl_contentPaneB2.createSequentialGroup()
-					.addGap(53)
-					.addComponent(btnSaveB2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(btnLöschenB2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(116))
+					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPaneB3.createSequentialGroup()
+							.addComponent(czbStatusB3, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 180, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtFWohnungsIDB3, 264, 279, Short.MAX_VALUE)
+								.addComponent(txtFKundenIDB3, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+							.addGroup(gl_contentPaneB3.createSequentialGroup()
+								.addComponent(txtFDatumB3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+								.addGap(193))))
+					.addGap(95))
+				.addGroup(gl_contentPaneB3.createSequentialGroup()
+					.addGap(132)
+					.addComponent(btnHinzufügenB3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(169))
 		);
-		gl_contentPaneB2.setVerticalGroup(
-			gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPaneB2.createSequentialGroup()
-					.addComponent(btnZurückB2)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblAuswahlB2)
-						.addComponent(txtArAuswahlB2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		gl_contentPaneB3.setVerticalGroup(
+			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPaneB3.createSequentialGroup()
+					.addComponent(btnZurückB3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(separatorB2, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblKundenIDB3)
+						.addComponent(txtFKundenIDB3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblVornameB2)
-						.addComponent(txtFVornameK2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblWohnungsIDB3)
+						.addComponent(txtFWohnungsIDB3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblWohnungsIDB2)
-						.addComponent(txtFWohnungsIDB2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDatumB3)
+						.addComponent(txtFDatumB3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblDatumB2)
-						.addComponent(txtFDatumB2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(czbStatusB2)
-					.addGap(18)
-					.addGroup(gl_contentPaneB2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnSaveB2)
-						.addComponent(btnLöschenB2))
-					.addContainerGap(92, Short.MAX_VALUE))
+					.addComponent(czbStatusB3)
+					.addPreferredGap(ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+					.addComponent(btnHinzufügenB3)
+					.addContainerGap())
 		);
-		contentPaneB2.setLayout(gl_contentPaneB2);
+		contentPaneB3.setLayout(gl_contentPaneB3);
 	}
 
 	////////////////////////////////////////////////////////////////////
