@@ -16,12 +16,12 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 
-public class Wohnung_Level2 extends JFrame {
+public class Wohnung_Level3 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtFStrasseW2;
 	private JTextField txtFOrtW2;
-	private JTextField txtFMieteW2;
+	private JTextField txtFMieteW3;
 	private JTextField txtFZimmerW2;
 	private JTextField txtFBaederW2;
 	private JTextField txtFPLZW2;
@@ -34,7 +34,7 @@ public class Wohnung_Level2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Wohnung_Level2 frame = new Wohnung_Level2();
+					Wohnung_Level3 frame = new Wohnung_Level3();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class Wohnung_Level2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Wohnung_Level2() {
+	public Wohnung_Level3() {
 		setTitle("Wohnung bearbeiten/l\u00F6schen");
 		initComponents();
 		createEvents();
@@ -59,18 +59,12 @@ public class Wohnung_Level2 extends JFrame {
 	
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 347);
+		setBounds(100, 100, 450, 284);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnZurückW2 = new JButton("Zum Wohnungs-Men\u00FC");
-		
-		JLabel lblAuswahlW2 = new JLabel("Ausgew\u00E4hlte Wohnung:");
-		
-		JTextArea txtArAuswahlW2 = new JTextArea();
-		
-		JSeparator separatorW2 = new JSeparator();
+		JButton btnZurückW3 = new JButton("Zum Wohnungs-Men\u00FC");
 		
 		JLabel lblStrasseW2 = new JLabel("Stra\u00DFe:");
 		
@@ -79,7 +73,7 @@ public class Wohnung_Level2 extends JFrame {
 		
 		JLabel lblHNW2 = new JLabel("Nummer :");
 		
-		JLabel lblOrtW2 = new JLabel("Ort:");
+		JLabel lblOrtW3 = new JLabel("Ort:");
 		
 		txtFOrtW2 = new JTextField();
 		txtFOrtW2.setColumns(10);
@@ -88,10 +82,10 @@ public class Wohnung_Level2 extends JFrame {
 		
 		JCheckBox czbEbkW2 = new JCheckBox("Einbauk\u00FCche");
 		
-		JLabel lblMieteW2 = new JLabel("Mietpreis:");
+		JLabel lblMieteW3 = new JLabel("Mietpreis:");
 		
-		txtFMieteW2 = new JTextField();
-		txtFMieteW2.setColumns(10);
+		txtFMieteW3 = new JTextField();
+		txtFMieteW3.setColumns(10);
 		
 		JLabel lblZimmerW2 = new JLabel("Zimmer:");
 		
@@ -118,73 +112,58 @@ public class Wohnung_Level2 extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnZurückW2)
-					.addContainerGap(289, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblMieteW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtFMieteW2, 109, 109, 109)
-					.addGap(281))
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblOrtW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblStrasseW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(txtFStrasseW2)
-								.addComponent(txtFOrtW2, GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblHNW2)
-								.addComponent(lblPLZW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(btnZurückW3)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(lblZimmerW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(txtFZimmerW2, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-									.addGap(38)
-									.addComponent(lblBaederW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+									.addComponent(lblMieteW3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtFBaederW2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addComponent(txtFMieteW3, 109, 109, 109)
+									.addGap(249))
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnSaveW2)
-									.addGap(18)
-									.addComponent(btnLöschenW2))
-								.addComponent(czbEbkW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-								.addComponent(czbStatusW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(txtFHNW2, 0, 0, Short.MAX_VALUE)
-						.addComponent(txtFPLZW2, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
-					.addGap(32))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblAuswahlW2, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(txtArAuswahlW2, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED))
-						.addComponent(separatorW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(37, Short.MAX_VALUE))
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(1)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+												.addComponent(lblOrtW3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblStrasseW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+												.addComponent(txtFStrasseW2)
+												.addComponent(txtFOrtW2, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+											.addGap(18)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblHNW2)
+												.addComponent(lblPLZW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(lblZimmerW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+												.addGroup(gl_contentPane.createSequentialGroup()
+													.addComponent(txtFZimmerW2, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+													.addGap(38)
+													.addComponent(lblBaederW2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+													.addPreferredGap(ComponentPlacement.RELATED)
+													.addComponent(txtFBaederW2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addComponent(czbEbkW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+												.addComponent(czbStatusW2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+												.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+													.addComponent(btnSaveW2)
+													.addGap(18)
+													.addComponent(btnLöschenW2)))))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(txtFHNW2, 0, 0, Short.MAX_VALUE)
+										.addComponent(txtFPLZW2, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))))))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnZurückW2)
+					.addComponent(btnZurückW3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblAuswahlW2)
-						.addComponent(txtArAuswahlW2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(separatorW2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblStrasseW2)
 						.addComponent(txtFStrasseW2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
@@ -192,14 +171,14 @@ public class Wohnung_Level2 extends JFrame {
 						.addComponent(txtFHNW2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblOrtW2)
+						.addComponent(lblOrtW3)
 						.addComponent(txtFOrtW2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblPLZW2)
 						.addComponent(txtFPLZW2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblMieteW2)
-						.addComponent(txtFMieteW2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblMieteW3)
+						.addComponent(txtFMieteW3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblZimmerW2)
@@ -210,10 +189,11 @@ public class Wohnung_Level2 extends JFrame {
 					.addComponent(czbEbkW2)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(czbStatusW2)
-					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSaveW2)
-						.addComponent(btnLöschenW2)))
+						.addComponent(btnLöschenW2))
+					.addContainerGap(24, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
