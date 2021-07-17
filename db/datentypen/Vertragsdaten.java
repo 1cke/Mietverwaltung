@@ -1,5 +1,6 @@
 package datentypen;
 
+
 public class Vertragsdaten {
 	private int id = 0;
 	private int kundennummer = 0;
