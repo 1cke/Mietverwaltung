@@ -7,12 +7,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import datentypen.Anschrift;
 
 /**
  * @author Johann Muenchhagen
  *
  */
-public class Adresse {
+public class Adresse extends Anschrift{
 	public Adresse()throws ClassNotFoundException, SQLException{
 		initieren();
 	}
@@ -35,23 +38,39 @@ public class Adresse {
 		connection.close();
 	}
 	
-	private String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
-		String zwischenerg ="";
+	private void get_values(String plz, String ort, String strasse, String hn) throws ClassNotFoundException, SQLException{
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
-		//System.out.println(anweisung);//Kontrollausgabe
-		ResultSet rs = statement.executeQuery(anweisung);
+		ResultSet rs = statement.executeQuery("SELECT adress_id FROM adresse WHERE plz = '"+plz+"' AND ort = '"+ort+"' AND strasse = '"+strasse+"' AND hn = '" + hn+"'");
 		while(rs.next()) {
-			zwischenerg = zwischenerg+rs.getString(1) + ",";
-			//System.out.println(zwischenerg);//Kontrollausgabe
+			this.setId(rs.getInt(1));
 		}
 		connection.close();
-		//System.out.println(zwischenerg);
-		String[] values = zwischenerg.split(",");
-		//System.out.println(values[0]);
-		return values;
+		this.setPlz(plz);
+		this.setOrt(ort);
+		this.setStrasse(strasse);
+		this.setHausnummer(hn);
+	}
+	private ArrayList<Anschrift> get_all_values() throws ClassNotFoundException, SQLException{
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		ResultSet rs = statement.executeQuery("SELECT * FROM adresse");
+		ArrayList<Anschrift> daten = new ArrayList<Anschrift>();
+		while(rs.next()) {
+			Anschrift a = new Anschrift();
+			a.setId(rs.getInt(1));
+			a.setPlz(rs.getString(2));
+			a.setOrt(rs.getString(3));
+			a.setStrasse(rs.getString(4));
+			a.setHausnummer(rs.getString(5));
+			daten.add(a);
+		}
+		connection.close();
+		return daten;
 	}
 	private void change_db_value_for_address(String anweisung)throws ClassNotFoundException, SQLException{
 		Connection connection = null;//setze Connection auf null
@@ -74,27 +93,23 @@ public class Adresse {
 		connection.close();
 	}
 	private int get_address_adress_id(String plz, String ort, String strasse, String hn) throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT adress_id FROM adresse WHERE plz = '"+plz+"' AND ort = '"+ort+"' AND strasse = '"+strasse+"' AND hn = '" + hn+"'")[0];
-		return Integer.parseInt(wert);
+		get_values(plz,ort,strasse,hn);
+		return this.getId();
 	}
 	private String get_address_plz(int adress_id) throws ClassNotFoundException, SQLException{
-		return get_values("SELECT plz FROM adresse WHERE adress_id = '"+adress_id+"'")[0];
+		return this.getPlz();
 	}
 	private String get_address_ort(int adress_id) throws ClassNotFoundException, SQLException{
-		return get_values("SELECT ort FROM adresse WHERE adress_id = '"+adress_id+"'")[0];
+		return this.getOrt();
 	}
 	private String get_address_strasse(int adress_id) throws ClassNotFoundException, SQLException{
-		return get_values("SELECT strasse FROM adresse WHERE adress_id = '"+adress_id+"'")[0];
+		return this.getStrasse();
 	}
 	private String get_address_hn(int adress_id) throws ClassNotFoundException, SQLException{
-		return get_values("SELECT hn FROM adresse WHERE adress_id = '"+adress_id+"'")[0];
+		return this.getHausnummer();
 	}
 	private void display_address_all()throws ClassNotFoundException, SQLException{
-		String[] werte = get_values("SELECT adress_id FROM adresse");
-		for(int i =0; i<werte.length;i++) {
-			int id = Integer.parseInt(werte[i]);
-			System.out.println(id +" "+get_address_plz(id)+" "+get_address_ort(id) + " "+get_address_strasse(id) + " "+get_address_hn(id));
-			}
+		System.out.println(get_all_values());
 	}
 	private void change_address_plz(int adress_id,String plz)throws ClassNotFoundException, SQLException{
 		change_db_value_for_address("UPDATE adresse SET plz = '"+plz+"' WHERE adress_id = '"+adress_id+"'");
