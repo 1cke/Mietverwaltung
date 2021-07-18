@@ -82,9 +82,9 @@ public class Vertrag extends Vertragsdaten{
 				v.setId(rs.getInt(1));
 				v.setKundennummer(rs.getInt(2));
 				v.setWohnungsnummer(rs.getInt(3));
-				v.setZeitraum(rs.getString(5));
-				v.setSchulden(rs.getDouble(6));
-				v.setAktiv(rs.getBoolean(7));
+				v.setZeitraum(rs.getString(4));
+				v.setSchulden(rs.getDouble(5));
+				v.setAktiv(rs.getBoolean(6));
 				daten.add(v);
 			}
 			connection.close();
