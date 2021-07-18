@@ -48,7 +48,7 @@ public class Kunde_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -60,25 +60,25 @@ public class Kunde_Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnHinzufügenK1 = new JButton("Hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genK1 = new JButton("Hinzuf\u00FCgen");
 		
 		JButton btnBearbeitenK1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenK1 = new JButton("L\u00F6schen");
+		JButton btnLÃ¶schenK1 = new JButton("L\u00F6schen");
 		
 		JScrollPane scrKundenlisteK1 = new JScrollPane();
 		
-		JButton btnZurückK1 = new JButton("Zum Hauptmen\u00FC");
+		JButton btnZurÃ¼ckK1 = new JButton("Zum Hauptmen\u00FC");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(60)
-					.addComponent(btnHinzufügenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnHinzufÃ¼genK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btnBearbeitenK1, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenK1, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+					.addComponent(btnLÃ¶schenK1, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
 					.addGap(87))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
@@ -86,20 +86,20 @@ public class Kunde_Level1 extends JFrame {
 					.addGap(8))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnZurückK1)
+					.addComponent(btnZurÃ¼ckK1)
 					.addContainerGap(305, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnZurückK1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnZurÃ¼ckK1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					.addGap(7)
 					.addComponent(scrKundenlisteK1, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
 					.addGap(7)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnBearbeitenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnHinzufügenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(btnLÃ¶schenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnHinzufÃ¼genK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
 		JList lstKundenK1 = new JList();
@@ -117,7 +117,7 @@ public class Kunde_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	private void createEvents() {
 		// TODO Auto-generated method stub

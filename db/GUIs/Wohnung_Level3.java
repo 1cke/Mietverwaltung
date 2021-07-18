@@ -53,7 +53,7 @@ public class Wohnung_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -64,7 +64,7 @@ public class Wohnung_Level3 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnZurückW3 = new JButton("Zum Wohnungs-Men\u00FC");
+		JButton btnZurÃ¼ckW3 = new JButton("Zum Wohnungs-Men\u00FC");
 		
 		JLabel lblStrasseW3 = new JLabel("Stra\u00DFe:");
 		
@@ -99,7 +99,7 @@ public class Wohnung_Level3 extends JFrame {
 		
 		JCheckBox czbStatusW3 = new JCheckBox("vermietet");
 		
-		JButton btnHinzufügenW3 = new JButton("Wohnung hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genW3 = new JButton("Wohnung hinzuf\u00FCgen");
 		
 		txtFPLZW3 = new JTextField();
 		txtFPLZW3.setColumns(10);
@@ -111,7 +111,7 @@ public class Wohnung_Level3 extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnZurückW3)
+						.addComponent(btnZurÃ¼ckW3)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -154,14 +154,14 @@ public class Wohnung_Level3 extends JFrame {
 										.addComponent(txtFPLZW3, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(150)
-							.addComponent(btnHinzufügenW3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnHinzufÃ¼genW3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addGap(135)))
 					.addGap(8))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnZurückW3)
+					.addComponent(btnZurÃ¼ckW3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblStrasseW3)
@@ -189,14 +189,14 @@ public class Wohnung_Level3 extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(czbStatusW3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnHinzufügenW3)
+					.addComponent(btnHinzufÃ¼genW3)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {

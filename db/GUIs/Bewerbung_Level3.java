@@ -50,7 +50,7 @@ public class Bewerbung_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -61,7 +61,7 @@ public class Bewerbung_Level3 extends JFrame {
 		contentPaneB3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneB3);
 		
-		JButton btnZurückB3 = new JButton("Zum Bewerbungs-Men\u00FC");
+		JButton btnZurÃ¼ckB3 = new JButton("Zum Bewerbungs-Men\u00FC");
 		
 		JLabel lblKundenIDB3 = new JLabel("Kunden-ID:");
 		
@@ -79,14 +79,14 @@ public class Bewerbung_Level3 extends JFrame {
 		txtFDatumB3.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFDatumB3.setColumns(10);
 		
-		JButton btnHinzufügenB3 = new JButton("Bewerbung hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genB3 = new JButton("Bewerbung hinzuf\u00FCgen");
 		
 		JCheckBox czbStatusB3 = new JCheckBox("abgeschlossen");
 		GroupLayout gl_contentPaneB3 = new GroupLayout(contentPaneB3);
 		gl_contentPaneB3.setHorizontalGroup(
 			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneB3.createSequentialGroup()
-					.addComponent(btnZurückB3)
+					.addComponent(btnZurÃ¼ckB3)
 					.addContainerGap(308, Short.MAX_VALUE))
 				.addGroup(gl_contentPaneB3.createSequentialGroup()
 					.addContainerGap()
@@ -109,13 +109,13 @@ public class Bewerbung_Level3 extends JFrame {
 					.addGap(95))
 				.addGroup(gl_contentPaneB3.createSequentialGroup()
 					.addGap(132)
-					.addComponent(btnHinzufügenB3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnHinzufÃ¼genB3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(169))
 		);
 		gl_contentPaneB3.setVerticalGroup(
 			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneB3.createSequentialGroup()
-					.addComponent(btnZurückB3)
+					.addComponent(btnZurÃ¼ckB3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblKundenIDB3)
@@ -131,14 +131,14 @@ public class Bewerbung_Level3 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(czbStatusB3)
 					.addPreferredGap(ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
-					.addComponent(btnHinzufügenB3)
+					.addComponent(btnHinzufÃ¼genB3)
 					.addContainerGap())
 		);
 		contentPaneB3.setLayout(gl_contentPaneB3);
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {

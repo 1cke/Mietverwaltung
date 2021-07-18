@@ -42,7 +42,7 @@ public class Bewerbung_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen und
+	// Enthï¿½lt den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -54,15 +54,15 @@ public class Bewerbung_Level1 extends JFrame {
 		contentPaneB1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneB1);
 		
-		JButton btnZurückB1 = new JButton("Zum Hauptmen\u00FC");
+		JButton btnZurÃ¼ckB1 = new JButton("Zum Hauptmen\u00FC");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btnHinzufügenB1 = new JButton("Hinzuf\u00FCgen");
+		JButton btnHinzufÃ¼genB1 = new JButton("Hinzuf\u00FCgen");
 		
 		JButton btnBearbeitenB1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenB1 = new JButton("L\u00F6schen");
+		JButton btnLÃ¶schenB1 = new JButton("L\u00F6schen");
 		GroupLayout gl_contentPaneB1 = new GroupLayout(contentPaneB1);
 		gl_contentPaneB1.setHorizontalGroup(
 			gl_contentPaneB1.createParallelGroup(Alignment.LEADING)
@@ -73,28 +73,28 @@ public class Bewerbung_Level1 extends JFrame {
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 415, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())
 						.addGroup(gl_contentPaneB1.createSequentialGroup()
-							.addComponent(btnZurückB1)
+							.addComponent(btnZurÃ¼ckB1)
 							.addGap(3))))
 				.addGroup(gl_contentPaneB1.createSequentialGroup()
 					.addGap(54)
-					.addComponent(btnHinzufügenB1, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+					.addComponent(btnHinzufÃ¼genB1, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btnBearbeitenB1, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnLÃ¶schenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(71))
 		);
 		gl_contentPaneB1.setVerticalGroup(
 			gl_contentPaneB1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneB1.createSequentialGroup()
-					.addComponent(btnZurückB1)
+					.addComponent(btnZurÃ¼ckB1)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneB1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnBearbeitenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnHinzufügenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(btnHinzufÃ¼genB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnLÃ¶schenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
 		JList lstBewerbungenB1 = new JList();
@@ -103,7 +103,7 @@ public class Bewerbung_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enthält den Code zum Erzeugen von Events
+	// Enthï¿½lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
