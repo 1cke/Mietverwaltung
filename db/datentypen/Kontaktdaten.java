@@ -9,7 +9,7 @@ public class Kontaktdaten {
 	private boolean behoben = false;
 	/**
 	 * @return the id
-	 * .
+	 * 
 	 */
 	public int getId() {
 		return id;
