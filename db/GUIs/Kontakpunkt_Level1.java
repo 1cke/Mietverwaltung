@@ -16,7 +16,7 @@ import javax.swing.AbstractListModel;
 
 public class Kontakpunkt_Level1 extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel contentPaneKP1;
 
 	/**
 	 * Launch the application.
@@ -52,54 +52,54 @@ public class Kontakpunkt_Level1 extends JFrame {
 		setTitle("Men\u00FC - Kontaktpunkte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		contentPaneKP1 = new JPanel();
+		contentPaneKP1.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPaneKP1);
 		
-		JButton btnNewButton = new JButton("Zum Hauptmen\u00FC");
+		JButton btnZurückKP1 = new JButton("Zum Hauptmen\u00FC");
 		
-		JButton btnHinzufügenK1 = new JButton("Hinzuf\u00FCgen");
+		JButton btnHinzufügenKP1 = new JButton("Hinzuf\u00FCgen");
 		
-		JButton btnBearbeitenK1 = new JButton("Bearbeiten");
+		JButton btnBearbeitenKP1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenK1 = new JButton("L\u00F6schen");
+		JButton btnLöschenKP1 = new JButton("L\u00F6schen");
 		
-		JScrollPane scrollPane = new JScrollPane();
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+		JScrollPane scrollPaneKP1 = new JScrollPane();
+		GroupLayout gl_contentPaneKP1 = new GroupLayout(contentPaneKP1);
+		gl_contentPaneKP1.setHorizontalGroup(
+			gl_contentPaneKP1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addGap(45)
-					.addComponent(btnHinzufügenK1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnHinzufügenKP1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(btnBearbeitenK1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
+					.addComponent(btnBearbeitenKP1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenK1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
+					.addComponent(btnLöschenKP1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
 					.addGap(66))
-				.addGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnNewButton)
+					.addComponent(btnZurückKP1)
 					.addContainerGap(309, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+					.addComponent(scrollPaneKP1, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
 					.addContainerGap())
 		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnNewButton)
+		gl_contentPaneKP1.setVerticalGroup(
+			gl_contentPaneKP1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPaneKP1.createSequentialGroup()
+					.addComponent(btnZurückKP1)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+					.addComponent(scrollPaneKP1, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnBearbeitenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnHinzufügenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+					.addGroup(gl_contentPaneKP1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnLöschenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
-		JList lstKontaktpunkteK1 = new JList();
-		lstKontaktpunkteK1.setModel(new AbstractListModel() {
+		JList lstKontaktpunkteKP1 = new JList();
+		lstKontaktpunkteKP1.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Kontaktpunkte vielleicht clickable machen zum ins Detail gehen."};
 			public int getSize() {
 				return values.length;
@@ -108,8 +108,8 @@ public class Kontakpunkt_Level1 extends JFrame {
 				return values[index];
 			}
 		});
-		scrollPane.setViewportView(lstKontaktpunkteK1);
-		contentPane.setLayout(gl_contentPane);
+		scrollPaneKP1.setViewportView(lstKontaktpunkteKP1);
+		contentPaneKP1.setLayout(gl_contentPaneKP1);
 	}
 
 	////////////////////////////////////////////////////////////////////
