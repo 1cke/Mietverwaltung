@@ -203,7 +203,6 @@ public class Wohnung extends Wohnungsdaten{
 	}
 	/**
 	 * Diese Methode gibt den Vermietetstatus der Wohnung zurück.
-	 * @param whg_id Die Wohnungs-ID als Integer.
 	 * @return Den Status als Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
