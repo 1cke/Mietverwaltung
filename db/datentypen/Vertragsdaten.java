@@ -1,5 +1,6 @@
 package datentypen;
 
+
 public class Vertragsdaten {
 	private int id = 0;
 	private int kundennummer = 0;
@@ -7,9 +8,7 @@ public class Vertragsdaten {
 	private String zeitraum = "";
 	private double schulden = 0.0;
 	private boolean aktiv = true;
-	/**
-	 * @return the id
-	 */
+	
 	public int getId() {
 		return id;
 	}

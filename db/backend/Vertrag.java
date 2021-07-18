@@ -8,12 +8,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import datentypen.Vertragsdaten;
 
 /**
  * @author Johann Muenchhagen
  *
  */
-public class Vertrag {
+public class Vertrag extends Vertragsdaten{
 	public Vertrag() throws ClassNotFoundException, SQLException {
 		initieren();
 	}
@@ -36,22 +39,59 @@ public class Vertrag {
 		System.out.println("Werte erfolgreich gespeichert");
 		connection.close();
 	}
-	private String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
-		String zwischenerg ="";
+	private void get_values(int vertrags_id) throws ClassNotFoundException, SQLException{
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
-		//System.out.println(anweisung);//Kontrollausgabe
-		ResultSet rs = statement.executeQuery(anweisung);
+		ResultSet rs = statement.executeQuery("SELECT kd_id,whg_id,Zeitraum,schulden,aktiv FROM vertrag WHERE vertrags_id = '"+vertrags_id+"'");
 		while(rs.next()) {
-			zwischenerg = rs.getString(1) + ",";
-			//System.out.println(zwischenerg);//Kontrollausgabe
+			this.setKundennummer(rs.getInt(1));
+			this.setWohnungsnummer(rs.getInt(2));
+			this.setZeitraum(rs.getString(3));
+			this.setSchulden(rs.getDouble(4));
+			this.setAktiv(rs.getBoolean(5));
 		}
 		connection.close();
-		String[] values = zwischenerg.split(",");
-		return values;
+		this.setId(vertrags_id);
 	}
+	private ArrayList<Vertragsdaten>get_values(int kundennummer,String Typ)throws ClassNotFoundException, SQLException{
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		ArrayList<Vertragsdaten> daten = new ArrayList<Vertragsdaten>();
+		if(Typ == "kd") {
+			ResultSet rs = statement.executeQuery("SELECT vertrags_id,whg_id,Zeitraum,schulden,aktiv FROM vertrag WHERE kd_id = '"+kundennummer+"'");
+			while(rs.next()) {
+				Vertragsdaten v = new Vertragsdaten();
+				v.setId(rs.getInt(1));
+				v.setKundennummer(kundennummer);
+				v.setWohnungsnummer(rs.getInt(2));
+				v.setZeitraum(rs.getString(3));
+				v.setSchulden(rs.getDouble(4));
+				v.setAktiv(rs.getBoolean(5));
+				daten.add(v);
+			}
+			connection.close();
+			return daten;
+		}else {
+			ResultSet rs = statement.executeQuery("SELECT * FROM vertrag");
+			while(rs.next()) {
+				Vertragsdaten v = new Vertragsdaten();
+				v.setId(rs.getInt(1));
+				v.setKundennummer(rs.getInt(2));
+				v.setWohnungsnummer(rs.getInt(3));
+				v.setZeitraum(rs.getString(5));
+				v.setSchulden(rs.getDouble(6));
+				v.setAktiv(rs.getBoolean(7));
+				daten.add(v);
+			}
+			connection.close();
+			return daten;
+		}
+	}
+	
 	private void change_db_value_for_contract(String anweisung)throws ClassNotFoundException, SQLException{
 		Connection connection = null;//setze Connection auf null
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
@@ -62,52 +102,27 @@ public class Vertrag {
 		System.out.println("Änderungen erfolgreich gespeichert");
 		connection.close();
 	}
-	private int get_vertrag_id(int kd_id) throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT vertrags_id FROM vertrag WHERE kd_id = '"+kd_id+"'")[0];
-		return Integer.parseInt(wert);
+	private int get_vertrag_kd_id()throws ClassNotFoundException, SQLException{
+		return this.getKundennummer();
 	}
-	private int get_vertrag_kd_id(int id)throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT kd_id FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
-		return Integer.parseInt(wert);
-	}
-	private int get_vertrag_whg_id(int id) throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT whg_id FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
-		return Integer.parseInt(wert);
+	private int get_vertrag_whg_id() throws ClassNotFoundException, SQLException{
+		return this.getWohnungsnummer();
 	}
 
-	private String get_vertrag_zeitraum(int id)throws ClassNotFoundException, SQLException{
-		return get_values("SELECT zeitraum FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
+	private String get_vertrag_zeitraum()throws ClassNotFoundException, SQLException{
+		return this.getZeitraum();
 	}
-	private double get_vertrag_schulden(int id)throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT schulden FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
-		return Double.parseDouble(wert);
+	private double get_vertrag_schulden()throws ClassNotFoundException, SQLException{
+		return this.getSchulden();
 	}
-	private boolean get_vertrag_aktiv(int id)throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT aktiv FROM vertrag WHERE vertrags_id = '"+id+"'")[0];
-		boolean aktiv;
-		int zaehlwert1 = Integer.parseInt(wert);
-		if (zaehlwert1 == 1){
-			aktiv =  Boolean.valueOf("true");
-			return aktiv;
-		}else {
-			aktiv =  Boolean.valueOf("false");
-				return aktiv;
-			}
+	private boolean get_vertrag_aktiv()throws ClassNotFoundException, SQLException{
+		return this.isAktiv();
 	}
 	private void get_vertrag_all() throws ClassNotFoundException, SQLException{
-		String[] werte = get_values("SELECT vertrags_id FROM vertrag");
-		for(int i =0; i<werte.length;i++) {
-			int id = Integer.parseInt(werte[i]);
-			System.out.println(id +" "+get_vertrag_kd_id(id)+" "+get_vertrag_whg_id(id) + " "+get_vertrag_zeitraum(id) + " "+get_vertrag_schulden(id) + " " + get_vertrag_aktiv(id));
-			}
+		System.out.println(get_values(0,""));
 	}
-	private String get_vertrag_all_whg_by_kd_id(int kd_id) throws ClassNotFoundException, SQLException{
-		String[] werte = get_values("SELECT vertrags_id FROM vertrag WHERE kd_id = '"+kd_id+"'");
-		String a = "";
-		for(int i = 0; i<werte.length;i++) {
-			a = a + werte[i] + ",";
-		}
-		return a;
+	private ArrayList<Vertragsdaten> get_vertrag_all_whg_by_kd_id(int kd_id) throws ClassNotFoundException, SQLException{
+		return get_values(kd_id,"kd");
 	}
 	private void change_vertrag_kd_id(int id, int kd_id) throws ClassNotFoundException, SQLException{
 		change_db_value_for_contract("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE kd_id = '"+id+"'");
@@ -124,10 +139,6 @@ public class Vertrag {
 	private void change_vertrag_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
 		change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
-	private int get_last_id()throws ClassNotFoundException, SQLException{
-		String id = get_values("SELECT rowid FROM vertrag ORDER BY rowid DESC limit 1")[0];
-		return Integer.parseInt(id);
-	}
 	/**
 	 * Diese Methode legt einen Vertrag an.
 	 * @param kd_id Die Kunden-ID als Integer.
@@ -143,82 +154,67 @@ public class Vertrag {
 	 */
 	public int set_db_value(int kd_id,int whg_id,double schulden, String zeitraum,int aktiv)throws ClassNotFoundException, SQLException{
 		set_db_value_for_contract(kd_id,whg_id,schulden,zeitraum,aktiv);
-		int id = get_last_id();
-		return id;
+		return this.getId();
 	}
-	/**
-	 * Diese Methode gibt anhand der Kunden-ID die Vertrags-ID zurück.
-	 * @param kd_id Die Kunden-ID als Integer.
-	 * @return DIe Vertrags-ID als Integer.
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @see ClassNotFoundException
-	 * @see SQLException
-	 */
-	public int get_vertrags_id(int kd_id) throws ClassNotFoundException, SQLException{
-		return get_vertrag_id(kd_id);
+	public void lade_vertrags_daten(int vertragsnummer) throws ClassNotFoundException, SQLException{
+		get_values(vertragsnummer);
 	}
 	/**
 	 * Diese Methode gibt die zugeordnete Kunden-ID zurück.
 	 * <p> Return wird noch bearbeitet</p>
-	 * @param vertrags_id Die Vertrags-ID als Integer.
 	 * @return Die Kunden-ID als Integer.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int get_kd_id(int vertrags_id) throws ClassNotFoundException, SQLException {
-		return get_vertrag_kd_id(vertrags_id);
+	public int get_kd_id() throws ClassNotFoundException, SQLException {
+		return get_vertrag_kd_id();
 	}
 	/**
 	 * Diese Methode gibt die zugeordnete Wohnungs-ID zurück.
-	 * @param vertrags_id Die Vertrags-ID als Integer.
 	 * @return DIe Wohnungs-ID als Integer.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int get_whg_id(int vertrags_id) throws ClassNotFoundException, SQLException{
-		return get_vertrag_whg_id(vertrags_id);
+	public int get_whg_id() throws ClassNotFoundException, SQLException{
+		return get_vertrag_whg_id();
 	}
 	/**
 	 * Diese Methode gibt den Zeitraum zurück.
 	 * <p> Im sinne von aktiv seit oder war Kunde von xy bis yz.
-	 * @param vertrags_id Die Vertrags-ID als Integer.
 	 * @return Den Zeitraum als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_zeitraum(int vertrags_id) throws ClassNotFoundException, SQLException{
-		return get_vertrag_zeitraum(vertrags_id);
+	public String get_zeitraum() throws ClassNotFoundException, SQLException{
+		return get_vertrag_zeitraum();
 	}
 	/**
 	 * Diese Methode gibt die Höhe der Schulden zurück.
-	 * @param vertrags_id Die Vertrags-ID als Integer.
 	 * @return Die Schulden als Double. 
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public double get_schulden(int vertrags_id)throws ClassNotFoundException, SQLException{
-		return get_vertrag_schulden(vertrags_id);
+	public double get_schulden()throws ClassNotFoundException, SQLException{
+		return get_vertrag_schulden();
 	}
 	/**
 	 * Diese Methode gibt den Vertragsstatus zurück.
-	 * @param vertrags_id Die Vertrags-ID als Integer.
 	 * @return	Den Status als Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public boolean get_aktiv(int vertrags_id)throws ClassNotFoundException, SQLException{
-		return get_vertrag_aktiv(vertrags_id);
+	public boolean get_aktiv()throws ClassNotFoundException, SQLException{
+		return get_vertrag_aktiv();
 	}
 	/**
 	 * Diese Methode gibt alle Verträge von einem Kunden zurück.
@@ -229,20 +225,8 @@ public class Vertrag {
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int[] get_all_whg(int kd_nr) throws ClassNotFoundException, SQLException{
-		/*
-		 * rückgabe als array muss im Code dann einzeln abgerufen werden
-		 */
-		String s = get_vertrag_all_whg_by_kd_id(kd_nr);
-		String[] part = s.split(",");
-		int[]wert = new int[part.length];
-		String a = "";
-		for(int i = 0; i < wert.length;i++) {
-			a = part[i];
-			int zwischen_erg = Integer.parseInt(a);
-			wert[i] = zwischen_erg;
-		}
-		return wert;
+	public ArrayList<Vertragsdaten> get_all_whg(int kd_nr) throws ClassNotFoundException, SQLException{
+		return get_vertrag_all_whg_by_kd_id(kd_nr);
 	}
 	/**
 	 * Diese Methode gibt alle Verträge und dazugehörige Daten aus
