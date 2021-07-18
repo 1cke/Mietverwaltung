@@ -16,7 +16,7 @@ public class DB {
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbungs = new Bewerbung();
 		System.out.println("Test");
-		adresse.display_adresse();
+		vertrag.get_all();
 		//kunde.get_all();
 		// adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
 		// adresse.set_address_value("20457", "Hamburg", "Platz der Deutschen Einheit",
