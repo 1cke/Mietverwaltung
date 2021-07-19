@@ -12,10 +12,16 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Vertrag_Level1 extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnZurückV1;
+	private JButton btnHinzufügenV1;
+	private JButton btnBearbeitenV1;
+	private JButton btnLöschenV1;
 
 	/**
 	 * Launch the application.
@@ -54,13 +60,13 @@ public class Vertrag_Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnZurückV1 = new JButton("Zum Hauptmen\u00FC");
+		btnZurückV1 = new JButton("Zum Hauptmen\u00FC");
 		
-		JButton btnHinzufügenV1 = new JButton("Hinzuf\u00FCgen");
+		btnHinzufügenV1 = new JButton("Hinzuf\u00FCgen");
 		
-		JButton btnBearbeitenV1 = new JButton("Bearbeiten");
+		btnBearbeitenV1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenV1 = new JButton("L\u00F6schen");
+		btnLöschenV1 = new JButton("L\u00F6schen");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -70,22 +76,23 @@ public class Vertrag_Level1 extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(59)
-							.addComponent(btnHinzufügenV1)
+							.addComponent(btnHinzufügenV1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(btnBearbeitenV1)
+							.addComponent(btnBearbeitenV1, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(btnLöschenV1))
+							.addComponent(btnLöschenV1, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+							.addGap(78))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(btnZurückV1))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)))
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(btnZurückV1)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
@@ -106,6 +113,36 @@ public class Vertrag_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 
 	private void createEvents() {
+		btnZurückV1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				GUI hauptmenü = new GUI();
+				hauptmenü.setVisible(true);
+			}
+		});
+		btnHinzufügenV1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Vertrag_Level3 vertrag3 = new Vertrag_Level3();
+				vertrag3.setVisible(true);
+			}
+		});
+		btnBearbeitenV1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Vertrag_Level2 vertrag2 = new Vertrag_Level2();
+				vertrag2.setVisible(true);
+			}
+		});
+		btnLöschenV1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Vertrag_Level2 vertrag2 = new Vertrag_Level2();
+				vertrag2.setVisible(true);
+			}
+		});
+		
+		
 		
 	}
 

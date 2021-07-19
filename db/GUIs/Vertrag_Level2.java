@@ -16,6 +16,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Vertrag_Level2 extends JFrame {
 
@@ -24,6 +26,9 @@ public class Vertrag_Level2 extends JFrame {
 	private JTextField txtFWohnungsIDV2;
 	private JTextField txtFZeitraumV2;
 	private JTextField txtFSchuldenV2;
+	private JButton btnZurückV2;
+	private JButton btnSaveV2;
+	private JButton btnLöschenV2;
 
 	/**
 	 * Launch the application.
@@ -62,7 +67,7 @@ public class Vertrag_Level2 extends JFrame {
 		contentPaneV2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneV2);
 		
-		JButton btnZurückV2 = new JButton("Zum Vertrags-Menü");
+		btnZurückV2 = new JButton("Zum Vertrags-Menü");
 		
 		JLabel lblAuswahlV2 = new JLabel("Ausgewählter Vertrag:");
 		
@@ -92,9 +97,9 @@ public class Vertrag_Level2 extends JFrame {
 		txtFSchuldenV2 = new JTextField();
 		txtFSchuldenV2.setColumns(10);
 		
-		JButton btnSaveV2 = new JButton("\u00C4nderungen speichern");
+		btnSaveV2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenV2 = new JButton("Vertrag löschen");
+		btnLöschenV2 = new JButton("Vertrag löschen");
 		
 		JCheckBox czbAktivV2 = new JCheckBox("aktiver Vertrag");
 		czbAktivV2.setSelected(true);
@@ -183,7 +188,12 @@ public class Vertrag_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
-		
+		btnZurückV2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Vertrag_Level1 vertrag1 = new Vertrag_Level1();
+				vertrag1.setVisible(true);
+			}
+		});
 	}
 }
