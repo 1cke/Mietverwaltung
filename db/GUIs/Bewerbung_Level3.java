@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Bewerbung;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Bewerbung_Level3 extends JFrame {
@@ -27,6 +31,8 @@ public class Bewerbung_Level3 extends JFrame {
 	private JTextField txtFDatumB3;
 	private JButton btnZurückB3;
 	private JButton btnHinzufügenB3;
+	private Bewerbung bewerbung;
+	private JCheckBox czbStatusB3;
 
 	/**
 	 * Launch the application.
@@ -46,11 +52,14 @@ public class Bewerbung_Level3 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Bewerbung_Level3() {
-		setTitle("Bewerbung hinzuf\u00FCgen");
+	public Bewerbung_Level3() throws ClassNotFoundException, SQLException {
+		setTitle("Bewerbung hinzufügen");
 		initComponents();
 		createEvents();
+		bewerbung = new Bewerbung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -85,7 +94,7 @@ public class Bewerbung_Level3 extends JFrame {
 		
 		btnHinzufügenB3 = new JButton("Bewerbung hinzuf\u00FCgen");
 		
-		JCheckBox czbStatusB3 = new JCheckBox("abgeschlossen");
+		czbStatusB3 = new JCheckBox("abgeschlossen");
 		GroupLayout gl_contentPaneB3 = new GroupLayout(contentPaneB3);
 		gl_contentPaneB3.setHorizontalGroup(
 			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
@@ -153,5 +162,21 @@ public class Bewerbung_Level3 extends JFrame {
 				bewerbung1.setVisible(true);
 			}
 		});
+		////////////////////////////////////////////////////////////////
+		//Hier wird der Button "Hinzufügen" bearbeitet
+		////////////////////////////////////////////////////////////////
+		btnHinzufügenB3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selection = czbStatusB3.isSelected() ? 1 : 0;
+				try {
+					bewerbung.set_bewerbung(Integer.parseInt(txtFKundenIDB3.getText()), Integer.parseInt(txtFWohnungsIDB3.getText()),
+							txtFDatumB3.getText());
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 	}
 }

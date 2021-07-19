@@ -4,10 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Wohnung;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -30,6 +34,9 @@ public class Wohnung_Level3 extends JFrame {
 	private JTextField txtFHNW3;
 	private JButton btnZurückW3;
 	private JButton btnHinzufügenW3;
+	private JCheckBox czbEbkW3;
+	private JCheckBox czbStatusW3;
+	private Wohnung wohnung;
 
 	/**
 	 * Launch the application.
@@ -49,11 +56,14 @@ public class Wohnung_Level3 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Wohnung_Level3() {
+	public Wohnung_Level3() throws ClassNotFoundException, SQLException {
 		setTitle("Wohnung hinzuf\u00FCgen");
 		initComponents();
 		createEvents();
+		wohnung = new Wohnung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -84,7 +94,7 @@ public class Wohnung_Level3 extends JFrame {
 		
 		JLabel lblPLZW3 = new JLabel("PLZ:");
 		
-		JCheckBox czbEbkW3 = new JCheckBox("Einbauk\u00FCche");
+		czbEbkW3 = new JCheckBox("Einbauk\u00FCche");
 		
 		JLabel lblMieteW3 = new JLabel("Miete:");
 		
@@ -101,7 +111,7 @@ public class Wohnung_Level3 extends JFrame {
 		txtFBaederW3 = new JTextField();
 		txtFBaederW3.setColumns(10);
 		
-		JCheckBox czbStatusW3 = new JCheckBox("vermietet");
+		czbStatusW3 = new JCheckBox("vermietet");
 		
 		btnHinzufügenW3 = new JButton("Wohnung hinzuf\u00FCgen");
 		
@@ -209,6 +219,20 @@ public class Wohnung_Level3 extends JFrame {
 				dispose();
 				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
 				wohnung1.setVisible(true);
+			}
+		});
+		//Work in progress
+		btnHinzufügenW3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectionEbk = czbEbkW3.isSelected() ? 1 : 0;
+				int selectionStatus = czbStatusW3.isSelected() ? 1 : 0;
+				try {
+					//wohnung.set_db_value(txtFVornameK3.getText(), txtFNachnameK3.getText(),
+							txtFGeburtstagK3.getText(), txtFTelefonK3.getText(), txtFEmailK3.getText(), selection);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	}
