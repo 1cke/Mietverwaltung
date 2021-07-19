@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kunden;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Kunde_Level3 extends JFrame {
@@ -29,6 +33,8 @@ public class Kunde_Level3 extends JFrame {
 	private JTextField txtFEmailK3;
 	private JButton btnHinzufügenK3;
 	private JButton btnZurückK3;
+	private Kunden kunde;
+	private JCheckBox czbInteressentK3;
 
 	/**
 	 * Launch the application.
@@ -48,11 +54,14 @@ public class Kunde_Level3 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Kunde_Level3() {
+	public Kunde_Level3() throws ClassNotFoundException, SQLException {
 		setTitle("Kunde hinzufügen");
 		initComponents();
 		createEvents();
+		kunde = new Kunden();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -62,7 +71,7 @@ public class Kunde_Level3 extends JFrame {
 	
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 292);
+		setBounds(100, 100, 450, 269);
 		contentPaneK3 = new JPanel();
 		contentPaneK3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneK3);
@@ -95,12 +104,9 @@ public class Kunde_Level3 extends JFrame {
 		txtFEmailK3 = new JTextField();
 		txtFEmailK3.setColumns(10);
 		
-		JCheckBox czbInteressentK3 = new JCheckBox("Interessent");
+		czbInteressentK3 = new JCheckBox("Interessent");
 		
 		btnHinzufügenK3 = new JButton("Kunden hinzufügen");
-		
-		JCheckBox czbAktivK3 = new JCheckBox("aktiver Kunde");
-		czbAktivK3.setSelected(true);
 		GroupLayout gl_contentPaneK3 = new GroupLayout(contentPaneK3);
 		gl_contentPaneK3.setHorizontalGroup(
 			gl_contentPaneK3.createParallelGroup(Alignment.LEADING)
@@ -120,22 +126,17 @@ public class Kunde_Level3 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneK3.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPaneK3.createSequentialGroup()
-							.addComponent(czbAktivK3, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-							.addGap(165))
-						.addGroup(gl_contentPaneK3.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPaneK3.createSequentialGroup()
-								.addComponent(czbInteressentK3, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 172, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPaneK3.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPaneK3.createSequentialGroup()
-									.addComponent(txtFTelefonK3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-									.addGap(156))
-								.addComponent(txtFNachnameK3, 264, 271, Short.MAX_VALUE)
-								.addComponent(txtFVornameK3, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-								.addComponent(txtFEmailK3, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-								.addGroup(gl_contentPaneK3.createSequentialGroup()
-									.addComponent(txtFGeburtstagK3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-									.addGap(193)))))
+							.addComponent(czbInteressentK3, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 165, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPaneK3.createSequentialGroup()
+							.addComponent(txtFTelefonK3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(156))
+						.addComponent(txtFNachnameK3, 264, 264, Short.MAX_VALUE)
+						.addComponent(txtFVornameK3, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+						.addComponent(txtFEmailK3, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+						.addGroup(gl_contentPaneK3.createSequentialGroup()
+							.addComponent(txtFGeburtstagK3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(193)))
 					.addGap(86))
 				.addGroup(gl_contentPaneK3.createSequentialGroup()
 					.addGap(122)
@@ -168,11 +169,9 @@ public class Kunde_Level3 extends JFrame {
 						.addComponent(lblEmailK3))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(czbInteressentK3)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(czbAktivK3)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnHinzufügenK3)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(29, Short.MAX_VALUE))
 		);
 		contentPaneK3.setLayout(gl_contentPaneK3);
 	}
@@ -189,5 +188,18 @@ public class Kunde_Level3 extends JFrame {
 				kunde1.setVisible(true);
 			}
 		});
+		btnHinzufügenK3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selection = czbInteressentK3.isSelected() ? 1 : 0;
+				try {
+					kunde.set_db_value(txtFVornameK3.getText(), txtFNachnameK3.getText(),
+							txtFGeburtstagK3.getText(), txtFTelefonK3.getText(), txtFEmailK3.getText(), selection);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 	}
 }

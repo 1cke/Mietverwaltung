@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Kunde_Level1 extends JFrame {
@@ -137,8 +138,14 @@ public class Kunde_Level1 extends JFrame {
 		btnHinzufügenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kunde_Level3 kunde3 = new Kunde_Level3();
-				kunde3.setVisible(true);
+				Kunde_Level3 kunde3;
+				try {
+					kunde3 = new Kunde_Level3();
+					kunde3.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnBearbeitenK1.addActionListener(new ActionListener() {

@@ -54,7 +54,7 @@ public class DB {
 		System.out.println("Test ausgabe");
 		kunde.get_vorname();
 		//int kd_nr = kunde.get_id("Max", "Mustermann", "01.01.2001");
-		kunde.lade_kunden_daten(1);
+		kunde.lade_kunden_daten(100);
 		int kd_nr = kunde.getId();
 		String vorname = kunde.get_vorname();
 		String nachname = kunde.get_nachname();
