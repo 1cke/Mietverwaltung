@@ -16,6 +16,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level2 extends JFrame {
 
@@ -24,6 +26,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	private JTextField txtFDatumKP2;
 	private JTextField txtFGrundKP2;
 	private JTextField txtFBeschreibungKP2;
+	private JButton btnZurückKP2;
+	private JButton btnSaveKP2;
+	private JButton btnLöschenKP2;
 
 	/**
 	 * Launch the application.
@@ -62,7 +67,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		contentPaneKP2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneKP2);
 		
-		JButton btnZurückKP2 = new JButton("Zum Kontaktpunkte-Menü");
+		btnZurückKP2 = new JButton("Zum Kontaktpunkte-Menü");
 		
 		JLabel lblAuswahlKP2 = new JLabel("Ausgewählter Kontaktpunkt:");
 		
@@ -91,9 +96,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		txtFBeschreibungKP2 = new JTextField();
 		txtFBeschreibungKP2.setColumns(10);
 		
-		JButton btnSaveKP2 = new JButton("\u00C4nderungen speichern");
+		btnSaveKP2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenKP2 = new JButton("Kontaktpunkt löschen");
+		btnLöschenKP2 = new JButton("Kontaktpunkt löschen");
 		GroupLayout gl_contentPaneKP2 = new GroupLayout(contentPaneKP2);
 		gl_contentPaneKP2.setHorizontalGroup(
 			gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
@@ -175,7 +180,13 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
+		btnZurückKP2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kontaktpunkt_Level1 kontakt1 = new Kontaktpunkt_Level1();
+				kontakt1.setVisible(true);
+			}
+		});
 		
 	}
 }

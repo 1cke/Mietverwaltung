@@ -16,6 +16,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Bewerbung_Level3 extends JFrame {
 
@@ -23,6 +25,8 @@ public class Bewerbung_Level3 extends JFrame {
 	private JTextField txtFKundenIDB3;
 	private JTextField txtFWohnungsIDB3;
 	private JTextField txtFDatumB3;
+	private JButton btnZurückB3;
+	private JButton btnHinzufügenB3;
 
 	/**
 	 * Launch the application.
@@ -61,7 +65,7 @@ public class Bewerbung_Level3 extends JFrame {
 		contentPaneB3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneB3);
 		
-		JButton btnZurückB3 = new JButton("Zum Bewerbungs-Men\u00FC");
+		btnZurückB3 = new JButton("Zum Bewerbungs-Men\u00FC");
 		
 		JLabel lblKundenIDB3 = new JLabel("Kunden-ID:");
 		
@@ -79,7 +83,7 @@ public class Bewerbung_Level3 extends JFrame {
 		txtFDatumB3.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFDatumB3.setColumns(10);
 		
-		JButton btnHinzufügenB3 = new JButton("Bewerbung hinzuf\u00FCgen");
+		btnHinzufügenB3 = new JButton("Bewerbung hinzuf\u00FCgen");
 		
 		JCheckBox czbStatusB3 = new JCheckBox("abgeschlossen");
 		GroupLayout gl_contentPaneB3 = new GroupLayout(contentPaneB3);
@@ -142,7 +146,12 @@ public class Bewerbung_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
-		
+		btnZurückB3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Bewerbung_Level1 bewerbung1 = new Bewerbung_Level1();
+				bewerbung1.setVisible(true);
+			}
+		});
 	}
 }

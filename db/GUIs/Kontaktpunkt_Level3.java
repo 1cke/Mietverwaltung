@@ -16,6 +16,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level3 extends JFrame {
 
@@ -24,6 +26,8 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	private JTextField txtFDatumKP3;
 	private JTextField txtFGrundKP3;
 	private JTextField txtFBeschreibungKP3;
+	private JButton btnZurückKP3;
+	private JButton btnHinzufügenKP3;
 
 	/**
 	 * Launch the application.
@@ -62,7 +66,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 		contentPaneKP3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneKP3);
 		
-		JButton btnZurückKP3 = new JButton("Zum Kontaktpunkte-Menü");
+		btnZurückKP3 = new JButton("Zum Kontaktpunkte-Menü");
 		
 		JLabel lblVertragsIDKP3 = new JLabel("Vertrags-ID:");
 		
@@ -85,7 +89,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 		txtFBeschreibungKP3 = new JTextField();
 		txtFBeschreibungKP3.setColumns(10);
 		
-		JButton btnHinzufügenKP3 = new JButton("Kontaktpunkt hinzufügen");
+		btnHinzufügenKP3 = new JButton("Kontaktpunkt hinzufügen");
 		GroupLayout gl_contentPaneKP3 = new GroupLayout(contentPaneKP3);
 		gl_contentPaneKP3.setHorizontalGroup(
 			gl_contentPaneKP3.createParallelGroup(Alignment.LEADING)
@@ -147,7 +151,13 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
+		btnZurückKP3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kontaktpunkt_Level1 kontakt1 = new Kontaktpunkt_Level1();
+				kontakt1.setVisible(true);
+			}
+		});
 		
 	}
 }

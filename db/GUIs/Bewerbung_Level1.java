@@ -1,5 +1,5 @@
 package GUIs;
-//test
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -76,19 +76,16 @@ public class Bewerbung_Level1 extends JFrame {
 				.addGroup(gl_contentPaneB1.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPaneB1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPaneB1.createSequentialGroup()
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 415, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(gl_contentPaneB1.createSequentialGroup()
-							.addComponent(btnZurückB1)
-							.addGap(3))))
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+						.addComponent(btnZurückB1))
+					.addGap(10))
 				.addGroup(gl_contentPaneB1.createSequentialGroup()
 					.addGap(54)
-					.addComponent(btnHinzufügenB1, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+					.addComponent(btnHinzufügenB1, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnBearbeitenB1, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+					.addComponent(btnBearbeitenB1, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnLöschenB1, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
 					.addGap(71))
 		);
 		gl_contentPaneB1.setVerticalGroup(
@@ -96,7 +93,7 @@ public class Bewerbung_Level1 extends JFrame {
 				.addGroup(gl_contentPaneB1.createSequentialGroup()
 					.addComponent(btnZurückB1)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneB1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnBearbeitenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

@@ -13,10 +13,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level1 extends JFrame {
 
 	private JPanel contentPaneKP1;
+	private JButton btnZurückKP1;
+	private JButton btnHinzufügenKP1;
+	private JButton btnBearbeitenKP1;
+	private JButton btnLöschenKP1;
 
 	/**
 	 * Launch the application.
@@ -56,13 +62,13 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		contentPaneKP1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneKP1);
 		
-		JButton btnZurückKP1 = new JButton("Zum Hauptmen\u00FC");
+		btnZurückKP1 = new JButton("Zum Hauptmen\u00FC");
 		
-		JButton btnHinzufügenKP1 = new JButton("Hinzuf\u00FCgen");
+		btnHinzufügenKP1 = new JButton("Hinzuf\u00FCgen");
 		
-		JButton btnBearbeitenKP1 = new JButton("Bearbeiten");
+		btnBearbeitenKP1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenKP1 = new JButton("L\u00F6schen");
+		btnLöschenKP1 = new JButton("L\u00F6schen");
 		
 		JScrollPane scrollPaneKP1 = new JScrollPane();
 		GroupLayout gl_contentPaneKP1 = new GroupLayout(contentPaneKP1);
@@ -70,7 +76,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 			gl_contentPaneKP1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addGap(45)
-					.addComponent(btnHinzufügenKP1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btnBearbeitenKP1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
 					.addGap(18)
@@ -117,7 +123,35 @@ public class Kontaktpunkt_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
+		btnZurückKP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				GUI hauptmenü = new GUI();
+				hauptmenü.setVisible(true);
+			}
+		});
+		btnHinzufügenKP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kontaktpunkt_Level3 kontakt3 = new Kontaktpunkt_Level3();
+				kontakt3.setVisible(true);
+			}
+		});
+		btnBearbeitenKP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kontaktpunkt_Level2 kontakt2 = new Kontaktpunkt_Level2();
+				kontakt2.setVisible(true);
+			}
+		});
+		btnLöschenKP1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kontaktpunkt_Level2 kontakt2 = new Kontaktpunkt_Level2();
+				kontakt2.setVisible(true);
+			}
+		});
+		
 		
 	}
 

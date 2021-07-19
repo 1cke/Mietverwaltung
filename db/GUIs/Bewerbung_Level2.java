@@ -16,6 +16,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Bewerbung_Level2 extends JFrame {
 
@@ -23,6 +25,9 @@ public class Bewerbung_Level2 extends JFrame {
 	private JTextField txtFKundenIDB2;
 	private JTextField txtFWohnungsIDB2;
 	private JTextField txtFDatumB2;
+	private JButton btnZurückB2;
+	private JButton btnSaveB2;
+	private JButton btnLöschenB2;
 
 	/**
 	 * Launch the application.
@@ -61,7 +66,7 @@ public class Bewerbung_Level2 extends JFrame {
 		contentPaneB2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneB2);
 		
-		JButton btnZurückB2 = new JButton("Zum Bewerbungs-Men\u00FC");
+		btnZurückB2 = new JButton("Zum Bewerbungs-Men\u00FC");
 		
 		JLabel lblAuswahlB2 = new JLabel("Ausgew\u00E4hlte Bewerbung:");
 		
@@ -85,9 +90,9 @@ public class Bewerbung_Level2 extends JFrame {
 		txtFDatumB2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFDatumB2.setColumns(10);
 		
-		JButton btnSaveB2 = new JButton("\u00C4nderungen speichern");
+		btnSaveB2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenB2 = new JButton("Bewerbung l\u00F6schen");
+		btnLöschenB2 = new JButton("Bewerbung l\u00F6schen");
 		
 		JCheckBox czbStatusB2 = new JCheckBox("abgeschlossen");
 		czbStatusB2.setSelected(true);
@@ -169,7 +174,12 @@ public class Bewerbung_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
-		
+		btnZurückB2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Bewerbung_Level1 bewerbung1 = new Bewerbung_Level1();
+				bewerbung1.setVisible(true);
+			}
+		});
 	}
 }
