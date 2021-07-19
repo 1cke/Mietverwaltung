@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Bewerbung_Level2 extends JFrame {
-
+//tets
 	private JPanel contentPaneB2;
 	private JTextField txtFKundenIDB2;
 	private JTextField txtFWohnungsIDB2;
