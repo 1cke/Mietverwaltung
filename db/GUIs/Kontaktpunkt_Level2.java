@@ -62,7 +62,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 302);
+		setBounds(100, 100, 472, 311);
 		contentPaneKP2 = new JPanel();
 		contentPaneKP2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneKP2);
@@ -109,8 +109,8 @@ public class Kontaktpunkt_Level2 extends JFrame {
 							.addContainerGap()
 							.addComponent(lblAuswahlKP2)
 							.addGap(18)
-							.addComponent(txtArAuswahlKP2, GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-							.addGap(26))
+							.addComponent(txtArAuswahlKP2, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+							.addGap(63))
 						.addComponent(separatorKP2, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
 					.addGap(7))
 				.addGroup(gl_contentPaneKP2.createSequentialGroup()
@@ -121,18 +121,18 @@ public class Kontaktpunkt_Level2 extends JFrame {
 						.addComponent(lblGrundKP2)
 						.addComponent(lblDatumKP2))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPaneKP2.createSequentialGroup()
+					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPaneKP2.createSequentialGroup()
 							.addComponent(txtFDatumKP2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
 							.addGap(260))
-						.addGroup(Alignment.TRAILING, gl_contentPaneKP2.createSequentialGroup()
+						.addGroup(gl_contentPaneKP2.createSequentialGroup()
 							.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
 								.addComponent(txtFGrundKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
 								.addComponent(txtFVertragsIDKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
 							.addGap(95))
-						.addGroup(gl_contentPaneKP2.createSequentialGroup()
-							.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-							.addGap(40))))
+						.addGroup(Alignment.LEADING, gl_contentPaneKP2.createSequentialGroup()
+							.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+							.addGap(78))))
 				.addGroup(gl_contentPaneKP2.createSequentialGroup()
 					.addGap(70)
 					.addComponent(btnSaveKP2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

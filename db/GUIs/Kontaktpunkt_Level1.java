@@ -76,19 +76,19 @@ public class Kontaktpunkt_Level1 extends JFrame {
 			gl_contentPaneKP1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addGap(45)
-					.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+					.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnBearbeitenKP1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
+					.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(btnLöschenKP1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
-					.addGap(66))
+					.addGap(58))
 				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnZurückKP1)
-					.addContainerGap(309, Short.MAX_VALUE))
+					.addContainerGap(305, Short.MAX_VALUE))
 				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPaneKP1, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+					.addComponent(scrollPaneKP1, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_contentPaneKP1.setVerticalGroup(
@@ -99,9 +99,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 					.addComponent(scrollPaneKP1, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(btnLöschenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
 		JList lstKontaktpunkteKP1 = new JList();
