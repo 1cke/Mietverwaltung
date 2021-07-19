@@ -19,6 +19,9 @@ public class Bewerbung_Level1 extends JFrame {
 
 	private JPanel contentPaneB1;
 	private JButton btnZurückB1;
+	private JButton btnHinzufügenB1;
+	private JButton btnBearbeitenB1;
+	private JButton btnLöschenB1;
 
 	/**
 	 * Launch the application.
@@ -61,11 +64,12 @@ public class Bewerbung_Level1 extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btnHinzufügenB1 = new JButton("Hinzuf\u00FCgen");
+		btnHinzufügenB1 = new JButton("Hinzuf\u00FCgen");
 		
-		JButton btnBearbeitenB1 = new JButton("Bearbeiten");
+		btnBearbeitenB1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenB1 = new JButton("L\u00F6schen");
+		btnLöschenB1 = new JButton("L\u00F6schen");
+		
 		GroupLayout gl_contentPaneB1 = new GroupLayout(contentPaneB1);
 		gl_contentPaneB1.setHorizontalGroup(
 			gl_contentPaneB1.createParallelGroup(Alignment.LEADING)
@@ -112,6 +116,30 @@ public class Bewerbung_Level1 extends JFrame {
 	private void createEvents() {
 		btnZurückB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				GUI hauptmenü = new GUI();
+				hauptmenü.setVisible(true);
+			}
+		});
+		btnHinzufügenB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Bewerbung_Level3 bewerbung3 = new Bewerbung_Level3();
+				bewerbung3.setVisible(true);
+			}
+		});
+		btnBearbeitenB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Bewerbung_Level2 bewerbung2 = new Bewerbung_Level2();
+				bewerbung2.setVisible(true);
+			}
+		});
+		btnLöschenB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Bewerbung_Level2 bewerbung2 = new Bewerbung_Level2();
+				bewerbung2.setVisible(true);
 			}
 		});
 	}

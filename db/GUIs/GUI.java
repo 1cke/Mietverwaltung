@@ -28,7 +28,6 @@ import java.awt.event.ActionListener;
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
-	private final Action action = new SwingAction();
 	private JButton btnWohnungHM;
 	private JButton btnBewerbungHM;
 	private JButton btnVertragHM;
@@ -124,30 +123,35 @@ public class GUI extends JFrame {
 	private void createEvents() {
 		btnWohnungHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dispose();
 				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
 				wohnung1.setVisible(true);
 			}
 		});
 		btnKundeHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Kunde_Level1 kunde1 = new Kunde_Level1();
 				kunde1.setVisible(true);
 			}
 		});
 		btnBewerbungHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Bewerbung_Level1 bewerbung1 = new Bewerbung_Level1();
 				bewerbung1.setVisible(true);
 			}
 		});
 		btnVertragHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Vertrag_Level1 vertrag1 = new Vertrag_Level1();
 				vertrag1.setVisible(true);
 			}
 		});
 		btnKontaktpunktHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				Kontaktpunkt_Level1 kontaktpunkt1 = new Kontaktpunkt_Level1();
 				kontaktpunkt1.setVisible(true);
 			}

@@ -16,6 +16,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Kunde_Level2 extends JFrame {
 
@@ -25,6 +27,9 @@ public class Kunde_Level2 extends JFrame {
 	private JTextField txtFGeburtstagK2;
 	private JTextField txtFTelefonK2;
 	private JTextField txtFEmailK2;
+	private JButton btnZurückK2;
+	private JButton btnSaveK2;
+	private JButton btnLöschenK2;
 
 	/**
 	 * Launch the application.
@@ -63,7 +68,7 @@ public class Kunde_Level2 extends JFrame {
 		contentPaneK2.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneK2);
 		
-		JButton btnZurückK2 = new JButton("Zum Kunden-Men\u00FC");
+		btnZurückK2 = new JButton("Zum Kunden-Men\u00FC");
 		
 		JLabel lblAuswahlK2 = new JLabel("Ausgew\u00E4hlter Kunde:");
 		
@@ -99,15 +104,15 @@ public class Kunde_Level2 extends JFrame {
 		
 		JCheckBox czbInteressentK2 = new JCheckBox("Interessent");
 		
-		JButton btnSaveK2 = new JButton("\u00C4nderungen speichern");
+		btnSaveK2 = new JButton("\u00C4nderungen speichern");
 		
-		JButton btnLöschenK2 = new JButton("Kunden l\u00F6schen");
+		btnLöschenK2 = new JButton("Kunden l\u00F6schen");
 		
 		JCheckBox czbAktivK2 = new JCheckBox("aktiver Kunde");
 		czbAktivK2.setSelected(true);
 		GroupLayout gl_contentPaneK2 = new GroupLayout(contentPaneK2);
 		gl_contentPaneK2.setHorizontalGroup(
-			gl_contentPaneK2.createParallelGroup(Alignment.TRAILING)
+			gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneK2.createSequentialGroup()
 					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnZurückK2)
@@ -115,28 +120,31 @@ public class Kunde_Level2 extends JFrame {
 							.addContainerGap()
 							.addComponent(lblAuswahlK2)
 							.addGap(18)
-							.addComponent(txtArAuswahlK2, GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
+							.addComponent(txtArAuswahlK2, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED))
 						.addComponent(separatorK2, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
 					.addGap(7))
-				.addGroup(Alignment.LEADING, gl_contentPaneK2.createSequentialGroup()
+				.addGroup(gl_contentPaneK2.createSequentialGroup()
 					.addGap(59)
-					.addComponent(btnSaveK2, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+					.addComponent(btnSaveK2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenK2, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+					.addComponent(btnLöschenK2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(110))
-				.addGroup(Alignment.LEADING, gl_contentPaneK2.createSequentialGroup()
-					.addContainerGap()
+				.addGroup(gl_contentPaneK2.createSequentialGroup()
+					.addGap(3)
 					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblGeburtstagK2)
 						.addComponent(lblNachnameK2)
 						.addComponent(lblVornameK2)
-						.addComponent(lblTelefonK2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblEmailK2))
+						.addComponent(lblEmailK2)
+						.addGroup(gl_contentPaneK2.createSequentialGroup()
+							.addGap(23)
+							.addComponent(lblTelefonK2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPaneK2.createSequentialGroup()
-							.addComponent(czbAktivK2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
+							.addComponent(czbAktivK2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(263))
 						.addGroup(gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_contentPaneK2.createSequentialGroup()
 								.addComponent(czbInteressentK2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
@@ -202,7 +210,13 @@ public class Kunde_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
+		btnZurückK2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kunde_Level1 kunde1 = new Kunde_Level1();
+				kunde1.setVisible(true);
+			}
+		});
 		
 	}
 }

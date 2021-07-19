@@ -17,10 +17,16 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Kunde_Level1 extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnHinzufügenK1;
+	private JButton btnBearbeitenK1;
+	private JButton btnLöschenK1;
+	private JButton btnZurückK1;
 
 	/**
 	 * Launch the application.
@@ -60,15 +66,16 @@ public class Kunde_Level1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnHinzufügenK1 = new JButton("Hinzuf\u00FCgen");
+		btnHinzufügenK1 = new JButton("Hinzuf\u00FCgen");
 		
-		JButton btnBearbeitenK1 = new JButton("Bearbeiten");
+		btnBearbeitenK1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenK1 = new JButton("L\u00F6schen");
+		btnLöschenK1 = new JButton("L\u00F6schen");
 		
 		JScrollPane scrKundenlisteK1 = new JScrollPane();
 		
-		JButton btnZurückK1 = new JButton("Zum Hauptmen\u00FC");
+		btnZurückK1 = new JButton("Zum Hauptmen\u00FC");
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -120,7 +127,34 @@ public class Kunde_Level1 extends JFrame {
 	// Enth�lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	private void createEvents() {
-		// TODO Auto-generated method stub
+		btnZurückK1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				GUI hauptmenü = new GUI();
+				hauptmenü.setVisible(true);
+			}
+		});
+		btnHinzufügenK1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kunde_Level3 kunde3 = new Kunde_Level3();
+				kunde3.setVisible(true);
+			}
+		});
+		btnBearbeitenK1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kunde_Level2 kunde2 = new Kunde_Level2();
+				kunde2.setVisible(true);
+			}
+		});
+		btnLöschenK1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Kunde_Level2 kunde2 = new Kunde_Level2();
+				kunde2.setVisible(true);
+			}
+		});
 		
 	}
 }
