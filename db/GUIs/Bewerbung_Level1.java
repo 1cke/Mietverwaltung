@@ -12,10 +12,13 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Bewerbung_Level1 extends JFrame {
 
 	private JPanel contentPaneB1;
+	private JButton btnZurückB1;
 
 	/**
 	 * Launch the application.
@@ -54,7 +57,7 @@ public class Bewerbung_Level1 extends JFrame {
 		contentPaneB1.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneB1);
 		
-		JButton btnZurückB1 = new JButton("Zum Hauptmen\u00FC");
+		btnZurückB1 = new JButton("Zum Hauptmen\u00FC");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -107,7 +110,10 @@ public class Bewerbung_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		
+		btnZurückB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 	}
 
 }

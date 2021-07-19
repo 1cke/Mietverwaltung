@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 
-public class Kontakpunkt_Level1 extends JFrame {
+public class Kontaktpunkt_Level1 extends JFrame {
 
 	private JPanel contentPaneKP1;
 
@@ -25,7 +25,7 @@ public class Kontakpunkt_Level1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Kontakpunkt_Level1 frame = new Kontakpunkt_Level1();
+					Kontaktpunkt_Level1 frame = new Kontaktpunkt_Level1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class Kontakpunkt_Level1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Kontakpunkt_Level1() {
+	public Kontaktpunkt_Level1() {
 		initComponents();
 		createEvents();
 		

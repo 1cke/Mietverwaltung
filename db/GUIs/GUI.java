@@ -33,6 +33,7 @@ public class GUI extends JFrame {
 	private JButton btnBewerbungHM;
 	private JButton btnVertragHM;
 	private JButton btnKontaktpunktHM;
+	private JButton btnKundeHM;
 
 	/**
 	 * Launch the application.
@@ -54,60 +55,31 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
+		initComponents();
+		createEvents();	
+	}
+	
+	////////////////////////////////////////////////////////////////////
+	// Enthï¿½lt den Code zum Erzeugen und
+	// Initialisieren von Komponenten
+	////////////////////////////////////////////////////////////////////
+	
+	private void initComponents() {
 		setTitle("Hauptmen\u00FC");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
 		btnWohnungHM = new JButton("Wohnung");
-		
 		
 		btnBewerbungHM = new JButton("Bewerbung");
 		
-		
 		btnVertragHM = new JButton("Vertrag");
-	
-		
 		
 		btnKontaktpunktHM = new JButton("Kontaktpunkt");
-	
 		
-		JButton btnKundeHM = new JButton("Kunde");
-		btnKundeHM.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//dann öffnet sich die Kundenseite auf dem 1. Level
-			}
-		});
-		
-		btnWohnungHM.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//dann öffnet sich die Wohnungsseite auf dem 1. Level
-			}
-		});
-		
-		btnBewerbungHM.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				//dann öffnet sich die Bewerbungseite auf dem 1. Level
-			}
-		});
-		
-		btnVertragHM.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//dann öffnet sich die Vertragseite auf dem 1. Level
-			}
-		});
-		
-		btnKontaktpunktHM.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//dann öffnet sich die Kontaktseite auf dem 1. Level
-			}
-		});
+		btnKundeHM = new JButton("Kunde");
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -144,12 +116,45 @@ public class GUI extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
+
+	////////////////////////////////////////////////////////////////////
+	// Enthï¿½lt den Code zum Erzeugen von Events
+	////////////////////////////////////////////////////////////////////
+	
+	private void createEvents() {
+		btnWohnungHM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
+				wohnung1.setVisible(true);
+			}
+		});
+		btnKundeHM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kunde_Level1 kunde1 = new Kunde_Level1();
+				kunde1.setVisible(true);
+			}
+		});
+		btnBewerbungHM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Bewerbung_Level1 bewerbung1 = new Bewerbung_Level1();
+				bewerbung1.setVisible(true);
+			}
+		});
+		btnVertragHM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Vertrag_Level1 vertrag1 = new Vertrag_Level1();
+				vertrag1.setVisible(true);
+			}
+		});
+		btnKontaktpunktHM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Kontaktpunkt_Level1 kontaktpunkt1 = new Kontaktpunkt_Level1();
+				kontaktpunkt1.setVisible(true);
+			}
+		});
+	
+		
 	}
+	
+	
 }
