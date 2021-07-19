@@ -12,10 +12,16 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Wohnung_Level1 extends JFrame {
 
 	private JPanel contentPane;
+	private JButton btnZurückW1;
+	private JButton btnHinzufügenW1;
+	private JButton btnBearbeitenW1;
+	private JButton btnLöschenW1;
 
 	/**
 	 * Launch the application.
@@ -49,23 +55,23 @@ public class Wohnung_Level1 extends JFrame {
 	
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 474, 305);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnHinzufügenW1 = new JButton("Hinzuf\u00FCgen");
+		btnHinzufügenW1 = new JButton("Hinzuf\u00FCgen");
 		
-		JButton btnBearbeitenW1 = new JButton("Bearbeiten");
+		btnBearbeitenW1 = new JButton("Bearbeiten");
 		
-		JButton btnLöschenW1 = new JButton("L\u00F6schen");
+		btnLöschenW1 = new JButton("L\u00F6schen");
 		
-		JButton btnZurückW1 = new JButton("Zum Hauptmen\u00FC");
+		btnZurückW1 = new JButton("Zum Hauptmen\u00FC");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(70)
 					.addComponent(btnHinzufügenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -74,26 +80,26 @@ public class Wohnung_Level1 extends JFrame {
 					.addGap(18)
 					.addComponent(btnLöschenW1, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
 					.addGap(77))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnZurückW1)
 					.addContainerGap(305, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-					.addGap(9))
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+					.addGap(20))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(btnZurückW1)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnHinzufügenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnBearbeitenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenW1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE, false)
+						.addComponent(btnHinzufügenW1)
+						.addComponent(btnBearbeitenW1)
+						.addComponent(btnLöschenW1)))
 		);
 		
 		JList lstWohnungen = new JList();
@@ -106,6 +112,36 @@ public class Wohnung_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+		btnZurückW1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				GUI hauptmenü = new GUI();
+				hauptmenü.setVisible(true);
+			}
+		});
+		btnHinzufügenW1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Wohnung_Level3 wohnung3 = new Wohnung_Level3();
+				wohnung3.setVisible(true);
+			}
+		});
+		btnBearbeitenW1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Wohnung_Level2 wohnung2 = new Wohnung_Level2();
+				wohnung2.setVisible(true);
+			}
+		});
+		btnLöschenW1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Wohnung_Level2 wohnung2 = new Wohnung_Level2();
+				wohnung2.setVisible(true);
+			}
+		});
+		
+		
 		
 	}
 

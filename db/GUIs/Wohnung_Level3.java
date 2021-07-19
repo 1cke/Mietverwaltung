@@ -2,6 +2,8 @@ package GUIs;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,6 +28,8 @@ public class Wohnung_Level3 extends JFrame {
 	private JTextField txtFBaederW3;
 	private JTextField txtFPLZW3;
 	private JTextField txtFHNW3;
+	private JButton btnZurückW3;
+	private JButton btnHinzufügenW3;
 
 	/**
 	 * Launch the application.
@@ -59,12 +63,12 @@ public class Wohnung_Level3 extends JFrame {
 	
 	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 284);
+		setBounds(100, 100, 474, 284);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnZurückW3 = new JButton("Zum Wohnungs-Men\u00FC");
+		btnZurückW3 = new JButton("Zum Wohnungs-Men\u00FC");
 		
 		JLabel lblStrasseW3 = new JLabel("Stra\u00DFe:");
 		
@@ -82,7 +86,7 @@ public class Wohnung_Level3 extends JFrame {
 		
 		JCheckBox czbEbkW3 = new JCheckBox("Einbauk\u00FCche");
 		
-		JLabel lblMieteW3 = new JLabel("Mietpreis:");
+		JLabel lblMieteW3 = new JLabel("Miete:");
 		
 		txtFMieteW3 = new JTextField();
 		txtFMieteW3.setColumns(10);
@@ -99,7 +103,7 @@ public class Wohnung_Level3 extends JFrame {
 		
 		JCheckBox czbStatusW3 = new JCheckBox("vermietet");
 		
-		JButton btnHinzufügenW3 = new JButton("Wohnung hinzuf\u00FCgen");
+		btnHinzufügenW3 = new JButton("Wohnung hinzuf\u00FCgen");
 		
 		txtFPLZW3 = new JTextField();
 		txtFPLZW3.setColumns(10);
@@ -146,8 +150,8 @@ public class Wohnung_Level3 extends JFrame {
 													.addComponent(lblBaederW3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 													.addPreferredGap(ComponentPlacement.RELATED)
 													.addComponent(txtFBaederW3))
-												.addComponent(czbEbkW3, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-												.addComponent(czbStatusW3, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))))
+												.addComponent(czbStatusW3, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+												.addComponent(czbEbkW3, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))))
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(txtFHNW3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -200,7 +204,12 @@ public class Wohnung_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-		// TODO Auto-generated method stub
-		
+		btnZurückW3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
+				wohnung1.setVisible(true);
+			}
+		});
 	}
 }
