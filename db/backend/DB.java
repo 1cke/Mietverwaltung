@@ -16,7 +16,6 @@ public class DB {
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbungs = new Bewerbung();
 		System.out.println("Test");
-		whg.display();
 		//kunde.get_all();
 		// adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
 		// adresse.set_address_value("20457", "Hamburg", "Platz der Deutschen Einheit",
@@ -54,7 +53,7 @@ public class DB {
 		System.out.println("Test ausgabe");
 		kunde.get_vorname();
 		//int kd_nr = kunde.get_id("Max", "Mustermann", "01.01.2001");
-		kunde.lade_kunden_daten(100);
+		kunde.lade_kunden_daten(2);
 		int kd_nr = kunde.getId();
 		String vorname = kunde.get_vorname();
 		String nachname = kunde.get_nachname();
@@ -63,5 +62,18 @@ public class DB {
 		String email = kunde.get_email();
 		System.out.println("Kundennummer: " + kd_nr + "\nName: " + vorname + " " + nachname + "\nGeboren am: "
 				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email+"\nInteressent: "+kunde.get_interessent()+" Aktiv: "+kunde.get_aktiv());
+		
+		
+		
+		
+		int i = 1;
+		int kd_id = bewerbungs.get_kunden_id(i);
+		int wh_id = bewerbungs.get_wohnungs_id(i);
+		String datum = bewerbungs.get_datum(i);
+		boolean status = bewerbungs.get_status(i);
+		
+		System.out.println("Kunden-ID: " + kd_id + "\nWohnungs-ID: " + wh_id + "\nDatum: " + datum + "\nStatus: " + status);
+		
+		
 	}
 }

@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Vertrag;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Vertrag_Level3 extends JFrame {
@@ -28,6 +32,8 @@ public class Vertrag_Level3 extends JFrame {
 	private JTextField txtFSchuldenV3;
 	private JButton btnZurückV3;
 	private JButton btnHinzufügenV2;
+	private Vertrag vertrag;
+	private JCheckBox czbAktivV3;
 
 	/**
 	 * Launch the application.
@@ -47,11 +53,13 @@ public class Vertrag_Level3 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Vertrag_Level3() {
-		setTitle("Vertrag hinzufügen");
+	public Vertrag_Level3() throws ClassNotFoundException, SQLException {
 		initComponents();
 		createEvents();
+		vertrag = new Vertrag();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -60,6 +68,7 @@ public class Vertrag_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Vertrag hinzufügen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 245);
 		contentPaneV3 = new JPanel();
@@ -91,7 +100,7 @@ public class Vertrag_Level3 extends JFrame {
 		
 		btnHinzufügenV2 = new JButton("Vertrag hinzufügen");
 		
-		JCheckBox czbAktivV3 = new JCheckBox("aktiver Vertrag");
+		czbAktivV3 = new JCheckBox("aktiver Vertrag");
 		czbAktivV3.setSelected(true);
 		GroupLayout gl_contentPaneV3 = new GroupLayout(contentPaneV3);
 		gl_contentPaneV3.setHorizontalGroup(
@@ -168,5 +177,19 @@ public class Vertrag_Level3 extends JFrame {
 				vertrag1.setVisible(true);
 			}
 		});
+		btnHinzufügenV2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					int selection = czbAktivV3.isSelected() ? 1 : 0;
+					vertrag.set_db_value(Integer.parseInt(txtFKundenIDV3.getText()),
+							Integer.parseInt(txtFWohnungsIDV3.getText()), Double.parseDouble(txtFSchuldenV3.getText()),
+							txtFZeitraumV3.getText(), selection);
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 	}
 }

@@ -6,10 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kontakt;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -17,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level3 extends JFrame {
@@ -28,6 +33,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	private JTextField txtFBeschreibungKP3;
 	private JButton btnZurückKP3;
 	private JButton btnHinzufügenKP3;
+	private Kontakt kontaktp;
 
 	/**
 	 * Launch the application.
@@ -47,11 +53,14 @@ public class Kontaktpunkt_Level3 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Kontaktpunkt_Level3() {
+	public Kontaktpunkt_Level3() throws ClassNotFoundException, SQLException {
 		setTitle("Kontaktpunkt hinzufügen");
 		initComponents();
 		createEvents();
+		kontaktp = new Kontakt(); 
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -90,6 +99,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 		txtFBeschreibungKP3.setColumns(10);
 		
 		btnHinzufügenKP3 = new JButton("Kontaktpunkt hinzufügen");
+		
 		GroupLayout gl_contentPaneKP3 = new GroupLayout(contentPaneKP3);
 		gl_contentPaneKP3.setHorizontalGroup(
 			gl_contentPaneKP3.createParallelGroup(Alignment.LEADING)
@@ -156,6 +166,19 @@ public class Kontaktpunkt_Level3 extends JFrame {
 				dispose();
 				Kontaktpunkt_Level1 kontakt1 = new Kontaktpunkt_Level1();
 				kontakt1.setVisible(true);
+			}
+		});
+		btnHinzufügenKP3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					kontaktp.set_kontakt_value(Integer.parseInt(txtFVertragsIDKP3.getText()), txtFDatumKP3.getText(),
+							txtFGrundKP3.getText(), txtFBeschreibungKP3.getText());
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				txtFBeschreibungKP3.setText("");
+				
 			}
 		});
 		

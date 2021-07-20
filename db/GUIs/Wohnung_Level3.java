@@ -222,18 +222,18 @@ public class Wohnung_Level3 extends JFrame {
 			}
 		});
 		//Work in progress
-		btnHinzufügenW3.addActionListener(new ActionListener() {
+		/* btnHinzufügenW3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectionEbk = czbEbkW3.isSelected() ? 1 : 0;
 				int selectionStatus = czbStatusW3.isSelected() ? 1 : 0;
-				try {
-					//wohnung.set_db_value(txtFVornameK3.getText(), txtFNachnameK3.getText(),
+				 try {
+					wohnung.set_db_value(txtFVornameK3.getText(), txtFNachnameK3.getText(),
 							txtFGeburtstagK3.getText(), txtFTelefonK3.getText(), txtFEmailK3.getText(), selection);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
+					TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
+				} 
 			}
-		});
+		}); */
 	}
 }
