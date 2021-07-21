@@ -82,9 +82,14 @@ public class Kontaktdaten {
 	}
 	@Override
 	public String toString() {
-		return "Kontaktdaten [id=" + id + ", vertragsnummer=" + vertragsnummer + ", wann=" + wann + ", grund=" + grund
-				+ ", beschreibung=" + beschreibung + ", behoben=" + behoben + "]";
+		return "" + id + "," + vertragsnummer + "," + wann + "," + grund
+				+ "," + beschreibung + "," + behoben;
 	}
+	/**
+	 * Die Methode die Kontaktdaten in einen String um
+	 * @param input vom Typ Kontaktdaten
+	 * @return String
+	 */
 	public String parseString(Kontaktdaten input) {
 		return ""+input;
 	}
