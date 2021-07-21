@@ -83,6 +83,11 @@ public class Vertragsdaten {
 		return "" + id + "," + kundennummer + "," + wohnungsnummer
 				+ "," + zeitraum + "," + schulden + "," + aktiv;
 	}
+	/**
+	 * Wandelt die Vertragsdaten in einen String um
+	 * @param input vom Typ Vertragsdaten
+	 * @return String
+	 */
 	public String parseString(Vertragsdaten input) {
 		return ""+input;
 	}
