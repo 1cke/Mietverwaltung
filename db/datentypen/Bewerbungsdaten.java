@@ -68,8 +68,10 @@ public class Bewerbungsdaten {
 	}
 	@Override
 	public String toString() {
-		return "Bewerbungsdaten [id=" + id + ", kundenummer=" + kundenummer + ", wohnungsnummer=" + wohnungsnummer
-				+ ", datum=" + datum + ", status=" + status + "]";
+		return "" + id + "," + kundenummer + "," + wohnungsnummer
+				+ "" + datum + "," + status;
 	}
-	
+	public String parseString(Bewerbungsdaten input) {
+		return ""+input;
+	}
 }
