@@ -8,12 +8,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import datentypen.Kontaktdaten;
 
 /**
  * @author Johann Muenchhagen
  *
  */
-public class Kontakt {
+public class Kontakt extends Kontaktdaten{
 	public Kontakt() throws ClassNotFoundException, SQLException{
 		initieren();
 	}
@@ -35,21 +38,60 @@ public class Kontakt {
 		System.out.println("Werte erfolgreich gespeichert");
 		connection.close();
 	}
-	private String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
-		String zwischenerg ="";
+	private void get_values(int kontakts_id) throws ClassNotFoundException, SQLException{
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
 		//System.out.println(anweisung);//Kontrollausgabe
-		ResultSet rs = statement.executeQuery(anweisung);
+		ResultSet rs = statement.executeQuery("SELECT vertrags_id, wann, grund,beschreibung,behoben FROM kontakt WHERE kontakts_id = '"+kontakts_id+"'");
 		while(rs.next()) {
-			zwischenerg = zwischenerg+rs.getString(1) + ",";
-			//System.out.println(zwischenerg);//Kontrollausgabe
+			this.setVertragsnummer(rs.getInt(1));
+			this.setWann(rs.getString(2));
+			this.setGrund(rs.getString(3));
+			this.setBeschreibung(rs.getString(4));
+			this.setBehoben(rs.getBoolean(5));
 		}
 		connection.close();
-		String[] values = zwischenerg.split(",");
-		return values;
+		this.setId(kontakts_id);
+	} 
+	private ArrayList<Kontaktdaten> get_values(int vertrags_id,String typ) throws ClassNotFoundException, SQLException{
+		ArrayList<Kontaktdaten> daten = new ArrayList<Kontaktdaten>();
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		//System.out.println(anweisung);//Kontrollausgabe
+		if(typ == "einer") {
+			ResultSet rs = statement.executeQuery("SELECT kontakts_id, wann, grund,beschreibung,behoben FROM kontakt WHERE vertrags_id = '"+vertrags_id+"'");
+			while(rs.next()) {
+				Kontaktdaten k = new Kontaktdaten();
+				k.setId(rs.getInt(1));
+				k.setVertragsnummer(vertrags_id);
+				k.setWann(rs.getString(2));
+				k.setGrund(rs.getString(3));
+				k.setBeschreibung(rs.getString(4));
+				k.setBehoben(rs.getBoolean(5));
+				daten.add(k);
+			}
+			connection.close();
+			return daten;
+		}else {
+			ResultSet rs = statement.executeQuery("SELECT * FROM kontakt");
+			while(rs.next()) {
+				Kontaktdaten k = new Kontaktdaten();
+				k.setId(rs.getInt(1));
+				k.setVertragsnummer(rs.getInt(2));
+				k.setWann(rs.getString(3));
+				k.setGrund(rs.getString(4));
+				k.setBeschreibung(rs.getString(5));
+				k.setBehoben(rs.getBoolean(6));
+				daten.add(k);
+			}
+			connection.close();
+			return daten;
+		}
+	
 	} 
 	private void change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
 		Connection connection = null;//setze Connection auf null
@@ -61,32 +103,20 @@ public class Kontakt {
 		System.out.println("Änderungen erfolgreich gespeichert");
 		connection.close();
 	}
-	private String[] get_contact_kontakts_id(int vertrags_id)throws ClassNotFoundException, SQLException{
-		return get_values("SELECT kontakts_id FROM kontakt WHERE vertrags_id = '"+vertrags_id+"'");
-	}
 	private int get_contact_vertrags_id(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT vertrags_id FROM kontakt WHERE kontakts_id = '"+kontakt_id+"'")[0]);
+		return this.getVertragsnummer();
 	}
 	private String get_contact_wann(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_values("SELECT wann FROM kontakt WHERE kontakts_id = '"+kontakt_id+"'")[0];
+		return this.getWann();
 	}
 	private String get_contact_grund(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_values("SELECT grund FROM kontakt WHERE kontakts_id = '"+kontakt_id+"'")[0];
+		return this.getGrund();
 	}
 	private String get_contact_beschreibung(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_values("SELECT beschreibung FROM kontakt WHERE kontakts_id = '"+kontakt_id+"'")[0];
+		return this.getBeschreibung();
 	}
 	private boolean get_contact_behoben(int kontakt_id)throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT behoben FROM kontakt WHERE kontakts_id = '"+kontakt_id+"'")[0];
-		boolean behoben;
-		int zaehlwert1 = Integer.parseInt(wert);
-		if (zaehlwert1 == 1){
-			behoben =  Boolean.valueOf("true");
-			return behoben;
-		}else {
-			behoben =  Boolean.valueOf("false");
-				return behoben;
-			}
+		return this.isBehoben();
 	}
 	private void change_contact_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE kontakt SET beschreibung = '"+beschreibung+"' WHERE kontakts_id = '"+kontakt_id+"'");
@@ -94,12 +124,8 @@ public class Kontakt {
 	private void change_contact_behoben(int kontakt_id,int behoben)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE kontakt SET behoben = '"+behoben+"' WHERE kontakts_id = '"+kontakt_id+"'");
 	}
-	private void get_display_contact() throws ClassNotFoundException, SQLException{
-		String[] werte = get_values("SELECT kontakts_id FROM kontakt");
-		for(int i = 0; i<werte.length;i++) {
-			int id = Integer.parseInt(werte[i]);
-			System.out.println(id+" "+get_contact_vertrags_id(id)+" "+get_contact_wann(id)+" "+get_contact_grund(id)+" "+get_contact_beschreibung(id) + " " +get_contact_behoben(id));
-		}
+	private ArrayList<Kontaktdaten> get_display_contact() throws ClassNotFoundException, SQLException{
+		return get_values(0,"");
 	}
 	/**
 	 * Diese Methode erstellt einen Kontakt.
@@ -115,23 +141,6 @@ public class Kontakt {
 	public void set_kontakt_value(int vertrags_id,String wann,String grund, String beschreibung)throws ClassNotFoundException, SQLException{
 		set_db_value_for_contact("INSERT INTO kontakt(vertrags_id,wann,grund,beschreibung) VALUES('"+vertrags_id+"','"+wann+"','"+grund+"','"+beschreibung+"')");
 		
-	}
-	/**
-	 * Diese Methode gibt alle Kontakt-IDs eines Vertrages zurück.
-	 * @param vertrags_nummer Die Vertragsnummer als Integer.
-	 * @return Ein Integerarray mit allen IDs.
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @see ClassNotFoundException
-	 * @see SQLException
-	 */
-	public int[] get_kontakt_id(int vertrags_nummer)throws ClassNotFoundException, SQLException{
-		String[] werte = get_contact_kontakts_id(vertrags_nummer);
-		int[] wert = new int[werte.length];
-		for(int i = 0; i < werte.length;i++) {
-			wert[i] = Integer.parseInt(werte[i]);
-		}
-		return wert;
 	}
 	/**
 	 * Diese Methode gibt die Vertrags-ID zurück.
@@ -226,5 +235,26 @@ public class Kontakt {
 	 */
 	public void display_kontakt()throws ClassNotFoundException, SQLException{
 		get_display_contact();
+	}
+	/**
+	 * Lädt einen spezifischen Kontakt
+	 * @param vertrags_id Die Vertrags-ID als Integer
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public void lade_daten(int vertrags_id)throws ClassNotFoundException, SQLException{
+		get_values(vertrags_id);
+	}
+	/**
+	 * Lädt alle Kontakte zu einem spezifischen Vertrag
+	 * @param vertrags_id als Integer
+	 * @return eine ArrayList<Kontaktdaten>
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public ArrayList<Kontaktdaten>get_all_fuer_einen_vertrag(int vertrags_id)throws ClassNotFoundException, SQLException{
+		return get_values(vertrags_id,"einer");
 	}
 }
