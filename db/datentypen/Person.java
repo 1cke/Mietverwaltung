@@ -126,6 +126,11 @@ public class Person {
 				+ "," + telefon + "," + email + "," + interessent + "," + aktiv
 				;
 	}
+	/**
+	 * Wandelt die Person in einen String um
+	 * @param input vom Typ Person
+	 * @return String
+	 */
 	public String parseString(Person input) {
 		return ""+input;
 	}
