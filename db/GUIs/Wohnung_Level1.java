@@ -13,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Wohnung_Level1 extends JFrame {
@@ -122,8 +123,15 @@ public class Wohnung_Level1 extends JFrame {
 		btnHinzufügenW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Wohnung_Level3 wohnung3 = new Wohnung_Level3();
-				wohnung3.setVisible(true);
+				Wohnung_Level3 wohnung3;
+				try {
+					wohnung3 = new Wohnung_Level3();
+					wohnung3.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnBearbeitenW1.addActionListener(new ActionListener() {

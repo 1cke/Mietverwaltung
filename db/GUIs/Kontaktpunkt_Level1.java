@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level1 extends JFrame {
@@ -133,8 +134,16 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		btnHinzufügenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kontaktpunkt_Level3 kontakt3 = new Kontaktpunkt_Level3();
-				kontakt3.setVisible(true);
+				Kontaktpunkt_Level3 kontakt3;
+				
+				try {
+					kontakt3 = new Kontaktpunkt_Level3();
+					kontakt3.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnBearbeitenKP1.addActionListener(new ActionListener() {

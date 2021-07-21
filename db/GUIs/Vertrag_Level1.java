@@ -13,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Vertrag_Level1 extends JFrame {
@@ -123,8 +124,15 @@ public class Vertrag_Level1 extends JFrame {
 		btnHinzufügenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Vertrag_Level3 vertrag3 = new Vertrag_Level3();
-				vertrag3.setVisible(true);
+				Vertrag_Level3 vertrag3;
+				try {
+					vertrag3 = new Vertrag_Level3();
+					vertrag3.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnBearbeitenV1.addActionListener(new ActionListener() {
