@@ -6,11 +6,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import datentypen.Bewerbungsdaten;
 /**
  * @author Johann Muenchhagen
  *
  */
-public class Bewerbung {
+public class Bewerbung extends Bewerbungsdaten{
 	public Bewerbung() throws ClassNotFoundException, SQLException{
 		initieren();
 	}
@@ -28,26 +31,60 @@ public class Bewerbung {
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
 		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("INSERT INTO berwerbung(kunden_id,wohnungs_id,datum,status) VALUES ('"+kunden_id+"','"+wohnungs_id+"','"+datum+"',1");
+		statement.executeUpdate("INSERT INTO bewerbung(kunden_id,wohnungs_id,datum,status) VALUES ('"+kunden_id+"','"+wohnungs_id+"','"+datum+"',True)");
 		System.out.println("Werte erfolgreich gespeichert");
 		connection.close();
 	}
-	private String[] get_values(String anweisung) throws ClassNotFoundException, SQLException{
-		String zwischenerg ="";
+	private void get_values(int id) throws ClassNotFoundException, SQLException{
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
 		statement.setQueryTimeout(30);
 		//System.out.println(anweisung);//Kontrollausgabe
-		ResultSet rs = statement.executeQuery(anweisung);
+		ResultSet rs = statement.executeQuery("SELECT kunden_id,wohnungs_id,datum,status FROM bewerbung WHERE bewerbungs_id = '"+id+"'");
 		while(rs.next()) {
-			zwischenerg = zwischenerg+rs.getString(1) + ",";
-			//System.out.println(zwischenerg);//Kontrollausgabe
+			this.setKundenummer(rs.getInt(1));
+			this.setWohnungsnummer(rs.getInt(2));
+			this.setDatum(rs.getString(3));
+			this.setStatus(rs.getBoolean(4));
 		}
 		connection.close();
-		String[] values = zwischenerg.split(",");
-		return values;
-	} 
+		this.setId(id);
+	}
+	private ArrayList<Bewerbungsdaten> get_values(int wohnungs_id,String typ)throws ClassNotFoundException, SQLException{
+		ArrayList<Bewerbungsdaten> daten = new ArrayList<Bewerbungsdaten>();
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+		Statement statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+		if(typ == "eine") {
+			ResultSet rs = statement.executeQuery("SELECT bewerbungs_id,kunden_id,datum,status FROM bewerbung WHERE wohnungs_id = '"+wohnungs_id+"'");
+			while(rs.next()) {
+				Bewerbungsdaten b = new Bewerbungsdaten();
+				b.setId(rs.getInt(1));
+				b.setKundenummer(rs.getInt(2));
+				b.setWohnungsnummer(wohnungs_id);
+				b.setDatum(rs.getString(3));
+				b.setStatus(rs.getBoolean(4));
+				daten.add(b);
+				
+				}
+			return daten;
+			}
+		else {
+			ResultSet rs = statement.executeQuery("SELECT * FROM bewerbung");
+			while(rs.next()) {
+				Bewerbungsdaten b = new Bewerbungsdaten();
+				b.setId(rs.getInt(1));
+				b.setKundenummer(rs.getInt(2));
+				b.setWohnungsnummer(rs.getInt(3));
+				b.setDatum(rs.getString(4));
+				b.setStatus(rs.getBoolean(5));
+				daten.add(b);
+			}
+			return daten;
+		}
+	}
 	private void change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
 		Connection connection = null;//setze Connection auf null
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
@@ -58,29 +95,20 @@ public class Bewerbung {
 		System.out.println("Änderungen erfolgreich gespeichert");
 		connection.close();
 	}
-	private int get_apply_bewerbungs_id(int wohnungs_id, int bewerber_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT bewerbungs_id FROM bewerbung WHERE wohnungs_id = '"+wohnungs_id+"' AND kunden_id = '"+bewerber_id+"'")[0]);
+	private int get_apply_bewerbungs_id()throws ClassNotFoundException, SQLException{
+		return this.getId();
 	}
-	private int get_apply_bewerber_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT kunden_id FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'")[0]);
+	private int get_apply_bewerber_id()throws ClassNotFoundException, SQLException{
+		return this.getKundenummer();
 	}
-	private int get_apply_wohnungs_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT wohnungs_id FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'")[0]);
+	private int get_apply_wohnungs_id()throws ClassNotFoundException, SQLException{
+		return this.getWohnungsnummer();
 	}
-	private String get_apply_datum(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return get_values("SELECT datum FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'")[0];
+	private String get_apply_datum()throws ClassNotFoundException, SQLException{
+		return this.getDatum();
 	}
-	private boolean get_apply_status(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		String wert = get_values("SELECT status FROM kontakt WHERE kontakts_id = '"+bewerbungs_id+"'")[0];
-		boolean behoben;
-		int zaehlwert1 = Integer.parseInt(wert);
-		if (zaehlwert1 == 1){
-			behoben =  Boolean.valueOf("true");
-			return behoben;
-		}else {
-			behoben =  Boolean.valueOf("false");
-				return behoben;
-			}
+	private boolean get_apply_status()throws ClassNotFoundException, SQLException{
+		return this.isStatus();
 	}
 	private void change_apply_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE bewerbung SET kunden_id = '"+bewerber_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
@@ -120,8 +148,20 @@ public class Bewerbung {
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int get_bewerbungs_id(int wohnungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
-		return get_apply_bewerbungs_id(wohnungs_id,bewerber_id);
+	public int get_bewerbungs_id()throws ClassNotFoundException, SQLException{
+		return get_apply_bewerbungs_id();
+	}
+	/**
+	 * Diese Methode lädt eine spezifische Bewerbung.
+	 * <p> Immer zu erst ausführen</p>
+	 * @param id Die Bewerbungsnummer als Integer.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public void lade_daten(int id) throws ClassNotFoundException, SQLException{
+		get_values(id);
 	}
 	/**
 	 * Diese Methode gibt die Kunden-ID zurück.
@@ -132,8 +172,8 @@ public class Bewerbung {
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int get_kunden_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return get_apply_bewerber_id(bewerbungs_id);
+	public int get_kunden_id()throws ClassNotFoundException, SQLException{
+		return get_apply_bewerber_id();
 	}
 	/**
 	 * Diese Methode gibt die Wohnungs-ID zurück.
@@ -144,8 +184,8 @@ public class Bewerbung {
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int get_wohnungs_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return get_apply_wohnungs_id(bewerbungs_id);
+	public int get_wohnungs_id()throws ClassNotFoundException, SQLException{
+		return get_apply_wohnungs_id();
 	}
 	/**
 	 * Diese Methode gibt das Datum der Bewerbung zurück.
@@ -156,8 +196,8 @@ public class Bewerbung {
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_datum(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return get_apply_datum(bewerbungs_id);
+	public String get_datum()throws ClassNotFoundException, SQLException{
+		return get_apply_datum();
 	}
 	/**
 	 * Diese Methode gibt den Status der Bewerbung zurück.
@@ -168,8 +208,8 @@ public class Bewerbung {
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public boolean get_status(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return get_apply_status(bewerbungs_id);
+	public boolean get_status()throws ClassNotFoundException, SQLException{
+		return get_apply_status();
 	}
 	/**
 	 * Diese Methode ändert die Bewerber-ID.
@@ -229,5 +269,11 @@ public class Bewerbung {
 	 */
 	public void delete_bewerbung(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		delete_value(bewerbungs_id);
+	}
+	public ArrayList<Bewerbungsdaten> get_alle_bewerbung_fuer_eine_whg(int wohnungs_id)throws ClassNotFoundException, SQLException{
+		return get_values(wohnungs_id,"eine");
+	}
+	public ArrayList<Bewerbungsdaten> get_all()throws ClassNotFoundException, SQLException{
+		return get_values(0,"");
 	}
 }
