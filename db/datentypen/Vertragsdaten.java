@@ -80,7 +80,10 @@ public class Vertragsdaten {
 	}
 	@Override
 	public String toString() {
-		return "Vertragsdaten [id=" + id + ", kundennummer=" + kundennummer + ", wohnungsnummer=" + wohnungsnummer
-				+ ", zeitraum=" + zeitraum + ", schulden=" + schulden + ", aktiv=" + aktiv + "]";
+		return "" + id + "," + kundennummer + "," + wohnungsnummer
+				+ "," + zeitraum + "," + schulden + "," + aktiv;
+	}
+	public String parseString(Vertragsdaten input) {
+		return ""+input;
 	}
 }
