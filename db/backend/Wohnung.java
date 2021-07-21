@@ -22,15 +22,20 @@ public class Wohnung extends Wohnungsdaten{
 		statement.executeUpdate("CREATE TABLE IF NOT EXISTS wohnung(wohnungs_id INTEGER PRIMARY KEY, adress_id INTEGER NOT NULL, miete DOUBLE,zimmer DOUBLE NOT NULL,baeder DOUBLE NOT NULL,ebk BOOLEAN,vermietet BOOLEAN)");
 		connection.close();
 	}
-	private void set_db_value(int adress_id,double miete,double zimmer,double baeder, int ebk,int vermietet)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("INSERT INTO wohnung (adress_id,miete, zimmer,baeder,ebk,vermietet) VALUES ('"+adress_id+"','"+miete+"','"+zimmer+"','"+baeder+"','"+ebk+"','"+vermietet+"')");
-		System.out.println("Werte erfolgreich gespeichert");
-		connection.close();
+	private boolean set_db_value(int adress_id,double miete,double zimmer,double baeder, int ebk,int vermietet)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate("INSERT INTO wohnung (adress_id,miete, zimmer,baeder,ebk,vermietet) VALUES ('"+adress_id+"','"+miete+"','"+zimmer+"','"+baeder+"','"+ebk+"','"+vermietet+"')");
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+			}
+		
 	}
 	private ArrayList<Wohnungsdaten> get_values(int wohnungsnummer,String Typ) throws ClassNotFoundException, SQLException{
 		Connection connection = null;
@@ -69,15 +74,20 @@ public class Wohnung extends Wohnungsdaten{
 		}
 		
 	}
-	private void change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate(anweisung);
-		System.out.println("Änderungen erfolgreich gespeichert");
-		connection.close();
+	private boolean change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate(anweisung);
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+
 	}
 	
 	private int get_whg_adress_id()throws ClassNotFoundException, SQLException{
@@ -113,8 +123,11 @@ public class Wohnung extends Wohnungsdaten{
 	private void change_whg_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE wohnung SET vermietet = '"+vermietet+"' WHERE wohungs_id = '"+whg_id+"'");
 	}
-	private void display_all_whg() throws ClassNotFoundException, SQLException{
-		System.out.println(get_values(0,"all"));
+	private ArrayList<Wohnungsdaten> display_all_whg() throws ClassNotFoundException, SQLException{
+		return get_values(0,"all");
+	}
+	private boolean delete_whg(int whg_id)throws ClassNotFoundException, SQLException{
+		return change_db_value("DELETE FROM wohnung WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	/**
 	 * Diese Methode lädt alle Wohnungsdaten bei bekannter Wohnungsnummer.
@@ -140,8 +153,8 @@ public class Wohnung extends Wohnungsdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void set_wohnungen(int adress_id,double miete,double zimmer,double baeder,int ebk,int vermietet)throws ClassNotFoundException, SQLException{
-		set_db_value(adress_id,miete,zimmer,baeder,ebk,vermietet);
+	public boolean set_wohnungen(int adress_id,double miete,double zimmer,double baeder,int ebk,int vermietet)throws ClassNotFoundException, SQLException{
+		return set_db_value(adress_id,miete,zimmer,baeder,ebk,vermietet);
 	}
 	/**
 	 * Diese Methode gibt die Adress-ID zurück.
@@ -280,7 +293,19 @@ public class Wohnung extends Wohnungsdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void display()throws ClassNotFoundException, SQLException{
-		display_all_whg();
+	public ArrayList<Wohnungsdaten> display()throws ClassNotFoundException, SQLException{
+		return display_all_whg();
+	}
+	/**
+	 * Löscht eine Wohnung
+	 * @param wohnungs_id als Integer
+	 * @return Boolean, ob geklappt oder nicht
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public boolean delete(int wohnungs_id)throws ClassNotFoundException, SQLException{
+		return delete_whg(wohnungs_id);
 	}
 }
