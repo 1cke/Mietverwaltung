@@ -5,6 +5,9 @@ package backend;
  * Dies ist ein Klasse um die anderen Klassen zu testen.
  */
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import datentypen.Bewerbungsdaten;
 
 public class DB {
 
@@ -14,7 +17,7 @@ public class DB {
 		Vertrag vertrag = new Vertrag();
 		Kunden kunde = new Kunden();
 		Kontakt kontakt = new Kontakt();
-		Bewerbung bewerbungs = new Bewerbung();
+		Bewerbung bewerbung = new Bewerbung();
 		System.out.println("Test");
 		//kunde.get_all();
 		// adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
@@ -50,6 +53,7 @@ public class DB {
 		// "2")), 20.0,"01.01.2011", 0);
 		// kontakt.set_kontakt_value(vertrag.get_vertrags_id(kunde.get_id("Franzl",
 		// "Wolf", "13.05.1968")), "27.09.2011", "Rohrbruch", " ");
+		//bewerbung.set_bewerbung(1, 2, "21.07.2021");
 		System.out.println("Test ausgabe");
 		kunde.get_vorname();
 		//int kd_nr = kunde.get_id("Max", "Mustermann", "01.01.2001");
@@ -62,18 +66,10 @@ public class DB {
 		String email = kunde.get_email();
 		System.out.println("Kundennummer: " + kd_nr + "\nName: " + vorname + " " + nachname + "\nGeboren am: "
 				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email+"\nInteressent: "+kunde.get_interessent()+" Aktiv: "+kunde.get_aktiv());
-		
-		
-		
-		
-		int i = 1;
-		int kd_id = bewerbungs.get_kunden_id(i);
-		int wh_id = bewerbungs.get_wohnungs_id(i);
-		String datum = bewerbungs.get_datum(i);
-		boolean status = bewerbungs.get_status(i);
-		
-		System.out.println("Kunden-ID: " + kd_id + "\nWohnungs-ID: " + wh_id + "\nDatum: " + datum + "\nStatus: " + status);
-		
-		
+		//Möglichkeit die ArrayList für eine spätere Verarbeitung in ein Array zu packen
+		ArrayList<Bewerbungsdaten>test = bewerbung.get_all();
+		String parse = bewerbung.parseString(test.get(1));
+		String[] nutzer = parse.split(",");
+		System.out.print(nutzer[3]);
 	}
 }
