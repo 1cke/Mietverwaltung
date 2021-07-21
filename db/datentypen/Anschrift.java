@@ -20,8 +20,8 @@ public class Anschrift {
 	}
 	@Override
 	public String toString() {
-		return "Anschrift [id=" + id + ", plz=" + plz + ", ort=" + ort + ", strasse=" + strasse + ", hausnummer="
-				+ hausnummer + "]";
+		return "" + id + "," + plz + "," + ort + ", " + strasse + ","
+				+ hausnummer;
 	}
 	/**
 	 * @return the plz
@@ -71,6 +71,11 @@ public class Anschrift {
 	public void setHausnummer(String hausnummer) {
 		this.hausnummer = hausnummer;
 	}
+	/**
+	 * Wandelt den Input in einen String um
+	 * @param input vom Typ Anschrift
+	 * @return String
+	 */
 	public String parseString(Anschrift input) {
 		return ""+input;
 	}
