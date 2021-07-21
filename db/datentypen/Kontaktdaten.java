@@ -85,4 +85,7 @@ public class Kontaktdaten {
 		return "Kontaktdaten [id=" + id + ", vertragsnummer=" + vertragsnummer + ", wann=" + wann + ", grund=" + grund
 				+ ", beschreibung=" + beschreibung + ", behoben=" + behoben + "]";
 	}
+	public String parseString(Kontaktdaten input) {
+		return ""+input;
+	}
 }
