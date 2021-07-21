@@ -177,6 +177,10 @@ public class Kunden extends Person{
 	private void get_kd_all() throws ClassNotFoundException, SQLException{
 		System.out.println(get_all_values("SELECT * FROM kunden"));
 	}
+	private boolean delete_kd(int kunden_id)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("DELETE FROM kunden WHERE kd_id = '"+kunden_id+"'");
+	}
+	
 	/**
 	 * Diese Methode lädt alle Kundendaten.
 	 * <p>Immer als erstes nutzen, wenn die Kundennummer bekannt ist</p>
@@ -406,5 +410,15 @@ public class Kunden extends Person{
 	 */
 	public void get_all() throws ClassNotFoundException, SQLException{
 		get_kd_all();
+	}
+	/**
+	 * Löscht einen Kunden
+	 * @param kunden_id als Integer
+	 * @return Boolean ob geklappt oder nicht
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public boolean delete(int kunden_id)throws ClassNotFoundException, SQLException{
+		return delete_kd(kunden_id);
 	}
 }
