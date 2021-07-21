@@ -122,9 +122,12 @@ public class Person {
 	}
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", vorname=" + vorname + ", nachname=" + nachname + ", geburtsdatum=" + geburtsdatum
-				+ ", telefon=" + telefon + ", email=" + email + ", interessent=" + interessent + ", aktiv=" + aktiv
-				+ "]";
+		return "" + id + "," + vorname + "," + nachname + "," + geburtsdatum
+				+ "," + telefon + "," + email + "," + interessent + "," + aktiv
+				;
+	}
+	public String parseString(Person input) {
+		return ""+input;
 	}
 	
 	
