@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Wohnung;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -16,6 +19,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Wohnung_Level2 extends JFrame {
@@ -31,6 +35,10 @@ public class Wohnung_Level2 extends JFrame {
 	private JButton btnZurückW2;
 	private JButton btnSaveW2;
 	private JButton btnLöschenW2;
+	private Wohnung wohnung;
+	private JTextArea txtArAuswahlW2;
+	private JCheckBox czbEbkW2;
+	private JCheckBox czbStatusW2;
 
 	/**
 	 * Launch the application.
@@ -50,11 +58,14 @@ public class Wohnung_Level2 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Wohnung_Level2() {
+	public Wohnung_Level2() throws ClassNotFoundException, SQLException {
 		setTitle("Wohnung bearbeiten/l\u00F6schen");
 		initComponents();
 		createEvents();
+		wohnung = new Wohnung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -73,7 +84,7 @@ public class Wohnung_Level2 extends JFrame {
 		
 		JLabel lblAuswahlW2 = new JLabel("Ausgew\u00E4hlte Wohnung:");
 		
-		JTextArea txtArAuswahlW2 = new JTextArea();
+		txtArAuswahlW2 = new JTextArea();
 		
 		JSeparator separatorW2 = new JSeparator();
 		
@@ -91,7 +102,7 @@ public class Wohnung_Level2 extends JFrame {
 		
 		JLabel lblPLZW2 = new JLabel("PLZ:");
 		
-		JCheckBox czbEbkW2 = new JCheckBox("Einbauk\u00FCche");
+		czbEbkW2 = new JCheckBox("Einbauk\u00FCche");
 		
 		JLabel lblMieteW2 = new JLabel("Miete:");
 		
@@ -108,7 +119,7 @@ public class Wohnung_Level2 extends JFrame {
 		txtFBaederW2 = new JTextField();
 		txtFBaederW2.setColumns(10);
 		
-		JCheckBox czbStatusW2 = new JCheckBox("vermietet");
+		czbStatusW2 = new JCheckBox("vermietet");
 		
 		btnSaveW2 = new JButton("\u00C4nderungen speichern");
 		
@@ -240,6 +251,36 @@ public class Wohnung_Level2 extends JFrame {
 				dispose();
 				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
 				wohnung1.setVisible(true);
+			}
+		});
+		btnSaveW2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					wohnung.lade_daten(Integer.parseInt(txtArAuswahlW2.getText()));
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				int selectionEbk = czbEbkW2.isSelected() ? 1 : 0;
+				int selectionStatus = czbStatusW2.isSelected() ? 1 : 0;
+				
+				try {
+					/* public void change_miete(int whg_id,double miete)
+					 * public void change_zimmer(int whg_id,double zimmer)
+					 * public void change_baeder(int whg_id,double baeder)
+					 * public void change_ebk(int whg_id,int ebk)
+					 * public void change_vermietet(int whg_id,int vermietet)
+					 * */
+					wohnung.change_miete(Integer.parseInt(txtArAuswahlW2.getText()), Double.parseDouble(txtFMieteW2.getText()));
+					wohnung.change_zimmer(Integer.parseInt(txtArAuswahlW2.getText()), Double.parseDouble(txtFZimmerW2.getText()));
+					wohnung.change_baeder(Integer.parseInt(txtArAuswahlW2.getText()), Double.parseDouble(txtFBaederW2.getText()));
+					wohnung.change_ebk(Integer.parseInt(txtArAuswahlW2.getText()), selectionEbk);
+					wohnung.change_vermietet(Integer.parseInt(txtArAuswahlW2.getText()), selectionStatus);
+					
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

@@ -228,6 +228,9 @@ public class Kunde_Level2 extends JFrame {
 				kunde1.setVisible(true);
 			}
 		});
+////////////////////////////////////////////////////////////////////
+// Enthält den Code für den Button "Änderungen speichern
+////////////////////////////////////////////////////////////////////
 		btnSaveK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {

@@ -137,15 +137,29 @@ public class Wohnung_Level1 extends JFrame {
 		btnBearbeitenW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Wohnung_Level2 wohnung2 = new Wohnung_Level2();
-				wohnung2.setVisible(true);
+				Wohnung_Level2 wohnung2;
+				try {
+					wohnung2 = new Wohnung_Level2();
+					wohnung2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnLöschenW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Wohnung_Level2 wohnung2 = new Wohnung_Level2();
-				wohnung2.setVisible(true);
+				Wohnung_Level2 wohnung2;
+				try {
+					wohnung2 = new Wohnung_Level2();
+					wohnung2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		
