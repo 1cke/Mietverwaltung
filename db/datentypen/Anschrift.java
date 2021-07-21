@@ -72,7 +72,7 @@ public class Anschrift {
 		this.hausnummer = hausnummer;
 	}
 	/**
-	 * Wandelt den Input in einen String um
+	 * Wandelt die Anschrift in einen String um
 	 * @param input vom Typ Anschrift
 	 * @return String
 	 */
