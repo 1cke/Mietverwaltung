@@ -94,7 +94,15 @@ public class Wohnungsdaten {
 	}
 	@Override
 	public String toString() {
-		return "Wohnungsdaten [id=" + id + ", adresse=" + adresse + ", miete=" + miete + ", zimmer=" + zimmer
-				+ ", baeder=" + baeder + ", einbaukueche=" + einbaukueche + ", vermietet=" + vermietet + "]";
+		return "" + id + "," + adresse + "," + miete + "," + zimmer
+				+ "," + baeder + "," + einbaukueche + "," + vermietet + "]";
+	}
+	/**
+	 * Wandelt den Input in einen String um
+	 * @param input vom Typ Wohnungsdaten
+	 * @return String
+	 */
+	public String parseString(Wohnungsdaten input) {
+		return ""+input;
 	}
 }
