@@ -71,4 +71,7 @@ public class Anschrift {
 	public void setHausnummer(String hausnummer) {
 		this.hausnummer = hausnummer;
 	}
+	public String parseString(Anschrift input) {
+		return ""+input;
+	}
 }
