@@ -151,15 +151,29 @@ public class Kunde_Level1 extends JFrame {
 		btnBearbeitenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kunde_Level2 kunde2 = new Kunde_Level2();
-				kunde2.setVisible(true);
+				Kunde_Level2 kunde2;
+				try {
+					kunde2 = new Kunde_Level2();
+					kunde2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnLöschenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kunde_Level2 kunde2 = new Kunde_Level2();
-				kunde2.setVisible(true);
+				Kunde_Level2 kunde2;
+				try {
+					kunde2 = new Kunde_Level2();
+					kunde2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		

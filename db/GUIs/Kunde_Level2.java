@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kunden;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Kunde_Level2 extends JFrame {
@@ -30,6 +34,10 @@ public class Kunde_Level2 extends JFrame {
 	private JButton btnZurückK2;
 	private JButton btnSaveK2;
 	private JButton btnLöschenK2;
+	private Kunden kunde;
+	private JTextArea txtArAuswahlK2;
+	private JCheckBox czbInteressentK2;
+	private JCheckBox czbAktivK2;
 
 	/**
 	 * Launch the application.
@@ -49,11 +57,14 @@ public class Kunde_Level2 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Kunde_Level2() {
+	public Kunde_Level2() throws ClassNotFoundException, SQLException {
 		setTitle("Kunde bearbeiten/l\u00F6schen");
 		initComponents();
 		createEvents();
+		kunde = new Kunden();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -72,7 +83,7 @@ public class Kunde_Level2 extends JFrame {
 		
 		JLabel lblAuswahlK2 = new JLabel("Ausgew\u00E4hlter Kunde:");
 		
-		JTextArea txtArAuswahlK2 = new JTextArea();
+		txtArAuswahlK2 = new JTextArea();
 		
 		JSeparator separatorK2 = new JSeparator();
 		
@@ -102,13 +113,13 @@ public class Kunde_Level2 extends JFrame {
 		txtFEmailK2 = new JTextField();
 		txtFEmailK2.setColumns(10);
 		
-		JCheckBox czbInteressentK2 = new JCheckBox("Interessent");
+		czbInteressentK2 = new JCheckBox("Interessent");
 		
 		btnSaveK2 = new JButton("\u00C4nderungen speichern");
 		
 		btnLöschenK2 = new JButton("Kunden l\u00F6schen");
 		
-		JCheckBox czbAktivK2 = new JCheckBox("aktiver Kunde");
+		czbAktivK2 = new JCheckBox("aktiver Kunde");
 		czbAktivK2.setSelected(true);
 		GroupLayout gl_contentPaneK2 = new GroupLayout(contentPaneK2);
 		gl_contentPaneK2.setHorizontalGroup(
@@ -215,6 +226,31 @@ public class Kunde_Level2 extends JFrame {
 				dispose();
 				Kunde_Level1 kunde1 = new Kunde_Level1();
 				kunde1.setVisible(true);
+			}
+		});
+		btnSaveK2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					kunde.lade_kunden_daten(Integer.parseInt(txtArAuswahlK2.getText()));
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				int selectionInteressent = czbInteressentK2.isSelected() ? 1 : 0;
+				int selectionAktiv = czbAktivK2.isSelected() ? 1 : 0;
+				
+				try {
+					kunde.change_vorname(Integer.parseInt(txtArAuswahlK2.getText()), txtFVornameK2.getText());
+					kunde.change_nachname(Integer.parseInt(txtArAuswahlK2.getText()), txtFNachnameK2.getText());
+					kunde.change_geburtstag(Integer.parseInt(txtArAuswahlK2.getText()), txtFGeburtstagK2.getText());
+					kunde.change_telefon(Integer.parseInt(txtArAuswahlK2.getText()), txtFTelefonK2.getText());
+					kunde.change_email(Integer.parseInt(txtArAuswahlK2.getText()), txtFEmailK2.getText());
+					kunde.change_interessent(Integer.parseInt(txtArAuswahlK2.getText()), selectionInteressent);
+					kunde.change_aktiv(Integer.parseInt(txtArAuswahlK2.getText()), selectionAktiv);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
