@@ -28,32 +28,43 @@ public class Kontakt extends Kontaktdaten{
 		statement.executeUpdate("CREATE TABLE IF NOT EXISTS kontakt(kontakts_id INTEGER PRIMARY KEY, vertrags_id INTEGER NOT NULL, wann TEXT NOT NULL,grund TEXT NOT NULL,beschreibung TEXT,behoben BOOLEAN)");
 		connection.close();
 	}
-	private void set_db_value_for_contact(String anweisung)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate(anweisung);
-		System.out.println("Werte erfolgreich gespeichert");
-		connection.close();
-	}
-	private void get_values(int kontakts_id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//System.out.println(anweisung);//Kontrollausgabe
-		ResultSet rs = statement.executeQuery("SELECT vertrags_id, wann, grund,beschreibung,behoben FROM kontakt WHERE kontakts_id = '"+kontakts_id+"'");
-		while(rs.next()) {
-			this.setVertragsnummer(rs.getInt(1));
-			this.setWann(rs.getString(2));
-			this.setGrund(rs.getString(3));
-			this.setBeschreibung(rs.getString(4));
-			this.setBehoben(rs.getBoolean(5));
+	private boolean set_db_value_for_contact(String anweisung)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate(anweisung);
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
 		}
-		connection.close();
-		this.setId(kontakts_id);
+		
+	}
+	private boolean get_values(int kontakts_id) throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//System.out.println(anweisung);//Kontrollausgabe
+			ResultSet rs = statement.executeQuery("SELECT vertrags_id, wann, grund,beschreibung,behoben FROM kontakt WHERE kontakts_id = '"+kontakts_id+"'");
+			while(rs.next()) {
+				this.setVertragsnummer(rs.getInt(1));
+				this.setWann(rs.getString(2));
+				this.setGrund(rs.getString(3));
+				this.setBeschreibung(rs.getString(4));
+				this.setBehoben(rs.getBoolean(5));
+			}
+			connection.close();
+			this.setId(kontakts_id);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	} 
 	private ArrayList<Kontaktdaten> get_values(int vertrags_id,String typ) throws ClassNotFoundException, SQLException{
 		ArrayList<Kontaktdaten> daten = new ArrayList<Kontaktdaten>();
@@ -93,15 +104,20 @@ public class Kontakt extends Kontaktdaten{
 		}
 	
 	} 
-	private void change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate(anweisung);
-		System.out.println("Änderungen erfolgreich gespeichert");
-		connection.close();
+	private boolean change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate(anweisung);
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
 	private int get_contact_vertrags_id(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return this.getVertragsnummer();
@@ -138,8 +154,8 @@ public class Kontakt extends Kontaktdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void set_kontakt_value(int vertrags_id,String wann,String grund, String beschreibung)throws ClassNotFoundException, SQLException{
-		set_db_value_for_contact("INSERT INTO kontakt(vertrags_id,wann,grund,beschreibung) VALUES('"+vertrags_id+"','"+wann+"','"+grund+"','"+beschreibung+"')");
+	public boolean set_kontakt_value(int vertrags_id,String wann,String grund, String beschreibung)throws ClassNotFoundException, SQLException{
+		return set_db_value_for_contact("INSERT INTO kontakt(vertrags_id,wann,grund,beschreibung) VALUES('"+vertrags_id+"','"+wann+"','"+grund+"','"+beschreibung+"')");
 		
 	}
 	/**
@@ -227,25 +243,26 @@ public class Kontakt extends Kontaktdaten{
 	}
 	/**
 	 * Diese Methode gibt alle Kontakte zurück. Kunden unspeziefisch.
-	 * <p> Es erfolgt keine Rückgabe</p>
+	 * @return ArrayList<Kontaktdaten>
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void display_kontakt()throws ClassNotFoundException, SQLException{
-		get_display_contact();
+	public ArrayList<Kontaktdaten> display_kontakt()throws ClassNotFoundException, SQLException{
+		return get_display_contact();
 	}
 	/**
 	 * Lädt einen spezifischen Kontakt
 	 * @param vertrags_id Die Vertrags-ID als Integer
+	 * @return Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void lade_daten(int vertrags_id)throws ClassNotFoundException, SQLException{
-		get_values(vertrags_id);
+	public boolean lade_daten(int vertrags_id)throws ClassNotFoundException, SQLException{
+		return get_values(vertrags_id);
 	}
 	/**
 	 * Lädt alle Kontakte zu einem spezifischen Vertrag
