@@ -25,17 +25,23 @@ public class Bewerbung extends Bewerbungsdaten{
 		statement.executeUpdate("CREATE TABLE IF NOT EXISTS bewerbung(bewerbungs_id INTEGER PRIMARY KEY, kunden_id INTEGER NOT NULL,wohnungs_id INTEGER NOT NULL, datum TEXT NOT NULL,status Boolean)");
 		connection.close();
 	}
-	private void set_db_value(int wohnungs_id,int kunden_id,String datum)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("INSERT INTO bewerbung(kunden_id,wohnungs_id,datum,status) VALUES ('"+kunden_id+"','"+wohnungs_id+"','"+datum+"',True)");
-		System.out.println("Werte erfolgreich gespeichert");
-		connection.close();
+	private boolean set_db_value(int wohnungs_id,int kunden_id,String datum)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate("INSERT INTO bewerbung(kunden_id,wohnungs_id,datum,status) VALUES ('"+kunden_id+"','"+wohnungs_id+"','"+datum+"',True)");
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
-	private void get_values(int id) throws ClassNotFoundException, SQLException{
+	private boolean get_values(int id) throws ClassNotFoundException, SQLException{
+		try{
 		Connection connection = null;
 		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
 		Statement statement = connection.createStatement();
@@ -50,6 +56,10 @@ public class Bewerbung extends Bewerbungsdaten{
 		}
 		connection.close();
 		this.setId(id);
+		return true;
+		}catch(Exception e) {
+			return false;
+		}
 	}
 	private ArrayList<Bewerbungsdaten> get_values(int wohnungs_id,String typ)throws ClassNotFoundException, SQLException{
 		ArrayList<Bewerbungsdaten> daten = new ArrayList<Bewerbungsdaten>();
@@ -85,15 +95,20 @@ public class Bewerbung extends Bewerbungsdaten{
 			return daten;
 		}
 	}
-	private void change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate(anweisung);
-		System.out.println("Änderungen erfolgreich gespeichert");
-		connection.close();
+	private boolean change_db_value(String anweisung)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate(anweisung);
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
 	private int get_apply_bewerbungs_id()throws ClassNotFoundException, SQLException{
 		return this.getId();
@@ -130,13 +145,14 @@ public class Bewerbung extends Bewerbungsdaten{
 	 * @param wohnungs_id Die Wohnungs-ID als Integer.
 	 * @param kunden_id	Die Kunden-ID als Integer.
 	 * @param datum Das Datum als String.
+	 * @return Boolean. Hat geklappt oder nicht.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void set_bewerbung(int wohnungs_id,int kunden_id,String datum)throws ClassNotFoundException, SQLException{
-		set_db_value(wohnungs_id,kunden_id,datum);
+	public boolean set_bewerbung(int wohnungs_id,int kunden_id,String datum)throws ClassNotFoundException, SQLException{
+		return set_db_value(wohnungs_id,kunden_id,datum);
 	}
 	/**
 	 * Diese Methode gibt die Bewerbungs-ID zurück.
@@ -270,9 +286,26 @@ public class Bewerbung extends Bewerbungsdaten{
 	public void delete_bewerbung(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		delete_value(bewerbungs_id);
 	}
+	/**
+	 * Diese Methode gibt eine ArrayList mit allen Bewerbungen für eine spezifische Wohnung an.
+	 * @param wohnungs_id Die gewünschte Wohnung als Integer
+	 * @return Eine ArrayList mit allen Bewerbungen.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public ArrayList<Bewerbungsdaten> get_alle_bewerbung_fuer_eine_whg(int wohnungs_id)throws ClassNotFoundException, SQLException{
 		return get_values(wohnungs_id,"eine");
 	}
+	/**
+	 * Diese Methode gibt alle vorhanden Bewerbungen zurück.
+	 * @return Eine ArrayList mit allen Bewerbungen
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public ArrayList<Bewerbungsdaten> get_all()throws ClassNotFoundException, SQLException{
 		return get_values(0,"");
 	}
