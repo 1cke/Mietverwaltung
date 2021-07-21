@@ -62,7 +62,7 @@ public class Bewerbung {
 		return Integer.parseInt(get_values("SELECT bewerbungs_id FROM bewerbung WHERE wohnungs_id = '"+wohnungs_id+"' AND kunden_id = '"+bewerber_id+"'")[0]);
 	}
 	private int get_apply_bewerber_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		return Integer.parseInt(get_values("SELECT bewerber_id FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'")[0]);
+		return Integer.parseInt(get_values("SELECT kunden_id FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'")[0]);
 	}
 	private int get_apply_wohnungs_id(int bewerbungs_id)throws ClassNotFoundException, SQLException{
 		return Integer.parseInt(get_values("SELECT wohnungs_id FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'")[0]);
@@ -83,7 +83,7 @@ public class Bewerbung {
 			}
 	}
 	private void change_apply_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE bewerbung SET bewerber_id = '"+bewerber_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+		change_db_value("UPDATE bewerbung SET kunden_id = '"+bewerber_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
 	private void change_apply_wohnungs_id(int bewerbungs_id,int wohnungs_id)throws ClassNotFoundException, SQLException{
 		change_db_value("UPDATE bewerbung SET wohnungs_id = '"+wohnungs_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
