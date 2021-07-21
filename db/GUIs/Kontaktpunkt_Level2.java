@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kontakt;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -17,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level2 extends JFrame {
@@ -29,6 +33,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	private JButton btnZurückKP2;
 	private JButton btnSaveKP2;
 	private JButton btnLöschenKP2;
+	private Kontakt kontakt;
+	private JTextArea txtArAuswahlKP2;
+	private JCheckBox czbStatusKP2;
 
 	/**
 	 * Launch the application.
@@ -48,11 +55,14 @@ public class Kontaktpunkt_Level2 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Kontaktpunkt_Level2() {
+	public Kontaktpunkt_Level2() throws ClassNotFoundException, SQLException {
 		setTitle("Kontaktpunkt bearbeiten/löschen");
 		initComponents();
 		createEvents();
+		kontakt = new Kontakt();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -71,7 +81,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		
 		JLabel lblAuswahlKP2 = new JLabel("Ausgewählter Kontaktpunkt:");
 		
-		JTextArea txtArAuswahlKP2 = new JTextArea();
+		txtArAuswahlKP2 = new JTextArea();
 		
 		JSeparator separatorKP2 = new JSeparator();
 		
@@ -99,6 +109,8 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		btnSaveKP2 = new JButton("\u00C4nderungen speichern");
 		
 		btnLöschenKP2 = new JButton("Kontaktpunkt löschen");
+		
+		czbStatusKP2 = new JCheckBox("Behoben");
 		GroupLayout gl_contentPaneKP2 = new GroupLayout(contentPaneKP2);
 		gl_contentPaneKP2.setHorizontalGroup(
 			gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
@@ -109,9 +121,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 							.addContainerGap()
 							.addComponent(lblAuswahlKP2)
 							.addGap(18)
-							.addComponent(txtArAuswahlKP2, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+							.addComponent(txtArAuswahlKP2, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
 							.addGap(63))
-						.addComponent(separatorKP2, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
+						.addComponent(separatorKP2, GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
 					.addGap(7))
 				.addGroup(gl_contentPaneKP2.createSequentialGroup()
 					.addGap(17)
@@ -121,17 +133,19 @@ public class Kontaktpunkt_Level2 extends JFrame {
 						.addComponent(lblGrundKP2)
 						.addComponent(lblDatumKP2))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPaneKP2.createSequentialGroup()
-							.addComponent(txtFDatumKP2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-							.addGap(260))
-						.addGroup(gl_contentPaneKP2.createSequentialGroup()
-							.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
-								.addComponent(txtFGrundKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-								.addComponent(txtFVertragsIDKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
+							.addComponent(txtFGrundKP2, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
 							.addGap(95))
-						.addGroup(Alignment.LEADING, gl_contentPaneKP2.createSequentialGroup()
-							.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+						.addGroup(Alignment.TRAILING, gl_contentPaneKP2.createSequentialGroup()
+							.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPaneKP2.createSequentialGroup()
+									.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
+										.addComponent(txtFVertragsIDKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+										.addComponent(txtFDatumKP2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+									.addGap(85)
+									.addComponent(czbStatusKP2))
+								.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
 							.addGap(78))))
 				.addGroup(gl_contentPaneKP2.createSequentialGroup()
 					.addGap(70)
@@ -153,7 +167,8 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblVertragsIDKP2)
-						.addComponent(txtFVertragsIDKP2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtFVertragsIDKP2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(czbStatusKP2))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtFDatumKP2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -165,7 +180,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblBeschreibungKP2)
-						.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+						.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.BASELINE, false)
 						.addComponent(btnLöschenKP2)
@@ -185,6 +200,28 @@ public class Kontaktpunkt_Level2 extends JFrame {
 				dispose();
 				Kontaktpunkt_Level1 kontakt1 = new Kontaktpunkt_Level1();
 				kontakt1.setVisible(true);
+			}
+		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Änderungen speichern" Button
+////////////////////////////////////////////////////////////////////
+		btnSaveKP2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int selectionStatus = czbStatusKP2.isSelected() ? 1 : 0;
+				
+				try {
+					/* public void change_beschreibung(int kontakt_id,String beschreibung)
+					 * public void change_behoben(int kontakt_id, int behoben) 
+					 * */
+					kontakt.change_beschreibung(Integer.parseInt(txtArAuswahlKP2.getText()), txtFBeschreibungKP2.getText());
+					kontakt.change_behoben(Integer.parseInt(txtArAuswahlKP2.getText()), selectionStatus);
+					
+					
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

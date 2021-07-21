@@ -138,15 +138,29 @@ public class Vertrag_Level1 extends JFrame {
 		btnBearbeitenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Vertrag_Level2 vertrag2 = new Vertrag_Level2();
-				vertrag2.setVisible(true);
+				Vertrag_Level2 vertrag2;
+				try {
+					vertrag2 = new Vertrag_Level2();
+					vertrag2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnLöschenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Vertrag_Level2 vertrag2 = new Vertrag_Level2();
-				vertrag2.setVisible(true);
+				Vertrag_Level2 vertrag2;
+				try {
+					vertrag2 = new Vertrag_Level2();
+					vertrag2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		

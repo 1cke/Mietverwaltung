@@ -253,6 +253,10 @@ public class Wohnung_Level2 extends JFrame {
 				wohnung1.setVisible(true);
 			}
 		});
+////////////////////////////////////////////////////////////////////
+// Enthält den Code für den Button "änderungen speichern
+////////////////////////////////////////////////////////////////////
+		
 		btnSaveW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {

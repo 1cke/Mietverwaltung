@@ -149,15 +149,29 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		btnBearbeitenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kontaktpunkt_Level2 kontakt2 = new Kontaktpunkt_Level2();
-				kontakt2.setVisible(true);
+				Kontaktpunkt_Level2 kontakt2;
+				try {
+					kontakt2 = new Kontaktpunkt_Level2();
+					kontakt2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnLöschenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kontaktpunkt_Level2 kontakt2 = new Kontaktpunkt_Level2();
-				kontakt2.setVisible(true);
+				Kontaktpunkt_Level2 kontakt2;
+				try {
+					kontakt2 = new Kontaktpunkt_Level2();
+					kontakt2.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		
