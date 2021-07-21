@@ -29,31 +29,41 @@ public class Vertrag extends Vertragsdaten{
 		statement.executeUpdate("CREATE TABLE IF NOT EXISTS vertrag(vertrags_id INTEGER PRIMARY KEY, kd_id INTEGER, whg_id INETEGER NOT NULL, Zeitraum TEXT NOT NULL,Schulden DOUBLE,aktiv BOOLEAN NOT NULL)");
 		connection.close();
 	}
-	private void set_db_value_for_contract(int kd_id,int whg_id,double schulden, String zeitraum,int aktiv)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("INSERT INTO vertrag (kd_id,whg_id, schulden,Zeitraum,aktiv) VALUES ('"+kd_id+"','"+whg_id+"','"+schulden+"','"+zeitraum+"','"+aktiv+"')");
-		System.out.println("Werte erfolgreich gespeichert");
-		connection.close();
-	}
-	private void get_values(int vertrags_id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT kd_id,whg_id,Zeitraum,schulden,aktiv FROM vertrag WHERE vertrags_id = '"+vertrags_id+"'");
-		while(rs.next()) {
-			this.setKundennummer(rs.getInt(1));
-			this.setWohnungsnummer(rs.getInt(2));
-			this.setZeitraum(rs.getString(3));
-			this.setSchulden(rs.getDouble(4));
-			this.setAktiv(rs.getBoolean(5));
+	private boolean set_db_value_for_contract(int kd_id,int whg_id,double schulden, String zeitraum,int aktiv)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate("INSERT INTO vertrag (kd_id,whg_id, schulden,Zeitraum,aktiv) VALUES ('"+kd_id+"','"+whg_id+"','"+schulden+"','"+zeitraum+"','"+aktiv+"')");
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
 		}
-		connection.close();
-		this.setId(vertrags_id);
+	}
+	private boolean get_values(int vertrags_id) throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			ResultSet rs = statement.executeQuery("SELECT kd_id,whg_id,Zeitraum,schulden,aktiv FROM vertrag WHERE vertrags_id = '"+vertrags_id+"'");
+			while(rs.next()) {
+				this.setKundennummer(rs.getInt(1));
+				this.setWohnungsnummer(rs.getInt(2));
+				this.setZeitraum(rs.getString(3));
+				this.setSchulden(rs.getDouble(4));
+				this.setAktiv(rs.getBoolean(5));
+			}
+			connection.close();
+			this.setId(vertrags_id);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
 	private ArrayList<Vertragsdaten>get_values(int kundennummer,String Typ)throws ClassNotFoundException, SQLException{
 		Connection connection = null;
@@ -92,15 +102,20 @@ public class Vertrag extends Vertragsdaten{
 		}
 	}
 	
-	private void change_db_value_for_contract(String anweisung)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate(anweisung);
-		System.out.println("Änderungen erfolgreich gespeichert");
-		connection.close();
+	private boolean change_db_value_for_contract(String anweisung)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate(anweisung);
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
 	private int get_vertrag_kd_id()throws ClassNotFoundException, SQLException{
 		return this.getKundennummer();
@@ -118,8 +133,8 @@ public class Vertrag extends Vertragsdaten{
 	private boolean get_vertrag_aktiv()throws ClassNotFoundException, SQLException{
 		return this.isAktiv();
 	}
-	private void get_vertrag_all() throws ClassNotFoundException, SQLException{
-		System.out.println(get_values(0,""));
+	private ArrayList<Vertragsdaten> get_vertrag_all() throws ClassNotFoundException, SQLException{
+		return get_values(0,"");
 	}
 	private ArrayList<Vertragsdaten> get_vertrag_all_whg_by_kd_id(int kd_id) throws ClassNotFoundException, SQLException{
 		return get_values(kd_id,"kd");
@@ -138,6 +153,9 @@ public class Vertrag extends Vertragsdaten{
 	}
 	private void change_vertrag_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
 		change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
+	}
+	private boolean delete_contract(int vertrags_id)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_contract("DELETE FROM vertrag WHERE vertrags_id = '"+vertrags_id+"'");
 	}
 	/**
 	 * Diese Methode legt einen Vertrag an.
@@ -236,8 +254,8 @@ public class Vertrag extends Vertragsdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void get_all()throws ClassNotFoundException, SQLException{
-		get_vertrag_all();
+	public ArrayList<Vertragsdaten> get_all()throws ClassNotFoundException, SQLException{
+		return get_vertrag_all();
 	}
 	/**
 	 * Diese Methode ändert die Kunden-ID.
@@ -302,5 +320,17 @@ public class Vertrag extends Vertragsdaten{
 	 */
 	public void change_aktiv(int id, int aktiv)throws ClassNotFoundException, SQLException{
 		change_vertrag_aktiv(id,aktiv);
+	}
+	/**
+	 * Löscht einen Vertrag
+	 * @param vertrags_id Integer
+	 * @return Boolean, ob es geklappt oder nicht.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public boolean delete(int vertrags_id)throws ClassNotFoundException, SQLException{
+		return delete_contract(vertrags_id);
 	}
 }
