@@ -108,8 +108,8 @@ public class Adresse extends Anschrift{
 	private String get_address_hn(int adress_id) throws ClassNotFoundException, SQLException{
 		return this.getHausnummer();
 	}
-	private void display_address_all()throws ClassNotFoundException, SQLException{
-		System.out.println(get_all_values());
+	private ArrayList<Anschrift> display_address_all()throws ClassNotFoundException, SQLException{
+		return get_all_values();
 	}
 	private void change_address_plz(int adress_id,String plz)throws ClassNotFoundException, SQLException{
 		change_db_value_for_address("UPDATE adresse SET plz = '"+plz+"' WHERE adress_id = '"+adress_id+"'");
@@ -208,8 +208,8 @@ public class Adresse extends Anschrift{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void display_adresse()throws ClassNotFoundException, SQLException{
-		display_address_all();
+	public ArrayList<Anschrift> display_adresse()throws ClassNotFoundException, SQLException{
+		return display_address_all();
 	}
 	/**
 	 * Diese Methode ändert die Postleitzahl.
