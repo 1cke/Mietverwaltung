@@ -27,31 +27,42 @@ public class Adresse extends Anschrift{
 		statement.executeUpdate("CREATE TABLE IF NOT EXISTS adresse(adress_id INTEGER PRIMARY KEY, plz TEXT NOT NULL, ort TEXT NOT NULL,strasse TEXT NOT NULL,hn TEXT NOT NULL)");
 		connection.close();
 	}
-	private void set_db_value_for_address(String plz,String ort,String strasse, String hn)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("INSERT INTO adresse (plz,ort, strasse,hn) VALUES ('"+plz+"','"+ort+"','"+strasse+"','"+hn+"')");
-		System.out.println("Werte erfolgreich gespeichert");
-		connection.close();
+	private boolean set_db_value_for_address(String plz,String ort,String strasse, String hn)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate("INSERT INTO adresse (plz,ort, strasse,hn) VALUES ('"+plz+"','"+ort+"','"+strasse+"','"+hn+"')");
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	
 	}
 	
-	private void get_values(String plz, String ort, String strasse, String hn) throws ClassNotFoundException, SQLException{
-		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		ResultSet rs = statement.executeQuery("SELECT adress_id FROM adresse WHERE plz = '"+plz+"' AND ort = '"+ort+"' AND strasse = '"+strasse+"' AND hn = '" + hn+"'");
-		while(rs.next()) {
-			this.setId(rs.getInt(1));
+	private boolean get_values(String plz, String ort, String strasse, String hn) throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			ResultSet rs = statement.executeQuery("SELECT adress_id FROM adresse WHERE plz = '"+plz+"' AND ort = '"+ort+"' AND strasse = '"+strasse+"' AND hn = '" + hn+"'");
+			while(rs.next()) {
+				this.setId(rs.getInt(1));
+			}
+			connection.close();
+			this.setPlz(plz);
+			this.setOrt(ort);
+			this.setStrasse(strasse);
+			this.setHausnummer(hn);
+			return true;
+		}catch(Exception e) {
+			return false;
 		}
-		connection.close();
-		this.setPlz(plz);
-		this.setOrt(ort);
-		this.setStrasse(strasse);
-		this.setHausnummer(hn);
+		
 	}
 	private ArrayList<Anschrift> get_all_values() throws ClassNotFoundException, SQLException{
 		Connection connection = null;
@@ -72,25 +83,36 @@ public class Adresse extends Anschrift{
 		connection.close();
 		return daten;
 	}
-	private void change_db_value_for_address(String anweisung)throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate(anweisung);
-		System.out.println("Änderungen erfolgreich gespeichert");
-		connection.close();
+	private boolean change_db_value_for_address(String anweisung)throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate(anweisung);
+			System.out.println("Änderungen erfolgreich gespeichert");
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
-	private void delete_db_value(int id) throws ClassNotFoundException, SQLException{
-		Connection connection = null;//setze Connection auf null
-		connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
-		Statement statement = connection.createStatement();
-		statement.setQueryTimeout(30);
-		//Speicher die Kundendaten in der Tabelle
-		statement.executeUpdate("DELETE FROM adresse WHERE adress_id = '"+ id+"'");
-		System.out.println("Adresse erfolgreich gelöscht");
-		connection.close();
+	private boolean delete_db_value(int id) throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;//setze Connection auf null
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");//stelle verbindung zur DB her
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			//Speicher die Kundendaten in der Tabelle
+			statement.executeUpdate("DELETE FROM adresse WHERE adress_id = '"+ id+"'");
+			connection.close();
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
 	}
 	private int get_address_adress_id(String plz, String ort, String strasse, String hn) throws ClassNotFoundException, SQLException{
 		get_values(plz,ort,strasse,hn);
@@ -129,13 +151,14 @@ public class Adresse extends Anschrift{
 	 * @param ort	Den Ortsnamen als String.
 	 * @param strasse Die Straße als String.
 	 * @param hn	Die Hausnummer als String.
+	 * @return Boolean. Hat funktioniert oder nicht
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void set_address_value(String plz,String ort, String strasse, String hn)throws ClassNotFoundException, SQLException{
-		set_db_value_for_address(plz,ort,strasse,hn);
+	public boolean set_address_value(String plz,String ort, String strasse, String hn)throws ClassNotFoundException, SQLException{
+		return set_db_value_for_address(plz,ort,strasse,hn);
 	}
 	/**
 	 * Diese Methode gibt die Adress-ID zurück
@@ -202,7 +225,7 @@ public class Adresse extends Anschrift{
 	}
 	/**
 	 * Diese Methode gibt alle Datenbankeinträge aus.
-	 * <p> Es werden keine Parameter übergeben </p>
+	 * @return ArrayList<Anschrift>
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -265,14 +288,14 @@ public class Adresse extends Anschrift{
 	}
 	/**
 	 * Diese Methode löscht eine Adresse.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param id Die Adress-ID als Integer.
+	 * @return Boolean. Hat geklappt oder nicht
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void delete_addresse(int id) throws ClassNotFoundException, SQLException{
-		delete_db_value(id);
+	public boolean delete_addresse(int id) throws ClassNotFoundException, SQLException{
+		return delete_db_value(id);
 	}
 }
