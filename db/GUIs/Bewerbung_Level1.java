@@ -2,7 +2,6 @@ package GUIs;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +14,7 @@ import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractListModel;
 
 public class Bewerbung_Level1 extends JFrame {
 
@@ -23,6 +23,7 @@ public class Bewerbung_Level1 extends JFrame {
 	private JButton btnHinzufügenB1;
 	private JButton btnBearbeitenB1;
 	private JButton btnLöschenB1;
+	private JList lstBewerbungenB1;
 
 	/**
 	 * Launch the application.
@@ -47,6 +48,7 @@ public class Bewerbung_Level1 extends JFrame {
 		initComponents();
 		createEvents();
 	}
+	
 	
 	////////////////////////////////////////////////////////////////////
 	// Enth�lt den Code zum Erzeugen und
@@ -102,7 +104,16 @@ public class Bewerbung_Level1 extends JFrame {
 						.addComponent(btnLöschenB1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
-		JList lstBewerbungenB1 = new JList();
+		lstBewerbungenB1 = new JList();
+		lstBewerbungenB1.setModel(new AbstractListModel() {
+			String[] values = new String[] {"1"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
 		scrollPane.setViewportView(lstBewerbungenB1);
 		contentPaneB1.setLayout(gl_contentPaneB1);
 	}
@@ -139,7 +150,7 @@ public class Bewerbung_Level1 extends JFrame {
 				Bewerbung_Level2 bewerbung2;
 				
 				try {
-					bewerbung2 = new Bewerbung_Level2();
+					bewerbung2 = new Bewerbung_Level2(lstBewerbungenB1.getSelectedValue().toString());
 					bewerbung2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
@@ -153,7 +164,7 @@ public class Bewerbung_Level1 extends JFrame {
 				dispose();
 				Bewerbung_Level2 bewerbung2;
 				try {
-					bewerbung2 = new Bewerbung_Level2();
+					bewerbung2 = new Bewerbung_Level2(lstBewerbungenB1.getSelectedValue().toString());
 					bewerbung2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block

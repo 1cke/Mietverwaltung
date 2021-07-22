@@ -34,11 +34,12 @@ public class Bewerbung_Level2 extends JFrame {
 	private Bewerbung bewerbung;
 	private JTextArea txtArAuswahlB2;
 	private JCheckBox czbStatusB2;
+	private String auswahl;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,15 +50,15 @@ public class Bewerbung_Level2 extends JFrame {
 				}
 			}
 		});
-	}
+	}  
 
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Bewerbung_Level2() throws ClassNotFoundException, SQLException {
-		setTitle("Bewerbung bearbeiten/l\u00F6schen");
+	public Bewerbung_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
+		auswahl = chosen_one;
 		initComponents();
 		createEvents();
 		bewerbung = new Bewerbung();
@@ -69,6 +70,7 @@ public class Bewerbung_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Bewerbung bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 252);
 		contentPaneB2 = new JPanel();
@@ -80,6 +82,7 @@ public class Bewerbung_Level2 extends JFrame {
 		JLabel lblAuswahlB2 = new JLabel("Ausgew\u00E4hlte Bewerbung:");
 		
 		txtArAuswahlB2 = new JTextArea();
+		txtArAuswahlB2.setText(auswahl);
 		
 		JSeparator separatorB2 = new JSeparator();
 		
