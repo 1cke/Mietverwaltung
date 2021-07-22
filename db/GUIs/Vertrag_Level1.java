@@ -15,6 +15,7 @@ import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractListModel;
 
 public class Vertrag_Level1 extends JFrame {
 
@@ -23,6 +24,7 @@ public class Vertrag_Level1 extends JFrame {
 	private JButton btnHinzufügenV1;
 	private JButton btnBearbeitenV1;
 	private JButton btnLöschenV1;
+	private JList lstVerträgeV1;
 
 	/**
 	 * Launch the application.
@@ -104,8 +106,17 @@ public class Vertrag_Level1 extends JFrame {
 						.addComponent(btnLöschenV1)))
 		);
 		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
+		lstVerträgeV1 = new JList();
+		lstVerträgeV1.setModel(new AbstractListModel() {
+			String[] values = new String[] {"test vertrag"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane.setViewportView(lstVerträgeV1);
 		contentPane.setLayout(gl_contentPane);
 	}
 	
@@ -140,7 +151,7 @@ public class Vertrag_Level1 extends JFrame {
 				dispose();
 				Vertrag_Level2 vertrag2;
 				try {
-					vertrag2 = new Vertrag_Level2();
+					vertrag2 = new Vertrag_Level2(lstVerträgeV1.getSelectedValue().toString());
 					vertrag2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
@@ -154,7 +165,7 @@ public class Vertrag_Level1 extends JFrame {
 				dispose();
 				Vertrag_Level2 vertrag2;
 				try {
-					vertrag2 = new Vertrag_Level2();
+					vertrag2 = new Vertrag_Level2(lstVerträgeV1.getSelectedValue().toString());
 					vertrag2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block

@@ -36,30 +36,15 @@ public class Vertrag_Level2 extends JFrame {
 	private Vertrag vertrag;
 	private JTextArea txtArAuswahlV2;
 	private JCheckBox czbAktivV2;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Vertrag_Level2 frame = new Vertrag_Level2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private String auswahl;
 
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Vertrag_Level2() throws ClassNotFoundException, SQLException {
-		setTitle("Vertrag bearbeiten/löschen");
+	public Vertrag_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
+		auswahl = chosen_one;
 		initComponents();
 		createEvents();
 		vertrag = new Vertrag();
@@ -71,6 +56,7 @@ public class Vertrag_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Vertrag bearbeiten/löschen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 276);
 		contentPaneV2 = new JPanel();
@@ -82,7 +68,7 @@ public class Vertrag_Level2 extends JFrame {
 		JLabel lblAuswahlV2 = new JLabel("Ausgewählter Vertrag:");
 		
 		txtArAuswahlV2 = new JTextArea();
-		txtArAuswahlV2.setText("Vertrags_ID");
+		txtArAuswahlV2.setText(auswahl);
 		
 		JSeparator separatorV2 = new JSeparator();
 		
