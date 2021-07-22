@@ -38,10 +38,12 @@ public class Kunde_Level2 extends JFrame {
 	private JTextArea txtArAuswahlK2;
 	private JCheckBox czbInteressentK2;
 	private JCheckBox czbAktivK2;
+	private String auswahl;
 
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,15 +55,15 @@ public class Kunde_Level2 extends JFrame {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Kunde_Level2() throws ClassNotFoundException, SQLException {
-		setTitle("Kunde bearbeiten/l\u00F6schen");
+	public Kunde_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
+		auswahl = chosen_one;
 		initComponents();
 		createEvents();
 		kunde = new Kunden();
@@ -73,6 +75,7 @@ public class Kunde_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Kunde bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 344);
 		contentPaneK2 = new JPanel();
@@ -84,6 +87,7 @@ public class Kunde_Level2 extends JFrame {
 		JLabel lblAuswahlK2 = new JLabel("Ausgew\u00E4hlter Kunde:");
 		
 		txtArAuswahlK2 = new JTextArea();
+		txtArAuswahlK2.setText(auswahl);
 		
 		JSeparator separatorK2 = new JSeparator();
 		
