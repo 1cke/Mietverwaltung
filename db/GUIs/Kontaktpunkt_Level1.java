@@ -24,6 +24,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 	private JButton btnHinzufügenKP1;
 	private JButton btnBearbeitenKP1;
 	private JButton btnLöschenKP1;
+	private JList lstKontaktpunkteKP1;
 
 	/**
 	 * Launch the application.
@@ -105,7 +106,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 						.addComponent(btnLöschenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
-		JList lstKontaktpunkteKP1 = new JList();
+		lstKontaktpunkteKP1 = new JList();
 		lstKontaktpunkteKP1.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Kontaktpunkte vielleicht clickable machen zum ins Detail gehen."};
 			public int getSize() {
@@ -151,7 +152,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 				dispose();
 				Kontaktpunkt_Level2 kontakt2;
 				try {
-					kontakt2 = new Kontaktpunkt_Level2();
+					kontakt2 = new Kontaktpunkt_Level2(lstKontaktpunkteKP1.getSelectedValue().toString());
 					kontakt2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
@@ -165,7 +166,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 				dispose();
 				Kontaktpunkt_Level2 kontakt2;
 				try {
-					kontakt2 = new Kontaktpunkt_Level2();
+					kontakt2 = new Kontaktpunkt_Level2(lstKontaktpunkteKP1.getSelectedValue().toString());
 					kontakt2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block

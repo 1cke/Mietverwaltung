@@ -36,10 +36,12 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	private Kontakt kontakt;
 	private JTextArea txtArAuswahlKP2;
 	private JCheckBox czbStatusKP2;
+	private String auswahl;
 
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -51,15 +53,15 @@ public class Kontaktpunkt_Level2 extends JFrame {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Kontaktpunkt_Level2() throws ClassNotFoundException, SQLException {
-		setTitle("Kontaktpunkt bearbeiten/löschen");
+	public Kontaktpunkt_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
+		auswahl = chosen_one;
 		initComponents();
 		createEvents();
 		kontakt = new Kontakt();
@@ -71,6 +73,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Kontaktpunkt bearbeiten/löschen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 472, 311);
 		contentPaneKP2 = new JPanel();
@@ -82,6 +85,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		JLabel lblAuswahlKP2 = new JLabel("Ausgewählter Kontaktpunkt:");
 		
 		txtArAuswahlKP2 = new JTextArea();
+		txtArAuswahlKP2.setText(auswahl);
 		
 		JSeparator separatorKP2 = new JSeparator();
 		
@@ -202,9 +206,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 				kontakt1.setVisible(true);
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Änderungen speichern" Button
-////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+	//Enthält den Code für den "Änderungen speichern" Button
+	////////////////////////////////////////////////////////////////////
 		btnSaveKP2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
