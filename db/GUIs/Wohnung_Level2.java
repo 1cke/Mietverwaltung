@@ -39,30 +39,15 @@ public class Wohnung_Level2 extends JFrame {
 	private JTextArea txtArAuswahlW2;
 	private JCheckBox czbEbkW2;
 	private JCheckBox czbStatusW2;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Wohnung_Level2 frame = new Wohnung_Level2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private String auswahl;
 
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public Wohnung_Level2() throws ClassNotFoundException, SQLException {
-		setTitle("Wohnung bearbeiten/l\u00F6schen");
+	public Wohnung_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
+		auswahl = chosen_one;
 		initComponents();
 		createEvents();
 		wohnung = new Wohnung();
@@ -74,6 +59,7 @@ public class Wohnung_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Wohnung bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 484, 348);
 		contentPaneW2 = new JPanel();
@@ -85,6 +71,7 @@ public class Wohnung_Level2 extends JFrame {
 		JLabel lblAuswahlW2 = new JLabel("Ausgew\u00E4hlte Wohnung:");
 		
 		txtArAuswahlW2 = new JTextArea();
+		txtArAuswahlW2.setText(auswahl);
 		
 		JSeparator separatorW2 = new JSeparator();
 		

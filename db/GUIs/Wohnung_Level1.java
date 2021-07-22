@@ -15,6 +15,7 @@ import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractListModel;
 
 public class Wohnung_Level1 extends JFrame {
 
@@ -23,6 +24,7 @@ public class Wohnung_Level1 extends JFrame {
 	private JButton btnHinzufügenW1;
 	private JButton btnBearbeitenW1;
 	private JButton btnLöschenW1;
+	private JList lstWohnungenW1;
 
 	/**
 	 * Launch the application.
@@ -103,8 +105,17 @@ public class Wohnung_Level1 extends JFrame {
 						.addComponent(btnLöschenW1)))
 		);
 		
-		JList lstWohnungen = new JList();
-		scrollPane.setViewportView(lstWohnungen);
+		lstWohnungenW1 = new JList();
+		lstWohnungenW1.setModel(new AbstractListModel() {
+			String[] values = new String[] {"test wohnung"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane.setViewportView(lstWohnungenW1);
 		contentPane.setLayout(gl_contentPane);
 	}
 	
@@ -139,7 +150,7 @@ public class Wohnung_Level1 extends JFrame {
 				dispose();
 				Wohnung_Level2 wohnung2;
 				try {
-					wohnung2 = new Wohnung_Level2();
+					wohnung2 = new Wohnung_Level2(lstWohnungenW1.getSelectedValue().toString());
 					wohnung2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
@@ -153,7 +164,7 @@ public class Wohnung_Level1 extends JFrame {
 				dispose();
 				Wohnung_Level2 wohnung2;
 				try {
-					wohnung2 = new Wohnung_Level2();
+					wohnung2 = new Wohnung_Level2(lstWohnungenW1.getSelectedValue().toString());
 					wohnung2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
