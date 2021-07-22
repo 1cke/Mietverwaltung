@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import datentypen.Bewerbungsdaten;
+import datentypen.Person;
 
 public class DB {
 
@@ -19,57 +20,22 @@ public class DB {
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbung = new Bewerbung();
 		System.out.println("Test");
-		//kunde.get_all();
-		// adresse.set_address_value("10117", "Berlin", "Pariser Platz", "2");
-		// adresse.set_address_value("20457", "Hamburg", "Platz der Deutschen Einheit",
-		// "4");
-		// adresse.set_address_value("80939", "München", "Werner-Heisenberg-Allee",
-		// "25");
-		// whg.set_wohnungen(adresse.get_adress_id("80939", "München",
-		// "Werner-Heisenberg-Allee", "25"), 638.72, 4, 2, 1, 1);
-		// whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz",
-		// "2"), 189.52, 1, 1, 1, 1);
-		// whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz",
-		// "2"), 1052.00, 5, 3.5, 1, 1);
-		// whg.set_wohnungen(adresse.get_adress_id("10117", "Berlin", "Pariser Platz",
-		// "2"), 802.41, 4, 2,1, 1);
-		// whg.display();
-		// kunde.set_db_value("Max", "Mustermann", "01.01.2001", "+4930/2345619", "
-		// ",1);
-		// kunde.set_db_value("Hannelore", "Müller", "23.04.1982", " ",
-		// "hannelore_mueller@test.de",1);
-		// kunde.set_db_value("Franzl", "Wolf", "13.05.1968", " ",
-		// "franzl.wolf@test.de",0);
-		// kunde.get_all();
-		// adresse.display_adresse();
-		// vertrag.set_db_value(kunde.get_id("Franzl", "Wolf", "13.05.1968"),
-		// whg.get_whg_nr(adresse.get_adress_id("80939", "München",
-		// "Werner-Heisenberg-Allee", "25")), 0.0,"05.02.2002", 1);
-		// vertrag.set_db_value(kunde.get_id("Max", "Mustermann", "01.01.2001"),
-		// whg.get_whg_nr(adresse.get_adress_id("10117", "Berlin", "Pariser Platz",
-		// "2")), 20.0,"01.01.2011", 1);
-		// vertrag.set_db_value(kunde.get_id("Peter", "Lustig", "01.01.1972"),
-		// whg.get_whg_nr(adresse.get_adress_id("10117", "Berlin", "Pariser Platz",
-		// "2")), 20.0,"01.01.2011", 0);
-		// kontakt.set_kontakt_value(vertrag.get_vertrags_id(kunde.get_id("Franzl",
-		// "Wolf", "13.05.1968")), "27.09.2011", "Rohrbruch", " ");
-		//bewerbung.set_bewerbung(1, 2, "21.07.2021");
-		System.out.println("Test ausgabe");
-		kunde.get_vorname();
-		//int kd_nr = kunde.get_id("Max", "Mustermann", "01.01.2001");
-		kunde.lade_kunden_daten(2);
-		int kd_nr = kunde.getId();
-		String vorname = kunde.get_vorname();
-		String nachname = kunde.get_nachname();
-		String geburtsdatum = kunde.get_geburtstag();
-		String telefon = kunde.get_telefon();
-		String email = kunde.get_email();
-		System.out.println("Kundennummer: " + kd_nr + "\nName: " + vorname + " " + nachname + "\nGeboren am: "
-				+ geburtsdatum + "\nKontakt möglichkeit: " + telefon + " " + email+"\nInteressent: "+kunde.get_interessent()+" Aktiv: "+kunde.get_aktiv());
-		//Möglichkeit die ArrayList für eine spätere Verarbeitung in ein Array zu packen
-		ArrayList<Bewerbungsdaten>test = bewerbung.get_all();
-		String parse = bewerbung.parseString(test.get(1));
-		String[] nutzer = parse.split(",");
-		System.out.print(nutzer[3]);
+		
+		// Alle Kunden jeweils in ein seperates Array geladen
+		ArrayList<Person> kd = kunde.get_all();
+		ArrayList<String[]> test = new ArrayList<String[]>();
+		for(int i = 0;i<kd.size();i++) {
+			String[]nutzer = new String[8];
+			String parse = kunde.parseString(kd.get(i));
+			nutzer = parse.split(",");
+			test.add(nutzer);
+		}
+		// Ausgabe aller Kunden einzeln
+		for(int i = 0; i<test.size();i++) {
+			System.out.println(test.get(i)[0]+" "+test.get(i)[1]+" "+test.get(i)[2]+" "+test.get(i)[3]+" "
+					+test.get(i)[4]+ " "+test.get(i)[5]+" "+test.get(i)[6]+" "+test.get(i)[7]);
+					
+		}
+		
 	}
 }
