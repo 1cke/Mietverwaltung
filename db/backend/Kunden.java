@@ -174,8 +174,8 @@ public class Kunden extends Person{
 	private void change_kd_aktiv(int id,int aktiv)throws ClassNotFoundException, SQLException{
 		change_db_value_for_costumer("UPDATE kunden SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
-	private void get_kd_all() throws ClassNotFoundException, SQLException{
-		System.out.println(get_all_values("SELECT * FROM kunden"));
+	private ArrayList<Person> get_kd_all() throws ClassNotFoundException, SQLException{
+		return get_all_values("SELECT * FROM kunden");
 	}
 	private boolean delete_kd(int kunden_id)throws ClassNotFoundException, SQLException{
 		return change_db_value_for_costumer("DELETE FROM kunden WHERE kd_id = '"+kunden_id+"'");
@@ -408,8 +408,8 @@ public class Kunden extends Person{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void get_all() throws ClassNotFoundException, SQLException{
-		get_kd_all();
+	public ArrayList<Person> get_all() throws ClassNotFoundException, SQLException{
+		return get_kd_all();
 	}
 	/**
 	 * Löscht einen Kunden
