@@ -190,8 +190,8 @@ public class Kunden extends Person{
 	 *  @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void lade_kunden_daten(int kunden_nummer)throws ClassNotFoundException, SQLException{
-		get_kd_daten(kunden_nummer);
+	public boolean lade_kunden_daten(int kunden_nummer)throws ClassNotFoundException, SQLException{
+		return get_kd_daten(kunden_nummer);
 	}
 	/**
 	 * Diese Methode erstellt einen Kunden.
@@ -208,8 +208,8 @@ public class Kunden extends Person{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void set_db_value(String vorname, String nachname, String geburtstag, String telefon,String email,int interessent)throws ClassNotFoundException, SQLException {
-		set_db_value_for_kd(vorname,nachname,geburtstag,telefon,email,interessent);
+	public boolean set_db_value(String vorname, String nachname, String geburtstag, String telefon,String email,int interessent)throws ClassNotFoundException, SQLException {
+		return set_db_value_for_kd(vorname,nachname,geburtstag,telefon,email,interessent);
 	}
 	/**
 	 * Diese Methode gibt die Kunden-ID zurück.
