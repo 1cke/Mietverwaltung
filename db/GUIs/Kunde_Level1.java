@@ -28,6 +28,7 @@ public class Kunde_Level1 extends JFrame {
 	private JButton btnBearbeitenK1;
 	private JButton btnLöschenK1;
 	private JButton btnZurückK1;
+	private JList lstKundenK1;
 
 	/**
 	 * Launch the application.
@@ -51,7 +52,6 @@ public class Kunde_Level1 extends JFrame {
 	public Kunde_Level1() {
 		initComponents();
 		createEvents();
-		
 	}
 	
 	////////////////////////////////////////////////////////////////////
@@ -110,9 +110,9 @@ public class Kunde_Level1 extends JFrame {
 						.addComponent(btnHinzufügenK1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
-		JList lstKundenK1 = new JList();
+		lstKundenK1 = new JList();
 		lstKundenK1.setModel(new AbstractListModel() {
-			String[] values = new String[] {};
+			String[] values = new String[] {"1 kunde"};
 			public int getSize() {
 				return values.length;
 			}
@@ -153,7 +153,7 @@ public class Kunde_Level1 extends JFrame {
 				dispose();
 				Kunde_Level2 kunde2;
 				try {
-					kunde2 = new Kunde_Level2();
+					kunde2 = new Kunde_Level2(lstKundenK1.getSelectedValue().toString());
 					kunde2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
@@ -167,7 +167,7 @@ public class Kunde_Level1 extends JFrame {
 				dispose();
 				Kunde_Level2 kunde2;
 				try {
-					kunde2 = new Kunde_Level2();
+					kunde2 = new Kunde_Level2(lstKundenK1.getSelectedValue().toString());
 					kunde2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
