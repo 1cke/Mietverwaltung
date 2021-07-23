@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import backend.Adresse;
 import backend.Wohnung;
 
 import javax.swing.GroupLayout;
@@ -40,6 +41,9 @@ public class Wohnung_Level2 extends JFrame {
 	private JCheckBox czbEbkW2;
 	private JCheckBox czbStatusW2;
 	private String auswahl;
+	private String nrW2;
+	private int nr;
+	private Adresse adresse;
 
 	/**
 	 * Create the frame.
@@ -48,9 +52,10 @@ public class Wohnung_Level2 extends JFrame {
 	 */
 	public Wohnung_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
+		wohnung = new Wohnung();
+		adresse = new Adresse();
 		initComponents();
 		createEvents();
-		wohnung = new Wohnung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -58,7 +63,11 @@ public class Wohnung_Level2 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, SQLException {
+		nrW2 = auswahl.substring(0, auswahl.indexOf(" "));
+		nr = Integer.parseInt(nrW2);
+		wohnung.lade_daten(nr);
+		
 		setTitle("Wohnung bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 484, 348);
