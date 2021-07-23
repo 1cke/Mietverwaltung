@@ -35,6 +35,8 @@ public class Bewerbung_Level2 extends JFrame {
 	private JTextArea txtArAuswahlB2;
 	private JCheckBox czbStatusB2;
 	private String auswahl;
+	private String nrB2;
+	private int nr;
 
 	/**
 	 * Create the frame.
@@ -53,8 +55,11 @@ public class Bewerbung_Level2 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, SQLException {
 		
+		nrB2 = auswahl.substring(0, auswahl.indexOf(" "));
+		nr = Integer.parseInt(nrB2);
+		bewerbung.lade_daten(nr);
 		
 		setTitle("Bewerbung bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,17 +81,20 @@ public class Bewerbung_Level2 extends JFrame {
 		
 		txtFKundenIDB2 = new JTextField();
 		txtFKundenIDB2.setColumns(10);
+		txtFKundenIDB2.setText(String.valueOf(bewerbung.get_kunden_id()));
 		
 		JLabel lblWohnungsIDB2 = new JLabel("Wohnungs-ID");
 		
 		txtFWohnungsIDB2 = new JTextField();
 		txtFWohnungsIDB2.setColumns(10);
+		txtFWohnungsIDB2.setText(String.valueOf(bewerbung.get_wohnungs_id()));
 		
 		JLabel lblDatumB2 = new JLabel("Datum:");
 		
 		txtFDatumB2 = new JTextField();
 		txtFDatumB2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFDatumB2.setColumns(10);
+		txtFDatumB2.setText(bewerbung.get_datum());
 		
 		btnSaveB2 = new JButton("\u00C4nderungen speichern");
 		
@@ -94,6 +102,12 @@ public class Bewerbung_Level2 extends JFrame {
 		
 		czbStatusB2 = new JCheckBox("abgeschlossen");
 		czbStatusB2.setSelected(true);
+		if (bewerbung.get_status()) {
+			czbStatusB2.setSelected(true);
+		} else {
+			czbStatusB2.setSelected(false);
+		}
+		
 		GroupLayout gl_contentPaneB2 = new GroupLayout(contentPaneB2);
 		gl_contentPaneB2.setHorizontalGroup(
 			gl_contentPaneB2.createParallelGroup(Alignment.LEADING)
@@ -184,26 +198,13 @@ public class Bewerbung_Level2 extends JFrame {
 ////////////////////////////////////////////////////////////////////
 		btnSaveB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					bewerbung.lade_daten(Integer.parseInt(txtArAuswahlB2.getText()));
-				} catch (NumberFormatException | ClassNotFoundException | SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				
 				int selectionStatus = czbStatusB2.isSelected() ? 1 : 0;
 				
 				try {
-					/* public void change_bewerber_id(int bewerbungs_id,int bewerber_id)
-					 * public void change_wohnungs_id(int bewerbungs_id,int wohnungs_id)
-					 * public void change_datum(int bewerbungs_id,String datum)
-					 * public void change_status(int bewerbungs_id,int status)
-					 * 					 * 
-					 * */
-					bewerbung.change_bewerber_id(Integer.parseInt(txtArAuswahlB2.getText()), Integer.parseInt(txtFKundenIDB2.getText()));
-					bewerbung.change_wohnungs_id(Integer.parseInt(txtArAuswahlB2.getText()), Integer.parseInt(txtFWohnungsIDB2.getText()));
-					bewerbung.change_datum(Integer.parseInt(txtArAuswahlB2.getText()), txtFDatumB2.getText());
-					bewerbung.change_status(Integer.parseInt(txtArAuswahlB2.getText()), selectionStatus);
+					bewerbung.change_bewerber_id(nr, Integer.parseInt(txtFKundenIDB2.getText()));
+					bewerbung.change_wohnungs_id(nr, Integer.parseInt(txtFWohnungsIDB2.getText()));
+					bewerbung.change_datum(nr, txtFDatumB2.getText());
+					bewerbung.change_status(nr, selectionStatus);
 					
 					
 				} catch (ClassNotFoundException | SQLException e1) {

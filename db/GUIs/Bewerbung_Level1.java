@@ -106,7 +106,7 @@ public class Bewerbung_Level1 extends JFrame {
 		
 		lstBewerbungenB1 = new JList();
 		lstBewerbungenB1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1"};
+			String[] values = new String[] {"1 b"};
 			public int getSize() {
 				return values.length;
 			}
