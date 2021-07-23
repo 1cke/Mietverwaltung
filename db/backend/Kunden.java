@@ -152,27 +152,27 @@ public class Kunden extends Person{
 	private boolean get_kd_aktiv()throws ClassNotFoundException, SQLException{
 		return this.isAktiv();
 	}
-	private void change_kd_vorname(int id,String vorname) throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET vorname = '"+vorname+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_vorname(int id,String vorname) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET vorname = '"+vorname+"' WHERE kd_id = '"+id+"'");
 		
 	}
-	private void change_kd_nachname(int id,String nachname) throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET nachname = '"+nachname+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_nachname(int id,String nachname) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET nachname = '"+nachname+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_kd_geburtstag(int id,String geburtstag)throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET geburtstag = '"+geburtstag+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_geburtstag(int id,String geburtstag)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET geburtstag = '"+geburtstag+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_kd_telefon(int id,String telefon)throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET telefon = '"+telefon+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_telefon(int id,String telefon)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET telefon = '"+telefon+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_kd_email(int id,String email)throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET email = '"+email+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_email(int id,String email)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET email = '"+email+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_kd_interessent(int id,int interessent)throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET interessent = '"+interessent+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_interessent(int id,int interessent)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET interessent = '"+interessent+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_kd_aktiv(int id,int aktiv)throws ClassNotFoundException, SQLException{
-		change_db_value_for_costumer("UPDATE kunden SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
+	private boolean change_kd_aktiv(int id,int aktiv)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_costumer("UPDATE kunden SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
 	private ArrayList<Person> get_kd_all() throws ClassNotFoundException, SQLException{
 		return get_all_values("SELECT * FROM kunden");
@@ -185,9 +185,10 @@ public class Kunden extends Person{
 	 * Diese Methode lädt alle Kundendaten.
 	 * <p>Immer als erstes nutzen, wenn die Kundennummer bekannt ist</p>
 	 * @param kunden_nummer Die Kundennummer als Integer
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
-	 *  @see ClassNotFoundException
+	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
 	public boolean lade_kunden_daten(int kunden_nummer)throws ClassNotFoundException, SQLException{
@@ -202,7 +203,7 @@ public class Kunden extends Person{
 	 * @param telefon Die Telefonnummer als String. Falls unbekannt, leeren String " ".
 	 * @param email Die Email als String. Falls unbekannt, leeren String " ".
 	 * @param interessent Den Interessentenstatus des Kunden als Integer. 0 = False, 1 = True.
-	 * @return Die ID des Kunden als Integer.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -214,7 +215,6 @@ public class Kunden extends Person{
 	/**
 	 * Diese Methode gibt die Kunden-ID zurück.
 	 * <p> Alle Parameter müssen so geschrieben werden, wie Sie in der Datenbank stehen. Ansonsten gibt es keine Ausgabe.</p>
-	 * <p> Dieser Zwang wird noch geändert</p>
 	 * @param vorname Den Vornamen des Kunden als String.
 	 * @param nachname Den Nachnamen des Kunden als String.
 	 * @param geburtstag Das Geburtsdatum des Kunden als String.
@@ -321,78 +321,85 @@ public class Kunden extends Person{
 	 * Diese Methode ändert den Vornamen des Kunden.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param vorname Den Vornamen als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_vorname(int id, String vorname) throws ClassNotFoundException, SQLException{
-		change_kd_vorname(id,vorname);
+	public boolean change_vorname(int id, String vorname) throws ClassNotFoundException, SQLException{
+		return change_kd_vorname(id,vorname);
 	}
 	/**
 	 * Diese Methode ändert den Nachnamen des Kunden.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param nachname Den Nachnamen als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_nachname(int id, String nachname)throws ClassNotFoundException, SQLException{
-		change_kd_nachname(id,nachname);
+	public boolean change_nachname(int id, String nachname)throws ClassNotFoundException, SQLException{
+		return change_kd_nachname(id,nachname);
 	}
 	/**
 	 * Diese Methode ändert das Geburtsdatum des Kunden.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param geburtstag Das Geburtsdatum als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_geburtstag(int id, String geburtstag) throws ClassNotFoundException, SQLException{
-		change_kd_geburtstag(id,geburtstag);
+	public boolean change_geburtstag(int id, String geburtstag) throws ClassNotFoundException, SQLException{
+		return change_kd_geburtstag(id,geburtstag);
 	}
 	/**
 	 * Diese Methode ändert die Telefonnummer des Kunden.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param telefon Die Telefonnummer als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_telefon(int id, String telefon) throws ClassNotFoundException, SQLException{
-		change_kd_telefon(id,telefon);
+	public boolean change_telefon(int id, String telefon) throws ClassNotFoundException, SQLException{
+		return change_kd_telefon(id,telefon);
 	}
 	/**
 	 * Diese Methode ändert die Email des Kunden.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param email Die Email als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_email(int id, String email) throws ClassNotFoundException, SQLException{
-		change_kd_email(id,email);
+	public boolean change_email(int id, String email) throws ClassNotFoundException, SQLException{
+		return change_kd_email(id,email);
 	}
 	/**
 	 * Diese Methode ändert den Interessentenstatus des Kunden.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param interessent Den Interessentenstatus als Integer. 0 = False, 1 = True.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_interessent(int id, int interessent) throws ClassNotFoundException, SQLException{
-		change_kd_interessent(id,interessent);
+	public boolean change_interessent(int id, int interessent) throws ClassNotFoundException, SQLException{
+		return change_kd_interessent(id,interessent);
 	}
 	/**
 	 * Diese Methode ändert den Status des Kunden, ob dieser noch Kunde ist oder nicht.
 	 * @param id Die Kunden-ID als Integer.
 	 * @param aktiv Den Status als Integer. 0 = False, 1 = True.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -403,6 +410,8 @@ public class Kunden extends Person{
 	}
 	/**
 	 * Diese Methode gibt alle Kunden aus.
+	 * <p> Bei dieser Methode müssen die Kunden nicht vorher geladen werden</p>
+	 * @return ArrayList vom Typ Person
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -414,9 +423,11 @@ public class Kunden extends Person{
 	/**
 	 * Löscht einen Kunden
 	 * @param kunden_id als Integer
-	 * @return Boolean ob geklappt oder nicht
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
 	 */
 	public boolean delete(int kunden_id)throws ClassNotFoundException, SQLException{
 		return delete_kd(kunden_id);
