@@ -139,20 +139,20 @@ public class Vertrag extends Vertragsdaten{
 	private ArrayList<Vertragsdaten> get_vertrag_all_whg_by_kd_id(int kd_id) throws ClassNotFoundException, SQLException{
 		return get_values(kd_id,"kd");
 	}
-	private void change_vertrag_kd_id(int id, int kd_id) throws ClassNotFoundException, SQLException{
-		change_db_value_for_contract("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE kd_id = '"+id+"'");
+	private boolean change_vertrag_kd_id(int id, int kd_id) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_contract("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_vertrag_whg_id(int id, int whg_id) throws ClassNotFoundException, SQLException{
-		change_db_value_for_contract("UPDATE vertrag SET whg_id = '"+whg_id+"' WHERE kd_id = '"+id+"'");
+	private boolean change_vertrag_whg_id(int id, int whg_id) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_contract("UPDATE vertrag SET whg_id = '"+whg_id+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_vertrag_zeitraum(int id, String zeitraum) throws ClassNotFoundException, SQLException{
-		change_db_value_for_contract("UPDATE vertrag SET zeitraum = '"+zeitraum+"' WHERE kd_id = '"+id+"'");
+	private boolean change_vertrag_zeitraum(int id, String zeitraum) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_contract("UPDATE vertrag SET zeitraum = '"+zeitraum+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_vertrag_schulden(int id, double schulden) throws ClassNotFoundException, SQLException{
-		change_db_value_for_contract("UPDATE vertrag SET schulden = '"+schulden+"' WHERE kd_id = '"+id+"'");
+	private boolean change_vertrag_schulden(int id, double schulden) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_contract("UPDATE vertrag SET schulden = '"+schulden+"' WHERE kd_id = '"+id+"'");
 	}
-	private void change_vertrag_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
-		change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
+	private boolean change_vertrag_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
+		return change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
 	}
 	private boolean delete_contract(int vertrags_id)throws ClassNotFoundException, SQLException{
 		return change_db_value_for_contract("DELETE FROM vertrag WHERE vertrags_id = '"+vertrags_id+"'");
@@ -174,12 +174,20 @@ public class Vertrag extends Vertragsdaten{
 		set_db_value_for_contract(kd_id,whg_id,schulden,zeitraum,aktiv);
 		return this.getId();
 	}
-	public void lade_vertrags_daten(int vertragsnummer) throws ClassNotFoundException, SQLException{
-		get_values(vertragsnummer);
+	/**
+	 * Diese Methode lädt alle Vertragsdaten für einen spezifischen Vertrag
+	 * @param vertragsnummer
+	 * @return Boolean
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public boolean lade_vertrags_daten(int vertragsnummer) throws ClassNotFoundException, SQLException{
+		return get_values(vertragsnummer);
 	}
 	/**
 	 * Diese Methode gibt die zugeordnete Kunden-ID zurück.
-	 * <p> Return wird noch bearbeitet</p>
 	 * @return Die Kunden-ID als Integer.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -248,7 +256,7 @@ public class Vertrag extends Vertragsdaten{
 	}
 	/**
 	 * Diese Methode gibt alle Verträge und dazugehörige Daten aus
-	 * <p> Es erfolgt keine Rückgabe</p>
+	 * @return ArrayList vom Typ Vertragsdaten
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -261,70 +269,71 @@ public class Vertrag extends Vertragsdaten{
 	 * Diese Methode ändert die Kunden-ID.
 	 * @param id	Die Vertrags-ID als Integer.
 	 * @param kd_nr	Die neue Kunden-ID als Integer.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_kundennummer(int id, int kd_nr)throws ClassNotFoundException, SQLException {
-		change_vertrag_kd_id(id,kd_nr);
+	public boolean change_kundennummer(int id, int kd_nr)throws ClassNotFoundException, SQLException {
+		return change_vertrag_kd_id(id,kd_nr);
 	}
 	/**
 	 * Diese Methode ändert die Wohnungs-ID.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param id	Die Vertrags-ID als Integer.
 	 * @param wohnungsnummer	Die neue Wohnungs-ID als Integer.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_wohnungsnummer(int id, int wohnungsnummer) throws ClassNotFoundException, SQLException{
-		change_vertrag_whg_id(id,wohnungsnummer);
+	public boolean change_wohnungsnummer(int id, int wohnungsnummer) throws ClassNotFoundException, SQLException{
+		return change_vertrag_whg_id(id,wohnungsnummer);
 	}
 	/**
 	 * Diese Methode ändert den Zeitraum.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param id Die Vertrags-ID als Integer.
 	 * @param zeitraum Den neuen Zeitraum als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_zeitraum(int id,String zeitraum)throws ClassNotFoundException, SQLException{
-		change_vertrag_zeitraum(id,zeitraum);
+	public boolean change_zeitraum(int id,String zeitraum)throws ClassNotFoundException, SQLException{
+		return change_vertrag_zeitraum(id,zeitraum);
 	}
 	/**
 	 * Diese Methode ändert den Schuldenwert.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param id Die Vertrags-ID als Integer.
 	 * @param schulden Die neuen Schulden als Double
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_schulden(int id, double schulden)throws ClassNotFoundException, SQLException{
-		change_vertrag_schulden(id,schulden);
+	public boolean change_schulden(int id, double schulden)throws ClassNotFoundException, SQLException{
+		return change_vertrag_schulden(id,schulden);
 	}
 	/**
 	 * Diese Methode ändert den aktiv Status.
-	 * <p>Es erfolgt keine Rückgabe</p>
 	 * @param id Die Vertrags-Id als Integer.
 	 * @param aktiv	Den neuen Status als Integer. 0 = false, 1 = True
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_aktiv(int id, int aktiv)throws ClassNotFoundException, SQLException{
-		change_vertrag_aktiv(id,aktiv);
+	public boolean change_aktiv(int id, int aktiv)throws ClassNotFoundException, SQLException{
+		return change_vertrag_aktiv(id,aktiv);
 	}
 	/**
 	 * Löscht einen Vertrag
 	 * @param vertrags_id Integer
-	 * @return Boolean, ob es geklappt oder nicht.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
