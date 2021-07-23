@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import backend.Adresse;
 import backend.Wohnung;
 
 import javax.swing.GroupLayout;
@@ -39,6 +40,7 @@ public class Wohnung_Level3 extends JFrame {
 	private Wohnung wohnung;
 	private JLabel lblAdressIDW3;
 	private JTextField txtFAdressIDW3;
+	private Adresse adresse;
 
 	/**
 	 * Launch the application.
@@ -62,10 +64,10 @@ public class Wohnung_Level3 extends JFrame {
 	 * @throws ClassNotFoundException 
 	 */
 	public Wohnung_Level3() throws ClassNotFoundException, SQLException {
-		setTitle("Wohnung hinzuf\u00FCgen");
+		adresse = new Adresse();
+		wohnung = new Wohnung();
 		initComponents();
 		createEvents();
-		wohnung = new Wohnung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -74,6 +76,7 @@ public class Wohnung_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Wohnung hinzuf\u00FCgen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 474, 284);
 		contentPane = new JPanel();
@@ -247,8 +250,20 @@ public class Wohnung_Level3 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int selectionEbk = czbEbkW3.isSelected() ? 1 : 0;
 				int selectionStatus = czbStatusW3.isSelected() ? 1 : 0;
-				try {	
-					wohnung.set_wohnungen(Integer.parseInt(txtFAdressIDW3.getText()), Double.parseDouble(txtFMieteW3.getText()), Double.parseDouble(txtFZimmerW3.getText()), Double.parseDouble(txtFBaederW3.getText()), selectionEbk, selectionStatus);
+				
+				try {
+					int adr_id = adresse.get_adress_id(txtFPLZW3.getText(), txtFOrtW3.getText(), txtFStrasseW3.getText(), txtFHNW3.getText());
+					if (adr_id == 0 ) {
+						adresse.set_address_value(txtFPLZW3.getText(), txtFOrtW3.getText(), txtFStrasseW3.getText(), txtFHNW3.getText());
+						adr_id = adresse.get_adress_id(txtFPLZW3.getText(), txtFOrtW3.getText(), txtFStrasseW3.getText(), txtFHNW3.getText());
+						wohnung.set_wohnungen(adr_id, Double.parseDouble(txtFMieteW3.getText()),
+								Double.parseDouble(txtFZimmerW3.getText()), Double.parseDouble(txtFBaederW3.getText()),
+								selectionEbk, selectionStatus);
+					} else {
+					wohnung.set_wohnungen(adr_id, Double.parseDouble(txtFMieteW3.getText()),
+							Double.parseDouble(txtFZimmerW3.getText()), Double.parseDouble(txtFBaederW3.getText()),
+							selectionEbk, selectionStatus);
+					}
 					
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block

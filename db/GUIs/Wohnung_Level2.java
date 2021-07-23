@@ -67,6 +67,7 @@ public class Wohnung_Level2 extends JFrame {
 		nrW2 = auswahl.substring(0, auswahl.indexOf(" "));
 		nr = Integer.parseInt(nrW2);
 		wohnung.lade_daten(nr);
+		adresse.lade_adresse(wohnung.get_adress_id());
 		
 		setTitle("Wohnung bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,6 +89,7 @@ public class Wohnung_Level2 extends JFrame {
 		
 		txtFStrasseW2 = new JTextField();
 		txtFStrasseW2.setColumns(10);
+		txtFStrasseW2.setText(adresse.get_strasse());
 		
 		JLabel lblHNW2 = new JLabel("Nummer :");
 		
@@ -95,27 +97,41 @@ public class Wohnung_Level2 extends JFrame {
 		
 		txtFOrtW2 = new JTextField();
 		txtFOrtW2.setColumns(10);
+		txtFOrtW2.setText(adresse.get_ort());
 		
 		JLabel lblPLZW2 = new JLabel("PLZ:");
 		
 		czbEbkW2 = new JCheckBox("Einbauk\u00FCche");
+		if (wohnung.get_ebk()) {
+			czbEbkW2.setSelected(true);
+		} else {
+			czbEbkW2.setSelected(false);
+		}
 		
 		JLabel lblMieteW2 = new JLabel("Miete:");
 		
 		txtFMieteW2 = new JTextField();
 		txtFMieteW2.setColumns(10);
+		txtFMieteW2.setText(String.valueOf(wohnung.get_miete()));
 		
 		JLabel lblZimmerW2 = new JLabel("Zimmer:");
 		
 		txtFZimmerW2 = new JTextField();
 		txtFZimmerW2.setColumns(10);
+		txtFZimmerW2.setText(String.valueOf(wohnung.get_zimmer()));
 		
 		JLabel lblBaederW2 = new JLabel("B\u00E4der:");
 		
 		txtFBaederW2 = new JTextField();
 		txtFBaederW2.setColumns(10);
+		txtFBaederW2.setText(String.valueOf(wohnung.get_baeder()));
 		
 		czbStatusW2 = new JCheckBox("vermietet");
+		if (wohnung.get_vermietet()) {
+			czbStatusW2.setSelected(true);
+		} else {
+			czbStatusW2.setSelected(false);
+		}
 		
 		btnSaveW2 = new JButton("\u00C4nderungen speichern");
 		
@@ -123,9 +139,12 @@ public class Wohnung_Level2 extends JFrame {
 		
 		txtFPLZW2 = new JTextField();
 		txtFPLZW2.setColumns(10);
+		txtFPLZW2.setText(adresse.get_plz());
 		
 		txtFHNW2 = new JTextField();
 		txtFHNW2.setColumns(10);
+		txtFHNW2.setText(adresse.get_hn());
+		
 		GroupLayout gl_contentPaneW2 = new GroupLayout(contentPaneW2);
 		gl_contentPaneW2.setHorizontalGroup(
 			gl_contentPaneW2.createParallelGroup(Alignment.LEADING)
@@ -265,17 +284,11 @@ public class Wohnung_Level2 extends JFrame {
 				int selectionStatus = czbStatusW2.isSelected() ? 1 : 0;
 				
 				try {
-					/* public void change_miete(int whg_id,double miete)
-					 * public void change_zimmer(int whg_id,double zimmer)
-					 * public void change_baeder(int whg_id,double baeder)
-					 * public void change_ebk(int whg_id,int ebk)
-					 * public void change_vermietet(int whg_id,int vermietet)
-					 * */
-					wohnung.change_miete(Integer.parseInt(txtArAuswahlW2.getText()), Double.parseDouble(txtFMieteW2.getText()));
-					wohnung.change_zimmer(Integer.parseInt(txtArAuswahlW2.getText()), Double.parseDouble(txtFZimmerW2.getText()));
-					wohnung.change_baeder(Integer.parseInt(txtArAuswahlW2.getText()), Double.parseDouble(txtFBaederW2.getText()));
-					wohnung.change_ebk(Integer.parseInt(txtArAuswahlW2.getText()), selectionEbk);
-					wohnung.change_vermietet(Integer.parseInt(txtArAuswahlW2.getText()), selectionStatus);
+					wohnung.change_miete(nr, Double.parseDouble(txtFMieteW2.getText()));
+					wohnung.change_zimmer(nr, Double.parseDouble(txtFZimmerW2.getText()));
+					wohnung.change_baeder(nr, Double.parseDouble(txtFBaederW2.getText()));
+					wohnung.change_ebk(nr, selectionEbk);
+					wohnung.change_vermietet(nr, selectionStatus);
 					
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block

@@ -107,7 +107,7 @@ public class Wohnung_Level1 extends JFrame {
 		
 		lstWohnungenW1 = new JList();
 		lstWohnungenW1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"test wohnung"};
+			String[] values = new String[] {"1 test wohnung", "2 w", "3 w", "10 w"};
 			public int getSize() {
 				return values.length;
 			}
