@@ -37,6 +37,8 @@ public class Vertrag_Level2 extends JFrame {
 	private JTextArea txtArAuswahlV2;
 	private JCheckBox czbAktivV2;
 	private String auswahl;
+	private String nrV2;
+	private int nr;
 
 	/**
 	 * Create the frame.
@@ -45,9 +47,9 @@ public class Vertrag_Level2 extends JFrame {
 	 */
 	public Vertrag_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
+		vertrag = new Vertrag();
 		initComponents();
 		createEvents();
-		vertrag = new Vertrag();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -55,7 +57,11 @@ public class Vertrag_Level2 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, SQLException {
+		nrV2 = auswahl.substring(0, auswahl.indexOf(" "));
+		nr = Integer.parseInt(nrV2);
+		vertrag.lade_vertrags_daten(nr);
+		
 		setTitle("Vertrag bearbeiten/löschen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 276);
@@ -76,22 +82,26 @@ public class Vertrag_Level2 extends JFrame {
 		
 		txtFKundenIDV2 = new JTextField();
 		txtFKundenIDV2.setColumns(10);
+		txtFKundenIDV2.setText(String.valueOf(vertrag.get_kd_id()));
 		
 		JLabel lblWohnungsIDV2 = new JLabel("Wohnungs-ID:");
 		
 		txtFWohnungsIDV2 = new JTextField();
 		txtFWohnungsIDV2.setColumns(10);
+		txtFWohnungsIDV2.setText(String.valueOf(vertrag.get_whg_id()));
 		
 		JLabel lblZeitraumV2 = new JLabel("Zeitraum:");
 		
 		txtFZeitraumV2 = new JTextField();
 		txtFZeitraumV2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFZeitraumV2.setColumns(10);
+		txtFZeitraumV2.setText(vertrag.get_zeitraum());
 		
 		JLabel lblSchuldenV2 = new JLabel("Schulden:");
 		
 		txtFSchuldenV2 = new JTextField();
 		txtFSchuldenV2.setColumns(10);
+		txtFSchuldenV2.setText(String.valueOf(vertrag.get_schulden()));
 		
 		btnSaveV2 = new JButton("\u00C4nderungen speichern");
 		
@@ -99,6 +109,12 @@ public class Vertrag_Level2 extends JFrame {
 		
 		czbAktivV2 = new JCheckBox("aktiver Vertrag");
 		czbAktivV2.setSelected(true);
+		if (vertrag.get_aktiv()) {
+			czbAktivV2.setSelected(true);
+		} else {
+			czbAktivV2.setSelected(false);
+		}
+		
 		GroupLayout gl_contentPaneV2 = new GroupLayout(contentPaneV2);
 		gl_contentPaneV2.setHorizontalGroup(
 			gl_contentPaneV2.createParallelGroup(Alignment.LEADING)
@@ -191,32 +207,21 @@ public class Vertrag_Level2 extends JFrame {
 				vertrag1.setVisible(true);
 			}
 		});
-////////////////////////////////////////////////////////////////////
-// Enthält den Code für den "Änderungen speichern" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		// Enthält den Code für den "Änderungen speichern" Button
+		////////////////////////////////////////////////////////////////////
 		btnSaveV2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					vertrag.lade_vertrags_daten(Integer.parseInt(txtArAuswahlV2.getText()));
-				} catch (NumberFormatException | ClassNotFoundException | SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
 				
 				int selectionStatus = czbAktivV2.isSelected() ? 1 : 0;
 				
 				try {
-					/* public void change_kundennummer(int id, int kd_nr)
-					 * public void change_wohnungsnummer(int id, int wohnungsnummer)
-					 * public void change_zeitraum(int id,String zeitraum)
-					 * public void change_schulden(int id, double schulden)
-					 * public void change_aktiv(int id, int aktiv)					 * 
-					 * */
-					vertrag.change_kundennummer(Integer.parseInt(txtArAuswahlV2.getText()), Integer.parseInt(txtFKundenIDV2.getText()));
-					vertrag.change_wohnungsnummer(Integer.parseInt(txtArAuswahlV2.getText()), Integer.parseInt(txtFWohnungsIDV2.getText()));
-					vertrag.change_zeitraum(Integer.parseInt(txtArAuswahlV2.getText()), txtFZeitraumV2.getText());
-					vertrag.change_schulden(Integer.parseInt(txtArAuswahlV2.getText()), Double.parseDouble(txtFSchuldenV2.getText()));
-					vertrag.change_aktiv(Integer.parseInt(txtArAuswahlV2.getText()), selectionStatus);
+					
+					vertrag.change_kundennummer(nr, Integer.parseInt(txtFKundenIDV2.getText()));
+					vertrag.change_wohnungsnummer(nr, Integer.parseInt(txtFWohnungsIDV2.getText()));
+					vertrag.change_zeitraum(nr, txtFZeitraumV2.getText());
+					vertrag.change_schulden(nr, Double.parseDouble(txtFSchuldenV2.getText()));
+					vertrag.change_aktiv(nr, selectionStatus);
 					
 					
 				} catch (ClassNotFoundException | SQLException e1) {

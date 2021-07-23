@@ -46,7 +46,6 @@ public class Vertrag_Level1 extends JFrame {
 	 * Create the frame.
 	 */
 	public Vertrag_Level1() {
-		setTitle("Men\u00FC - Vertr\u00E4ge");
 		initComponents();
 		createEvents();
 	}
@@ -57,6 +56,7 @@ public class Vertrag_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Men\u00FC - Vertr\u00E4ge");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -108,7 +108,7 @@ public class Vertrag_Level1 extends JFrame {
 		
 		lstVerträgeV1 = new JList();
 		lstVerträgeV1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"test vertrag"};
+			String[] values = new String[] {"1 test vertrag","2 v","3 v","4 b"};
 			public int getSize() {
 				return values.length;
 			}
