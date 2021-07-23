@@ -58,10 +58,11 @@ public class Kunde_Level2 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() throws ClassNotFoundException, SQLException {
+	private void initComponents() throws ClassNotFoundException, SQLException{
+		kunde = new Kunden();
 		nrK2 = auswahl.substring(0, auswahl.indexOf(" "));
 		int nr = Integer.parseInt(nrK2);
-		kunde.lade_kunden_daten(1);
+		System.out.println(kunde.lade_kunden_daten(1));
 		
 		setTitle("Kunde bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
