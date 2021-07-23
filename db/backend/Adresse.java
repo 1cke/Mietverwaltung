@@ -133,17 +133,17 @@ public class Adresse extends Anschrift{
 	private ArrayList<Anschrift> display_address_all()throws ClassNotFoundException, SQLException{
 		return get_all_values();
 	}
-	private void change_address_plz(int adress_id,String plz)throws ClassNotFoundException, SQLException{
-		change_db_value_for_address("UPDATE adresse SET plz = '"+plz+"' WHERE adress_id = '"+adress_id+"'");
+	private boolean change_address_plz(int adress_id,String plz)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_address("UPDATE adresse SET plz = '"+plz+"' WHERE adress_id = '"+adress_id+"'");
 	}
-	private void change_address_ort(int adress_id,String ort)throws ClassNotFoundException, SQLException{
-		change_db_value_for_address("UPDATE adresse SET ort = '"+ort+"' WHERE adress_id = '"+adress_id+"'");
+	private boolean change_address_ort(int adress_id,String ort)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_address("UPDATE adresse SET ort = '"+ort+"' WHERE adress_id = '"+adress_id+"'");
 	}
-	private void change_address_strasse(int adress_id,String strasse)throws ClassNotFoundException, SQLException{
-		change_db_value_for_address("UPDATE adresse SET strasse = '"+strasse+"' WHERE adress_id = '"+adress_id+"'");
+	private boolean change_address_strasse(int adress_id,String strasse)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_address("UPDATE adresse SET strasse = '"+strasse+"' WHERE adress_id = '"+adress_id+"'");
 	}
-	private void change_address_hn(int adress_id,String hn)throws ClassNotFoundException, SQLException{
-		change_db_value_for_address("UPDATE adresse SET hn = '"+hn+"' WHERE adress_id = '"+adress_id+"'");
+	private boolean change_address_hn(int adress_id,String hn)throws ClassNotFoundException, SQLException{
+		return change_db_value_for_address("UPDATE adresse SET hn = '"+hn+"' WHERE adress_id = '"+adress_id+"'");
 	}
 	/**
 	 * Diese Methode erstellt einen neuen Datenbankeintrag.
@@ -151,7 +151,7 @@ public class Adresse extends Anschrift{
 	 * @param ort	Den Ortsnamen als String.
 	 * @param strasse Die Straße als String.
 	 * @param hn	Die Hausnummer als String.
-	 * @return Boolean. Hat funktioniert oder nicht
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -225,7 +225,7 @@ public class Adresse extends Anschrift{
 	}
 	/**
 	 * Diese Methode gibt alle Datenbankeinträge aus.
-	 * @return ArrayList<Anschrift>
+	 * @return ArrayList vom Typ Anschrift
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -236,55 +236,55 @@ public class Adresse extends Anschrift{
 	}
 	/**
 	 * Diese Methode ändert die Postleitzahl.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param adress_id Die Adress-ID als Integer
 	 * @param plz Die neue Postleitzahl als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_plz(int adress_id, String plz)throws ClassNotFoundException, SQLException{
-		change_address_plz(adress_id,plz);
+	public boolean change_plz(int adress_id, String plz)throws ClassNotFoundException, SQLException{
+		return change_address_plz(adress_id,plz);
 	}
 	/**
 	 * Diese Methode ändert den Ort.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param adress_id Die Adress-ID als Integer
 	 * @param ort Den neuen Ort als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_ort(int adress_id, String ort)throws ClassNotFoundException, SQLException{
-		change_address_ort(adress_id,ort);
+	public boolean change_ort(int adress_id, String ort)throws ClassNotFoundException, SQLException{
+		return change_address_ort(adress_id,ort);
 	}
 	/**
 	 * Diese Methode ändert die Straße.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param adress_id Die Adress-ID als Integer.
 	 * @param strasse Die neue Straße als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_strasse(int adress_id, String strasse)throws ClassNotFoundException, SQLException{
-		change_address_strasse(adress_id,strasse);
+	public boolean change_strasse(int adress_id, String strasse)throws ClassNotFoundException, SQLException{
+		return change_address_strasse(adress_id,strasse);
 	}
 	/**
 	 * Diese Methode ändert die Hausnummer.
-	 * <p> Es erfolgt keine Rückgabe</p>
 	 * @param adress_id Die Adress-ID als Intger.
 	 * @param hn Die neue Hausnummer als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_hn(int adress_id, String hn)throws ClassNotFoundException, SQLException{
-		change_address_hn(adress_id,hn);
+	public boolean change_hn(int adress_id, String hn)throws ClassNotFoundException, SQLException{
+		return change_address_hn(adress_id,hn);
 	}
 	/**
 	 * Diese Methode löscht eine Adresse.
