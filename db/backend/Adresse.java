@@ -83,6 +83,25 @@ public class Adresse extends Anschrift{
 		connection.close();
 		return daten;
 	}
+	private boolean get_adresse(int id) throws ClassNotFoundException, SQLException{
+		try {
+			Connection connection = null;
+			connection = DriverManager.getConnection("jdbc:sqlite:kundenDB.db");
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+			ResultSet rs = statement.executeQuery("SELECT plz,ort,strasse,hn FROM adresse WHERE adress_id = '"+id+"'");
+			while(rs.next()) {
+				this.setId(id);
+				this.setPlz(rs.getString(1));
+				this.setOrt(rs.getString(2));
+				this.setStrasse(rs.getString(3));
+				this.setHausnummer(rs.getString(4));
+			}
+			connection.close();
+			return true;
+		}catch(Exception e) {return false;}
+		
+	}
 	private boolean change_db_value_for_address(String anweisung)throws ClassNotFoundException, SQLException{
 		try {
 			Connection connection = null;//setze Connection auf null
@@ -118,16 +137,16 @@ public class Adresse extends Anschrift{
 		get_values(plz,ort,strasse,hn);
 		return this.getId();
 	}
-	private String get_address_plz(int adress_id) throws ClassNotFoundException, SQLException{
+	private String get_address_plz() throws ClassNotFoundException, SQLException{
 		return this.getPlz();
 	}
-	private String get_address_ort(int adress_id) throws ClassNotFoundException, SQLException{
+	private String get_address_ort() throws ClassNotFoundException, SQLException{
 		return this.getOrt();
 	}
-	private String get_address_strasse(int adress_id) throws ClassNotFoundException, SQLException{
+	private String get_address_strasse() throws ClassNotFoundException, SQLException{
 		return this.getStrasse();
 	}
-	private String get_address_hn(int adress_id) throws ClassNotFoundException, SQLException{
+	private String get_address_hn() throws ClassNotFoundException, SQLException{
 		return this.getHausnummer();
 	}
 	private ArrayList<Anschrift> display_address_all()throws ClassNotFoundException, SQLException{
@@ -177,51 +196,47 @@ public class Adresse extends Anschrift{
 	}
 	/**
 	 * Diese Methode gibt die Postleizahl zurück.
-	 * @param adress_id Die Adress-ID als Integer
 	 * @return Die Postleizahl als String
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_plz(int adress_id)throws ClassNotFoundException, SQLException{
-		return get_address_plz(adress_id);
+	public String get_plz()throws ClassNotFoundException, SQLException{
+		return get_address_plz();
 	}
 	/**
 	 * Diese Methode gibt den Ort zurück.
-	 * @param adress_id Die Adress-ID als Integer
 	 * @return Den Ort als String
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_ort(int adress_id)throws ClassNotFoundException, SQLException{
-		return get_address_ort(adress_id);
+	public String get_ort()throws ClassNotFoundException, SQLException{
+		return get_address_ort();
 	}
 	/**
 	 * Diese Methode gibt die Straße zurück.
-	 * @param adress_id Die Adress-ID als Integer.
 	 * @return Die Straße als String
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_strasse(int adress_id)throws ClassNotFoundException, SQLException{
-		return get_address_strasse(adress_id);
+	public String get_strasse()throws ClassNotFoundException, SQLException{
+		return get_address_strasse();
 	}
 	/**
 	 * Diese Methode gibt die Hausnummer zurück.
-	 * @param adress_id Die Adress-ID als Integer
 	 * @return Die Hausnummer als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_hn(int adress_id)throws ClassNotFoundException, SQLException{
-		return get_address_hn(adress_id);
+	public String get_hn()throws ClassNotFoundException, SQLException{
+		return get_address_hn();
 	}
 	/**
 	 * Diese Methode gibt alle Datenbankeinträge aus.
@@ -297,5 +312,17 @@ public class Adresse extends Anschrift{
 	 */
 	public boolean delete_addresse(int id) throws ClassNotFoundException, SQLException{
 		return delete_db_value(id);
+	}
+	/**
+	 * Diese Methode lädt alle Adressdaten zu einer spezifischen Adresse.
+	 * @param id Die Adress-ID als Integer
+	 * @return Boolean
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public boolean lade_adresse(int id)throws ClassNotFoundException, SQLException{
+		return get_adresse(id);
 	}
 }
