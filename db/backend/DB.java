@@ -3,7 +3,7 @@ package backend;
 
 /**
  * @author Johann Münchhagen
- * Dies ist ein Klasse um die anderen Klassen zu testen.
+ * Dies ist ein Klasse um die anderen Klassen zu testen
  */
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import datentypen.Bewerbungsdaten;
 import datentypen.Person;
 
 public class DB {
-
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Adresse adresse = new Adresse();
 		Wohnung whg = new Wohnung();
