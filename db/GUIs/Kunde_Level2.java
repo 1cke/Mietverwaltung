@@ -39,23 +39,7 @@ public class Kunde_Level2 extends JFrame {
 	private JCheckBox czbInteressentK2;
 	private JCheckBox czbAktivK2;
 	private String auswahl;
-
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Kunde_Level2 frame = new Kunde_Level2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	} */
+	private String nrK2;
 
 	/**
 	 * Create the frame.
@@ -74,7 +58,11 @@ public class Kunde_Level2 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, SQLException {
+		nrK2 = auswahl.substring(0, auswahl.indexOf(" "));
+		int nr = Integer.parseInt(nrK2);
+		kunde.lade_kunden_daten(1);
+		
 		setTitle("Kunde bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 344);
@@ -95,29 +83,39 @@ public class Kunde_Level2 extends JFrame {
 		
 		txtFVornameK2 = new JTextField();
 		txtFVornameK2.setColumns(10);
+		txtFVornameK2.setText(kunde.get_vorname());
 		
 		JLabel lblNachnameK2 = new JLabel("Nachname:");
 		
 		txtFNachnameK2 = new JTextField();
 		txtFNachnameK2.setColumns(10);
+		txtFNachnameK2.setText(kunde.get_nachname());
 		
 		JLabel lblGeburtstagK2 = new JLabel("Geboren am:");
 		
 		txtFGeburtstagK2 = new JTextField();
 		txtFGeburtstagK2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFGeburtstagK2.setColumns(10);
+		txtFGeburtstagK2.setText(kunde.get_geburtstag());
 		
 		JLabel lblTelefonK2 = new JLabel("Telefon:");
 		
 		txtFTelefonK2 = new JTextField();
 		txtFTelefonK2.setColumns(10);
+		txtFTelefonK2.setText(kunde.get_telefon());
 		
 		JLabel lblEmailK2 = new JLabel("E-Mail:");
 		
 		txtFEmailK2 = new JTextField();
 		txtFEmailK2.setColumns(10);
+		txtFEmailK2.setText(kunde.getEmail());
 		
 		czbInteressentK2 = new JCheckBox("Interessent");
+		if (kunde.get_interessent()) {
+			czbInteressentK2.setSelected(true);
+		} else {
+			czbInteressentK2.setSelected(false);
+		}
 		
 		btnSaveK2 = new JButton("\u00C4nderungen speichern");
 		
@@ -125,6 +123,12 @@ public class Kunde_Level2 extends JFrame {
 		
 		czbAktivK2 = new JCheckBox("aktiver Kunde");
 		czbAktivK2.setSelected(true);
+		if (kunde.get_aktiv()) {
+			czbAktivK2.setSelected(true);
+		} else {
+			czbAktivK2.setSelected(false);
+		}
+		
 		GroupLayout gl_contentPaneK2 = new GroupLayout(contentPaneK2);
 		gl_contentPaneK2.setHorizontalGroup(
 			gl_contentPaneK2.createParallelGroup(Alignment.LEADING)
