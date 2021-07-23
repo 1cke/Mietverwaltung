@@ -296,6 +296,20 @@ public class Wohnung_Level2 extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den Button "Wohnung löschen"
+////////////////////////////////////////////////////////////////////
+		btnLöschenW2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					wohnung.delete(nr);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 	}
 }

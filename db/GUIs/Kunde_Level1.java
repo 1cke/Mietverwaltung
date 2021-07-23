@@ -114,7 +114,7 @@ public class Kunde_Level1 extends JFrame {
 		
 		lstKundenK1 = new JList();
 		lstKundenK1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1 kunde"};
+			String[] values = new String[] {"1 kunde", "2 kunde", "3 kunde"};
 			public int getSize() {
 				return values.length;
 			}

@@ -213,5 +213,19 @@ public class Bewerbung_Level2 extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Bewerbung Löschen" Button
+////////////////////////////////////////////////////////////////////
+		btnLöschenB2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					bewerbung.delete_bewerbung(nr);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 }
