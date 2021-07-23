@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import datentypen.Kontaktdaten;
 
 /**
- * @author Johann Muenchhagen
+ * @author Johann-Christian Münchhagen
  *
  */
 public class Kontakt extends Kontaktdaten{

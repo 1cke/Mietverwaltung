@@ -4,7 +4,6 @@ package backend;
 /**
  * @author Johann Münchhagen
  * Dies ist ein Klasse um die anderen Klassen zu testen.
- * test
  */
 import java.sql.SQLException;
 import java.util.ArrayList;
