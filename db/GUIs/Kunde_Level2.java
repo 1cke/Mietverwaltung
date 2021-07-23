@@ -40,6 +40,7 @@ public class Kunde_Level2 extends JFrame {
 	private JCheckBox czbAktivK2;
 	private String auswahl;
 	private String nrK2;
+	private int nr;
 
 	/**
 	 * Create the frame.
@@ -48,9 +49,9 @@ public class Kunde_Level2 extends JFrame {
 	 */
 	public Kunde_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
+		kunde = new Kunden();
 		initComponents();
 		createEvents();
-		kunde = new Kunden();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -59,10 +60,10 @@ public class Kunde_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() throws ClassNotFoundException, SQLException{
-		kunde = new Kunden();
+
 		nrK2 = auswahl.substring(0, auswahl.indexOf(" "));
-		int nr = Integer.parseInt(nrK2);
-		System.out.println(kunde.lade_kunden_daten(1));
+		nr = Integer.parseInt(nrK2);
+		kunde.lade_kunden_daten(nr);
 		
 		setTitle("Kunde bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -242,23 +243,18 @@ public class Kunde_Level2 extends JFrame {
 ////////////////////////////////////////////////////////////////////
 		btnSaveK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					kunde.lade_kunden_daten(Integer.parseInt(txtArAuswahlK2.getText()));
-				} catch (NumberFormatException | ClassNotFoundException | SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
+				
 				int selectionInteressent = czbInteressentK2.isSelected() ? 1 : 0;
 				int selectionAktiv = czbAktivK2.isSelected() ? 1 : 0;
 				
 				try {
-					kunde.change_vorname(Integer.parseInt(txtArAuswahlK2.getText()), txtFVornameK2.getText());
-					kunde.change_nachname(Integer.parseInt(txtArAuswahlK2.getText()), txtFNachnameK2.getText());
-					kunde.change_geburtstag(Integer.parseInt(txtArAuswahlK2.getText()), txtFGeburtstagK2.getText());
-					kunde.change_telefon(Integer.parseInt(txtArAuswahlK2.getText()), txtFTelefonK2.getText());
-					kunde.change_email(Integer.parseInt(txtArAuswahlK2.getText()), txtFEmailK2.getText());
-					kunde.change_interessent(Integer.parseInt(txtArAuswahlK2.getText()), selectionInteressent);
-					kunde.change_aktiv(Integer.parseInt(txtArAuswahlK2.getText()), selectionAktiv);
+					kunde.change_vorname(nr, txtFVornameK2.getText());
+					kunde.change_nachname(nr, txtFNachnameK2.getText());
+					kunde.change_geburtstag(nr, txtFGeburtstagK2.getText());
+					kunde.change_telefon(nr, txtFTelefonK2.getText());
+					kunde.change_email(nr, txtFEmailK2.getText());
+					kunde.change_interessent(nr, selectionInteressent);
+					kunde.change_aktiv(nr, selectionAktiv);
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
