@@ -59,9 +59,9 @@ public class Bewerbung_Level2 extends JFrame {
 	 */
 	public Bewerbung_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
+		bewerbung = new Bewerbung();
 		initComponents();
 		createEvents();
-		bewerbung = new Bewerbung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -70,6 +70,7 @@ public class Bewerbung_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		
 		setTitle("Bewerbung bearbeiten/l\u00F6schen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 252);
