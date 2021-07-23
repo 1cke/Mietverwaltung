@@ -261,6 +261,20 @@ public class Kunde_Level2 extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den Button "Kunde löschen"
+////////////////////////////////////////////////////////////////////
+		btnLöschenK2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					kunde.delete(nr);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 	}
 }
