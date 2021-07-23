@@ -228,8 +228,8 @@ public class Kontakt extends Kontaktdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
-		change_contact_beschreibung(kontakt_id,beschreibung);
+	public boolean change_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
+		return change_contact_beschreibung(kontakt_id,beschreibung);
 	}
 	/**
 	 * Diese Methode ändert den Behobenstatus.
@@ -241,8 +241,8 @@ public class Kontakt extends Kontaktdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_behoben(int kontakt_id, int behoben)throws ClassNotFoundException, SQLException{
-		change_contact_behoben(kontakt_id,behoben);
+	public boolean change_behoben(int kontakt_id, int behoben)throws ClassNotFoundException, SQLException{
+		return change_contact_behoben(kontakt_id,behoben);
 	}
 	/**
 	 * Diese Methode gibt alle Kontakte zurück. Kunden unspeziefisch.
