@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kunden;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -31,6 +34,7 @@ public class Kunde_Level1 extends JFrame {
 	private JButton btnLöschenK1;
 	private JButton btnZurückK1;
 	private JList lstKundenK1;
+	private Kunden kunde;
 
 	/**
 	 * Launch the application.
@@ -50,10 +54,13 @@ public class Kunde_Level1 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Kunde_Level1() {
+	public Kunde_Level1() throws ClassNotFoundException, SQLException {
 		initComponents();
 		createEvents();
+		kunde = new Kunden();
 	}
 	
 	////////////////////////////////////////////////////////////////////
@@ -61,7 +68,7 @@ public class Kunde_Level1 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, SQLException {
 		setTitle("Men\u00FC - Kunde");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -115,6 +122,12 @@ public class Kunde_Level1 extends JFrame {
 		lstKundenK1 = new JList();
 		lstKundenK1.setModel(new AbstractListModel() {
 			String[] values = new String[] {"1 kunde", "2 kunde", "3 kunde"};
+			//String[] values = (String[]) kunde.get_all().toArray(); 
+			
+			/*Der code in der Zeile darüber ist der Versuch alle Kunden aus der Datenbank zu laden und anzeigen zu lassen, Es funktioniert 
+			 * allerdings noch nicht, weil vermutlich die Parameter aus der Datenbank nicht richtig in das Array umgewandelt werden können
+			 * oder weil noch keine vollwertigen Einträge in der Datenbank stehen.
+			 */
 			public int getSize() {
 				return values.length;
 			}

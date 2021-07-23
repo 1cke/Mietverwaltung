@@ -234,8 +234,15 @@ public class Kunde_Level2 extends JFrame {
 		btnZurückK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kunde_Level1 kunde1 = new Kunde_Level1();
-				kunde1.setVisible(true);
+				Kunde_Level1 kunde1;
+				try {
+					kunde1 = new Kunde_Level1();
+					kunde1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 ////////////////////////////////////////////////////////////////////
