@@ -125,27 +125,27 @@ public class Bewerbung extends Bewerbungsdaten{
 	private boolean get_apply_status()throws ClassNotFoundException, SQLException{
 		return this.isStatus();
 	}
-	private void change_apply_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE bewerbung SET kunden_id = '"+bewerber_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+	private boolean change_apply_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE bewerbung SET kunden_id = '"+bewerber_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
-	private void change_apply_wohnungs_id(int bewerbungs_id,int wohnungs_id)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE bewerbung SET wohnungs_id = '"+wohnungs_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+	private boolean change_apply_wohnungs_id(int bewerbungs_id,int wohnungs_id)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE bewerbung SET wohnungs_id = '"+wohnungs_id+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
-	private void change_apply_datum(int bewerbungs_id,String datum)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE bewerbung SET datum = '"+datum+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+	private boolean change_apply_datum(int bewerbungs_id,String datum)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE bewerbung SET datum = '"+datum+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
-	private void change_apply_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE bewerbung SET status = '"+status+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+	private boolean change_apply_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE bewerbung SET status = '"+status+"' WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
-	private void delete_value(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		change_db_value("DELETE FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'");
+	private boolean delete_value(int bewerbungs_id)throws ClassNotFoundException, SQLException{
+		return change_db_value("DELETE FROM bewerbung WHERE bewerbungs_id = '"+bewerbungs_id+"'");
 	}
 	/**
 	 * Diese Methode erstellt eine neue Bewerbung
 	 * @param wohnungs_id Die Wohnungs-ID als Integer.
 	 * @param kunden_id	Die Kunden-ID als Integer.
 	 * @param datum Das Datum als String.
-	 * @return Boolean. Hat geklappt oder nicht.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -231,60 +231,65 @@ public class Bewerbung extends Bewerbungsdaten{
 	 * Diese Methode ändert die Bewerber-ID.
 	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
 	 * @param bewerber_id Die neue Kunden-ID als Integer.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
-		change_apply_bewerber_id(bewerbungs_id,bewerber_id);
+	public boolean change_bewerber_id(int bewerbungs_id,int bewerber_id)throws ClassNotFoundException, SQLException{
+		return change_apply_bewerber_id(bewerbungs_id,bewerber_id);
 	}
 	/**
 	 * Diese Methode ändert die Wohnungs-ID.
 	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
 	 * @param wohnungs_id Die neue Wohnungs-ID als Integer.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_wohnungs_id(int bewerbungs_id,int wohnungs_id)throws ClassNotFoundException, SQLException{
-		change_apply_wohnungs_id(bewerbungs_id,wohnungs_id);
+	public boolean change_wohnungs_id(int bewerbungs_id,int wohnungs_id)throws ClassNotFoundException, SQLException{
+		return change_apply_wohnungs_id(bewerbungs_id,wohnungs_id);
 	}
 	/**
 	 * Diese Methode ändert das Datum der Bewerbung.
 	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
 	 * @param datum Das neue Datum als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_datum(int bewerbungs_id,String datum)throws ClassNotFoundException, SQLException{
-		change_apply_datum(bewerbungs_id,datum);
+	public boolean change_datum(int bewerbungs_id,String datum)throws ClassNotFoundException, SQLException{
+		return change_apply_datum(bewerbungs_id,datum);
 	}
 	/**
 	 * Diese Methode ändert den Status der Bewerbung
 	 * @param bewerbungs_id Die Bewerbungs_id als Integer.
 	 * @param status Den neuen Status als Integer. 0 = False, 1 = True
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
-		change_apply_status(bewerbungs_id,status);
+	public boolean change_status(int bewerbungs_id,int status)throws ClassNotFoundException, SQLException{
+		return change_apply_status(bewerbungs_id,status);
 	}
 	/**
 	 * Diese Methode löscht eine Bewerbung.
 	 * @param bewerbungs_id Die Bewerbungs-ID als Integer.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void delete_bewerbung(int bewerbungs_id)throws ClassNotFoundException, SQLException{
-		delete_value(bewerbungs_id);
+	public boolean delete_bewerbung(int bewerbungs_id)throws ClassNotFoundException, SQLException{
+		return delete_value(bewerbungs_id);
 	}
 	/**
 	 * Diese Methode gibt eine ArrayList mit allen Bewerbungen für eine spezifische Wohnung an.
