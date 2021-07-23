@@ -134,11 +134,11 @@ public class Kontakt extends Kontaktdaten{
 	private boolean get_contact_behoben(int kontakt_id)throws ClassNotFoundException, SQLException{
 		return this.isBehoben();
 	}
-	private void change_contact_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE kontakt SET beschreibung = '"+beschreibung+"' WHERE kontakts_id = '"+kontakt_id+"'");
+	private boolean change_contact_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE kontakt SET beschreibung = '"+beschreibung+"' WHERE kontakts_id = '"+kontakt_id+"'");
 	}
-	private void change_contact_behoben(int kontakt_id,int behoben)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE kontakt SET behoben = '"+behoben+"' WHERE kontakts_id = '"+kontakt_id+"'");
+	private boolean change_contact_behoben(int kontakt_id,int behoben)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE kontakt SET behoben = '"+behoben+"' WHERE kontakts_id = '"+kontakt_id+"'");
 	}
 	private ArrayList<Kontaktdaten> get_display_contact() throws ClassNotFoundException, SQLException{
 		return get_values(0,"");
@@ -149,6 +149,7 @@ public class Kontakt extends Kontaktdaten{
 	 * @param wann Der Zeitpunkt des Auftretens als String.
 	 * @param grund Der Grund als String.
 	 * @param beschreibung Die Beschreibung als String. Wenn nicht vorhanden dann leeren String " ".
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -221,6 +222,7 @@ public class Kontakt extends Kontaktdaten{
 	 * Diese Methode ändert die Beschreibung.
 	 * @param kontakt_id Die Kontakt-ID als Integer.
 	 * @param beschreibung Die Beschreibung als String.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -233,6 +235,7 @@ public class Kontakt extends Kontaktdaten{
 	 * Diese Methode ändert den Behobenstatus.
 	 * @param kontakt_id Die Kontakt-ID als Integer.
 	 * @param behoben Den Statuts als Integer. 0 = False, 1 = True.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -243,7 +246,7 @@ public class Kontakt extends Kontaktdaten{
 	}
 	/**
 	 * Diese Methode gibt alle Kontakte zurück. Kunden unspeziefisch.
-	 * @return ArrayList<Kontaktdaten>
+	 * @return ArrayList vom Typ Kontaktdaten
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -267,7 +270,7 @@ public class Kontakt extends Kontaktdaten{
 	/**
 	 * Lädt alle Kontakte zu einem spezifischen Vertrag
 	 * @param vertrags_id als Integer
-	 * @return eine ArrayList<Kontaktdaten>
+	 * @return eine ArrayList vom Typ Kontaktdaten
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
