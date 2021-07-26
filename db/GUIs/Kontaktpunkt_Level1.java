@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kontakt;
+import datentypen.Kontaktdaten;
+import datentypen.Person;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -15,6 +20,7 @@ import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Kontaktpunkt_Level1 extends JFrame {
@@ -25,6 +31,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 	private JButton btnBearbeitenKP1;
 	private JButton btnLöschenKP1;
 	private JList lstKontaktpunkteKP1;
+	private ArrayList<Kontaktdaten> daten;
+	private String[] ktlst;
+	private String text;
 
 	/**
 	 * Launch the application.
@@ -44,8 +53,17 @@ public class Kontaktpunkt_Level1 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Kontaktpunkt_Level1() {
+	public Kontaktpunkt_Level1() throws ClassNotFoundException, SQLException {
+		Kontakt kontakt = new Kontakt();
+		daten = kontakt.display_kontakt();
+		ktlst = new String[daten.size()];
+		for (int i=0; i<daten.size(); i++) {
+			text = kontakt.parseString(daten.get(i));
+			ktlst[i] = text.replaceAll(",", " "); 
+		}
 		initComponents();
 		createEvents();
 		
@@ -108,7 +126,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		
 		lstKontaktpunkteKP1 = new JList();
 		lstKontaktpunkteKP1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Kontaktpunkte vielleicht clickable machen zum ins Detail gehen."};
+			String[] values = ktlst;
 			public int getSize() {
 				return values.length;
 			}

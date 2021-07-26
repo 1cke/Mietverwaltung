@@ -179,8 +179,14 @@ public class GUI extends JFrame {
 		btnKontaktpunktHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kontaktpunkt_Level1 kontaktpunkt1 = new Kontaktpunkt_Level1();
-				kontaktpunkt1.setVisible(true);
+				Kontaktpunkt_Level1 kontaktpunkt1;
+				try {
+					kontaktpunkt1 = new Kontaktpunkt_Level1();
+					kontaktpunkt1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	

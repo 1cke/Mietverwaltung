@@ -209,8 +209,14 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		btnZurückKP2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Kontaktpunkt_Level1 kontakt1 = new Kontaktpunkt_Level1();
-				kontakt1.setVisible(true);
+				Kontaktpunkt_Level1 kontakt1;
+				try {
+					kontakt1 = new Kontaktpunkt_Level1();
+					kontakt1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	////////////////////////////////////////////////////////////////////
@@ -222,9 +228,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 				int selectionStatus = czbStatusKP2.isSelected() ? 1 : 0;
 				
 				try {
-					/* public void change_beschreibung(int kontakt_id,String beschreibung)
-					 * public void change_behoben(int kontakt_id, int behoben) 
-					 * */
+					
 					kontakt.change_beschreibung(nr, txtFBeschreibungKP2.getText());
 					kontakt.change_behoben(nr, selectionStatus);
 					
