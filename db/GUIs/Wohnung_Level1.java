@@ -46,7 +46,6 @@ public class Wohnung_Level1 extends JFrame {
 	 * Create the frame.
 	 */
 	public Wohnung_Level1() {
-		setTitle("Men\u00FC - Wohnungen");
 		initComponents();
 		createEvents();
 	}
@@ -57,6 +56,7 @@ public class Wohnung_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Men\u00FC - Wohnungen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 474, 305);
 		contentPane = new JPanel();
