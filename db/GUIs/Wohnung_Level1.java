@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Wohnung;
+import datentypen.Person;
+import datentypen.Wohnungsdaten;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -14,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 
@@ -25,6 +31,9 @@ public class Wohnung_Level1 extends JFrame {
 	private JButton btnBearbeitenW1;
 	private JButton btnLöschenW1;
 	private JList lstWohnungenW1;
+	private ArrayList<Wohnungsdaten> daten;
+	private String[] wglst;
+	private String text;
 
 	/**
 	 * Launch the application.
@@ -44,8 +53,17 @@ public class Wohnung_Level1 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Wohnung_Level1() {
+	public Wohnung_Level1() throws ClassNotFoundException, SQLException {
+		Wohnung wohnung = new Wohnung();
+		daten = wohnung.display();
+		wglst = new String[daten.size()];
+		for (int i=0; i<daten.size(); i++) {
+			text = wohnung.parseString(daten.get(i));
+			wglst[i] = text.replaceAll(",", " "); 
+		}
 		initComponents();
 		createEvents();
 	}
@@ -107,7 +125,7 @@ public class Wohnung_Level1 extends JFrame {
 		
 		lstWohnungenW1 = new JList();
 		lstWohnungenW1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1 test wohnung", "2 w", "3 w", "10 w"};
+			String[] values = wglst;
 			public int getSize() {
 				return values.length;
 			}

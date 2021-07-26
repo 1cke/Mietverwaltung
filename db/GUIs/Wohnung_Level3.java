@@ -241,8 +241,14 @@ public class Wohnung_Level3 extends JFrame {
 		btnZurückW3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
-				wohnung1.setVisible(true);
+				Wohnung_Level1 wohnung1;
+				try {
+					wohnung1 = new Wohnung_Level1();
+					wohnung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		//Work in progress

@@ -125,8 +125,14 @@ public class GUI extends JFrame {
 		btnWohnungHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Wohnung_Level1 wohnung1 = new Wohnung_Level1();
-				wohnung1.setVisible(true);
+				Wohnung_Level1 wohnung1;
+				try {
+					wohnung1 = new Wohnung_Level1();
+					wohnung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnKundeHM.addActionListener(new ActionListener() {
