@@ -119,19 +119,19 @@ public class Kontakt extends Kontaktdaten{
 		}
 		
 	}
-	private int get_contact_vertrags_id(int kontakt_id)throws ClassNotFoundException, SQLException{
+	private int get_contact_vertrags_id(throws ClassNotFoundException, SQLException{
 		return this.getVertragsnummer();
 	}
-	private String get_contact_wann(int kontakt_id)throws ClassNotFoundException, SQLException{
+	private String get_contact_wann()throws ClassNotFoundException, SQLException{
 		return this.getWann();
 	}
-	private String get_contact_grund(int kontakt_id)throws ClassNotFoundException, SQLException{
+	private String get_contact_grund()throws ClassNotFoundException, SQLException{
 		return this.getGrund();
 	}
-	private String get_contact_beschreibung(int kontakt_id)throws ClassNotFoundException, SQLException{
+	private String get_contact_beschreibung()throws ClassNotFoundException, SQLException{
 		return this.getBeschreibung();
 	}
-	private boolean get_contact_behoben(int kontakt_id)throws ClassNotFoundException, SQLException{
+	private boolean get_contact_behoben()throws ClassNotFoundException, SQLException{
 		return this.isBehoben();
 	}
 	private boolean change_contact_beschreibung(int kontakt_id,String beschreibung)throws ClassNotFoundException, SQLException{
@@ -173,49 +173,45 @@ public class Kontakt extends Kontaktdaten{
 	}
 	/**
 	 * Diese Methode gibt den Zeitpunkt des Auftretens zurück.
-	 * @param kontakt_id Die Kontakt-ID als Integer.
 	 * @return Den Zeitpunkt als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_wann(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_contact_wann(kontakt_id);
+	public String get_wann()throws ClassNotFoundException, SQLException{
+		return get_contact_wann();
 	}
 	/**
 	 * Diese Methode gibt den Grund des Kontaktes zurück.
-	 * @param kontakt_id Die Kontakt-ID als Integer.
 	 * @return Den Grund als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_grund(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_contact_grund(kontakt_id);
+	public String get_grund()throws ClassNotFoundException, SQLException{
+		return get_contact_grund();
 	}
 	/**
 	 * Diese Methode gibt die Beschreibung des Kontaktes zurück.
-	 * @param kontakt_id Die Kontakt-ID als Integer.
 	 * @return Die Beschreibung als String.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public String get_beschreibung(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_contact_beschreibung(kontakt_id);
+	public String get_beschreibung()throws ClassNotFoundException, SQLException{
+		return get_contact_beschreibung();
 	}
 	/**
 	 * Diese Methode gibt den Behobenstatus des Kontatks zurück.
-	 * @param kontakt_id Die Kontakt-ID.
 	 * @return Den Status als Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public boolean get_behoben(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_contact_behoben(kontakt_id);
+	public boolean get_behoben()throws ClassNotFoundException, SQLException{
+		return get_contact_behoben();
 	}
 	
 	/**
@@ -257,15 +253,15 @@ public class Kontakt extends Kontaktdaten{
 	}
 	/**
 	 * Lädt einen spezifischen Kontakt
-	 * @param vertrags_id Die Vertrags-ID als Integer
+	 * @param kontakt_id Die Kontakts-ID als Integer
 	 * @return Boolean.
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public boolean lade_daten(int vertrags_id)throws ClassNotFoundException, SQLException{
-		return get_values(vertrags_id);
+	public boolean lade_daten(int kontakt_id)throws ClassNotFoundException, SQLException{
+		return get_values(kontakt_id);
 	}
 	/**
 	 * Lädt alle Kontakte zu einem spezifischen Vertrag
