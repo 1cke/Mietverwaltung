@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Bewerbung;
+import datentypen.Bewerbungsdaten;
+import datentypen.Person;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -13,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 
@@ -24,7 +30,10 @@ public class Bewerbung_Level1 extends JFrame {
 	private JButton btnBearbeitenB1;
 	private JButton btnLöschenB1;
 	private JList lstBewerbungenB1;
-//test
+	private ArrayList<Bewerbungsdaten> daten;
+	private String[] bwlst;
+	private String text;
+
 	/**
 	 * Launch the application.
 	 */
@@ -43,8 +52,17 @@ public class Bewerbung_Level1 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Bewerbung_Level1() {
+	public Bewerbung_Level1() throws ClassNotFoundException, SQLException {
+		Bewerbung bewerbung = new Bewerbung();
+		daten = bewerbung.get_all();
+		bwlst = new String[daten.size()];
+		for (int i=0; i<daten.size(); i++) {
+			text = bewerbung.parseString(daten.get(i));
+			bwlst[i] = text.replaceAll(",", " "); 
+		}
 		initComponents();
 		createEvents();
 	}
@@ -106,7 +124,7 @@ public class Bewerbung_Level1 extends JFrame {
 		
 		lstBewerbungenB1 = new JList();
 		lstBewerbungenB1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1 b"};
+			String[] values = bwlst;
 			public int getSize() {
 				return values.length;
 			}

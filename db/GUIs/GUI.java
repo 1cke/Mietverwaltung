@@ -146,15 +146,28 @@ public class GUI extends JFrame {
 		btnBewerbungHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Bewerbung_Level1 bewerbung1 = new Bewerbung_Level1();
-				bewerbung1.setVisible(true);
+				Bewerbung_Level1 bewerbung1;
+				try {
+					bewerbung1 = new Bewerbung_Level1();
+					bewerbung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnVertragHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Vertrag_Level1 vertrag1 = new Vertrag_Level1();
-				vertrag1.setVisible(true);
+				Vertrag_Level1 vertrag1;
+				try {
+					vertrag1 = new Vertrag_Level1();
+					vertrag1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnKontaktpunktHM.addActionListener(new ActionListener() {

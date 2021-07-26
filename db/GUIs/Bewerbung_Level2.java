@@ -189,8 +189,16 @@ public class Bewerbung_Level2 extends JFrame {
 		btnZurückB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Bewerbung_Level1 bewerbung1 = new Bewerbung_Level1();
-				bewerbung1.setVisible(true);
+				Bewerbung_Level1 bewerbung1;
+				
+				try {
+					bewerbung1 = new Bewerbung_Level1();
+					bewerbung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
 ////////////////////////////////////////////////////////////////////
