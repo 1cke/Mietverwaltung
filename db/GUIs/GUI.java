@@ -122,6 +122,9 @@ public class GUI extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Wohnung" Button
+////////////////////////////////////////////////////////////////////
 		btnWohnungHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -135,6 +138,9 @@ public class GUI extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Kunde" Button
+////////////////////////////////////////////////////////////////////
 		btnKundeHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -149,6 +155,9 @@ public class GUI extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Bewerbung" Button
+////////////////////////////////////////////////////////////////////
 		btnBewerbungHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -162,6 +171,9 @@ public class GUI extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Vertrag" Button
+////////////////////////////////////////////////////////////////////
 		btnVertragHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -176,6 +188,9 @@ public class GUI extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Kontaktpunkt" Button
+////////////////////////////////////////////////////////////////////
 		btnKontaktpunktHM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

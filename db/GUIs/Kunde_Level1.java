@@ -149,6 +149,9 @@ public class Kunde_Level1 extends JFrame {
 	// Enth�lt den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -156,6 +159,9 @@ public class Kunde_Level1 extends JFrame {
 				hauptmenü.setVisible(true);
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -169,6 +175,9 @@ public class Kunde_Level1 extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Bearbeiten" Button
+////////////////////////////////////////////////////////////////////
 		btnBearbeitenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -183,6 +192,9 @@ public class Kunde_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Löschen" Button
+////////////////////////////////////////////////////////////////////
 		btnLöschenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

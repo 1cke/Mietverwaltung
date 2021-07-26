@@ -143,6 +143,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -150,6 +153,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 				hauptmenü.setVisible(true);
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -165,6 +171,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Bearbeiten" Button
+////////////////////////////////////////////////////////////////////
 		btnBearbeitenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -179,6 +188,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Löschen" Button
+////////////////////////////////////////////////////////////////////
 		btnLöschenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

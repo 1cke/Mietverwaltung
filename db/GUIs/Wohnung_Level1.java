@@ -142,6 +142,9 @@ public class Wohnung_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -149,6 +152,9 @@ public class Wohnung_Level1 extends JFrame {
 				hauptmenü.setVisible(true);
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -163,6 +169,9 @@ public class Wohnung_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Bearbeiten" Button
+////////////////////////////////////////////////////////////////////
 		btnBearbeitenW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -177,6 +186,9 @@ public class Wohnung_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Löschen" Button
+////////////////////////////////////////////////////////////////////
 		btnLöschenW1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

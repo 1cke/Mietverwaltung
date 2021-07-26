@@ -141,6 +141,9 @@ public class Bewerbung_Level1 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -148,6 +151,9 @@ public class Bewerbung_Level1 extends JFrame {
 				hauptmenü.setVisible(true);
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -162,6 +168,9 @@ public class Bewerbung_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Bearbeiten" Button
+////////////////////////////////////////////////////////////////////
 		btnBearbeitenB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -177,6 +186,9 @@ public class Bewerbung_Level1 extends JFrame {
 				
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Löschen" Button
+////////////////////////////////////////////////////////////////////
 		btnLöschenB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
