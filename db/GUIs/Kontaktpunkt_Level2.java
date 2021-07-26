@@ -37,6 +37,8 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	private JTextArea txtArAuswahlKP2;
 	private JCheckBox czbStatusKP2;
 	private String auswahl;
+	private String nrKP2;
+	private int nr;
 
 	/**
 	 * Launch the application.
@@ -72,7 +74,12 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, SQLException {
+		
+		nrKP2 = auswahl.substring(0, auswahl.indexOf(" "));
+		nr = Integer.parseInt(nrKP2);
+		kontakt.lade_daten(nr);
+		
 		setTitle("Kontaktpunkt bearbeiten/löschen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 472, 311);
@@ -218,8 +225,8 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					/* public void change_beschreibung(int kontakt_id,String beschreibung)
 					 * public void change_behoben(int kontakt_id, int behoben) 
 					 * */
-					kontakt.change_beschreibung(Integer.parseInt(txtArAuswahlKP2.getText()), txtFBeschreibungKP2.getText());
-					kontakt.change_behoben(Integer.parseInt(txtArAuswahlKP2.getText()), selectionStatus);
+					kontakt.change_beschreibung(nr, txtFBeschreibungKP2.getText());
+					kontakt.change_behoben(nr, selectionStatus);
 					
 					
 				} catch (ClassNotFoundException | SQLException e1) {
