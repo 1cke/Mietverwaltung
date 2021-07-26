@@ -13,6 +13,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -231,6 +232,9 @@ public class Kunde_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den Button "Zurück"
+////////////////////////////////////////////////////////////////////
 		btnZurückK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -246,7 +250,7 @@ public class Kunde_Level2 extends JFrame {
 			}
 		});
 ////////////////////////////////////////////////////////////////////
-// Enthält den Code für den Button "Änderungen speichern
+// Enthält den Code für den Button "Änderungen speichern"
 ////////////////////////////////////////////////////////////////////
 		btnSaveK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -266,6 +270,8 @@ public class Kunde_Level2 extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+				
 			}
 		});
 ////////////////////////////////////////////////////////////////////
@@ -280,6 +286,7 @@ public class Kunde_Level2 extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				JOptionPane.showMessageDialog(null, "Der Kunde wurde gelöscht.");
 			}
 		});
 		

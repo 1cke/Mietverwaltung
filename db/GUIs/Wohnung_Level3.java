@@ -17,6 +17,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -238,6 +239,9 @@ public class Wohnung_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+// Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückW3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -251,7 +255,9 @@ public class Wohnung_Level3 extends JFrame {
 				}
 			}
 		});
-		//Work in progress
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenW3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectionEbk = czbEbkW3.isSelected() ? 1 : 0;
@@ -274,6 +280,7 @@ public class Wohnung_Level3 extends JFrame {
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Die Wohnung wurde hinzugefügt.");
 				}
 			}
 		});

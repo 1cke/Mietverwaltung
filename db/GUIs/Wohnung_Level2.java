@@ -14,6 +14,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -261,6 +262,9 @@ public class Wohnung_Level2 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -303,6 +307,7 @@ public class Wohnung_Level2 extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
 			}
 		});
 ////////////////////////////////////////////////////////////////////
@@ -317,6 +322,7 @@ public class Wohnung_Level2 extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				JOptionPane.showMessageDialog(null, "Die Wohnung wurde gelöscht.");
 			}
 		});
 		

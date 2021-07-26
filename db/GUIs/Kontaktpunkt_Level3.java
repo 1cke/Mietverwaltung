@@ -161,6 +161,9 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückKP3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -174,6 +177,9 @@ public class Kontaktpunkt_Level3 extends JFrame {
 				}
 			}
 		});
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenKP3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -184,6 +190,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 					e.printStackTrace();
 				}
 				txtFBeschreibungKP3.setText("");
+				JOptionPane.showMessageDialog(null, "Der Kontaktpunkt wurde hinzugefügt.");
 				
 			}
 		});

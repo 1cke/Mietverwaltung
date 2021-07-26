@@ -13,6 +13,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -155,6 +156,9 @@ public class Bewerbung_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Zurück" Button
+////////////////////////////////////////////////////////////////////
 		btnZurückB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -168,9 +172,9 @@ public class Bewerbung_Level3 extends JFrame {
 				}
 			}
 		});
-		////////////////////////////////////////////////////////////////
-		//Hier wird der Button "Hinzufügen" bearbeitet
-		////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+//Enthält den Code für den "Hinzufügen" Button
+////////////////////////////////////////////////////////////////////
 		btnHinzufügenB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selection = czbStatusB3.isSelected() ? 1 : 0;
@@ -183,6 +187,7 @@ public class Bewerbung_Level3 extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				JOptionPane.showMessageDialog(null, "Die Bewerbung wurde hinzugefügt.");
 			}
 		});
 		
