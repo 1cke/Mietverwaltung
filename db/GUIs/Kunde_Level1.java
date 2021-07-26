@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import backend.Kunden;
+import datentypen.Person;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -24,6 +25,7 @@ import javax.swing.DefaultListModel;
 
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Kunde_Level1 extends JFrame {
@@ -35,6 +37,9 @@ public class Kunde_Level1 extends JFrame {
 	private JButton btnZurückK1;
 	private JList lstKundenK1;
 	private Kunden kunde;
+	private ArrayList<Person> daten;
+	private String[] kdlst;
+	private String test;
 
 	/**
 	 * Launch the application.
@@ -58,9 +63,15 @@ public class Kunde_Level1 extends JFrame {
 	 * @throws ClassNotFoundException 
 	 */
 	public Kunde_Level1() throws ClassNotFoundException, SQLException {
+		kunde = new Kunden();
+		daten = kunde.get_all();
+		kdlst = new String[daten.size()];
+		for (int i=0; i<daten.size(); i++) {
+			test = kunde.parseString(daten.get(i));
+			kdlst[i] = test.replaceAll(",", " "); 
+		}
 		initComponents();
 		createEvents();
-		kunde = new Kunden();
 	}
 	
 	////////////////////////////////////////////////////////////////////
@@ -121,13 +132,8 @@ public class Kunde_Level1 extends JFrame {
 		
 		lstKundenK1 = new JList();
 		lstKundenK1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1 kunde", "2 kunde", "3 kunde"};
-			//String[] values = (String[]) kunde.get_all().toArray(); 
+			String[] values = kdlst; 
 			
-			/*Der code in der Zeile darüber ist der Versuch alle Kunden aus der Datenbank zu laden und anzeigen zu lassen, Es funktioniert 
-			 * allerdings noch nicht, weil vermutlich die Parameter aus der Datenbank nicht richtig in das Array umgewandelt werden können
-			 * oder weil noch keine vollwertigen Einträge in der Datenbank stehen.
-			 */
 			public int getSize() {
 				return values.length;
 			}
