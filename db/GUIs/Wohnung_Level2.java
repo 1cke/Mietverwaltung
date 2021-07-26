@@ -274,12 +274,7 @@ public class Wohnung_Level2 extends JFrame {
 		
 		btnSaveW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					wohnung.lade_daten(Integer.parseInt(txtArAuswahlW2.getText()));
-				} catch (NumberFormatException | ClassNotFoundException | SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
+				
 				int selectionEbk = czbEbkW2.isSelected() ? 1 : 0;
 				int selectionStatus = czbStatusW2.isSelected() ? 1 : 0;
 				
