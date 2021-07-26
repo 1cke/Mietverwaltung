@@ -108,20 +108,23 @@ public class Wohnung extends Wohnungsdaten{
 	private boolean get_whg_vermietet()throws ClassNotFoundException, SQLException{
 		return this.isVermietet();
 	}
+	private boolean change_whg_adress_id(int whg_id,int adress_id)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE wohnung SET adress_id = '"+adress_id+"'WHERE wohnungs_id = '"+whg_id+"'");
+	}
 	private boolean change_whg_miete(int whg_id,double miete)throws ClassNotFoundException, SQLException{
 		return change_db_value("UPDATE wohnung SET miete = '"+miete+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
-	private void change_whg_zimmer(int whg_id,double zimmer)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET zimmer = '"+zimmer+"' WHERE wohnungs_id = '"+whg_id+"'");
+	private boolean change_whg_zimmer(int whg_id,double zimmer)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE wohnung SET zimmer = '"+zimmer+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
-	private void change_whg_baeder(int whg_id,double baeder)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET baeder = '"+baeder+"' WHERE wohnungs_id = '"+whg_id+"'");
+	private boolean change_whg_baeder(int whg_id,double baeder)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE wohnung SET baeder = '"+baeder+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
-	private void change_whg_ebk(int whg_id,int ebk)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET ebk = '"+ebk+"' WHERE wohnungs_id = '"+whg_id+"'");
+	private boolean change_whg_ebk(int whg_id,int ebk)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE wohnung SET ebk = '"+ebk+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
-	private void change_whg_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET vermietet = '"+vermietet+"' WHERE wohnungs_id = '"+whg_id+"'");
+	private boolean change_whg_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE wohnung SET vermietet = '"+vermietet+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	private ArrayList<Wohnungsdaten> display_all_whg() throws ClassNotFoundException, SQLException{
 		return get_values(0,"all");
@@ -229,6 +232,7 @@ public class Wohnung extends Wohnungsdaten{
 	 * Diese Methode ändert die Höhe der Miete.
 	 * @param whg_id Die Wohnungs-ID als Integer.
 	 * @param miete Die Höhe der Miete als Double.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
@@ -241,53 +245,70 @@ public class Wohnung extends Wohnungsdaten{
 	 * Diese Methode ändert die Anzahl der Zimmer.
 	 * @param whg_id Die Wohnungs-ID als Integer.
 	 * @param zimmer Die Anzahl der Zimmer als Double.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_zimmer(int whg_id,double zimmer)throws ClassNotFoundException, SQLException{
-		change_whg_zimmer(whg_id,zimmer);
+	public boolean change_zimmer(int whg_id,double zimmer)throws ClassNotFoundException, SQLException{
+		return change_whg_zimmer(whg_id,zimmer);
 	}
 	/**
 	 * Diese Methode ändert die Anzahl der Bäder.
 	 * @param whg_id Die Wohnungs-ID als Integer.
 	 * @param baeder Die Anzahl der Bäder als Double.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_baeder(int whg_id,double baeder)throws ClassNotFoundException, SQLException{
-		change_whg_baeder(whg_id,baeder);
+	public boolean change_baeder(int whg_id,double baeder)throws ClassNotFoundException, SQLException{
+		return change_whg_baeder(whg_id,baeder);
 	}
 	/**
 	 * Diese Methode ändert den Status, ob eine Einbauküche vorhanden ist.
 	 * @param whg_id Die Wohnungs-ID als Integer.
 	 * @param ebk Den Status als Integer. 0 = False, 1 = True.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_ebk(int whg_id,int ebk)throws ClassNotFoundException, SQLException{
-		change_whg_ebk(whg_id,ebk);
+	public boolean change_ebk(int whg_id,int ebk)throws ClassNotFoundException, SQLException{
+		return change_whg_ebk(whg_id,ebk);
 	}
 	/**
 	 * Diese Methode ändert den Vermietetstatus der Wohnung.
 	 * @param whg_id Die Wohnungs-ID als Integer.
 	 * @param vermietet	Den Status als Integer. 0 = False, 1 = True.
+	 * @return Boolean
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
-		change_whg_vermietet(whg_id,vermietet);
+	public boolean change_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
+		return change_whg_vermietet(whg_id,vermietet);
+	}
+	/**
+	 * Diese Methode ändert die Adress-ID
+	 * @param whg_id Die Wohnungs-ID als Integer
+	 * @param adress_id Die neue Adress-ID als Integer
+	 * @return Boolean
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public boolean change_adress_id(int whg_id,int adress_id)throws ClassNotFoundException, SQLException{
+		return change_whg_adress_id(whg_id,adress_id);
 	}
 	/**
 	 * Diese Methode zeigt alle Wohnungen an.
-	 * <p> Es erfolgt keine Rückgabe</p>
+	 * @return ArrayList vom Typ Wohnungsdaten
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @see ClassNotFoundException
