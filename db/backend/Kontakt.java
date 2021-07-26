@@ -119,7 +119,7 @@ public class Kontakt extends Kontaktdaten{
 		}
 		
 	}
-	private int get_contact_vertrags_id(throws ClassNotFoundException, SQLException{
+	private int get_contact_vertrags_id()throws ClassNotFoundException, SQLException{
 		return this.getVertragsnummer();
 	}
 	private String get_contact_wann()throws ClassNotFoundException, SQLException{
@@ -168,8 +168,8 @@ public class Kontakt extends Kontaktdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public int get_vertrags_id(int kontakt_id)throws ClassNotFoundException, SQLException{
-		return get_contact_vertrags_id(kontakt_id);
+	public int get_vertrags_id()throws ClassNotFoundException, SQLException{
+		return get_contact_vertrags_id();
 	}
 	/**
 	 * Diese Methode gibt den Zeitpunkt des Auftretens zurück.
