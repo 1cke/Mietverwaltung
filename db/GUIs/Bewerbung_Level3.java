@@ -188,6 +188,16 @@ public class Bewerbung_Level3 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Bewerbung wurde hinzugefügt.");
+				//Code für das Zurückkehren auf Bewerbung lvl 1
+				dispose();
+				Bewerbung_Level1 bewerbung1;
+				try {
+					bewerbung1 = new Bewerbung_Level1();
+					bewerbung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

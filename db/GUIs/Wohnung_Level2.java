@@ -308,6 +308,16 @@ public class Wohnung_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+				//Code für das zurückkehren zu Wohnung lvl 1
+				dispose();
+				Wohnung_Level1 wohnung1;
+				try {
+					wohnung1 = new Wohnung_Level1();
+					wohnung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 ////////////////////////////////////////////////////////////////////
@@ -323,6 +333,16 @@ public class Wohnung_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Wohnung wurde gelöscht.");
+				//Code für das zurückkehren zu Wohnung lvl 1
+				dispose();
+				Wohnung_Level1 wohnung1;
+				try {
+					wohnung1 = new Wohnung_Level1();
+					wohnung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

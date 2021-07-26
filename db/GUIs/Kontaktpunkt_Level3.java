@@ -191,7 +191,16 @@ public class Kontaktpunkt_Level3 extends JFrame {
 				}
 				txtFBeschreibungKP3.setText("");
 				JOptionPane.showMessageDialog(null, "Der Kontaktpunkt wurde hinzugefügt.");
-				
+				//Code für das Zurückkehren auf Kontaktpunkt lvl 1
+				dispose();
+				Kontaktpunkt_Level1 kontakt1;
+				try {
+					kontakt1 = new Kontaktpunkt_Level1();
+					kontakt1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

@@ -271,6 +271,16 @@ public class Kunde_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+				//Code für das Zurückkehren auf Kunde lvl 1
+				dispose();
+				Kunde_Level1 kunde1;
+				try {
+					kunde1 = new Kunde_Level1();
+					kunde1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -287,6 +297,16 @@ public class Kunde_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Der Kunde wurde gelöscht.");
+				//Code für das Zurückkehren auf Kunde lvl 1
+				dispose();
+				Kunde_Level1 kunde1;
+				try {
+					kunde1 = new Kunde_Level1();
+					kunde1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

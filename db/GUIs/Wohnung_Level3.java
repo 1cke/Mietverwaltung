@@ -280,7 +280,18 @@ public class Wohnung_Level3 extends JFrame {
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					}
 					JOptionPane.showMessageDialog(null, "Die Wohnung wurde hinzugefügt.");
+					//code für das zurückkehren auf Wohnung lvl 1
+					dispose();
+					Wohnung_Level1 wohnung1;
+					try {
+						wohnung1 = new Wohnung_Level1();
+						wohnung1.setVisible(true);
+					} catch (ClassNotFoundException | SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					
 				}
 			}
 		});

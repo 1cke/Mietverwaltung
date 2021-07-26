@@ -246,6 +246,16 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+				//Code für das Zurückkehren auf Kontaktpunkt lvl 1
+				dispose();
+				Kontaktpunkt_Level1 kontakt1;
+				try {
+					kontakt1 = new Kontaktpunkt_Level1();
+					kontakt1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

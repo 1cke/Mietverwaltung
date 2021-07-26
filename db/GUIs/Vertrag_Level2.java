@@ -240,6 +240,16 @@ public class Vertrag_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+				//code für das Zurückkehren auf Vertrag lvl 1
+				dispose();
+				Vertrag_Level1 vertrag1;
+				try {
+					vertrag1 = new Vertrag_Level1();
+					vertrag1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 ////////////////////////////////////////////////////////////////////
@@ -255,6 +265,16 @@ public class Vertrag_Level2 extends JFrame {
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Der Vertrag wurde gelöscht.");
+				//code für das Zurückkehren auf Vertrag lvl 1
+				dispose();
+				Vertrag_Level1 vertrag1;
+				try {
+					vertrag1 = new Vertrag_Level1();
+					vertrag1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 	}
