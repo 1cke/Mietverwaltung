@@ -279,11 +279,23 @@ public class Wohnung_Level2 extends JFrame {
 				int selectionStatus = czbStatusW2.isSelected() ? 1 : 0;
 				
 				try {
+					int adr_id = adresse.get_adress_id(txtFPLZW2.getText(), txtFOrtW2.getText(),
+							txtFStrasseW2.getText(), txtFHNW2.getText());
+					if (adr_id == 0) {
+						adresse.set_address_value(txtFPLZW2.getText(), txtFOrtW2.getText(),
+							txtFStrasseW2.getText(), txtFHNW2.getText());
+					} else {
+						adresse.change_hn(adr_id, txtFHNW2.getText());
+						adresse.change_strasse(adr_id, txtFStrasseW2.getText());
+						adresse.change_ort(adr_id, txtFOrtW2.getText());
+						adresse.change_plz(adr_id, txtFPLZW2.getText());
+					}
 					wohnung.change_miete(nr, Double.parseDouble(txtFMieteW2.getText()));
 					wohnung.change_zimmer(nr, Double.parseDouble(txtFZimmerW2.getText()));
 					wohnung.change_baeder(nr, Double.parseDouble(txtFBaederW2.getText()));
 					wohnung.change_ebk(nr, selectionEbk);
 					wohnung.change_vermietet(nr, selectionStatus);
+					System.out.println(wohnung.get_adress_id());
 					
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
