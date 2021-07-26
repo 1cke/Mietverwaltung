@@ -64,9 +64,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	 */
 	public Kontaktpunkt_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
+		kontakt = new Kontakt();
 		initComponents();
 		createEvents();
-		kontakt = new Kontakt();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -100,22 +100,26 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		
 		txtFVertragsIDKP2 = new JTextField();
 		txtFVertragsIDKP2.setColumns(10);
+		txtFVertragsIDKP2.setText(String.valueOf(kontakt.get_vertrags_id()));
 		
 		JLabel lblDatumKP2 = new JLabel("Gemeldet am:");
 		
 		txtFDatumKP2 = new JTextField();
 		txtFDatumKP2.setHorizontalAlignment(SwingConstants.CENTER);
 		txtFDatumKP2.setColumns(10);
+		txtFDatumKP2.setText(kontakt.get_wann());
 		
 		JLabel lblGrundKP2 = new JLabel("Grund:");
 		
 		txtFGrundKP2 = new JTextField();
 		txtFGrundKP2.setColumns(10);
+		txtFGrundKP2.setText(kontakt.get_grund());
 		
 		JLabel lblBeschreibungKP2 = new JLabel("Beschreibung:");
 		
 		txtFBeschreibungKP2 = new JTextField();
 		txtFBeschreibungKP2.setColumns(10);
+		txtFBeschreibungKP2.setText(kontakt.get_beschreibung());
 		
 		btnSaveKP2 = new JButton("\u00C4nderungen speichern");
 		
