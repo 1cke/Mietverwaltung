@@ -20,9 +20,12 @@ public class DB {
 		Kunden kunde = new Kunden();
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbung = new Bewerbung();
-		System.out.println("Test");
-		System.out.println(kunde.lade_kunden_daten(1));
-		System.out.println(kunde.get_vorname());
 		
+		
+		System.out.println(vertrag.lade_vertrags_daten(1));
+		System.out.println(vertrag.get_kd_id());
+		System.out.println(vertrag.change_kundennummer(1, 7));
+		System.out.println(vertrag.lade_vertrags_daten(1));
+		System.out.println(vertrag.get_kd_id());
 	}
 }

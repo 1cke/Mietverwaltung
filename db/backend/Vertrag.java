@@ -140,19 +140,19 @@ public class Vertrag extends Vertragsdaten{
 		return get_values(kd_id,"kd");
 	}
 	private boolean change_vertrag_kd_id(int id, int kd_id) throws ClassNotFoundException, SQLException{
-		return change_db_value_for_contract("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE kd_id = '"+id+"'");
+		return change_db_value_for_contract("UPDATE vertrag SET kd_id = '"+kd_id+"' WHERE vertrags_id = '"+id+"'");
 	}
 	private boolean change_vertrag_whg_id(int id, int whg_id) throws ClassNotFoundException, SQLException{
-		return change_db_value_for_contract("UPDATE vertrag SET whg_id = '"+whg_id+"' WHERE kd_id = '"+id+"'");
+		return change_db_value_for_contract("UPDATE vertrag SET whg_id = '"+whg_id+"' WHERE vertrags_id = '"+id+"'");
 	}
 	private boolean change_vertrag_zeitraum(int id, String zeitraum) throws ClassNotFoundException, SQLException{
-		return change_db_value_for_contract("UPDATE vertrag SET zeitraum = '"+zeitraum+"' WHERE kd_id = '"+id+"'");
+		return change_db_value_for_contract("UPDATE vertrag SET zeitraum = '"+zeitraum+"' WHERE vertrags_id = '"+id+"'");
 	}
 	private boolean change_vertrag_schulden(int id, double schulden) throws ClassNotFoundException, SQLException{
-		return change_db_value_for_contract("UPDATE vertrag SET schulden = '"+schulden+"' WHERE kd_id = '"+id+"'");
+		return change_db_value_for_contract("UPDATE vertrag SET schulden = '"+schulden+"' WHERE vertrags_id = '"+id+"'");
 	}
 	private boolean change_vertrag_aktiv(int id, int aktiv) throws ClassNotFoundException, SQLException{
-		return change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE kd_id = '"+id+"'");
+		return change_db_value_for_contract("UPDATE vertrag SET aktiv = '"+aktiv+"' WHERE vertrags_id = '"+id+"'");
 	}
 	private boolean delete_contract(int vertrags_id)throws ClassNotFoundException, SQLException{
 		return change_db_value_for_contract("DELETE FROM vertrag WHERE vertrags_id = '"+vertrags_id+"'");
