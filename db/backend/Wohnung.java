@@ -108,20 +108,20 @@ public class Wohnung extends Wohnungsdaten{
 	private boolean get_whg_vermietet()throws ClassNotFoundException, SQLException{
 		return this.isVermietet();
 	}
-	private void change_whg_miete(int whg_id,double miete)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET miete = '"+miete+"' WHERE wohungs_id = '"+whg_id+"'");
+	private boolean change_whg_miete(int whg_id,double miete)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE wohnung SET miete = '"+miete+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	private void change_whg_zimmer(int whg_id,double zimmer)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET zimmer = '"+zimmer+"' WHERE wohungs_id = '"+whg_id+"'");
+		change_db_value("UPDATE wohnung SET zimmer = '"+zimmer+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	private void change_whg_baeder(int whg_id,double baeder)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET baeder = '"+baeder+"' WHERE wohungs_id = '"+whg_id+"'");
+		change_db_value("UPDATE wohnung SET baeder = '"+baeder+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	private void change_whg_ebk(int whg_id,int ebk)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET ebk = '"+ebk+"' WHERE wohungs_id = '"+whg_id+"'");
+		change_db_value("UPDATE wohnung SET ebk = '"+ebk+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	private void change_whg_vermietet(int whg_id,int vermietet)throws ClassNotFoundException, SQLException{
-		change_db_value("UPDATE wohnung SET vermietet = '"+vermietet+"' WHERE wohungs_id = '"+whg_id+"'");
+		change_db_value("UPDATE wohnung SET vermietet = '"+vermietet+"' WHERE wohnungs_id = '"+whg_id+"'");
 	}
 	private ArrayList<Wohnungsdaten> display_all_whg() throws ClassNotFoundException, SQLException{
 		return get_values(0,"all");
@@ -138,7 +138,7 @@ public class Wohnung extends Wohnungsdaten{
 	 * @see SQLException
 	 */
 	public void lade_daten(int wohnungsnummer) throws ClassNotFoundException, SQLException{
-		get_values(wohnungsnummer,"");
+		 get_values(wohnungsnummer,"");
 	}
 	/**
 	 * Diese Methode erstellt eine Wohnung.
@@ -234,8 +234,8 @@ public class Wohnung extends Wohnungsdaten{
 	 * @see ClassNotFoundException
 	 * @see SQLException
 	 */
-	public void change_miete(int whg_id,double miete)throws ClassNotFoundException, SQLException{
-		change_whg_miete(whg_id,miete);
+	public boolean change_miete(int whg_id,double miete)throws ClassNotFoundException, SQLException{
+		return change_whg_miete(whg_id,miete);
 	}
 	/**
 	 * Diese Methode ändert die Anzahl der Zimmer.

@@ -19,12 +19,13 @@ public class DB {
 		Kunden kunde = new Kunden();
 		Kontakt kontakt = new Kontakt();
 		Bewerbung bewerbung = new Bewerbung();
+		//whg.set_wohnungen(1, 1.0, 2.0, 3.0, 1, 1);
 		
-		
-		System.out.println(vertrag.lade_vertrags_daten(1));
-		System.out.println(vertrag.get_kd_id());
-		System.out.println(vertrag.change_kundennummer(1, 7));
-		System.out.println(vertrag.lade_vertrags_daten(1));
-		System.out.println(vertrag.get_kd_id());
+		whg.lade_daten(1);
+		System.out.println(whg.get_miete());
+		System.out.println(whg.change_miete(1, 10));
+		whg.lade_daten(1);
+		System.out.println(whg.get_miete());
+		System.out.println(whg.display());
 	}
 }
