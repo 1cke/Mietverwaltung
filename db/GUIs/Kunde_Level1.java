@@ -39,7 +39,7 @@ public class Kunde_Level1 extends JFrame {
 	private Kunden kunde;
 	private ArrayList<Person> daten;
 	private String[] kdlst;
-	private String test;
+	private String text;
 
 	/**
 	 * Launch the application.
@@ -67,8 +67,8 @@ public class Kunde_Level1 extends JFrame {
 		daten = kunde.get_all();
 		kdlst = new String[daten.size()];
 		for (int i=0; i<daten.size(); i++) {
-			test = kunde.parseString(daten.get(i));
-			kdlst[i] = test.replaceAll(",", " "); 
+			text = kunde.parseString(daten.get(i));
+			kdlst[i] = text.replaceAll(",", " "); 
 		}
 		initComponents();
 		createEvents();

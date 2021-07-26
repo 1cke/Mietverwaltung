@@ -203,8 +203,15 @@ public class Vertrag_Level2 extends JFrame {
 		btnZurückV2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Vertrag_Level1 vertrag1 = new Vertrag_Level1();
-				vertrag1.setVisible(true);
+				Vertrag_Level1 vertrag1;
+				try {
+					vertrag1 = new Vertrag_Level1();
+					vertrag1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
 		});
 		////////////////////////////////////////////////////////////////////

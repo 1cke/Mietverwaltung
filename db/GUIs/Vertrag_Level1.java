@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import backend.Kunden;
+import backend.Vertrag;
+import datentypen.Vertragsdaten;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -14,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 
@@ -25,6 +31,10 @@ public class Vertrag_Level1 extends JFrame {
 	private JButton btnBearbeitenV1;
 	private JButton btnLöschenV1;
 	private JList lstVerträgeV1;
+	private Vertrag vertrag;
+	private ArrayList<Vertragsdaten> daten;
+	private String[] vtlst;
+	private String text;
 
 	/**
 	 * Launch the application.
@@ -44,8 +54,17 @@ public class Vertrag_Level1 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Vertrag_Level1() {
+	public Vertrag_Level1() throws ClassNotFoundException, SQLException {
+		vertrag = new Vertrag();
+		daten = vertrag.get_all();
+		vtlst = new String[daten.size()];
+		for (int i=0; i<daten.size(); i++) {
+			text = vertrag.parseString(daten.get(i));
+			vtlst[i] = text.replaceAll(",", " "); 
+		}
 		initComponents();
 		createEvents();
 	}
@@ -108,7 +127,7 @@ public class Vertrag_Level1 extends JFrame {
 		
 		lstVerträgeV1 = new JList();
 		lstVerträgeV1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1 test vertrag","2 v","3 v","4 b"};
+			String[] values = vtlst;
 			public int getSize() {
 				return values.length;
 			}
