@@ -25,6 +25,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.awt.event.ActionListener;
+import javax.swing.JSeparator;
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import java.awt.SystemColor;
 
 public class GUI extends JFrame {
 
@@ -34,6 +38,8 @@ public class GUI extends JFrame {
 	private JButton btnVertragHM;
 	private JButton btnKontaktpunktHM;
 	private JButton btnKundeHM;
+	private JLabel lblVermieter;
+	private JTextPane txtpnGruppeElisa;
 
 	/**
 	 * Launch the application.
@@ -81,28 +87,73 @@ public class GUI extends JFrame {
 		
 		btnKundeHM = new JButton("Kunde");
 		
+		JSeparator separator = new JSeparator();
+		
+		JLabel lblWillkommen = new JLabel("Willkommen in Hauptmenü unserer Mietverwaltungssoftware !");
+		
+		JLabel lblGrussbotschaft = new JLabel("Bitte wählen Sie das Untermenü aus, in dem Sie arbeiten möchten.");
+		
+		lblVermieter = new JLabel("Und denken Sie daran: Vermieter sein ist kein echter Beruf :)");
+		
+		txtpnGruppeElisa = new JTextPane();
+		txtpnGruppeElisa.setSelectedTextColor(SystemColor.control);
+		txtpnGruppeElisa.setForeground(SystemColor.controlShadow);
+		txtpnGruppeElisa.setText("Gruppe 4: Elisa Pinke, Johann Müchhagen, Konrad Wielenski, Niclas Rust, Felix Schwips");
+		txtpnGruppeElisa.setBackground(SystemColor.menu);
+		txtpnGruppeElisa.setBorder(null);
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(149)
-					.addComponent(btnKontaktpunktHM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(182))
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(61)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnWohnungHM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnWohnungHM, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
 						.addComponent(btnBewerbungHM, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnKundeHM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnKundeHM, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
 						.addComponent(btnVertragHM, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+					.addGap(125))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(separator, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(139)
+					.addComponent(btnKontaktpunktHM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(192))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(56)
+					.addComponent(lblWillkommen)
+					.addContainerGap(69, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(46)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addComponent(lblVermieter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(73))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblGrussbotschaft, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(56))))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(txtpnGruppeElisa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(118)
+					.addContainerGap()
+					.addComponent(lblWillkommen)
+					.addGap(18)
+					.addComponent(lblGrussbotschaft)
+					.addGap(9)
+					.addComponent(lblVermieter)
+					.addGap(18)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnKundeHM)
 						.addComponent(btnWohnungHM))
@@ -110,9 +161,10 @@ public class GUI extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVertragHM)
 						.addComponent(btnBewerbungHM))
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnKontaktpunktHM)
-					.addContainerGap(44, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+					.addComponent(txtpnGruppeElisa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -207,6 +259,4 @@ public class GUI extends JFrame {
 	
 		
 	}
-	
-	
 }
