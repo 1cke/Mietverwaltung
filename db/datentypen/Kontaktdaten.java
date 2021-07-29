@@ -1,5 +1,9 @@
 package datentypen;
-
+/**
+ * Dieser Datentyp stellt alle benötigten Variablen für die Kontakte zu verfügung
+ * @author Johann Muenchhagen
+ * @version 1.0
+ */
 public class Kontaktdaten {
 	private int id = 0;
 	private int vertragsnummer = 0;

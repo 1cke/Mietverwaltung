@@ -1,5 +1,9 @@
 package datentypen;
-
+/**
+ * Dieser Datentyp stellt benötigten Variablen für die Adresse zu verfügung
+ * @author Johann Muenchhagen
+ * @version 1.0
+ */
 public class Anschrift {
 	private int id = 0;
 	private String plz = "";

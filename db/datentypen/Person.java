@@ -1,19 +1,9 @@
 package datentypen;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 /**
- * 
- */
-
-/**
- * @author johannmunchhagen
- *
+ * Dieser Datentyp stellt alle benötigten Variablen für die Kunden zu verfügung
+ * @author Johann Muenchhagen
+ * @version 1.0
  */
 public class Person {
 	private int id = 0;

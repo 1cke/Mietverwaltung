@@ -1,5 +1,9 @@
 package datentypen;
-
+/**
+ * Dieser Datentyp stellt benötigten Variablen für die Wohnung zu verfügung
+ * @author Johann Muenchhagen
+ * @version 1.0
+ */
 public class Wohnungsdaten {
 	private int id = 0;
 	private int adresse = 0;
