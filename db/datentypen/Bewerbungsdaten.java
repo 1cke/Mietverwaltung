@@ -1,5 +1,9 @@
 package datentypen;
-
+/**
+ * Dieser Datntyp stellt alle benötigten Variablen für die Bewerbung zu verfügung
+ * @author Johann Muenchhagen
+ * @version 1.0
+ */
 public class Bewerbungsdaten {
 	private int id = 0;
 	private int kundenummer = 0;

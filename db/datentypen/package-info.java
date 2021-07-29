@@ -1,5 +1,5 @@
 /**
- * Diese Package stellt alle benötigten Datentypen zu verfügung
+ * Diese Package stellt alle benötigten Datentypen zu verfügung um die Typreinheit zu gewährleisten
  * @author Johann-Christian Münchhagen
  * @version 1.0
  */

@@ -1,6 +1,10 @@
 package datentypen;
 
-
+/**
+ * Dieser Datentyp stellt alle benötigten Variablen für den Vertrag zu verfügung
+ * @author Johann Muenchhagen
+ * @version 1.0
+ */
 public class Vertragsdaten {
 	private int id = 0;
 	private int kundennummer = 0;
