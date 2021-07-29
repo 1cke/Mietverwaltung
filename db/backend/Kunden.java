@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import datentypen.Person;
 
 /**
+ * Die Klasse stellt alle relevanten Information zum Kunden bereit.
  * @author Johann Muenchhagen
  * @version 1.0
  * @see Person
