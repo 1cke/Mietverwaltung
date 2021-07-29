@@ -48,7 +48,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -141,13 +141,13 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückKP3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -161,16 +161,15 @@ public class Kontaktpunkt_Level3 extends JFrame {
 				}
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Hinzufügen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Hinzufügen" Button
+		////////////////////////////////////////////////////////////////////
 		btnHinzufügenKP3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					kontaktp.set_kontakt_value(Integer.parseInt(txtFVertragsIDKP3.getText()), txtFDatumKP3.getText(),
 							txtFGrundKP3.getText(), txtFBeschreibungKP3.getText());
 				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				txtFBeschreibungKP3.setText("");
@@ -182,7 +181,6 @@ public class Kontaktpunkt_Level3 extends JFrame {
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

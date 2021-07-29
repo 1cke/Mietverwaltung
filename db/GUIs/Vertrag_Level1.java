@@ -54,7 +54,7 @@ public class Vertrag_Level1 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -124,13 +124,13 @@ public class Vertrag_Level1 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -138,9 +138,9 @@ public class Vertrag_Level1 extends JFrame {
 				hauptmenü.setVisible(true);
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Hinzufügen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Hinzufügen" Button
+		////////////////////////////////////////////////////////////////////
 		btnHinzufügenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -149,15 +149,14 @@ public class Vertrag_Level1 extends JFrame {
 					vertrag3 = new Vertrag_Level3();
 					vertrag3.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Bearbeiten" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Bearbeiten" Button
+		////////////////////////////////////////////////////////////////////
 		btnBearbeitenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -166,15 +165,14 @@ public class Vertrag_Level1 extends JFrame {
 					vertrag2 = new Vertrag_Level2(lstVerträgeV1.getSelectedValue().toString());
 					vertrag2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Löschen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Löschen" Button
+		////////////////////////////////////////////////////////////////////
 		btnLöschenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -183,7 +181,6 @@ public class Vertrag_Level1 extends JFrame {
 					vertrag2 = new Vertrag_Level2(lstVerträgeV1.getSelectedValue().toString());
 					vertrag2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

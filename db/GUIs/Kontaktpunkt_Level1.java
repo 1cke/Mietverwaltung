@@ -51,11 +51,10 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		}
 		initComponents();
 		createEvents();
-		
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -124,13 +123,13 @@ public class Kontaktpunkt_Level1 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -138,9 +137,9 @@ public class Kontaktpunkt_Level1 extends JFrame {
 				hauptmenü.setVisible(true);
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Hinzufügen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Hinzufügen" Button
+		////////////////////////////////////////////////////////////////////
 		btnHinzufügenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -150,15 +149,14 @@ public class Kontaktpunkt_Level1 extends JFrame {
 					kontakt3 = new Kontaktpunkt_Level3();
 					kontakt3.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Bearbeiten" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Bearbeiten" Button
+		////////////////////////////////////////////////////////////////////
 		btnBearbeitenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -167,15 +165,14 @@ public class Kontaktpunkt_Level1 extends JFrame {
 					kontakt2 = new Kontaktpunkt_Level2(lstKontaktpunkteKP1.getSelectedValue().toString());
 					kontakt2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Löschen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Löschen" Button
+		////////////////////////////////////////////////////////////////////
 		btnLöschenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -184,7 +181,6 @@ public class Kontaktpunkt_Level1 extends JFrame {
 					kontakt2 = new Kontaktpunkt_Level2(lstKontaktpunkteKP1.getSelectedValue().toString());
 					kontakt2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

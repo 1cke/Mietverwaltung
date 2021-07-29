@@ -60,7 +60,7 @@ public class Wohnung_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -258,13 +258,13 @@ public class Wohnung_Level2 extends JFrame {
 	}
 	
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -273,14 +273,14 @@ public class Wohnung_Level2 extends JFrame {
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
+
 					e1.printStackTrace();
 				}
 			}
 		});
-////////////////////////////////////////////////////////////////////
-// Enthält den Code für den Button "änderungen speichern
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		// Enthält den Code für den Button "änderungen speichern
+		////////////////////////////////////////////////////////////////////
 		
 		btnSaveW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -304,7 +304,6 @@ public class Wohnung_Level2 extends JFrame {
 					wohnung.change_vermietet(nr, selectionStatus);
 					
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
@@ -315,7 +314,6 @@ public class Wohnung_Level2 extends JFrame {
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -329,7 +327,6 @@ public class Wohnung_Level2 extends JFrame {
 				try {
 					wohnung.delete(nr);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Wohnung wurde gelöscht.");
@@ -340,7 +337,6 @@ public class Wohnung_Level2 extends JFrame {
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

@@ -54,7 +54,7 @@ public class Vertrag_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -197,13 +197,13 @@ public class Vertrag_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückV2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -212,7 +212,6 @@ public class Vertrag_Level2 extends JFrame {
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -252,16 +251,15 @@ public class Vertrag_Level2 extends JFrame {
 				}
 			}
 		});
-////////////////////////////////////////////////////////////////////
-// Enthält den Code für den "Vertrag löschen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		// Enthält den Code für den "Vertrag löschen" Button
+		////////////////////////////////////////////////////////////////////
 		btnLöschenV2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
 					vertrag.delete(nr);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Der Vertrag wurde gelöscht.");
@@ -272,7 +270,6 @@ public class Vertrag_Level2 extends JFrame {
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

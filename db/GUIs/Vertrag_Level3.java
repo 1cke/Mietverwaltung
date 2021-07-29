@@ -48,7 +48,7 @@ public class Vertrag_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -151,13 +151,13 @@ public class Vertrag_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-// Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		// Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückV3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -166,15 +166,14 @@ public class Vertrag_Level3 extends JFrame {
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Hinzufügen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Hinzufügen" Button
+		////////////////////////////////////////////////////////////////////
 		btnHinzufügenV2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -183,7 +182,6 @@ public class Vertrag_Level3 extends JFrame {
 							Integer.parseInt(txtFWohnungsIDV3.getText()), Double.parseDouble(txtFSchuldenV3.getText()),
 							txtFZeitraumV3.getText(), selection);
 				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Der Vertrag wurde hinzugefügt.");
@@ -194,7 +192,6 @@ public class Vertrag_Level3 extends JFrame {
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

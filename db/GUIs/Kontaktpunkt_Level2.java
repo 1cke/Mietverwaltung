@@ -54,7 +54,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -190,13 +190,13 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückKP2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -205,27 +205,23 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
-	////////////////////////////////////////////////////////////////////
-	//Enthält den Code für den "Änderungen speichern" Button
-	////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Änderungen speichern" Button
+		////////////////////////////////////////////////////////////////////
 		btnSaveKP2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				int selectionStatus = czbStatusKP2.isSelected() ? 1 : 0;
 				
 				try {
-					
 					kontakt.change_beschreibung(nr, txtFBeschreibungKP2.getText());
 					kontakt.change_behoben(nr, selectionStatus);
 					
-					
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
@@ -236,7 +232,6 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

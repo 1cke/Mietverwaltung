@@ -56,7 +56,7 @@ public class Kunde_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -228,13 +228,13 @@ public class Kunde_Level2 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den Button "Zurück"
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den Button "Zurück"
+		////////////////////////////////////////////////////////////////////
 		btnZurückK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -249,9 +249,9 @@ public class Kunde_Level2 extends JFrame {
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-// Enthält den Code für den Button "Änderungen speichern"
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		// Enthält den Code für den Button "Änderungen speichern"
+		////////////////////////////////////////////////////////////////////
 		btnSaveK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -267,7 +267,6 @@ public class Kunde_Level2 extends JFrame {
 					kunde.change_interessent(nr, selectionInteressent);
 					kunde.change_aktiv(nr, selectionAktiv);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
@@ -278,22 +277,20 @@ public class Kunde_Level2 extends JFrame {
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den Button "Kunde löschen"
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den Button "Kunde löschen"
+		////////////////////////////////////////////////////////////////////
 		btnLöschenK2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
 					kunde.delete(nr);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Der Kunde wurde gelöscht.");
@@ -304,7 +301,6 @@ public class Kunde_Level2 extends JFrame {
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

@@ -50,7 +50,7 @@ public class Kunde_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen und
+	// Enthält den Code zum Erzeugen und
 	// Initialisieren von Komponenten
 	////////////////////////////////////////////////////////////////////
 	
@@ -162,13 +162,13 @@ public class Kunde_Level3 extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////
-	// Enth�lt den Code zum Erzeugen von Events
+	// Enthält den Code zum Erzeugen von Events
 	////////////////////////////////////////////////////////////////////
 	
 	private void createEvents() {
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Zurück" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Zurück" Button
+		////////////////////////////////////////////////////////////////////
 		btnZurückK3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -177,15 +177,14 @@ public class Kunde_Level3 extends JFrame {
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den "Hinzufügen" Button
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Hinzufügen" Button
+		////////////////////////////////////////////////////////////////////
 		btnHinzufügenK3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selection = czbInteressentK3.isSelected() ? 1 : 0;
@@ -193,7 +192,6 @@ public class Kunde_Level3 extends JFrame {
 					kunde.set_db_value(txtFVornameK3.getText(), txtFNachnameK3.getText(),
 							txtFGeburtstagK3.getText(), txtFTelefonK3.getText(), txtFEmailK3.getText(), selection);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Der Kunde wurde hinzugefügt.");
@@ -204,7 +202,6 @@ public class Kunde_Level3 extends JFrame {
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
