@@ -18,9 +18,25 @@ import datentypen.Person;
  * @see Person
  */
 public class Kunden extends Person{
+	/**
+	 * Diesse Methode Konstruiert die Klasse Kunden.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see initieren
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	public Kunden()throws ClassNotFoundException, SQLException {
 		initieren();
 	}
+	/**
+	 * Diese Methode überprüft ob die Tabelle kunden in der Datenbank existiert.
+	 * Wenn dies nicht der Fall ist, wird die Tabelle kunden neu angelegt.
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
 	private void initieren()throws ClassNotFoundException, SQLException{
 		/*
 		 * initiere die Tabelle Kunden
