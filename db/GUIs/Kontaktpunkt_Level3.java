@@ -36,22 +36,6 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	private Kontakt kontaktp;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Kontaktpunkt_Level3 frame = new Kontaktpunkt_Level3();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 

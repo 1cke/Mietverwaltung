@@ -73,7 +73,7 @@ public class GUI extends JFrame {
 	private void initComponents() {
 		setTitle("Hauptmen\u00FC");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 458, 312);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -104,40 +104,40 @@ public class GUI extends JFrame {
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(61)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnWohnungHM, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-						.addComponent(btnBewerbungHM, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+						.addComponent(btnWohnungHM, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+						.addComponent(btnBewerbungHM, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnKundeHM, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-						.addComponent(btnVertragHM, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+						.addComponent(btnKundeHM, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+						.addComponent(btnVertragHM, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
 					.addGap(125))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(separator, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+					.addComponent(separator, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
 					.addContainerGap())
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(139)
-					.addComponent(btnKontaktpunktHM, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnKontaktpunktHM, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
 					.addGap(192))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(56)
-					.addComponent(lblWillkommen)
-					.addContainerGap(69, Short.MAX_VALUE))
+					.addComponent(lblWillkommen, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(89))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(46)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(10)
-							.addComponent(lblVermieter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblVermieter, GroupLayout.PREFERRED_SIZE, 319, Short.MAX_VALUE)
 							.addGap(73))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblGrussbotschaft, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblGrussbotschaft, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
 							.addGap(56))))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(txtpnGruppeElisa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
@@ -163,7 +163,7 @@ public class GUI extends JFrame {
 						.addComponent(btnBewerbungHM))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnKontaktpunktHM)
-					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
 					.addComponent(txtpnGruppeElisa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		contentPane.setLayout(gl_contentPane);
@@ -185,7 +185,6 @@ public class GUI extends JFrame {
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -201,7 +200,6 @@ public class GUI extends JFrame {
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -218,7 +216,6 @@ public class GUI extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -234,7 +231,6 @@ public class GUI extends JFrame {
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -251,7 +247,6 @@ public class GUI extends JFrame {
 					kontaktpunkt1 = new Kontaktpunkt_Level1();
 					kontaktpunkt1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
