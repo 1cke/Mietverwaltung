@@ -153,7 +153,6 @@ public class Bewerbung_Level3 extends JFrame {
 				try {
 					bewerbung.set_bewerbung(Integer.parseInt(txtFKundenIDB3.getText()), Integer.parseInt(txtFWohnungsIDB3.getText()),
 							txtFDatumB3.getText());
-					bewerbung.change_status(bewerbung.get_bewerbungs_id(), 0);
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
 				}
