@@ -147,7 +147,6 @@ public class Bewerbung_Level1 extends JFrame {
 					bewerbung3 = new Bewerbung_Level3();
 					bewerbung3.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -165,7 +164,6 @@ public class Bewerbung_Level1 extends JFrame {
 					bewerbung2 = new Bewerbung_Level2(lstBewerbungenB1.getSelectedValue().toString());
 					bewerbung2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -182,7 +180,6 @@ public class Bewerbung_Level1 extends JFrame {
 					bewerbung2 = new Bewerbung_Level2(lstBewerbungenB1.getSelectedValue().toString());
 					bewerbung2.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

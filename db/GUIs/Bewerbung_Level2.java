@@ -101,7 +101,7 @@ public class Bewerbung_Level2 extends JFrame {
 		
 		btnLöschenB2 = new JButton("Bewerbung l\u00F6schen");
 		
-		czbStatusB2 = new JCheckBox("abgeschlossen");
+		czbStatusB2 = new JCheckBox("aktiv");
 		czbStatusB2.setSelected(true);
 		if (bewerbung.get_status()) {
 			czbStatusB2.setSelected(true);
@@ -199,7 +199,6 @@ public class Bewerbung_Level2 extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -220,7 +219,6 @@ public class Bewerbung_Level2 extends JFrame {
 					
 					
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
@@ -231,7 +229,6 @@ public class Bewerbung_Level2 extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -245,7 +242,6 @@ public class Bewerbung_Level2 extends JFrame {
 				try {
 					bewerbung.delete_bewerbung(nr);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Bewerbung wurde gelöscht.");
@@ -256,7 +252,6 @@ public class Bewerbung_Level2 extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

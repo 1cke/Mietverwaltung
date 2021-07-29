@@ -33,7 +33,6 @@ public class Bewerbung_Level3 extends JFrame {
 	private JButton btnZurückB3;
 	private JButton btnHinzufügenB3;
 	private Bewerbung bewerbung;
-	private JCheckBox czbStatusB3;
 
 	/**
 	 * Create the frame.
@@ -78,18 +77,12 @@ public class Bewerbung_Level3 extends JFrame {
 		txtFDatumB3.setColumns(10);
 		
 		btnHinzufügenB3 = new JButton("Bewerbung hinzuf\u00FCgen");
-		
-		czbStatusB3 = new JCheckBox("abgeschlossen");
 		GroupLayout gl_contentPaneB3 = new GroupLayout(contentPaneB3);
 		gl_contentPaneB3.setHorizontalGroup(
 			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPaneB3.createSequentialGroup()
 					.addComponent(btnZurückB3)
 					.addContainerGap(281, Short.MAX_VALUE))
-				.addGroup(gl_contentPaneB3.createSequentialGroup()
-					.addGap(132)
-					.addComponent(btnHinzufügenB3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(169))
 				.addGroup(gl_contentPaneB3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.TRAILING)
@@ -98,17 +91,16 @@ public class Bewerbung_Level3 extends JFrame {
 						.addComponent(lblKundenIDB3))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtFWohnungsIDB3, 264, 268, Short.MAX_VALUE)
+						.addComponent(txtFKundenIDB3, GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
 						.addGroup(gl_contentPaneB3.createSequentialGroup()
-							.addComponent(czbStatusB3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-							.addGap(252))
-						.addGroup(gl_contentPaneB3.createSequentialGroup()
-							.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtFWohnungsIDB3, 264, 268, Short.MAX_VALUE)
-								.addComponent(txtFKundenIDB3, GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-								.addGroup(gl_contentPaneB3.createSequentialGroup()
-									.addComponent(txtFDatumB3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-									.addGap(193)))
-							.addGap(95))))
+							.addComponent(txtFDatumB3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(193)))
+					.addGap(95))
+				.addGroup(gl_contentPaneB3.createSequentialGroup()
+					.addGap(131)
+					.addComponent(btnHinzufügenB3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(154))
 		);
 		gl_contentPaneB3.setVerticalGroup(
 			gl_contentPaneB3.createParallelGroup(Alignment.LEADING)
@@ -126,11 +118,9 @@ public class Bewerbung_Level3 extends JFrame {
 					.addGroup(gl_contentPaneB3.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDatumB3)
 						.addComponent(txtFDatumB3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(czbStatusB3)
-					.addPreferredGap(ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnHinzufügenB3)
-					.addContainerGap())
+					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		contentPaneB3.setLayout(gl_contentPaneB3);
 	}
@@ -151,7 +141,6 @@ public class Bewerbung_Level3 extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -161,14 +150,11 @@ public class Bewerbung_Level3 extends JFrame {
 ////////////////////////////////////////////////////////////////////
 		btnHinzufügenB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selection = czbStatusB3.isSelected() ? 1 : 0;
 				try {
 					bewerbung.set_bewerbung(Integer.parseInt(txtFKundenIDB3.getText()), Integer.parseInt(txtFWohnungsIDB3.getText()),
 							txtFDatumB3.getText());
-					// bewerbung.change_status(bewerbung.get_bewerbungs_id(Integer.parseInt(txtFWohnungsIDB3.getText()),
-						//	Integer.parseInt(txtFKundenIDB3.getText())), selection);
+					bewerbung.change_status(bewerbung.get_bewerbungs_id(), 0);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Die Bewerbung wurde hinzugefügt.");
@@ -179,7 +165,6 @@ public class Bewerbung_Level3 extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
