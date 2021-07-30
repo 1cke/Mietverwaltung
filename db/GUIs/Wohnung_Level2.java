@@ -327,7 +327,7 @@ public class Wohnung_Level2 extends JFrame {
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Löschen konnte nicht durchgeführt werden.");
 				}
 			}
 		});

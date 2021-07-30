@@ -237,6 +237,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		btnLöschenKP2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				JOptionPane.showMessageDialog(null, "Löschen konnte nicht durchgeführt werden.");
 			}
 		});
 		

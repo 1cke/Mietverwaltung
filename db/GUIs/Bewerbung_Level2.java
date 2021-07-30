@@ -241,7 +241,7 @@ public class Bewerbung_Level2 extends JFrame {
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Löschen konnte nicht durchgeführt werden.");
 				}
 			}
 		});

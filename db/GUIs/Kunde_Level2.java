@@ -292,7 +292,7 @@ public class Kunde_Level2 extends JFrame {
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Löschen konnte nicht durchgeführt werden.");
 				}
 			}
 		});

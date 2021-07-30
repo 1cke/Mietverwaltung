@@ -257,7 +257,7 @@ public class Vertrag_Level2 extends JFrame {
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Löschen konnte nicht durchgeführt werden.");
 				}
 			}
 		});
