@@ -126,14 +126,14 @@ public class Vertrag_Level2 extends JFrame {
 							.addContainerGap()
 							.addComponent(lblAuswahlV2)
 							.addGap(18)
-							.addComponent(txtArAuswahlV2, GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
-						.addComponent(separatorV2, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+							.addComponent(txtArAuswahlV2, GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+						.addComponent(separatorV2, GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE))
 					.addGap(7))
 				.addGroup(gl_contentPaneV2.createSequentialGroup()
 					.addGap(59)
-					.addComponent(btnSaveV2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnSaveV2, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(btnLöschenV2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnLöschenV2, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
 					.addGap(110))
 				.addGroup(gl_contentPaneV2.createSequentialGroup()
 					.addContainerGap()
@@ -145,7 +145,7 @@ public class Vertrag_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneV2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPaneV2.createSequentialGroup()
-							.addComponent(czbAktivV2, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+							.addComponent(czbAktivV2)
 							.addContainerGap())
 						.addGroup(gl_contentPaneV2.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_contentPaneV2.createSequentialGroup()
@@ -188,7 +188,7 @@ public class Vertrag_Level2 extends JFrame {
 						.addComponent(lblSchuldenV2))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(czbAktivV2)
-					.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
 					.addGroup(gl_contentPaneV2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSaveV2)
 						.addComponent(btnLöschenV2)))
@@ -232,22 +232,14 @@ public class Vertrag_Level2 extends JFrame {
 					vertrag.change_zeitraum(nr, txtFZeitraumV2.getText());
 					vertrag.change_schulden(nr, Double.parseDouble(txtFSchuldenV2.getText()));
 					vertrag.change_aktiv(nr, selectionStatus);
-					
-					
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
-				//code für das Zurückkehren auf Vertrag lvl 1
-				dispose();
-				Vertrag_Level1 vertrag1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+					dispose();
+					Vertrag_Level1 vertrag1;
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
+							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
 				}
 			}
 		});
@@ -259,14 +251,9 @@ public class Vertrag_Level2 extends JFrame {
 				
 				try {
 					vertrag.delete(nr);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Der Vertrag wurde gelöscht.");
-				//code für das Zurückkehren auf Vertrag lvl 1
-				dispose();
-				Vertrag_Level1 vertrag1;
-				try {
+					JOptionPane.showMessageDialog(null, "Der Vertrag wurde gelöscht.");
+					dispose();
+					Vertrag_Level1 vertrag1;
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {

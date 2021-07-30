@@ -281,7 +281,6 @@ public class Wohnung_Level2 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		// Enthält den Code für den Button "änderungen speichern
 		////////////////////////////////////////////////////////////////////
-		
 		btnSaveW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -302,38 +301,29 @@ public class Wohnung_Level2 extends JFrame {
 					wohnung.change_baeder(nr, Double.parseDouble(txtFBaederW2.getText()));
 					wohnung.change_ebk(nr, selectionEbk);
 					wohnung.change_vermietet(nr, selectionStatus);
-					
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
-				//Code für das zurückkehren zu Wohnung lvl 1
-				dispose();
-				Wohnung_Level1 wohnung1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+					dispose();
+					Wohnung_Level1 wohnung1;
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
+							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
 				}
+				
 			}
 		});
-////////////////////////////////////////////////////////////////////
-//Enthält den Code für den Button "Wohnung löschen"
-////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den Button "Wohnung löschen"
+		////////////////////////////////////////////////////////////////////
 		btnLöschenW2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
 					wohnung.delete(nr);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Wohnung wurde gelöscht.");
-				//Code für das zurückkehren zu Wohnung lvl 1
-				dispose();
-				Wohnung_Level1 wohnung1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Wohnung wurde gelöscht.");
+					dispose();
+					Wohnung_Level1 wohnung1;
 					wohnung1 = new Wohnung_Level1();
 					wohnung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {

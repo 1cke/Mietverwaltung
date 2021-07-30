@@ -266,18 +266,14 @@ public class Kunde_Level2 extends JFrame {
 					kunde.change_email(nr, txtFEmailK2.getText());
 					kunde.change_interessent(nr, selectionInteressent);
 					kunde.change_aktiv(nr, selectionAktiv);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
-				//Code für das Zurückkehren auf Kunde lvl 1
-				dispose();
-				Kunde_Level1 kunde1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+					dispose();
+					Kunde_Level1 kunde1;
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
+							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
 				}
 				
 			}
@@ -290,14 +286,9 @@ public class Kunde_Level2 extends JFrame {
 				
 				try {
 					kunde.delete(nr);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Der Kunde wurde gelöscht.");
-				//Code für das Zurückkehren auf Kunde lvl 1
-				dispose();
-				Kunde_Level1 kunde1;
-				try {
+					JOptionPane.showMessageDialog(null, "Der Kunde wurde gelöscht.");
+					dispose();
+					Kunde_Level1 kunde1;
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
