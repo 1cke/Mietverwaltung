@@ -216,19 +216,14 @@ public class Bewerbung_Level2 extends JFrame {
 					bewerbung.change_wohnungs_id(nr, Integer.parseInt(txtFWohnungsIDB2.getText()));
 					bewerbung.change_datum(nr, txtFDatumB2.getText());
 					bewerbung.change_status(nr, selectionStatus);
-					
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
-				//Code für das Zurückkehren auf Bewerbung lvl 1
-				dispose();
-				Bewerbung_Level1 bewerbung1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+					dispose();
+					Bewerbung_Level1 bewerbung1;
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
+							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
 				}
 			}
 		});
@@ -240,14 +235,9 @@ public class Bewerbung_Level2 extends JFrame {
 				
 				try {
 					bewerbung.delete_bewerbung(nr);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Bewerbung wurde gelöscht.");
-				//Code für das Zurückkehren auf Bewerbung lvl 1
-				dispose();
-				Bewerbung_Level1 bewerbung1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Bewerbung wurde gelöscht.");
+					dispose();
+					Bewerbung_Level1 bewerbung1;
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {

@@ -220,20 +220,23 @@ public class Kontaktpunkt_Level2 extends JFrame {
 				try {
 					kontakt.change_beschreibung(nr, txtFBeschreibungKP2.getText());
 					kontakt.change_behoben(nr, selectionStatus);
-					
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
-				//Code für das Zurückkehren auf Kontaktpunkt lvl 1
-				dispose();
-				Kontaktpunkt_Level1 kontakt1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
+					dispose();
+					Kontaktpunkt_Level1 kontakt1;
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
+							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
 				}
+			}
+		});	
+		////////////////////////////////////////////////////////////////////
+		//Enthält den Code für den "Löschen" Button
+		////////////////////////////////////////////////////////////////////
+		btnLöschenKP2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
 			}
 		});
 		
