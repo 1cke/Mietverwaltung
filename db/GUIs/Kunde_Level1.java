@@ -20,6 +20,7 @@ import java.awt.Font;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 
@@ -163,13 +164,15 @@ public class Kunde_Level1 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		btnBearbeitenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				Kunde_Level2 kunde2;
 				try {
 					kunde2 = new Kunde_Level2(lstKundenK1.getSelectedValue().toString());
 					kunde2.setVisible(true);
+					dispose();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
+				} catch (NullPointerException en) {
+					JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Kunden aus.");
 				}
 				
 			}
@@ -179,14 +182,15 @@ public class Kunde_Level1 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		btnLöschenK1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				Kunde_Level2 kunde2;
 				try {
 					kunde2 = new Kunde_Level2(lstKundenK1.getSelectedValue().toString());
 					kunde2.setVisible(true);
+					dispose();
 				} catch (ClassNotFoundException | SQLException e1) {
-
 					e1.printStackTrace();
+				} catch (NullPointerException en) {
+					JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Kunden aus.");
 				}
 				
 			}

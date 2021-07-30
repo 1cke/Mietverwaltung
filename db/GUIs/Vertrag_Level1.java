@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -150,7 +152,7 @@ public class Vertrag_Level1 extends JFrame {
 					vertrag3.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
-				}
+				} 
 				
 			}
 		});
@@ -159,13 +161,15 @@ public class Vertrag_Level1 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		btnBearbeitenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				Vertrag_Level2 vertrag2;
 				try {
 					vertrag2 = new Vertrag_Level2(lstVerträgeV1.getSelectedValue().toString());
 					vertrag2.setVisible(true);
+					dispose();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
+				} catch (NullPointerException en) {
+					JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Vertrag aus.");
 				}
 				
 			}
@@ -175,13 +179,15 @@ public class Vertrag_Level1 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		btnLöschenV1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				Vertrag_Level2 vertrag2;
 				try {
 					vertrag2 = new Vertrag_Level2(lstVerträgeV1.getSelectedValue().toString());
 					vertrag2.setVisible(true);
+					dispose();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
+				} catch (NullPointerException en) {
+					JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Vertrag aus.");
 				}
 				
 			}

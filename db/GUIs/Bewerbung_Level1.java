@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -157,15 +159,17 @@ public class Bewerbung_Level1 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		btnBearbeitenB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				Bewerbung_Level2 bewerbung2;
-				
 				try {
 					bewerbung2 = new Bewerbung_Level2(lstBewerbungenB1.getSelectedValue().toString());
 					bewerbung2.setVisible(true);
+					dispose();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
+				} catch (NullPointerException en) {
+					JOptionPane.showMessageDialog(null, "Bitte wählen Sie eine Bewerbung aus.");
 				}
+				
 				
 			}
 		});
@@ -174,13 +178,15 @@ public class Bewerbung_Level1 extends JFrame {
 		////////////////////////////////////////////////////////////////////
 		btnLöschenB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				Bewerbung_Level2 bewerbung2;
 				try {
 					bewerbung2 = new Bewerbung_Level2(lstBewerbungenB1.getSelectedValue().toString());
 					bewerbung2.setVisible(true);
+					dispose();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
+				} catch (NullPointerException en) {
+					JOptionPane.showMessageDialog(null, "Bitte wählen Sie eine Bewerbung aus.");
 				}
 				
 			}
