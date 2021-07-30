@@ -169,19 +169,14 @@ public class Kontaktpunkt_Level3 extends JFrame {
 				try {
 					kontaktp.set_kontakt_value(Integer.parseInt(txtFVertragsIDKP3.getText()), txtFDatumKP3.getText(),
 							txtFGrundKP3.getText(), txtFBeschreibungKP3.getText());
-				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
-				}
-				txtFBeschreibungKP3.setText("");
-				JOptionPane.showMessageDialog(null, "Der Kontaktpunkt wurde hinzugefügt.");
-				//Code für das Zurückkehren auf Kontaktpunkt lvl 1
-				dispose();
-				Kontaktpunkt_Level1 kontakt1;
-				try {
+					JOptionPane.showMessageDialog(null, "Der Kontaktpunkt wurde hinzugefügt.");
+					dispose();
+					Kontaktpunkt_Level1 kontakt1;
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
+					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
+							+ " Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");
 				}
 			}
 		});

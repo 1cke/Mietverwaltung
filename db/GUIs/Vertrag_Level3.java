@@ -181,18 +181,14 @@ public class Vertrag_Level3 extends JFrame {
 					vertrag.set_db_value(Integer.parseInt(txtFKundenIDV3.getText()),
 							Integer.parseInt(txtFWohnungsIDV3.getText()), Double.parseDouble(txtFSchuldenV3.getText()),
 							txtFZeitraumV3.getText(), selection);
-				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Der Vertrag wurde hinzugefügt.");
-				//Code für das Zurückkehren auf Vertrag lvl 1
-				dispose();
-				Vertrag_Level1 vertrag1;
-				try {
+					JOptionPane.showMessageDialog(null, "Der Vertrag wurde hinzugefügt.");
+					dispose();
+					Vertrag_Level1 vertrag1;
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
+					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
+							+ " Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");
 				}
 			}
 		});

@@ -39,8 +39,6 @@ public class Wohnung_Level3 extends JFrame {
 	private JCheckBox czbEbkW3;
 	private JCheckBox czbStatusW3;
 	private Wohnung wohnung;
-	private JLabel lblAdressIDW3;
-	private JTextField txtFAdressIDW3;
 	private Adresse adresse;
 
 	/**
@@ -63,7 +61,7 @@ public class Wohnung_Level3 extends JFrame {
 	private void initComponents() {
 		setTitle("Wohnung hinzuf\u00FCgen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 474, 284);
+		setBounds(100, 100, 474, 254);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -110,14 +108,9 @@ public class Wohnung_Level3 extends JFrame {
 		
 		txtFHNW3 = new JTextField();
 		txtFHNW3.setColumns(10);
-		
-		lblAdressIDW3 = new JLabel("Adress-ID:");
-		
-		txtFAdressIDW3 = new JTextField();
-		txtFAdressIDW3.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnZurückW3)
@@ -127,7 +120,7 @@ public class Wohnung_Level3 extends JFrame {
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblMieteW3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtFMieteW3, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+									.addComponent(txtFMieteW3, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
 									.addGap(249))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -139,7 +132,7 @@ public class Wohnung_Level3 extends JFrame {
 											.addPreferredGap(ComponentPlacement.RELATED)
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 												.addComponent(txtFStrasseW3, 206, 206, 206)
-												.addComponent(txtFOrtW3, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+												.addComponent(txtFOrtW3, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
 											.addGap(18)
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 												.addComponent(lblHNW3)
@@ -152,7 +145,7 @@ public class Wohnung_Level3 extends JFrame {
 												.addComponent(czbStatusW3, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 												.addComponent(czbEbkW3, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
 												.addGroup(gl_contentPane.createSequentialGroup()
-													.addComponent(txtFZimmerW3, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+													.addComponent(txtFZimmerW3, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
 													.addGap(38)
 													.addComponent(lblBaederW3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 													.addPreferredGap(ComponentPlacement.RELATED)
@@ -160,18 +153,12 @@ public class Wohnung_Level3 extends JFrame {
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(txtFHNW3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-										.addComponent(txtFPLZW3, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))))))
+										.addComponent(txtFPLZW3, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))))))
 					.addGap(8))
-				.addGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addGap(283)
-					.addComponent(btnHinzufügenW3, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+					.addComponent(btnHinzufügenW3, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
 					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(6)
-					.addComponent(lblAdressIDW3)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(txtFAdressIDW3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(304))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -201,19 +188,14 @@ public class Wohnung_Level3 extends JFrame {
 						.addComponent(txtFBaederW3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(74)
-							.addComponent(btnHinzufügenW3)
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblAdressIDW3)
-								.addComponent(txtFAdressIDW3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(22)
+							.addGap(12)
 							.addComponent(czbEbkW3)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(czbStatusW3)
-							.addGap(23))))
+							.addComponent(czbStatusW3))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(39)
+							.addComponent(btnHinzufügenW3)))
+					.addGap(23))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -259,21 +241,15 @@ public class Wohnung_Level3 extends JFrame {
 							Double.parseDouble(txtFZimmerW3.getText()), Double.parseDouble(txtFBaederW3.getText()),
 							selectionEbk, selectionStatus);
 					}
-					
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-					}
 					JOptionPane.showMessageDialog(null, "Die Wohnung wurde hinzugefügt.");
-					//code für das zurückkehren auf Wohnung lvl 1
 					dispose();
 					Wohnung_Level1 wohnung1;
-					try {
-						wohnung1 = new Wohnung_Level1();
-						wohnung1.setVisible(true);
-					} catch (ClassNotFoundException | SQLException e2) {
-						e2.printStackTrace();
-					
-				}
+					wohnung1 = new Wohnung_Level1();
+					wohnung1.setVisible(true);
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
+							+ " Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");
+					}
 			}
 		});
 	}

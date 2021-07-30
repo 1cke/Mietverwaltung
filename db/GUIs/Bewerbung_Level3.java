@@ -153,18 +153,14 @@ public class Bewerbung_Level3 extends JFrame {
 				try {
 					bewerbung.set_bewerbung(Integer.parseInt(txtFKundenIDB3.getText()), Integer.parseInt(txtFWohnungsIDB3.getText()),
 							txtFDatumB3.getText());
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Die Bewerbung wurde hinzugefügt.");
-				//Code für das Zurückkehren auf Bewerbung lvl 1
-				dispose();
-				Bewerbung_Level1 bewerbung1;
-				try {
+					JOptionPane.showMessageDialog(null, "Die Bewerbung wurde hinzugefügt.");
+					dispose();
+					Bewerbung_Level1 bewerbung1;
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1 ) {
+					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
+							+ "Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");
 				}
 			}
 		});

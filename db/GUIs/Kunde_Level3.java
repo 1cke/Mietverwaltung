@@ -191,18 +191,14 @@ public class Kunde_Level3 extends JFrame {
 				try {
 					kunde.set_db_value(txtFVornameK3.getText(), txtFNachnameK3.getText(),
 							txtFGeburtstagK3.getText(), txtFTelefonK3.getText(), txtFEmailK3.getText(), selection);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "Der Kunde wurde hinzugefügt.");
-				//Code für das Zurückkehren auf Kunde lvl 1
-				dispose();
-				Kunde_Level1 kunde1;
-				try {
+					JOptionPane.showMessageDialog(null, "Der Kunde wurde hinzugefügt.");
+					dispose();
+					Kunde_Level1 kunde1;
 					kunde1 = new Kunde_Level1();
 					kunde1.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
+				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
+					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
+							+ " Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");
 				}
 			}
 		});
