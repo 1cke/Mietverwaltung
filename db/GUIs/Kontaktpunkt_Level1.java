@@ -29,7 +29,6 @@ public class Kontaktpunkt_Level1 extends JFrame {
 	private JButton btnZurückKP1;
 	private JButton btnHinzufügenKP1;
 	private JButton btnBearbeitenKP1;
-	private JButton btnLöschenKP1;
 	private JList lstKontaktpunkteKP1;
 	private ArrayList<Kontaktdaten> daten;
 	private String[] ktlst;
@@ -72,20 +71,10 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		
 		btnBearbeitenKP1 = new JButton("Bearbeiten");
 		
-		btnLöschenKP1 = new JButton("L\u00F6schen");
-		
 		JScrollPane scrollPaneKP1 = new JScrollPane();
 		GroupLayout gl_contentPaneKP1 = new GroupLayout(contentPaneKP1);
 		gl_contentPaneKP1.setHorizontalGroup(
 			gl_contentPaneKP1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPaneKP1.createSequentialGroup()
-					.addGap(45)
-					.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(btnLöschenKP1, GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
-					.addGap(58))
 				.addGroup(gl_contentPaneKP1.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnZurückKP1)
@@ -94,6 +83,12 @@ public class Kontaktpunkt_Level1 extends JFrame {
 					.addContainerGap()
 					.addComponent(scrollPaneKP1, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
 					.addContainerGap())
+				.addGroup(gl_contentPaneKP1.createSequentialGroup()
+					.addGap(106)
+					.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+					.addGap(18)
+					.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+					.addGap(106))
 		);
 		gl_contentPaneKP1.setVerticalGroup(
 			gl_contentPaneKP1.createParallelGroup(Alignment.LEADING)
@@ -104,8 +99,7 @@ public class Kontaktpunkt_Level1 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnHinzufügenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnLöschenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addComponent(btnBearbeitenKP1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		
 		lstKontaktpunkteKP1 = new JList();
@@ -158,22 +152,6 @@ public class Kontaktpunkt_Level1 extends JFrame {
 		//Enthält den Code für den "Bearbeiten" Button
 		////////////////////////////////////////////////////////////////////
 		btnBearbeitenKP1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Kontaktpunkt_Level2 kontakt2;
-				try {
-					kontakt2 = new Kontaktpunkt_Level2(lstKontaktpunkteKP1.getSelectedValue().toString());
-					kontakt2.setVisible(true);
-				} catch (ClassNotFoundException | SQLException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
-		});
-		////////////////////////////////////////////////////////////////////
-		//Enthält den Code für den "Löschen" Button
-		////////////////////////////////////////////////////////////////////
-		btnLöschenKP1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Kontaktpunkt_Level2 kontakt2;

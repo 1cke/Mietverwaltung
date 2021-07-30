@@ -33,7 +33,6 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	private JTextField txtFBeschreibungKP2;
 	private JButton btnZurückKP2;
 	private JButton btnSaveKP2;
-	private JButton btnLöschenKP2;
 	private Kontakt kontakt;
 	private JTextArea txtArAuswahlKP2;
 	private JCheckBox czbStatusKP2;
@@ -107,8 +106,6 @@ public class Kontaktpunkt_Level2 extends JFrame {
 		
 		btnSaveKP2 = new JButton("\u00C4nderungen speichern");
 		
-		btnLöschenKP2 = new JButton("Kontaktpunkt löschen");
-		
 		czbStatusKP2 = new JCheckBox("Behoben");
 		GroupLayout gl_contentPaneKP2 = new GroupLayout(contentPaneKP2);
 		gl_contentPaneKP2.setHorizontalGroup(
@@ -120,9 +117,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 							.addContainerGap()
 							.addComponent(lblAuswahlKP2)
 							.addGap(18)
-							.addComponent(txtArAuswahlKP2, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+							.addComponent(txtArAuswahlKP2, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
 							.addGap(63))
-						.addComponent(separatorKP2, GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
+						.addComponent(separatorKP2, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
 					.addGap(7))
 				.addGroup(gl_contentPaneKP2.createSequentialGroup()
 					.addGap(17)
@@ -132,26 +129,24 @@ public class Kontaktpunkt_Level2 extends JFrame {
 						.addComponent(lblGrundKP2)
 						.addComponent(lblDatumKP2))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPaneKP2.createSequentialGroup()
-							.addComponent(txtFGrundKP2, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+							.addComponent(txtFGrundKP2, GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
 							.addGap(95))
-						.addGroup(Alignment.TRAILING, gl_contentPaneKP2.createSequentialGroup()
+						.addGroup(gl_contentPaneKP2.createSequentialGroup()
 							.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPaneKP2.createSequentialGroup()
 									.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.TRAILING)
-										.addComponent(txtFVertragsIDKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+										.addComponent(txtFVertragsIDKP2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
 										.addComponent(txtFDatumKP2, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
 									.addGap(85)
 									.addComponent(czbStatusKP2))
-								.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+								.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
 							.addGap(78))))
-				.addGroup(gl_contentPaneKP2.createSequentialGroup()
-					.addGap(70)
+				.addGroup(Alignment.TRAILING, gl_contentPaneKP2.createSequentialGroup()
+					.addGap(170)
 					.addComponent(btnSaveKP2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(btnLöschenKP2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(99))
+					.addGap(154))
 		);
 		gl_contentPaneKP2.setVerticalGroup(
 			gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
@@ -179,12 +174,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblBeschreibungKP2)
-						.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPaneKP2.createParallelGroup(Alignment.BASELINE, false)
-						.addComponent(btnLöschenKP2)
-						.addComponent(btnSaveKP2))
-					.addGap(1))
+						.addComponent(txtFBeschreibungKP2, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+					.addGap(7)
+					.addComponent(btnSaveKP2))
 		);
 		contentPaneKP2.setLayout(gl_contentPaneKP2);
 	}
@@ -229,15 +221,6 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
 							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
 				}
-			}
-		});	
-		////////////////////////////////////////////////////////////////////
-		//Enthält den Code für den "Löschen" Button
-		////////////////////////////////////////////////////////////////////
-		btnLöschenKP2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				JOptionPane.showMessageDialog(null, "Löschen konnte nicht durchgeführt werden.");
 			}
 		});
 		
