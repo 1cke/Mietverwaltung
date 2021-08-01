@@ -265,6 +265,21 @@ public class Kontakt extends Kontaktdaten{
 		return change_db_value("UPDATE kontakt SET behoben = '"+behoben+"' WHERE kontakts_id = '"+kontakt_id+"'");
 	}
 	/**
+	 * Diese Methode ändert die Vertrags-ID
+	 * @param kontakt_id Die Kontakt-ID als Integer
+	 * @param vertrags_id Die neue Vertrags-ID als Integer
+	 * @return Boolean als Funktionsindikator
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see change_db_value
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	private boolean change_contact_vertrags_id(int kontakt_id,int vertrags_id)throws ClassNotFoundException, SQLException{
+		return change_db_value("UPDATE kontakt SET vertrags_id = '"+vertrags_id+"' WHERE kontakts_id = '"+kontakt_id+"'");
+	}
+		
+	/**
 	 * Diese Method gibt alle Kontakte zurück
 	 * @return ArrayList vom Typ Kontaktdaten
 	 * @throws ClassNotFoundException
@@ -382,6 +397,20 @@ public class Kontakt extends Kontaktdaten{
 	 */
 	public boolean change_behoben(int kontakt_id, int behoben)throws ClassNotFoundException, SQLException{
 		return change_contact_behoben(kontakt_id,behoben);
+	}
+	/**
+	 * Diese Methode ändert die Vertrags-ID
+	 * @param kontakt_id Die Kontakt-ID als Integer
+	 * @param vertrags_id Die neue Vertrags-ID als Integer
+	 * @return Boolean
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @see change_contact_vertrags_id
+	 * @see ClassNotFoundException
+	 * @see SQLException
+	 */
+	public boolean change_vertrags_id(int kontakt_id, int vertrags_id)throws ClassNotFoundException, SQLException{
+		return change_contact_vertrags_id(kontakt_id,vertrags_id);
 	}
 	/**
 	 * Diese Methode gibt alle Kontakte zurück. Kunden unspeziefisch.
