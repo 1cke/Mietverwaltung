@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import backend.Kontakt;
+import backend.Vertrag;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -34,6 +35,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	private JButton btnZurückKP3;
 	private JButton btnHinzufügenKP3;
 	private Kontakt kontaktp;
+	private Vertrag vertrag;
 
 	/**
 	 * Create the frame.
@@ -41,10 +43,10 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	 * @throws ClassNotFoundException 
 	 */
 	public Kontaktpunkt_Level3() throws ClassNotFoundException, SQLException {
-		setTitle("Kontaktpunkt hinzufügen");
+		kontaktp = new Kontakt();
+		vertrag = new Vertrag();
 		initComponents();
-		createEvents();
-		kontaktp = new Kontakt(); 
+		createEvents(); 
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -53,6 +55,7 @@ public class Kontaktpunkt_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Kontaktpunkt hinzufügen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 276);
 		contentPaneKP3 = new JPanel();
@@ -167,6 +170,9 @@ public class Kontaktpunkt_Level3 extends JFrame {
 		btnHinzufügenKP3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					vertrag.lade_vertrags_daten(Integer.parseInt(txtFVertragsIDKP3.getText()));
+					int check = vertrag.get_kd_id();
+					if (check != 0) {
 					kontaktp.set_kontakt_value(Integer.parseInt(txtFVertragsIDKP3.getText()), txtFDatumKP3.getText(),
 							txtFGrundKP3.getText(), txtFBeschreibungKP3.getText());
 					JOptionPane.showMessageDialog(null, "Der Kontaktpunkt wurde hinzugefügt.");
@@ -174,6 +180,9 @@ public class Kontaktpunkt_Level3 extends JFrame {
 					Kontaktpunkt_Level1 kontakt1;
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Überprüfen Sie die Vertrags-ID.");
+					}
 				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
 					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
 							+ " Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");

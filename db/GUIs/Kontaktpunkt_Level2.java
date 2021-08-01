@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import backend.Kontakt;
+import backend.Vertrag;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -39,6 +40,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	private String auswahl;
 	private String nrKP2;
 	private int nr;
+	private Vertrag vertrag;
 
 	/**
 	 * Create the frame.
@@ -48,6 +50,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 	public Kontaktpunkt_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
 		kontakt = new Kontakt();
+		vertrag = new Vertrag();
 		initComponents();
 		createEvents();
 	}
@@ -210,6 +213,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 				int selectionStatus = czbStatusKP2.isSelected() ? 1 : 0;
 				
 				try {
+					vertrag.lade_vertrags_daten(Integer.parseInt(txtFVertragsIDKP2.getText()));
+					int check = vertrag.get_kd_id();
+					if (check != 0) {
 					kontakt.change_beschreibung(nr, txtFBeschreibungKP2.getText());
 					kontakt.change_behoben(nr, selectionStatus);
 					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
@@ -217,6 +223,9 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					Kontaktpunkt_Level1 kontakt1;
 					kontakt1 = new Kontaktpunkt_Level1();
 					kontakt1.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Überprüfen Sie die Vertrags-ID.");
+					}
 				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
 					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
 							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
