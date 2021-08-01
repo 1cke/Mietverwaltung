@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import backend.Kunden;
 import backend.Vertrag;
+import backend.Wohnung;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -35,16 +37,20 @@ public class Vertrag_Level3 extends JFrame {
 	private JButton btnHinzufügenV2;
 	private Vertrag vertrag;
 	private JCheckBox czbAktivV3;
-
+	private Kunden kunde;
+	private Wohnung wohnung;
+	
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
 	public Vertrag_Level3() throws ClassNotFoundException, SQLException {
+		vertrag = new Vertrag();
+		kunde = new Kunden();
+		wohnung = new Wohnung();
 		initComponents();
 		createEvents();
-		vertrag = new Vertrag();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -177,6 +183,11 @@ public class Vertrag_Level3 extends JFrame {
 		btnHinzufügenV2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					wohnung.lade_daten(Integer.parseInt(txtFWohnungsIDV3.getText()));
+					kunde.lade_kunden_daten(Integer.parseInt(txtFKundenIDV3.getText()));
+					int kd_id = kunde.get_id(kunde.get_vorname(), kunde.get_nachname(), kunde.get_geburtstag());
+					int wh_id = wohnung.get_adress_id();
+					if (wh_id != 0 && kd_id != 0) {
 					int selection = czbAktivV3.isSelected() ? 1 : 0;
 					vertrag.set_db_value(Integer.parseInt(txtFKundenIDV3.getText()),
 							Integer.parseInt(txtFWohnungsIDV3.getText()), Double.parseDouble(txtFSchuldenV3.getText()),
@@ -186,6 +197,9 @@ public class Vertrag_Level3 extends JFrame {
 					Vertrag_Level1 vertrag1;
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Überprüfen Sie ob die IDs korrekt gewählt wurden");
+					}
 				} catch (NumberFormatException | ClassNotFoundException | SQLException e) {
 					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
 							+ " Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");

@@ -2,12 +2,15 @@ package GUIs;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.JobAttributes;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import backend.Kunden;
 import backend.Vertrag;
+import backend.Wohnung;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -40,6 +43,8 @@ public class Vertrag_Level2 extends JFrame {
 	private String auswahl;
 	private String nrV2;
 	private int nr;
+	private Kunden kunde;
+	private Wohnung wohnung;
 
 	/**
 	 * Create the frame.
@@ -49,6 +54,8 @@ public class Vertrag_Level2 extends JFrame {
 	public Vertrag_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
 		vertrag = new Vertrag();
+		kunde = new Kunden();
+		wohnung = new Wohnung();
 		initComponents();
 		createEvents();
 	}
@@ -226,7 +233,11 @@ public class Vertrag_Level2 extends JFrame {
 				int selectionStatus = czbAktivV2.isSelected() ? 1 : 0;
 				
 				try {
-					
+					wohnung.lade_daten(Integer.parseInt(txtFWohnungsIDV2.getText()));
+					kunde.lade_kunden_daten(Integer.parseInt(txtFKundenIDV2.getText()));
+					int kd_id = kunde.get_id(kunde.get_vorname(), kunde.get_nachname(), kunde.get_geburtstag());
+					int wh_id = wohnung.get_adress_id();
+					if (wh_id != 0 && kd_id != 0) {
 					vertrag.change_kundennummer(nr, Integer.parseInt(txtFKundenIDV2.getText()));
 					vertrag.change_wohnungsnummer(nr, Integer.parseInt(txtFWohnungsIDV2.getText()));
 					vertrag.change_zeitraum(nr, txtFZeitraumV2.getText());
@@ -237,6 +248,9 @@ public class Vertrag_Level2 extends JFrame {
 					Vertrag_Level1 vertrag1;
 					vertrag1 = new Vertrag_Level1();
 					vertrag1.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Überprüfen Sie ob die IDs korrekt gewählt wurden");
+					}
 				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
 					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
 							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
