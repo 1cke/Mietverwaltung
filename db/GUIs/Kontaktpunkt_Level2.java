@@ -216,6 +216,7 @@ public class Kontaktpunkt_Level2 extends JFrame {
 					vertrag.lade_vertrags_daten(Integer.parseInt(txtFVertragsIDKP2.getText()));
 					int check = vertrag.get_kd_id();
 					if (check != 0) {
+					kontakt.change_vertrags_id(nr, Integer.parseInt(txtFVertragsIDKP2.getText()));
 					kontakt.change_beschreibung(nr, txtFBeschreibungKP2.getText());
 					kontakt.change_behoben(nr, selectionStatus);
 					JOptionPane.showMessageDialog(null, "Die Änderungen wurden gespeichert.");
