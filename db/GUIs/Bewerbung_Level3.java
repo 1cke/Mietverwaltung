@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import backend.Bewerbung;
+import backend.Kunden;
+import backend.Wohnung;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -33,6 +35,8 @@ public class Bewerbung_Level3 extends JFrame {
 	private JButton btnZurückB3;
 	private JButton btnHinzufügenB3;
 	private Bewerbung bewerbung;
+	private Kunden kunde;
+	private Wohnung wohnung;
 
 	/**
 	 * Create the frame.
@@ -40,10 +44,11 @@ public class Bewerbung_Level3 extends JFrame {
 	 * @throws ClassNotFoundException 
 	 */
 	public Bewerbung_Level3() throws ClassNotFoundException, SQLException {
-		setTitle("Bewerbung hinzufügen");
+		bewerbung = new Bewerbung();
+		kunde = new Kunden();
+		wohnung = new Wohnung();
 		initComponents();
 		createEvents();
-		bewerbung = new Bewerbung();
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -52,6 +57,7 @@ public class Bewerbung_Level3 extends JFrame {
 	////////////////////////////////////////////////////////////////////
 	
 	private void initComponents() {
+		setTitle("Bewerbung hinzufügen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 215);
 		contentPaneB3 = new JPanel();
@@ -151,13 +157,21 @@ public class Bewerbung_Level3 extends JFrame {
 		btnHinzufügenB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					bewerbung.set_bewerbung(Integer.parseInt(txtFKundenIDB3.getText()), Integer.parseInt(txtFWohnungsIDB3.getText()),
-							txtFDatumB3.getText());
+					wohnung.lade_daten(Integer.parseInt(txtFWohnungsIDB3.getText()));
+					kunde.lade_kunden_daten(Integer.parseInt(txtFKundenIDB3.getText()));
+					int kd_id = kunde.get_id(kunde.get_vorname(), kunde.get_nachname(), kunde.get_geburtstag());
+					int wh_id = wohnung.get_adress_id();
+					if (wh_id != 0 && kd_id != 0) {
+					bewerbung.set_bewerbung(Integer.parseInt(txtFKundenIDB3.getText()),
+							Integer.parseInt(txtFWohnungsIDB3.getText()),txtFDatumB3.getText());
 					JOptionPane.showMessageDialog(null, "Die Bewerbung wurde hinzugefügt.");
 					dispose();
 					Bewerbung_Level1 bewerbung1;
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Überprüfen Sie ob die IDs korrekt gewählt wurden.");
+					}
 				} catch (ClassNotFoundException | SQLException | NumberFormatException e1 ) {
 					JOptionPane.showMessageDialog(null, "Etwas lief beim Hinzufügen schief."
 							+ "Überprüfen Sie Ihre Eingabewerte und versuchen Sie erneut.");

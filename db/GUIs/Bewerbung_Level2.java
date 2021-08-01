@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import backend.Bewerbung;
+import backend.Kunden;
+import backend.Wohnung;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -38,6 +40,8 @@ public class Bewerbung_Level2 extends JFrame {
 	private String auswahl;
 	private String nrB2;
 	private int nr;
+	private Wohnung wohnung;
+	private Kunden kunde;
 
 	/**
 	 * Create the frame.
@@ -47,6 +51,8 @@ public class Bewerbung_Level2 extends JFrame {
 	public Bewerbung_Level2(String chosen_one) throws ClassNotFoundException, SQLException {
 		auswahl = chosen_one;
 		bewerbung = new Bewerbung();
+		wohnung = new Wohnung();
+		kunde = new Kunden();
 		initComponents();
 		createEvents();
 	}
@@ -212,6 +218,11 @@ public class Bewerbung_Level2 extends JFrame {
 				int selectionStatus = czbStatusB2.isSelected() ? 1 : 0;
 				
 				try {
+					wohnung.lade_daten(Integer.parseInt(txtFWohnungsIDB2.getText()));
+					kunde.lade_kunden_daten(Integer.parseInt(txtFKundenIDB2.getText()));
+					int kd_id = kunde.get_id(kunde.get_vorname(), kunde.get_nachname(), kunde.get_geburtstag());
+					int wh_id = wohnung.get_adress_id();
+					if (wh_id != 0 && kd_id != 0) {
 					bewerbung.change_bewerber_id(nr, Integer.parseInt(txtFKundenIDB2.getText()));
 					bewerbung.change_wohnungs_id(nr, Integer.parseInt(txtFWohnungsIDB2.getText()));
 					bewerbung.change_datum(nr, txtFDatumB2.getText());
@@ -221,6 +232,9 @@ public class Bewerbung_Level2 extends JFrame {
 					Bewerbung_Level1 bewerbung1;
 					bewerbung1 = new Bewerbung_Level1();
 					bewerbung1.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Überprüfen Sie ob die IDs korrekt gewählt wurden.");
+					}
 				} catch (ClassNotFoundException | SQLException | NumberFormatException e1) {
 					JOptionPane.showMessageDialog(null, "Die Werte konnten nicht gespeichert werden."
 							+ " Überprüfen Sie die Datentypen und versuchen Sie erneut.");
